@@ -131,11 +131,13 @@ const tourOptions = experiences.map((e) => e.title);
 export default function RomPage() {
   return (
     <>
+      {/* Gold top border */}
+      <div className="fixed top-0 left-0 right-0 h-[3px] bg-gold z-50" />
+
       <Navbar />
-      <main>
+      <main className="grain">
         {/* ═══════════════════════ HERO ═══════════════════════ */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden grain">
-          {/* Background layers */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
@@ -143,8 +145,8 @@ export default function RomPage() {
                 "url('https://images.unsplash.com/photo-1525874684015-58379d421a52?w=1920&h=1080&fit=crop&q=80')",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brown/80 via-brown/50 to-brown/90" />
-          <div className="absolute inset-0 bg-gradient-to-r from-brown/40 via-transparent to-brown/40" />
+          <div className="absolute inset-0 bg-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-gold/8 blur-[120px]" />
 
           <div className="relative z-10 text-center px-6 max-w-5xl">
@@ -152,7 +154,7 @@ export default function RomPage() {
               Bella Italia · Róm
             </span>
 
-            <h1 className="mt-6 font-serif text-6xl sm:text-7xl md:text-8xl lg:text-[9rem] font-bold text-cream tracking-[0.04em] animate-fade-up-delay-1 leading-[0.9]">
+            <h1 className="mt-6 font-serif text-7xl sm:text-8xl md:text-[9rem] lg:text-[12rem] font-bold text-cream tracking-[0.04em] animate-fade-up-delay-1 leading-[0.85]">
               UPPLIFÐU RÓM
             </h1>
 
@@ -170,7 +172,6 @@ export default function RomPage() {
             </div>
           </div>
 
-          {/* Scroll indicator */}
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-up-delay-3">
             <span className="text-cream/30 text-[10px] tracking-[0.3em] uppercase">
               Skruna
@@ -179,17 +180,17 @@ export default function RomPage() {
           </div>
         </section>
 
-        {/* ═══════════════════════ BOOKING FORM ═══════════════════════ */}
+        {/* ═══════════════════════ BOOKING FORM (DARK) ═══════════════════════ */}
         <section className="relative -mt-20 z-20 px-6">
           <RevealOnScroll>
-            <div className="mx-auto max-w-3xl bg-white/95 backdrop-blur-sm shadow-2xl shadow-brown/10">
+            <div className="mx-auto max-w-3xl bg-[#1C0F0A] shadow-2xl shadow-black/30">
               <div className="p-8 md:p-12">
                 <div className="text-center mb-8">
-                  <span className="text-terracotta text-xs font-medium tracking-[0.3em] uppercase">
+                  <span className="text-gold text-xs font-medium tracking-[0.3em] uppercase">
                     Bókaðu upplifun
                   </span>
-                  <h2 className="mt-2 font-serif text-3xl md:text-4xl text-brown">
-                    Senda <span className="text-terracotta italic">fyrirspurn</span>
+                  <h2 className="mt-2 font-serif text-3xl md:text-4xl text-cream">
+                    Senda <span className="text-gold italic">fyrirspurn</span>
                   </h2>
                 </div>
 
@@ -197,7 +198,7 @@ export default function RomPage() {
                   <div className="flex flex-col gap-2">
                     <label
                       htmlFor="nafn"
-                      className="text-[11px] tracking-[0.2em] uppercase text-brown/50 font-medium"
+                      className="text-[11px] tracking-[0.2em] uppercase text-cream/40 font-medium"
                     >
                       Nafn
                     </label>
@@ -206,14 +207,14 @@ export default function RomPage() {
                       name="nafn"
                       type="text"
                       placeholder="Fullt nafn"
-                      className="w-full border-b border-brown/15 bg-transparent py-3 text-brown placeholder:text-brown/25 focus:border-terracotta focus:outline-none transition-colors duration-300"
+                      className="w-full border-b border-cream/15 bg-transparent py-3 text-cream placeholder:text-cream/25 focus:border-gold focus:outline-none transition-colors duration-300"
                     />
                   </div>
 
                   <div className="flex flex-col gap-2">
                     <label
                       htmlFor="netfang"
-                      className="text-[11px] tracking-[0.2em] uppercase text-brown/50 font-medium"
+                      className="text-[11px] tracking-[0.2em] uppercase text-cream/40 font-medium"
                     >
                       Netfang
                     </label>
@@ -222,28 +223,28 @@ export default function RomPage() {
                       name="netfang"
                       type="email"
                       placeholder="netfang@dæmi.is"
-                      className="w-full border-b border-brown/15 bg-transparent py-3 text-brown placeholder:text-brown/25 focus:border-terracotta focus:outline-none transition-colors duration-300"
+                      className="w-full border-b border-cream/15 bg-transparent py-3 text-cream placeholder:text-cream/25 focus:border-gold focus:outline-none transition-colors duration-300"
                     />
                   </div>
 
                   <div className="flex flex-col gap-2 md:col-span-2">
                     <label
                       htmlFor="vidburdur"
-                      className="text-[11px] tracking-[0.2em] uppercase text-brown/50 font-medium"
+                      className="text-[11px] tracking-[0.2em] uppercase text-cream/40 font-medium"
                     >
                       Velja viðburð
                     </label>
                     <select
                       id="vidburdur"
                       name="vidburdur"
-                      className="w-full border-b border-brown/15 bg-transparent py-3 text-brown focus:border-terracotta focus:outline-none transition-colors duration-300 cursor-pointer appearance-none"
+                      className="w-full border-b border-cream/15 bg-transparent py-3 text-cream focus:border-gold focus:outline-none transition-colors duration-300 cursor-pointer appearance-none"
                       defaultValue=""
                     >
-                      <option value="" disabled>
+                      <option value="" disabled className="bg-[#1C0F0A] text-cream">
                         Veldu upplifun...
                       </option>
                       {tourOptions.map((t) => (
-                        <option key={t} value={t}>
+                        <option key={t} value={t} className="bg-[#1C0F0A] text-cream">
                           {t}
                         </option>
                       ))}
@@ -253,7 +254,7 @@ export default function RomPage() {
                   <div className="md:col-span-2 pt-4 text-center">
                     <button
                       type="submit"
-                      className="inline-block px-12 py-4 bg-terracotta text-cream text-sm font-medium tracking-[0.2em] uppercase hover:bg-terracotta-dark transition-colors duration-300"
+                      className="inline-block px-12 py-4 bg-gold text-[#1C0F0A] text-sm font-bold tracking-[0.2em] uppercase hover:bg-gold-light transition-colors duration-300"
                     >
                       Senda fyrirspurn
                     </button>
@@ -264,8 +265,11 @@ export default function RomPage() {
           </RevealOnScroll>
         </section>
 
-        {/* ═══════════════════════ EXPERIENCES GRID ═══════════════════════ */}
-        <section id="upplifanir" className="py-24 md:py-32 bg-cream">
+        {/* ═══════════════════════ DIAMOND DIVIDER ═══════════════════════ */}
+        <DiamondDivider bg="bg-[#F0E6D3]" />
+
+        {/* ═══════════════════════ EXPERIENCES GRID 1 (PARCHMENT) ═══════════════════════ */}
+        <section id="upplifanir" className="py-24 md:py-32 bg-[#F0E6D3]">
           <div className="mx-auto max-w-7xl px-6">
             <RevealOnScroll>
               <div className="text-center mb-20">
@@ -283,153 +287,108 @@ export default function RomPage() {
               </div>
             </RevealOnScroll>
 
-            {/* First row — 2 featured cards side by side */}
+            {/* First row — 2 featured image cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {experiences.slice(0, 2).map((exp) => (
                 <RevealOnScroll key={exp.id}>
-                  <article className="group relative overflow-hidden bg-white h-[520px] flex flex-col">
-                    {/* Image */}
-                    <div className="relative h-72 overflow-hidden">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                        style={{ backgroundImage: `url('${exp.image}')` }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                      <span className="absolute top-5 left-5 px-3 py-1.5 bg-white/90 backdrop-blur-sm text-[10px] font-medium tracking-[0.2em] text-brown uppercase">
-                        {exp.tag}
-                      </span>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex flex-col flex-1 p-7">
-                      <h3 className="font-serif text-2xl text-brown group-hover:text-terracotta transition-colors duration-300">
-                        {exp.title}
-                      </h3>
-                      <p className="mt-3 text-sm text-brown/55 leading-relaxed flex-1">
-                        {exp.description}
-                      </p>
-                      <p className="mt-2 text-xs text-brown/40 leading-relaxed">
-                        {exp.details}
-                      </p>
-
-                      <div className="mt-5 flex items-center justify-between border-t border-brown/8 pt-5">
-                        <span className="font-serif text-lg text-gold font-semibold">
-                          {exp.price}
-                        </span>
-                        <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-terracotta group-hover:tracking-[0.25em] transition-all duration-500">
-                          Lesa meira →
-                        </span>
-                      </div>
-                    </div>
-                  </article>
+                  <ImageCard exp={exp} tall />
                 </RevealOnScroll>
               ))}
             </div>
 
-            {/* Main grid — remaining 8 cards */}
+            {/* Main grid — 3 cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {experiences.slice(2, 5).map((exp) => (
                 <RevealOnScroll key={exp.id}>
-                  <ExperienceCard exp={exp} />
-                </RevealOnScroll>
-              ))}
-            </div>
-
-            {/* ═══════ CTA BANNER (between grid sections) ═══════ */}
-            <RevealOnScroll>
-              <div className="my-16 relative overflow-hidden grain">
-                <div className="absolute inset-0 bg-gradient-to-r from-brown via-brown-light to-brown" />
-                <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold/8 blur-[100px]" />
-                <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-terracotta/10 blur-[80px]" />
-
-                <div className="relative z-10 py-20 px-8 text-center">
-                  <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl text-cream leading-tight">
-                    Finnst þér ekki það sem þú ert{" "}
-                    <span className="text-gold italic">að leita að?</span>
-                  </h3>
-                  <p className="mt-6 text-cream/50 text-lg max-w-lg mx-auto">
-                    Hildur hjálpar þér að hanna þína draumaferð
-                  </p>
-                  <div className="mt-10">
-                    <Link
-                      href="/pantadu"
-                      className="inline-block px-12 py-4 border border-gold/40 text-gold text-sm font-medium tracking-[0.2em] uppercase hover:bg-gold/10 transition-all duration-500"
-                    >
-                      Bóka ráðgjöf
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </RevealOnScroll>
-
-            {/* Second half of grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {experiences.slice(5, 8).map((exp) => (
-                <RevealOnScroll key={exp.id}>
-                  <ExperienceCard exp={exp} />
-                </RevealOnScroll>
-              ))}
-            </div>
-
-            {/* Final 2 cards — wider layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-              {experiences.slice(8).map((exp) => (
-                <RevealOnScroll key={exp.id}>
-                  <article className="group relative overflow-hidden bg-white h-[520px] flex flex-col">
-                    <div className="relative h-72 overflow-hidden">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                        style={{ backgroundImage: `url('${exp.image}')` }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                      <span className="absolute top-5 left-5 px-3 py-1.5 bg-white/90 backdrop-blur-sm text-[10px] font-medium tracking-[0.2em] text-brown uppercase">
-                        {exp.tag}
-                      </span>
-                    </div>
-                    <div className="flex flex-col flex-1 p-7">
-                      <h3 className="font-serif text-2xl text-brown group-hover:text-terracotta transition-colors duration-300">
-                        {exp.title}
-                      </h3>
-                      <p className="mt-3 text-sm text-brown/55 leading-relaxed flex-1">
-                        {exp.description}
-                      </p>
-                      <p className="mt-2 text-xs text-brown/40 leading-relaxed">
-                        {exp.details}
-                      </p>
-                      <div className="mt-5 flex items-center justify-between border-t border-brown/8 pt-5">
-                        <span className="font-serif text-lg text-gold font-semibold">
-                          {exp.price}
-                        </span>
-                        <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-terracotta group-hover:tracking-[0.25em] transition-all duration-500">
-                          Lesa meira →
-                        </span>
-                      </div>
-                    </div>
-                  </article>
+                  <ImageCard exp={exp} />
                 </RevealOnScroll>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ═══════════════════════ BOTTOM CTA ═══════════════════════ */}
-        <section className="py-24 bg-cream-light">
+        {/* ═══════════════════════ CTA BANNER (TERRACOTTA) ═══════════════════════ */}
+        <section className="relative overflow-hidden grain">
+          <div className="absolute inset-0 bg-[#8B2500]" />
+          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold/10 blur-[100px]" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-black/10 blur-[80px]" />
+
+          <RevealOnScroll>
+            <div className="relative z-10 py-24 px-8 text-center">
+              <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl text-cream leading-tight">
+                Finnst þér ekki það sem þú ert{" "}
+                <span className="text-gold italic">að leita að?</span>
+              </h3>
+              <p className="mt-6 text-cream/60 text-lg max-w-lg mx-auto">
+                Hildur hjálpar þér að hanna þína draumaferð
+              </p>
+              <div className="mt-10">
+                <Link
+                  href="/pantadu"
+                  className="inline-block px-12 py-4 border border-cream/30 text-cream text-sm font-medium tracking-[0.2em] uppercase hover:bg-cream/10 transition-all duration-500"
+                >
+                  Bóka ráðgjöf
+                </Link>
+              </div>
+            </div>
+          </RevealOnScroll>
+        </section>
+
+        {/* ═══════════════════════ DIAMOND DIVIDER ═══════════════════════ */}
+        <DiamondDivider bg="bg-[#1C0F0A]" color="text-cream/20" line="bg-cream/10" />
+
+        {/* ═══════════════════════ EXPERIENCES GRID 2 (DARK) ═══════════════════════ */}
+        <section className="py-24 md:py-32 bg-[#1C0F0A]">
+          <div className="mx-auto max-w-7xl px-6">
+            <RevealOnScroll>
+              <div className="text-center mb-20">
+                <span className="text-gold text-xs font-medium tracking-[0.4em] uppercase">
+                  Fleiri upplifanir
+                </span>
+                <h2 className="mt-4 font-serif text-4xl md:text-5xl lg:text-6xl text-cream leading-tight">
+                  Kannaðu{" "}
+                  <span className="text-gold italic">enn meira</span>
+                </h2>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {experiences.slice(5, 8).map((exp) => (
+                <RevealOnScroll key={exp.id}>
+                  <ImageCard exp={exp} />
+                </RevealOnScroll>
+              ))}
+            </div>
+
+            {/* Final 2 cards — wider */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              {experiences.slice(8).map((exp) => (
+                <RevealOnScroll key={exp.id}>
+                  <ImageCard exp={exp} tall />
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════ BOTTOM CTA (NEAR BLACK) ═══════════════════════ */}
+        <section className="py-24 bg-[#0D0905]">
           <div className="mx-auto max-w-4xl px-6 text-center">
             <RevealOnScroll>
-              <span className="text-terracotta text-xs font-medium tracking-[0.4em] uppercase">
+              <span className="text-gold text-xs font-medium tracking-[0.4em] uppercase">
                 Tilbúin/n?
               </span>
-              <h2 className="mt-4 font-serif text-4xl md:text-5xl text-brown">
-                Byrjaðu <span className="text-terracotta italic">ferðalagið</span>
+              <h2 className="mt-4 font-serif text-4xl md:text-5xl text-cream">
+                Byrjaðu <span className="text-gold italic">ferðalagið</span>
               </h2>
-              <p className="mt-6 text-brown/50 max-w-lg mx-auto leading-relaxed">
+              <p className="mt-6 text-cream/40 max-w-lg mx-auto leading-relaxed">
                 Sendu okkur fyrirspurn og við hönnun sérhannaða ferð
                 sem passar þínum óskum og draumum.
               </p>
               <div className="mt-10">
                 <Link
                   href="/pantadu"
-                  className="inline-block px-12 py-4 bg-terracotta text-cream text-sm font-medium tracking-[0.2em] uppercase hover:bg-terracotta-dark transition-colors duration-300"
+                  className="inline-block px-12 py-4 bg-gold text-[#0D0905] text-sm font-bold tracking-[0.2em] uppercase hover:bg-gold-light transition-colors duration-300"
                 >
                   Senda fyrirspurn
                 </Link>
@@ -443,45 +402,78 @@ export default function RomPage() {
   );
 }
 
-/* ─── Experience Card Component ─── */
+/* ─── Diamond Divider ─── */
 
-function ExperienceCard({
-  exp,
+function DiamondDivider({
+  bg = "bg-cream",
+  color = "text-brown/15",
+  line = "bg-brown/10",
 }: {
-  exp: (typeof experiences)[number];
+  bg?: string;
+  color?: string;
+  line?: string;
 }) {
   return (
-    <article className="group relative overflow-hidden bg-white h-[480px] flex flex-col">
-      {/* Image */}
-      <div className="relative h-56 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-          style={{ backgroundImage: `url('${exp.image}')` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-        <span className="absolute top-4 left-4 px-3 py-1.5 bg-white/90 backdrop-blur-sm text-[10px] font-medium tracking-[0.2em] text-brown uppercase">
-          {exp.tag}
-        </span>
-      </div>
+    <div className={`${bg} flex items-center justify-center py-4`}>
+      <div className={`flex-1 h-px ${line} max-w-xs`} />
+      <span className={`mx-4 ${color} text-sm`}>&#9670;</span>
+      <div className={`flex-1 h-px ${line} max-w-xs`} />
+    </div>
+  );
+}
 
-      {/* Content */}
-      <div className="flex flex-col flex-1 p-6">
-        <h3 className="font-serif text-xl text-brown group-hover:text-terracotta transition-colors duration-300">
+/* ─── Image Card Component (full-bleed, no white background) ─── */
+
+function ImageCard({
+  exp,
+  tall = false,
+}: {
+  exp: (typeof experiences)[number];
+  tall?: boolean;
+}) {
+  return (
+    <article
+      className={`group relative overflow-hidden cursor-pointer ${
+        tall ? "h-[520px]" : "h-[420px]"
+      }`}
+    >
+      {/* Full-bleed background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+        style={{ backgroundImage: `url('${exp.image}')` }}
+      />
+
+      {/* Dark gradient overlay — intensifies on hover */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 transition-all duration-500 group-hover:from-black/90 group-hover:via-black/50" />
+
+      {/* Category tag pill */}
+      <span className="absolute top-5 left-5 z-10 px-3 py-1.5 bg-terracotta text-cream text-[10px] font-medium tracking-[0.2em] uppercase">
+        {exp.tag}
+      </span>
+
+      {/* Price in gold — top right */}
+      <span className="absolute top-5 right-5 z-10 font-serif text-lg text-gold font-semibold drop-shadow-lg">
+        {exp.price}
+      </span>
+
+      {/* Content overlaid on image — bottom */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-7">
+        <h3 className="font-serif text-2xl md:text-3xl text-white leading-tight drop-shadow-md">
           {exp.title}
         </h3>
-        <p className="mt-2 text-sm text-brown/55 leading-relaxed flex-1 line-clamp-3">
+        <p className="mt-3 text-sm text-white/70 leading-relaxed line-clamp-2">
           {exp.description}
         </p>
-        <p className="mt-1.5 text-xs text-brown/40 leading-relaxed line-clamp-2">
+        <p className="mt-2 text-xs text-white/40 leading-relaxed line-clamp-1">
           {exp.details}
         </p>
 
-        <div className="mt-4 flex items-center justify-between border-t border-brown/8 pt-4">
-          <span className="font-serif text-lg text-gold font-semibold">
-            {exp.price}
-          </span>
-          <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-terracotta group-hover:tracking-[0.25em] transition-all duration-500">
-            Lesa meira →
+        <div className="mt-4 pt-4 border-t border-white/10">
+          <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-gold group-hover:tracking-[0.25em] transition-all duration-500 inline-flex items-center gap-2">
+            Lesa meira
+            <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">
+              &rarr;
+            </span>
           </span>
         </div>
       </div>
