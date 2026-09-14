@@ -89,14 +89,6 @@ p {
   animation: marquee 80s linear infinite;
   will-change: transform;
 }
-@keyframes progress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-.animate-progress {
-  transform-origin: left;
-  animation: progress linear both;
-}
 
 /* Scroll-triggered reveal — aðeins opacity + transform (compositor) */
 .reveal {
@@ -112,7 +104,7 @@ p {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .animate-marquee, .animate-fade-up, .animate-fade-up-delay-1, .animate-fade-up-delay-2,
-  .animate-fade-up-delay-3, .animate-fade-in, .animate-slide-up, .animate-progress {
+  .animate-fade-up-delay-3, .animate-fade-in, .animate-slide-up {
     animation: none;
   }
   .reveal { opacity: 1; transform: none; transition: none; }
