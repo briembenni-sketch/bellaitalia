@@ -12,7 +12,7 @@ import { ArrowIcon } from "./Icons";
 import RevealOnScroll from "./RevealOnScroll";
 
 const INTERVAL = 7000;
-const SWAP_MS = 650;
+const SWAP_MS = 700;
 const pad = (n: number) => String(n).padStart(2, "0");
 const initials = (name: string) =>
   name
@@ -23,6 +23,19 @@ const initials = (name: string) =>
     .join("");
 
 type Item = (typeof testimonials)[number];
+type Dir = 1 | -1;
+
+function Tape() {
+  return (
+    <span
+      aria-hidden
+      className="absolute left-1/2 -top-3.5 w-28 h-8 -translate-x-1/2 -rotate-[4deg] pointer-events-none"
+      style={{ filter: "drop-shadow(0 1px 1px rgba(7,21,23,0.18))" }}
+    >
+      <span className="tape block w-full h-full" />
+    </span>
+  );
+}
 
 function Card({
   t,
@@ -40,14 +53,10 @@ function Card({
   return (
     <figure
       ref={ref}
-      className={`relative rounded-3xl bg-white border border-ink/5 shadow-[0_24px_60px_-24px_rgba(7,21,23,0.25)] p-6 sm:p-8 md:p-10 ${className}`}
+      className={`relative w-full rounded-3xl bg-white border border-ink/5 shadow-[0_24px_60px_-24px_rgba(7,21,23,0.25)] p-6 sm:p-8 md:p-10 ${className}`}
       style={style}
     >
-      {/* Límband */}
-      <span
-        aria-hidden
-        className="absolute left-1/2 -top-3 w-24 h-7 -translate-x-1/2 -rotate-3 rounded-sm bg-sand-light/80 shadow-[0_2px_6px_rgba(7,21,23,0.12)]"
-      />
+      <Tape />
       <div className="flex items-center justify-between">
         <span
           aria-hidden
@@ -79,14 +88,39 @@ function Card({
 }
 
 export default function Testimonials() {
+  const total = testimonials.length;
   const [index, setIndex] = useState(0);
-  const [prev, setPrev] = useState<number | null>(null);
-  const [dir, setDir] = useState<1 | -1>(1);
+  const [leaving, setLeaving] = useState<{ index: number; dir: Dir } | null>(
+    null,
+  );
   const [paused, setPaused] = useState(false);
+  const [height, setHeight] = useState<number>();
+  const indexRef = useRef(0);
   const touchX = useRef<number | null>(null);
   const activeRef = useRef<HTMLElement>(null);
-  const [height, setHeight] = useState<number>();
-  const total = testimonials.length;
+
+  const select = useCallback(
+    (next: number, dir: Dir) => {
+      const current = indexRef.current;
+      const target = ((next % total) + total) % total;
+      if (target === current) return;
+      indexRef.current = target;
+      setLeaving({ index: current, dir });
+      setIndex(target);
+    },
+    [total],
+  );
+  const go = useCallback(
+    (dir: Dir) => select(indexRef.current + dir, dir),
+    [select],
+  );
+
+  // Fjarlægja fráfarandi kort þegar hreyfingunni lýkur
+  useEffect(() => {
+    if (!leaving) return;
+    const id = setTimeout(() => setLeaving(null), SWAP_MS);
+    return () => clearTimeout(id);
+  }, [leaving]);
 
   // Hæð umgjarðar fylgir virka kortinu svo hún líði mjúklega milli umsagna
   useLayoutEffect(() => {
@@ -98,24 +132,6 @@ export default function Testimonials() {
     return () => window.removeEventListener("resize", measure);
   }, [index]);
 
-  const go = useCallback(
-    (d: 1 | -1) => {
-      setIndex((i) => {
-        setPrev(i);
-        setDir(d);
-        return (i + d + total) % total;
-      });
-    },
-    [total],
-  );
-
-  // Hreinsa fráfarandi kort þegar hreyfingunni lýkur
-  useEffect(() => {
-    if (prev === null) return;
-    const id = setTimeout(() => setPrev(null), SWAP_MS);
-    return () => clearTimeout(id);
-  }, [prev, index]);
-
   // Sjálfvirk skipting; endurstillist þegar notandi velur sjálfur
   useEffect(() => {
     if (paused) return;
@@ -123,9 +139,11 @@ export default function Testimonials() {
     return () => clearInterval(id);
   }, [paused, go, index]);
 
+  const dirStyle = (dir: Dir) => ({ "--dir": dir }) as React.CSSProperties;
+
   return (
     <div
-      className="mx-auto max-w-[1400px] px-5 md:px-10"
+      className="mx-auto max-w-[1400px] px-5 md:px-10 overflow-x-clip"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -176,17 +194,14 @@ export default function Testimonials() {
               className="absolute inset-x-4 top-4 bottom-1 rounded-3xl bg-white/80 border border-ink/5 -translate-y-1.5"
             />
 
-            <div
-              className="relative transition-[height] duration-500 ease-out"
-              style={{ height }}
-            >
-              {prev !== null && (
+            <div className="relative card-stage" style={{ height }}>
+              {leaving && (
                 <Card
-                  key={`out-${prev}`}
-                  t={testimonials[prev]}
-                  index={prev}
-                  className="absolute inset-x-0 top-0 animate-card-out pointer-events-none"
-                  style={{ "--dir": dir } as React.CSSProperties}
+                  key={`out-${leaving.index}`}
+                  t={testimonials[leaving.index]}
+                  index={leaving.index}
+                  className="absolute inset-x-0 top-0 card-out pointer-events-none"
+                  style={dirStyle(leaving.dir)}
                 />
               )}
               <Card
@@ -194,8 +209,8 @@ export default function Testimonials() {
                 ref={activeRef}
                 t={testimonials[index]}
                 index={index}
-                className={prev !== null ? "animate-card-in" : ""}
-                style={{ "--dir": dir } as React.CSSProperties}
+                className={leaving ? "card-in" : ""}
+                style={leaving ? dirStyle(leaving.dir) : undefined}
               />
             </div>
           </div>
@@ -221,12 +236,7 @@ export default function Testimonials() {
                   role="tab"
                   aria-selected={i === index}
                   aria-label={`Umsögn ${i + 1}: ${t.name}`}
-                  onClick={() => {
-                    if (i === index) return;
-                    setPrev(index);
-                    setDir(i > index ? 1 : -1);
-                    setIndex(i);
-                  }}
+                  onClick={() => select(i, i > index ? 1 : -1)}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
                     i === index
                       ? "w-6 bg-ink"

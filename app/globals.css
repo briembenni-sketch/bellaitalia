@@ -91,17 +91,42 @@ p {
 }
 
 /* Umsagnakort: fráfarandi rennur út til hliðar með halla, nýtt kemur inn frá hinni hliðinni.
-   --dir er 1 (áfram) eða -1 (til baka). */
+   --dir er 1 (áfram) eða -1 (til baka). Aðeins transform og opacity (compositor). */
 @keyframes card-out {
-  from { transform: translateX(0) rotate(0deg); opacity: 1; }
-  to { transform: translateX(calc(var(--dir, 1) * -120%)) rotate(calc(var(--dir, 1) * -8deg)); opacity: 0; }
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); opacity: 1; }
+  60%  { opacity: 1; }
+  100% { transform: translate3d(calc(var(--dir, 1) * -112%), 0, 0) rotate(calc(var(--dir, 1) * -6deg)) scale(0.96); opacity: 0; }
 }
 @keyframes card-in {
-  from { transform: translateX(calc(var(--dir, 1) * 120%)) rotate(calc(var(--dir, 1) * 8deg)); opacity: 0; }
-  to { transform: translateX(0) rotate(0deg); opacity: 1; }
+  0%   { transform: translate3d(calc(var(--dir, 1) * 112%), 0, 0) rotate(calc(var(--dir, 1) * 6deg)) scale(0.96); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); opacity: 1; }
 }
-.animate-card-out { animation: card-out 0.65s cubic-bezier(0.6, 0.05, 0.3, 1) both; }
-.animate-card-in { animation: card-in 0.65s cubic-bezier(0.6, 0.05, 0.3, 1) both; }
+.card-stage {
+  transition: height 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.card-out,
+.card-in {
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.card-out { animation: card-out 0.7s cubic-bezier(0.65, 0, 0.35, 1) both; }
+.card-in { animation: card-in 0.7s cubic-bezier(0.65, 0, 0.35, 1) both; }
+
+/* Límband: gegnsætt, rifnir endar, ljósrák og daufar línur eins og í alvöru bandi */
+.tape {
+  background:
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.1) 0 1.5px, rgba(255, 255, 255, 0) 1.5px 6px),
+    linear-gradient(180deg, rgba(255, 252, 244, 0.7), rgba(236, 226, 205, 0.62) 55%, rgba(222, 210, 186, 0.66));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(120, 100, 70, 0.08);
+  clip-path: polygon(
+    0% 8%, 2.5% 0%, 97.5% 3%, 100% 12%, 98.5% 28%, 100% 46%, 98% 62%, 100% 78%, 97.5% 100%,
+    2% 97%, 0% 86%, 1.5% 70%, 0% 52%, 2% 34%, 0.5% 20%
+  );
+}
 
 /* Scroll-triggered reveal — aðeins opacity + transform (compositor) */
 .reveal {
@@ -117,10 +142,11 @@ p {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .animate-marquee, .animate-fade-up, .animate-fade-up-delay-1, .animate-fade-up-delay-2,
-  .animate-fade-up-delay-3, .animate-fade-in, .animate-slide-up, .animate-card-in {
+  .animate-fade-up-delay-3, .animate-fade-in, .animate-slide-up, .card-in {
     animation: none;
   }
-  .animate-card-out { animation: none; opacity: 0; }
+  .card-out { animation: none; opacity: 0; }
+  .card-stage { transition: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
