@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
-/* Litapalletta byggð á fyrirmynd (Voyare / Peno Lab):
-   #071517 ink · #125C4C forest · #3F4937 moss · #FCFCFA paper · #3B8B5A leaf · #AB8B56 gold · #CABB9B sand */
+/* Litapalletta: #071517 ink · #125C4C forest · #3F4937 moss · #FCFCFA paper · #3B8B5A leaf · #AB8B56 gold · #CABB9B sand */
 @theme {
   --color-ink: #071517;
   --color-ink-soft: #14262A;
@@ -17,7 +16,7 @@
   --color-sand-light: #EFE8D9;
 }
 
-/* Leturgerðir koma frá next/font (sjá layout.tsx) — sjá docs: "With Tailwind CSS" */
+/* Leturgerðir koma frá next/font (sjá layout.tsx) */
 @theme inline {
   --font-display: var(--font-outfit), "Helvetica Neue", Arial, sans-serif;
   --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
@@ -25,35 +24,46 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-sans);
   background: var(--color-paper);
   color: var(--color-ink);
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, .font-display {
+h1, h2, h3, h4 {
   font-family: var(--font-display);
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
 }
 
-/* Glassmorphism */
+/* Glassmorphism — aðeins notað á valmynd og stöku hnappa (backdrop-filter er dýrt) */
 .glass {
   background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .glass-dark {
-  background: rgba(7, 21, 23, 0.72);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background: rgba(7, 21, 23, 0.78);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Léttur merkimiði án blur — fyrir spjöld í lista */
+.tint {
+  background: rgba(7, 21, 23, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* Animations */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fade-in {
@@ -61,46 +71,40 @@ h1, h2, h3, h4, .font-display {
   to { opacity: 1; }
 }
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes bounce-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-@keyframes ken-burns {
-  from { transform: scale(1); }
-  to { transform: scale(1.08); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
-.animate-fade-up { animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-.animate-fade-up-delay-1 { animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both; }
-.animate-fade-up-delay-2 { animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s both; }
-.animate-fade-up-delay-3 { animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.45s both; }
-.animate-fade-in { animation: fade-in 0.8s ease-out both; }
-.animate-slide-up { animation: slide-up 0.4s ease-out both; }
-.animate-bounce-subtle { animation: bounce-subtle 2s ease-in-out infinite; }
-.animate-marquee { animation: marquee 70s linear infinite; }
-.animate-ken-burns { animation: ken-burns 18s ease-out both; }
+.animate-fade-up { animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.animate-fade-up-delay-1 { animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both; }
+.animate-fade-up-delay-2 { animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both; }
+.animate-fade-up-delay-3 { animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s both; }
+.animate-fade-in { animation: fade-in 0.5s ease-out both; }
+.animate-slide-up { animation: slide-up 0.35s ease-out both; }
+.animate-marquee {
+  animation: marquee 80s linear infinite;
+  will-change: transform;
+}
 
-/* Scroll-triggered reveal */
+/* Scroll-triggered reveal — aðeins opacity + transform (compositor) */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .animate-marquee, .animate-fade-up, .animate-fade-up-delay-1, .animate-fade-up-delay-2,
-  .animate-fade-up-delay-3, .animate-bounce-subtle, .animate-ken-burns {
+  .animate-fade-up-delay-3, .animate-fade-in, .animate-slide-up {
     animation: none;
   }
   .reveal { opacity: 1; transform: none; transition: none; }
@@ -112,4 +116,12 @@ input, textarea, select, button {
 select option {
   color: var(--color-ink);
   background: #fff;
+}
+
+/* Fela scrollbar á láréttum flýtivals-listum */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

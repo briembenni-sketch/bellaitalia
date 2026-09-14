@@ -6,7 +6,7 @@ import { site } from "./data/site";
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: "Bella Italia | Róm & Villur á Ítalíu",
     description: site.description,
-    images: [{ url: "/images/card-rom.jpg", width: 2048, height: 1536, alt: "Colosseum í Róm" }],
+    images: [{ url: "/images/card-rom.jpg", width: 2000, height: 1500, alt: "Colosseum í Róm" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -38,6 +38,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#071517",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

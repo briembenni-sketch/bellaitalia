@@ -24,7 +24,7 @@ const groups = [
     ids: ["vatikan", "colosseum", "ganga"],
   },
   {
-    eyebrow: "Á hjólum",
+    eyebrow: "Vespur & golfbílar",
     title: "Vertu eins og innfæddur",
     text: "Láttu keyra þig um þröngar götur Rómar á vespu, í hliðarvagni eða á golfbíl – með bílstjóra og leiðsögn.",
     ids: ["vespa", "sidecar", "golfbill"],
@@ -46,30 +46,24 @@ export default function RomPage() {
           image="/images/hero-rome-street.jpg"
           imageAlt="Gata í Róm með bougainvillea"
           eyebrow="Bella Italia · Róm"
-          title={
-            <>
-              Öðruvísi ferðir um <br className="hidden md:block" />
-              borgina eilífu
-            </>
-          }
-          text="Leiðsögn í litlum hópum, vespur, matur og allt sem gerir dvölina í Róm áhyggjulausa – með Rómverjum sem þekkja borgina eins og lófann á sér."
+          title="Öðruvísi ferðir um Róm og nágrenni"
+          text="Skoðunarferðir með leiðsögn í litlum hópum, vespuferðir, matreiðslunámskeið, flugvallarakstur og gisting. Þjónusta fyrir einstaklinga og hópa, stóra sem smáa."
           actions={
             <>
               <a href="#ferdir" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
                 Skoða ferðir <ArrowIcon className="w-4 h-4" />
               </a>
-              <a href="#fyrirspurn" className="inline-flex items-center rounded-full glass text-white px-6 py-3.5 text-sm font-semibold hover:bg-white/25 transition-colors">
+              <a href="#fyrirspurn" className="inline-flex items-center rounded-full tint text-white px-6 py-3.5 text-sm font-semibold hover:bg-white hover:text-ink transition-colors">
                 Senda fyrirspurn
               </a>
             </>
           }
           scrollTo="#ferdir"
-          minHeight="min-h-[86vh]"
         />
 
         {/* Flýtival */}
-        <section id="ferdir" className="mx-auto max-w-[1400px] px-6 md:px-10 pt-10 scroll-mt-24">
-          <div className="flex gap-2 overflow-x-auto pb-2 -mx-6 px-6 md:mx-0 md:px-0 md:flex-wrap [scrollbar-width:none]">
+        <section id="ferdir" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-8 md:pt-10 scroll-mt-24">
+          <div className="flex gap-2 overflow-x-auto no-scrollbar -mx-5 px-5 md:mx-0 md:px-0 md:flex-wrap">
             {tours.map((t) => (
               <a
                 key={t.id}
@@ -83,17 +77,17 @@ export default function RomPage() {
         </section>
 
         {groups.map((g, gi) => (
-          <section key={g.title} className={`mx-auto max-w-[1400px] px-6 md:px-10 ${gi === 0 ? "pt-14 md:pt-20" : "pt-24 md:pt-32"}`}>
+          <section key={g.title} className={`mx-auto max-w-[1400px] px-5 md:px-10 ${gi === 0 ? "pt-12 md:pt-20" : "pt-20 md:pt-32"}`}>
             <RevealOnScroll>
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
                 <div>
                   <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">{g.eyebrow}</span>
-                  <h2 className="mt-3 font-display text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">{g.title}</h2>
+                  <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">{g.title}</h2>
                 </div>
                 <p className="text-ink/60 max-w-md md:text-right">{g.text}</p>
               </div>
             </RevealOnScroll>
-            <div className={`grid grid-cols-1 md:grid-cols-2 ${g.ids.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"} gap-4 md:gap-5`}>
+            <div className={`grid grid-cols-1 md:grid-cols-2 ${g.ids.length === 4 ? "xl:grid-cols-4" : "lg:grid-cols-3"} gap-4 md:gap-5`}>
               {g.ids.map((id) => (
                 <RevealOnScroll key={id} className="h-full">
                   <TourCard tour={byId[id]} />
@@ -103,20 +97,20 @@ export default function RomPage() {
           </section>
         ))}
 
-        {/* CTA */}
-        <section className="mx-auto max-w-[1400px] px-3 md:px-4 pt-24 md:pt-32">
+        {/* Hópar */}
+        <section className="mx-auto max-w-[1400px] px-2.5 md:px-4 pt-20 md:pt-32">
           <RevealOnScroll>
-            <div className="relative rounded-[2rem] md:rounded-[2.5rem] bg-ink text-white p-8 md:p-14 overflow-hidden">
-              <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-forest/50 blur-3xl" />
-              <div className="relative grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="rounded-[1.5rem] md:rounded-[2.5rem] bg-ink text-white p-6 sm:p-8 md:p-14">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
                 <div className="md:col-span-8">
                   <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Hópar & sérstök tilefni</span>
-                  <h2 className="mt-3 font-display text-3xl md:text-5xl font-medium tracking-tight leading-[1.05]">
-                    Afmæli, vinahópur eða fyrirtækjaferð?
+                  <h2 className="mt-3 font-display text-2xl sm:text-3xl md:text-5xl font-medium tracking-tight leading-[1.05]">
+                    Tilvalið fyrir stóra sem litla hópa
                   </h2>
                   <p className="mt-4 text-white/70 max-w-xl">
-                    Við útbúum ferðina allt eftir óskum – fyrir stóra sem litla hópa, fjölskyldur
-                    og fyrirtæki. Endilega sendið okkur fyrirspurn og við gefum ykkur tilboð.
+                    Við getum útbúið ferðina allt eftir óskum – fyrir fjölskyldur, vinahópa og
+                    fyrirtæki. Verð fer eftir fjölda þátttakenda, sendið okkur fyrirspurn og við
+                    gefum ykkur tilboð.
                   </p>
                 </div>
                 <div className="md:col-span-4 flex md:justify-end">
@@ -130,41 +124,38 @@ export default function RomPage() {
         </section>
 
         {/* Fyrirspurn */}
-        <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-6 md:px-10 pt-24 md:pt-32 pb-24 scroll-mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 pb-20 scroll-mt-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <RevealOnScroll className="lg:col-span-4">
               <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Róm</span>
-              <h2 className="mt-3 font-display text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Senda fyrirspurn</h2>
-              <p className="mt-4 text-ink/60">
-                Veldu viðburð og við höfum samband með tilboð og lausa tíma.
-              </p>
+              <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Senda fyrirspurn</h2>
+              <p className="mt-4 text-ink/60">Veldu viðburð og við höfum samband með tilboð og lausa tíma.</p>
               <p className="mt-6 text-sm text-ink/50">
-                Viltu frekar hringja?
-                <br />
                 {site.phoneIS} (Ísland)
                 <br />
                 {site.phoneIT} (Ítalía / WhatsApp)
+                <br />
+                {site.email}
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
-              <div className="rounded-[2rem] bg-white border border-ink/5 p-6 md:p-10">
+              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white border border-ink/5 p-5 sm:p-6 md:p-10">
                 <RomInquiry />
               </div>
             </RevealOnScroll>
           </div>
         </section>
 
-        {/* Villur cross-link */}
-        <section className="mx-auto max-w-[1400px] px-6 md:px-10 pb-8">
+        <section className="mx-auto max-w-[1400px] px-5 md:px-10 pb-8">
           <RevealOnScroll>
-            <div className="rounded-3xl bg-mist p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="rounded-3xl bg-mist p-5 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-5">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Lengri dvöl?</span>
-                <h3 className="mt-2 font-display text-2xl md:text-3xl font-medium tracking-tight">
-                  Sameinaðu Róm og viku í villu í sveitinni
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Villur</span>
+                <h3 className="mt-2 font-display text-xl sm:text-2xl md:text-3xl font-medium tracking-tight">
+                  Róm og vika í villu á Ítalíu í sömu ferð
                 </h3>
               </div>
-              <Link href="/villur" className="shrink-0 inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-semibold hover:bg-forest transition-colors">
+              <Link href="/villur" className="shrink-0 inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-semibold hover:bg-forest transition-colors w-fit">
                 Skoða villur <ArrowIcon className="w-4 h-4" />
               </Link>
             </div>

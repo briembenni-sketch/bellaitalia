@@ -15,7 +15,7 @@ export default function TourCard({ tour, tall = false }: Props) {
     <>
       <article
         id={tour.id}
-        className="group relative flex flex-col rounded-3xl bg-white border border-ink/5 overflow-hidden scroll-mt-28 shadow-[0_1px_2px_rgba(7,21,23,0.04)] hover:shadow-[0_20px_50px_-20px_rgba(7,21,23,0.25)] transition-shadow duration-500 h-full"
+        className="group relative flex flex-col rounded-3xl bg-white border border-ink/5 overflow-hidden scroll-mt-28 hover:border-ink/15 transition-colors h-full"
       >
         <button
           type="button"
@@ -31,7 +31,7 @@ export default function TourCard({ tour, tall = false }: Props) {
             className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
-          <span className="absolute top-4 left-4 rounded-full glass px-3 py-1.5 text-xs text-white">
+          <span className="absolute top-4 left-4 rounded-full tint px-3 py-1.5 text-xs text-white">
             {tour.tag}
           </span>
           <span className="absolute top-4 right-4 rounded-full bg-white text-ink px-3 py-1.5 text-xs font-semibold">
@@ -119,7 +119,7 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
           <div className="relative h-60 md:h-auto md:min-h-[540px] md:col-span-2">
             <Image src={tour.image} alt={tour.imageAlt} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent md:bg-none" />
-            <span className="absolute top-4 left-4 rounded-full glass px-3 py-1.5 text-xs text-white">{tour.tag}</span>
+            <span className="absolute top-4 left-4 rounded-full tint px-3 py-1.5 text-xs text-white">{tour.tag}</span>
           </div>
 
           <div className="md:col-span-3 p-7 md:p-10">

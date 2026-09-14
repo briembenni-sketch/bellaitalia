@@ -31,7 +31,7 @@ export default function SambandPage() {
           eyebrow="Bella Italia"
           title="Hafa samband"
           text="Hér eru allar helstu upplýsingar til þess að hafa samband. Það kostar ekkert að fá tilboð."
-          minHeight="min-h-[60vh]"
+          size="short"
         />
 
         <section className="mx-auto max-w-[1400px] px-6 md:px-10 pt-16 md:pt-24 pb-24">
@@ -42,7 +42,7 @@ export default function SambandPage() {
                   href={c.href}
                   target={c.href.startsWith("http") ? "_blank" : undefined}
                   rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group block rounded-3xl bg-white border border-ink/5 p-8 h-full hover:border-forest/30 hover:shadow-[0_20px_50px_-20px_rgba(7,21,23,0.2)] transition-all"
+                  className="group block rounded-3xl bg-white border border-ink/5 p-8 h-full hover:border-forest/30 transition-colors"
                 >
                   <span className="w-12 h-12 rounded-2xl bg-forest/10 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
                     {c.icon}
@@ -56,8 +56,8 @@ export default function SambandPage() {
           </div>
 
           <RevealOnScroll>
-            <div className="mt-5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-[2rem] md:rounded-[2.5rem] bg-ink text-white p-8 md:p-14 overflow-hidden relative">
-              <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-forest/50 blur-3xl" />
+            <div className="mt-5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-[1.5rem] md:rounded-[2.5rem] bg-ink text-white p-6 sm:p-8 md:p-14 overflow-hidden relative">
+              
               <div className="relative lg:col-span-8">
                 <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{site.legalName}</span>
                 <h2 className="mt-3 font-display text-3xl md:text-5xl font-medium tracking-tight leading-[1.05]">

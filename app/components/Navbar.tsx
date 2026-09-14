@@ -30,7 +30,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 px-3 md:px-4 pt-3 md:pt-4 pointer-events-none">
       <nav
         className={`pointer-events-auto mx-auto max-w-[1400px] rounded-full transition-all duration-500 ${
-          solid ? "glass-dark shadow-lg shadow-ink/20" : "glass"
+          solid ? "glass-dark shadow-lg shadow-ink/10" : "glass"
         }`}
       >
         <div className="px-3 md:px-4 h-16 md:h-[72px] flex items-center justify-between gap-4">
