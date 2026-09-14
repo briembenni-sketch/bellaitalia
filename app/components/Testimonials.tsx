@@ -215,44 +215,67 @@ export default function Testimonials() {
             </div>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <button
-              type="button"
-              onClick={() => go(-1)}
-              aria-label="Fyrri umsögn"
-              className="w-12 h-12 rounded-full border border-ink/15 text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center justify-center"
-            >
-              <ArrowIcon className="w-4 h-4 rotate-180" />
-            </button>
-            <div
-              className="flex gap-1.5 px-2"
-              role="tablist"
-              aria-label="Veldu umsögn"
-            >
-              {testimonials.map((t, i) => (
-                <button
-                  key={t.name}
-                  type="button"
-                  role="tab"
-                  aria-selected={i === index}
-                  aria-label={`Umsögn ${i + 1}: ${t.name}`}
-                  onClick={() => select(i, i > index ? 1 : -1)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === index
-                      ? "w-6 bg-ink"
-                      : "w-1.5 bg-ink/20 hover:bg-ink/40"
-                  }`}
-                />
-              ))}
+          <div className="mt-8 md:mt-10 flex justify-center">
+            <div className="inline-flex items-center rounded-full bg-white border border-ink/5 shadow-[0_12px_32px_-14px_rgba(7,21,23,0.25)] p-1.5">
+              <button
+                type="button"
+                onClick={() => go(-1)}
+                aria-label="Fyrri umsögn"
+                className="group w-10 h-10 rounded-full text-ink/55 hover:bg-ink hover:text-white transition-colors flex items-center justify-center"
+              >
+                <ArrowIcon className="w-4 h-4 rotate-180 transition-transform group-hover:-translate-x-0.5" />
+              </button>
+
+              {/* Tímalínubútar: virki búturinn fyllist á meðan beðið er eftir næstu umsögn */}
+              <div
+                className="flex items-center gap-1.5 px-3"
+                role="tablist"
+                aria-label="Veldu umsögn"
+              >
+                {testimonials.map((t, i) => {
+                  const on = i === index;
+                  return (
+                    <button
+                      key={t.name}
+                      type="button"
+                      role="tab"
+                      aria-selected={on}
+                      aria-label={`Umsögn ${i + 1}: ${t.name}`}
+                      onClick={() => select(i, i > index ? 1 : -1)}
+                      className="group/seg py-2.5"
+                    >
+                      <span
+                        className={`relative block h-[3px] rounded-full overflow-hidden transition-[width,background-color] duration-300 ${
+                          on
+                            ? "w-8 bg-ink/15"
+                            : "w-3 bg-ink/15 group-hover/seg:bg-ink/35"
+                        }`}
+                      >
+                        {on && (
+                          <span
+                            key={index}
+                            className="absolute inset-0 rounded-full bg-ink animate-progress"
+                            style={{
+                              animationDuration: `${INTERVAL}ms`,
+                              animationPlayState: paused ? "paused" : "running",
+                            }}
+                          />
+                        )}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => go(1)}
+                aria-label="Næsta umsögn"
+                className="group w-10 h-10 rounded-full text-ink/55 hover:bg-ink hover:text-white transition-colors flex items-center justify-center"
+              >
+                <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => go(1)}
-              aria-label="Næsta umsögn"
-              className="w-12 h-12 rounded-full border border-ink/15 text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors flex items-center justify-center"
-            >
-              <ArrowIcon className="w-4 h-4" />
-            </button>
           </div>
         </div>
       </RevealOnScroll>

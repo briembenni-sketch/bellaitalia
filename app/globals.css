@@ -105,6 +105,14 @@ p {
 .card-stage {
   transition: height 0.7s cubic-bezier(0.65, 0, 0.35, 1);
 }
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.animate-progress {
+  transform-origin: left;
+  animation: progress linear both;
+}
 .card-out,
 .card-in {
   transform-origin: 50% 100%;
@@ -147,6 +155,7 @@ p {
   }
   .card-out { animation: none; opacity: 0; }
   .card-stage { transition: none; }
+  .animate-progress { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
