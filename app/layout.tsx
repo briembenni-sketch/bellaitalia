@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
+import { site } from "./data/site";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
@@ -17,9 +18,27 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Bella Italia | Sérhannaðar ferðir til Ítalíu",
-  description:
-    "Bella Italia slf. — Sérhannaðar ferðir til Rómar og Toskana. Persónuleg þjónusta og staðbundin þekking frá Hildi.",
+  metadataBase: new URL("https://www.bellaitalia.is"),
+  title: {
+    default: "Bella Italia | Róm & Villur á Ítalíu",
+    template: "%s",
+  },
+  description: site.description,
+  openGraph: {
+    type: "website",
+    locale: "is_IS",
+    siteName: site.name,
+    title: "Bella Italia | Róm & Villur á Ítalíu",
+    description: site.description,
+    images: [{ url: "/images/card-rom.jpg", width: 2048, height: 1536, alt: "Colosseum í Róm" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1C0F0A",
 };
 
 export default function RootLayout({

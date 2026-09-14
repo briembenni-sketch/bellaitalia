@@ -1,81 +1,130 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ContactSection from "../sections/ContactSection";
 import RevealOnScroll from "../components/RevealOnScroll";
+import { site } from "../data/site";
+import { FacebookIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIcon } from "../components/Icons";
 
-export const metadata = {
-  title: "Hafa Samband | Bella Italia",
-  description: "Hafðu samband við Hildi hjá Bella Italia — persónuleg ferðaþjónusta til Ítalíu.",
+export const metadata: Metadata = {
+  title: "Hafa samband | Bella Italia",
+  description:
+    "Hafðu samband við Hildi hjá Bella Italia – sími +354 869 4556, WhatsApp +39 338 698 5868, hildur.bellaitalia@gmail.com.",
 };
 
 export default function SambandPage() {
+  const cards = [
+    {
+      icon: <PhoneIcon />,
+      title: "Sími",
+      value: site.phoneIS,
+      sub: "Ísland",
+      href: `tel:${site.phoneIS.replace(/\s/g, "")}`,
+    },
+    {
+      icon: <MailIcon />,
+      title: "Netfang",
+      value: site.email,
+      sub: "Við svörum yfirleitt innan sólarhrings",
+      href: `mailto:${site.email}`,
+    },
+    {
+      icon: <WhatsAppIcon className="w-6 h-6" />,
+      title: "WhatsApp sími",
+      value: site.phoneIT,
+      sub: "Ítalía",
+      href: site.whatsapp,
+    },
+  ];
+
   return (
     <>
       <Navbar />
       <main>
-        {/* Hero */}
-        <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden grain">
-          <div className="absolute inset-0 bg-gradient-to-b from-brown via-olive/70 to-olive" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-gold/10 blur-3xl" />
-
-          <div className="relative z-10 text-center px-6 max-w-4xl">
-            <span className="text-gold text-sm font-medium tracking-[0.3em] uppercase animate-fade-up">
-              Samband
-            </span>
-            <h1 className="mt-4 font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-cream tracking-wide animate-fade-up-delay-1 leading-none">
+        <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden grain">
+          <Image
+            src="/images/gallery-03.jpg"
+            alt="Þök og kirkjuhvelfingar Rómar"
+            fill
+            preload
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/85" />
+          <div className="relative z-10 text-center px-6 max-w-4xl pt-24">
+            <span className="text-gold text-xs font-medium tracking-[0.4em] uppercase animate-fade-up">Bella Italia</span>
+            <h1 className="mt-4 font-serif text-5xl sm:text-6xl md:text-8xl font-bold text-cream tracking-wide animate-fade-up-delay-1 leading-none">
               HAFA SAMBAND
             </h1>
-            <p className="mt-6 text-xl text-cream/70 font-light animate-fade-up-delay-2">
-              Við erum tilbúin að aðstoða þig
+            <p className="mt-6 text-lg text-cream/70 font-light animate-fade-up-delay-2">
+              Hér eru allar helstu upplýsingar til þess að hafa samband.
             </p>
           </div>
         </section>
 
-        <ContactSection />
+        <section className="py-24 md:py-32 bg-[#F0E6D3]">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {cards.map((c) => (
+                <RevealOnScroll key={c.title}>
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="group block text-center p-10 bg-white/70 hover:bg-white transition-colors border border-transparent hover:border-gold/30 h-full"
+                  >
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-terracotta/10 text-terracotta mb-5 group-hover:bg-terracotta group-hover:text-cream transition-colors">
+                      {c.icon}
+                    </div>
+                    <h2 className="text-[11px] tracking-[0.3em] uppercase text-brown/50">{c.title}</h2>
+                    <p className="mt-2 font-serif text-2xl text-brown break-all">{c.value}</p>
+                    <p className="mt-1 text-xs text-brown/45">{c.sub}</p>
+                  </a>
+                </RevealOnScroll>
+              ))}
+            </div>
 
-        {/* Map-like section */}
-        <section className="py-24 bg-cream-light">
-          <div className="mx-auto max-w-4xl px-6">
             <RevealOnScroll>
-              <div className="bg-white p-12 rounded-sm shadow-sm text-center">
-                <h2 className="font-serif text-3xl text-brown mb-6">
-                  Bella Italia slf.
-                </h2>
-                <div className="space-y-3 text-brown/60">
-                  <p>
-                    <strong className="text-brown">Hildur</strong> — Stofnandi og ferðaráðgjafi
+              <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center bg-brown text-cream p-10 md:p-14">
+                <div>
+                  <span className="text-gold text-xs font-medium tracking-[0.4em] uppercase">{site.legalName}</span>
+                  <h2 className="mt-3 font-serif text-3xl md:text-4xl">
+                    Hildur – <span className="text-gold italic">Róm & Villur á Ítalíu</span>
+                  </h2>
+                  <p className="mt-5 text-cream/70 leading-relaxed">
+                    Sendu okkur fyrirspurn um ferð til Rómar, villu á Ítalíu eða hvort
+                    tveggja. Það kostar ekkert að fá tilboð og við sníðum allt að ykkar
+                    óskum.
                   </p>
-                  <p>
-                    <a href="mailto:hildur.bellaitalia@gmail.com" className="hover:text-terracotta transition-colors">
-                      hildur.bellaitalia@gmail.com
-                    </a>
-                  </p>
-                  <p>Ísland: +354 869 4556</p>
-                  <p>Ítalía: +39 338 698 5868</p>
-                  <div className="flex justify-center gap-6 mt-6 pt-6 border-t border-brown/10">
+                  <div className="mt-8 flex flex-wrap gap-4">
+                    <Link
+                      href="/fyrirspurn"
+                      className="inline-block px-8 py-3.5 bg-gold text-[#1C0F0A] text-xs font-bold tracking-[0.2em] uppercase hover:bg-gold-light transition-colors"
+                    >
+                      Senda fyrirspurn
+                    </Link>
                     <a
-                      href="https://www.instagram.com/bellaitaliarome"
+                      href={site.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-brown/40 hover:text-terracotta transition-colors flex items-center gap-2"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 border border-cream/25 text-cream text-xs tracking-[0.2em] uppercase hover:border-gold hover:text-gold transition-colors"
                     >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                      </svg>
-                      Instagram
+                      <InstagramIcon className="w-4 h-4" /> Instagram
                     </a>
                     <a
-                      href="https://www.facebook.com/bellaitalia"
+                      href={site.facebook}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-brown/40 hover:text-terracotta transition-colors flex items-center gap-2"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 border border-cream/25 text-cream text-xs tracking-[0.2em] uppercase hover:border-gold hover:text-gold transition-colors"
                     >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                      </svg>
-                      Facebook
+                      <FacebookIcon className="w-4 h-4" /> Facebook
                     </a>
                   </div>
+                </div>
+                <div className="relative aspect-square max-w-xs mx-auto w-full">
+                  <Image src="/images/logo.jpg" alt="Bella Italia merki" fill sizes="320px" className="object-cover ring-1 ring-gold/30" />
                 </div>
               </div>
             </RevealOnScroll>
