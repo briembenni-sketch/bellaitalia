@@ -27,7 +27,6 @@ export default function Home() {
         <Hero
           image="/images/gallery-01.jpg"
           imageAlt="Trevi gosbrunnurinn í Róm"
-          eyebrow="Bella Italia · Róm & Villur á Ítalíu"
           title={
             <>
               Ferðir um Róm og villur <br className="hidden md:block" />

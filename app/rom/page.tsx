@@ -45,7 +45,6 @@ export default function RomPage() {
         <Hero
           image="/images/hero-rome-street.jpg"
           imageAlt="Gata í Róm með bougainvillea"
-          eyebrow="Bella Italia · Róm"
           title="Öðruvísi ferðir um Róm og nágrenni"
           text="Skoðunarferðir með leiðsögn í litlum hópum, vespuferðir, matreiðslunámskeið, flugvallarakstur og gisting. Þjónusta fyrir einstaklinga og hópa, stóra sem smáa."
           actions={

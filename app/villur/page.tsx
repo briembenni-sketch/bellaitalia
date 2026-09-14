@@ -30,7 +30,6 @@ export default function VillurPage() {
         <Hero
           image="/images/villa-pool.jpg"
           imageAlt="Steinvilla með upplýstri sundlaug í rökkri"
-          eyebrow="Villur & hús um alla Ítalíu"
           title="Villur með sundlaug í öllum verðflokkum"
           text="Við erum með fjöldann allan af villum í boði um alla Ítalíu og útbúum tilboð fyrir hverja og eina fjölskyldu, allt eftir óskum hvers og eins."
           actions={

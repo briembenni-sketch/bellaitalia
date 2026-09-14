@@ -26,7 +26,6 @@ export default function FyrirspurnPage() {
         <Hero
           image="/images/gallery-05.jpg"
           imageAlt="Ponte Vecchio í Flórens"
-          eyebrow="Fyrirspurn"
           title="Senda fyrirspurn"
           text="Segðu okkur hvað þig langar að gera, hvenær og hve mörg þið eruð. Það kostar ekkert að fá tilboð."
           size="short"

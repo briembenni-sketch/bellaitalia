@@ -28,7 +28,6 @@ export default function SambandPage() {
         <Hero
           image="/images/gallery-03.jpg"
           imageAlt="Þök og kirkjuhvelfingar Rómar"
-          eyebrow="Bella Italia"
           title="Hafa samband"
           text="Hér eru allar helstu upplýsingar til þess að hafa samband. Það kostar ekkert að fá tilboð."
           size="short"

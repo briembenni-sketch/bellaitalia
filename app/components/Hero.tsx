@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 type Props = {
   image: string;
   imageAlt?: string;
-  eyebrow?: string;
   title: ReactNode;
   text?: ReactNode;
   actions?: ReactNode;
@@ -19,7 +18,6 @@ type Props = {
 export default function Hero({
   image,
   imageAlt = "",
-  eyebrow,
   title,
   text,
   actions,
@@ -46,12 +44,7 @@ export default function Hero({
         <div className="relative z-10 w-full px-5 sm:px-8 md:px-12 lg:px-16 pb-8 md:pb-14 pt-32 md:pt-40">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end">
             <div className="lg:col-span-7">
-              {eyebrow && (
-                <span className="inline-flex items-center gap-2 rounded-full tint px-3.5 py-1.5 text-xs sm:text-sm text-white/90 animate-fade-up">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold-light" /> {eyebrow}
-                </span>
-              )}
-              <h1 className="mt-5 font-display font-medium text-white text-[2.5rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-[5.25rem] lg:leading-[1.02] tracking-tight animate-fade-up-delay-1">
+              <h1 className="font-display font-medium text-white text-[2.5rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-[5.25rem] lg:leading-[1.02] tracking-tight animate-fade-up-delay-1">
                 {title}
               </h1>
             </div>
