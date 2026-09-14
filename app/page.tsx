@@ -36,12 +36,12 @@ export default function Home() {
           text="Villur & hús um alla Ítalíu. Persónuleg þjónusta og öðruvísi ferðir um Róm og nágrenni – fyrir einstaklinga og hópa, stóra sem smáa."
           actions={
             <>
-              <Link href="/rom" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
-                Róm <ArrowIcon className="w-4 h-4" />
+              <Link href="/fyrirspurn" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
+                Fá tilboð <ArrowIcon className="w-4 h-4" />
               </Link>
-              <Link href="/villur" className="inline-flex items-center rounded-full tint text-white px-6 py-3.5 text-sm font-semibold hover:bg-white hover:text-ink transition-colors">
-                Villur
-              </Link>
+              <a href="#thjonusta" className="inline-flex items-center rounded-full tint text-white px-6 py-3.5 text-sm font-semibold hover:bg-white hover:text-ink transition-colors">
+                Skoða ferðir og villur
+              </a>
             </>
           }
           scrollTo="#thjonusta"
