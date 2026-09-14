@@ -281,26 +281,32 @@ export const tours: Tour[] = [
 export const testimonials = [
   {
     name: "Elka Ósk Hrólfsdóttir",
+    trip: "Villa í Toskana og dagar í Róm",
     text: "Áttum alveg frábæra ferð 6 fullorðnir og 2 börn til Ítalíu. Dvöldum 12 daga þar af 10 í villu í Tuscany og 2 í Róm. Hildur var alltaf til staðar og með ráðleggingar upp á 10 bæði fyrir ferðina og á meðan henni stóð. Mæli hiklaust með að skipuleggja ferðalagið með Hildi, margborgar sig.",
   },
   {
     name: "Sólrún Sverrisdóttir",
+    trip: "Casa Melograno í Marche",
     text: "Mæli 100% með ykkar þjónustu. Okkar ferð og sú þjónusta sem þið útveguðuð stóðst allar væntingar og rúmlega það. Takk fyrir okkur, áttum dásamlega dvöl í Casa Melograno í Marche héraði.",
   },
   {
     name: "Tryggvi Pálsson",
+    trip: "Villa Tramonto í Toskana",
     text: "Hildur Jónsdóttir skipulagði fyrir okkur fjölskylduferð til Toscana. Við dvöldum stórkostlega viku á Villa Tramonto og allt stóðst. Fengum ljósmyndara og frábæran kokk fyrir hátíðarkvöldverðinn. Hildur og hennar Bella Italia fá okkar bestu meðmæli.",
   },
   {
     name: "Harpa Þórsdóttir",
+    trip: "Sidecar-vespuferð um Róm",
     text: "Mæli með – fórum í sidecar-vespuferð 3 klst, æðisleg upplifun og frábærir guide-ar, stoppuðum á nokkrum vel völdum stöðum, Trevi, Vatican, Colosseum m.a. og fengum okkur kaffi og croissant. Mælum 110% með.",
   },
   {
     name: "Anna Toher",
+    trip: "Stutt stopp í Róm",
     text: "Stutt stopp í Róm nýttist vel með skjótri og góðri þjónustu Hildar hjá Bella Italia. Hótel, akstursþjónusta á flugvöll, gönguferð um Gyðingahverfið og Trastevere með frábærum leiðsögumanni, Riccardo, og önnur samskipti voru til fyrirmyndar. Allt stenst eins og stafur á bók. Mæli með Bella Italia til að fá sem mest út úr ferð til Ítalíu.",
   },
   {
     name: "Ásbjörg Morthens",
+    trip: "Rómarheimsókn með vespuferð",
     text: "Þetta var bara frábært allt og hrikalega gott að fá svona góða punkta og þjónustu hjá Bella Italia. Farið til og frá flugvellinum munar öllu. Vespuferðin var alveg svakalega skemmtileg og virkilega gaman að skoða borgina svoleiðis. Hann Luca leiðsögumaðurinn mjög skemmtilegur og sagði skemmtilega frá, mæli klárlega með vespuferð. Veitingastaðurinn AD Hoc var líka frábær. Ekkert smá flottur, þjónustan og maturinn/vínin upp á 10. Mæli klárlega með að hafa samband við Hildi sem setur saman Rómar heimsókn upp á 10.",
   },
 ];

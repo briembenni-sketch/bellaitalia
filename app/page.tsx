@@ -190,10 +190,8 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ UMSAGNIR ═══════════════ */}
-        <section className="mx-auto max-w-[1400px] px-2.5 md:px-4 pt-20 md:pt-32">
-          <RevealOnScroll>
-            <Testimonials />
-          </RevealOnScroll>
+        <section className="pt-20 md:pt-32">
+          <Testimonials />
         </section>
 
         {/* ═══════════════ HAFA SAMBAND ═══════════════ */}
