@@ -1,19 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import { site } from "./data/site";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-serif",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-const montserrat = Montserrat({
-  variable: "--font-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -38,7 +37,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1C0F0A",
+  themeColor: "#071517",
 };
 
 export default function RootLayout({
@@ -47,10 +46,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="is" className={`${cormorant.variable} ${montserrat.variable}`}>
-      <body className="min-h-screen bg-cream text-brown antialiased">
-        {children}
-      </body>
+    <html lang="is" className={`${outfit.variable} ${inter.variable}`}>
+      <body className="min-h-screen bg-paper text-ink antialiased">{children}</body>
     </html>
   );
 }

@@ -10,23 +10,15 @@ type Props = {
   variant: Variant;
   /** Fyrirfram valin ferð (t.d. þegar smellt er á „Bóka“ á korti) */
   defaultTour?: string;
-  theme?: "dark" | "light";
   compact?: boolean;
 };
 
-const fieldBase =
-  "w-full bg-transparent py-3 focus:outline-none transition-colors duration-300 border-b";
-const darkField = `${fieldBase} border-cream/15 text-cream placeholder:text-cream/25 focus:border-gold`;
-const lightField = `${fieldBase} border-brown/15 text-brown placeholder:text-brown/30 focus:border-terracotta`;
+const field =
+  "w-full rounded-2xl border border-ink/10 bg-mist px-4 py-3.5 text-ink placeholder:text-ink/35 focus:outline-none focus:border-forest focus:ring-4 focus:ring-forest/10 transition";
+const label = "text-sm font-medium text-ink/80";
 
-export default function InquiryForm({ variant, defaultTour, theme = "dark", compact = false }: Props) {
+export default function InquiryForm({ variant, defaultTour, compact = false }: Props) {
   const [sent, setSent] = useState(false);
-  const isDark = theme === "dark";
-  const field = isDark ? darkField : lightField;
-  const label = `text-[11px] tracking-[0.2em] uppercase font-medium ${
-    isDark ? "text-cream/40" : "text-brown/50"
-  }`;
-  const optionCls = isDark ? "bg-[#1C0F0A] text-cream" : "bg-white text-brown";
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -38,7 +30,6 @@ export default function InquiryForm({ variant, defaultTour, theme = "dark", comp
 
     lines.push(`Nafn: ${get("nafn")}`);
     lines.push(`Netfang: ${get("netfang")}`);
-    if (get("simi")) lines.push(`Sími: ${get("simi")}`);
 
     if (variant === "rom") {
       lines.push(`Ferð / viðburður: ${get("vidburdur")}`);
@@ -71,15 +62,15 @@ export default function InquiryForm({ variant, defaultTour, theme = "dark", comp
 
   if (sent) {
     return (
-      <div className={`text-center py-14 ${isDark ? "text-cream" : "text-brown"}`}>
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/15 text-gold mb-6">
+      <div className="text-center py-12">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-leaf/15 text-forest mb-6">
           <CheckIcon className="w-7 h-7" />
         </div>
-        <h3 className="font-serif text-3xl">Grazie mille!</h3>
-        <p className={`mt-3 max-w-md mx-auto leading-relaxed ${isDark ? "text-cream/60" : "text-brown/60"}`}>
-          Tölvupóstforritið þitt ætti að hafa opnast með fyrirspurninni. Ef ekki, sendu
-          okkur línu beint á{" "}
-          <a href={`mailto:${site.email}`} className="text-gold underline underline-offset-4">
+        <h3 className="font-display text-3xl font-medium tracking-tight">Grazie mille!</h3>
+        <p className="mt-3 max-w-md mx-auto leading-relaxed text-ink/60">
+          Tölvupóstforritið þitt ætti að hafa opnast með fyrirspurninni. Ef ekki, sendu okkur
+          línu beint á{" "}
+          <a href={`mailto:${site.email}`} className="text-forest underline underline-offset-4">
             {site.email}
           </a>{" "}
           eða á WhatsApp.
@@ -88,7 +79,7 @@ export default function InquiryForm({ variant, defaultTour, theme = "dark", comp
           href={site.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-2 px-8 py-3 border border-gold/50 text-gold text-xs font-semibold tracking-[0.2em] uppercase hover:bg-gold hover:text-[#1C0F0A] transition-all"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-forest text-white px-7 py-3.5 text-sm font-semibold hover:bg-forest-deep transition-colors"
         >
           <WhatsAppIcon className="w-4 h-4" /> Senda á WhatsApp
         </a>
@@ -97,7 +88,7 @@ export default function InquiryForm({ variant, defaultTour, theme = "dark", comp
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <form onSubmit={onSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5">
       <div className="flex flex-col gap-2">
         <label htmlFor={`${variant}-nafn`} className={label}>Nafn *</label>
         <input id={`${variant}-nafn`} name="nafn" type="text" required autoComplete="name" placeholder="Fullt nafn" className={field} />
@@ -112,12 +103,12 @@ export default function InquiryForm({ variant, defaultTour, theme = "dark", comp
         <>
           <div className="flex flex-col gap-2 md:col-span-2">
             <label htmlFor="rom-vidburdur" className={label}>Velja viðburð *</label>
-            <select id="rom-vidburdur" name="vidburdur" required defaultValue={defaultTour ?? ""} className={`${field} cursor-pointer appearance-none`}>
-              <option value="" disabled className={optionCls}>Veldu ferð eða þjónustu…</option>
+            <select id="rom-vidburdur" name="vidburdur" required defaultValue={defaultTour ?? ""} className={`${field} cursor-pointer`}>
+              <option value="" disabled>Veldu ferð eða þjónustu…</option>
               {tours.map((t) => (
-                <option key={t.id} value={t.title} className={optionCls}>{t.title}</option>
+                <option key={t.id} value={t.title}>{t.title}</option>
               ))}
-              <option value="Annað / sérsniðin ferð" className={optionCls}>Annað / sérsniðin ferð</option>
+              <option value="Annað / sérsniðin ferð">Annað / sérsniðin ferð</option>
             </select>
           </div>
           {!compact && (
@@ -147,10 +138,10 @@ export default function InquiryForm({ variant, defaultTour, theme = "dark", comp
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="villur-svaedi" className={label}>Hvaða svæði? *</label>
-            <select id="villur-svaedi" name="svaedi" required defaultValue="" className={`${field} cursor-pointer appearance-none`}>
-              <option value="" disabled className={optionCls}>Veldu svæði…</option>
+            <select id="villur-svaedi" name="svaedi" required defaultValue="" className={`${field} cursor-pointer`}>
+              <option value="" disabled>Veldu svæði…</option>
               {villaRegions.map((r) => (
-                <option key={r} value={r} className={optionCls}>{r}</option>
+                <option key={r} value={r}>{r}</option>
               ))}
             </select>
           </div>
@@ -165,14 +156,14 @@ export default function InquiryForm({ variant, defaultTour, theme = "dark", comp
         <>
           <div className="flex flex-col gap-2 md:col-span-2">
             <label htmlFor="almenn-ahugi" className={label}>Hvað hefur þú áhuga á? *</label>
-            <select id="almenn-ahugi" name="ahugi" required defaultValue="" className={`${field} cursor-pointer appearance-none`}>
-              <option value="" disabled className={optionCls}>Veldu…</option>
-              <option className={optionCls}>Ferðir og upplifanir í Róm</option>
-              <option className={optionCls}>Villa á Ítalíu</option>
-              <option className={optionCls}>Róm + villa (samsett ferð)</option>
-              <option className={optionCls}>Napoli · Amalfi · Capri</option>
-              <option className={optionCls}>Hópferð / sérstakt tilefni</option>
-              <option className={optionCls}>Annað</option>
+            <select id="almenn-ahugi" name="ahugi" required defaultValue="" className={`${field} cursor-pointer`}>
+              <option value="" disabled>Veldu…</option>
+              <option>Ferðir og upplifanir í Róm</option>
+              <option>Villa á Ítalíu</option>
+              <option>Róm + villa (samsett ferð)</option>
+              <option>Napoli · Amalfi · Capri</option>
+              <option>Hópferð / sérstakt tilefni</option>
+              <option>Annað</option>
             </select>
           </div>
           <div className="flex flex-col gap-2">
@@ -193,10 +184,10 @@ export default function InquiryForm({ variant, defaultTour, theme = "dark", comp
         </div>
       )}
 
-      <div className="md:col-span-2 pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div className="md:col-span-2 pt-2 flex flex-col sm:flex-row items-center gap-4">
         <button
           type="submit"
-          className="inline-block px-12 py-4 bg-gold text-[#1C0F0A] text-sm font-bold tracking-[0.2em] uppercase hover:bg-gold-light transition-colors duration-300"
+          className="inline-flex items-center justify-center rounded-full bg-forest text-white px-8 py-4 text-sm font-semibold hover:bg-forest-deep transition-colors w-full sm:w-auto"
         >
           Senda fyrirspurn
         </button>
@@ -204,16 +195,15 @@ export default function InquiryForm({ variant, defaultTour, theme = "dark", comp
           href={site.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase ${
-            isDark ? "text-cream/50 hover:text-gold" : "text-brown/50 hover:text-terracotta"
-          } transition-colors`}
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 px-6 py-4 text-sm font-medium text-ink hover:bg-ink hover:text-white transition-colors w-full sm:w-auto"
         >
           <WhatsAppIcon className="w-4 h-4" /> eða WhatsApp
         </a>
+        <p className="sm:ml-auto text-xs text-ink/45 text-center sm:text-right">
+          Það kostar ekkert að fá tilboð.
+          <br className="hidden sm:block" /> Við svörum yfirleitt innan sólarhrings.
+        </p>
       </div>
-      <p className={`md:col-span-2 text-center text-xs ${isDark ? "text-cream/30" : "text-brown/40"}`}>
-        Það kostar ekkert að fá tilboð. Við svörum yfirleitt innan sólarhrings.
-      </p>
     </form>
   );
 }

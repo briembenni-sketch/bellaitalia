@@ -1,19 +1,26 @@
 @import "tailwindcss";
 
+/* Litapalletta byggð á fyrirmynd (Voyare / Peno Lab):
+   #071517 ink · #125C4C forest · #3F4937 moss · #FCFCFA paper · #3B8B5A leaf · #AB8B56 gold · #CABB9B sand */
 @theme {
-  --color-cream: #F5ECD7;
-  --color-cream-light: #FAF6ED;
-  --color-terracotta: #C4622D;
-  --color-terracotta-dark: #A3511F;
-  --color-olive: #4A5240;
-  --color-olive-light: #5E6B52;
-  --color-brown: #2C1810;
-  --color-brown-light: #3D2419;
-  --color-gold: #D4A853;
-  --color-gold-light: #E0BD6E;
+  --color-ink: #071517;
+  --color-ink-soft: #14262A;
+  --color-forest: #125C4C;
+  --color-forest-deep: #0C4239;
+  --color-moss: #3F4937;
+  --color-leaf: #3B8B5A;
+  --color-paper: #FCFCFA;
+  --color-mist: #F3F3EF;
+  --color-gold: #AB8B56;
+  --color-gold-light: #C7A874;
+  --color-sand: #CABB9B;
+  --color-sand-light: #EFE8D9;
+}
 
-  --font-serif: "Cormorant Garamond", "Georgia", serif;
-  --font-sans: "Montserrat", "Helvetica Neue", sans-serif;
+/* Leturgerðir koma frá next/font (sjá layout.tsx) — sjá docs: "With Tailwind CSS" */
+@theme inline {
+  --font-display: var(--font-outfit), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
 }
 
 html {
@@ -22,134 +29,87 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-cream);
-  color: var(--color-brown);
+  background: var(--color-paper);
+  color: var(--color-ink);
 }
 
-/* Grain texture overlay */
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.04;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 128px 128px;
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.glass-dark {
+  background: rgba(7, 21, 23, 0.72);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Animations */
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
-@keyframes slide-down {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes bounce-subtle {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+  50% { transform: translateY(6px); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
 }
 
-.animate-fade-up {
-  animation: fade-up 0.8s ease-out both;
-}
+.animate-fade-up { animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.animate-fade-up-delay-1 { animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both; }
+.animate-fade-up-delay-2 { animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s both; }
+.animate-fade-up-delay-3 { animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.45s both; }
+.animate-fade-in { animation: fade-in 0.8s ease-out both; }
+.animate-slide-up { animation: slide-up 0.4s ease-out both; }
+.animate-bounce-subtle { animation: bounce-subtle 2s ease-in-out infinite; }
+.animate-marquee { animation: marquee 70s linear infinite; }
+.animate-ken-burns { animation: ken-burns 18s ease-out both; }
 
-.animate-fade-up-delay-1 {
-  animation: fade-up 0.8s ease-out 0.2s both;
-}
-
-.animate-fade-up-delay-2 {
-  animation: fade-up 0.8s ease-out 0.4s both;
-}
-
-.animate-fade-up-delay-3 {
-  animation: fade-up 0.8s ease-out 0.6s both;
-}
-
-.animate-fade-in {
-  animation: fade-in 1s ease-out both;
-}
-
-.animate-slide-down {
-  animation: slide-down 0.5s ease-out both;
-}
-
-.animate-bounce-subtle {
-  animation: bounce-subtle 2s ease-in-out infinite;
-}
-
-/* Scroll-triggered animations */
+/* Scroll-triggered reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Elegant form inputs */
-input, textarea, select {
-  font-family: var(--font-sans);
-}
-
-/* Marquee (myndarúlla) */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-.animate-marquee {
-  animation: marquee 60s linear infinite;
-}
-
-/* Modal */
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-slide-up {
-  animation: slide-up 0.4s ease-out both;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee,
-  .animate-fade-up,
-  .animate-fade-up-delay-1,
-  .animate-fade-up-delay-2,
-  .animate-fade-up-delay-3,
-  .animate-bounce-subtle {
+  .animate-marquee, .animate-fade-up, .animate-fade-up-delay-1, .animate-fade-up-delay-2,
+  .animate-fade-up-delay-3, .animate-bounce-subtle, .animate-ken-burns {
     animation: none;
   }
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
 
-/* Native select/date fields on dark backgrounds */
+input, textarea, select, button {
+  font-family: var(--font-sans);
+}
 select option {
-  color: inherit;
+  color: var(--color-ink);
+  background: #fff;
 }

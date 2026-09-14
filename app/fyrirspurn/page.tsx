@@ -1,7 +1,7 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import InquiryForm from "../components/InquiryForm";
 import { site } from "../data/site";
@@ -16,35 +16,46 @@ export default function FyrirspurnPage() {
     <>
       <Navbar />
       <main>
-        <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden grain">
-          <Image
-            src="/images/gallery-05.jpg"
-            alt="Ponte Vecchio í Flórens"
-            fill
-            preload
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#0D0905]" />
-          <div className="relative z-10 text-center px-6 max-w-4xl pt-24">
-            <span className="text-gold text-xs font-medium tracking-[0.4em] uppercase animate-fade-up">Fyrirspurn</span>
-            <h1 className="mt-4 font-serif text-5xl sm:text-6xl md:text-8xl font-bold text-cream tracking-wide animate-fade-up-delay-1 leading-none">
-              BYRJUM
-            </h1>
-            <p className="mt-6 text-lg text-cream/70 font-light animate-fade-up-delay-2">
-              Segðu okkur frá ferðinni sem þig dreymir um – það kostar ekkert að fá tilboð.
-            </p>
-          </div>
-        </section>
+        <Hero
+          image="/images/gallery-05.jpg"
+          imageAlt="Ponte Vecchio í Flórens"
+          eyebrow="Fyrirspurn"
+          title="Byrjum að skipuleggja"
+          text="Segðu okkur frá ferðinni sem þig dreymir um – það kostar ekkert að fá tilboð."
+          minHeight="min-h-[60vh]"
+        />
 
-        <section className="py-20 md:py-28 bg-[#0D0905]">
-          <div className="mx-auto max-w-3xl px-6">
-            <RevealOnScroll>
-              <InquiryForm variant="almenn" />
-              <p className="mt-10 text-center text-xs text-cream/40">
-                Eða hringdu: {site.phoneIS} (Ísland) · {site.phoneIT} (Ítalía / WhatsApp)
+        <section className="mx-auto max-w-[1400px] px-6 md:px-10 pt-16 md:pt-24 pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <RevealOnScroll className="lg:col-span-4">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Hvernig virkar þetta?</span>
+              <ol className="mt-5 space-y-5">
+                {[
+                  ["Sendu fyrirspurn", "Segðu okkur hvað þig langar að gera, hvenær og hve mörg þið eruð."],
+                  ["Við gerum tilboð", "Hildur svarar með hugmyndum, verðum og lausum tímum – yfirleitt innan sólarhrings."],
+                  ["Njóttu Ítalíu", "Við sjáum um skipulagið og erum til staðar á meðan ferðinni stendur."],
+                ].map(([t, d], i) => (
+                  <li key={t} className="flex gap-4">
+                    <span className="w-9 h-9 shrink-0 rounded-full bg-forest text-white text-sm font-semibold flex items-center justify-center">{i + 1}</span>
+                    <div>
+                      <h3 className="font-medium">{t}</h3>
+                      <p className="mt-1 text-sm text-ink/60 leading-relaxed">{d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-8 text-sm text-ink/50">
+                Eða hringdu:
+                <br />
+                {site.phoneIS} (Ísland)
+                <br />
+                {site.phoneIT} (Ítalía / WhatsApp)
               </p>
+            </RevealOnScroll>
+            <RevealOnScroll className="lg:col-span-8">
+              <div className="rounded-[2rem] bg-white border border-ink/5 p-6 md:p-10">
+                <InquiryForm variant="almenn" />
+              </div>
             </RevealOnScroll>
           </div>
         </section>

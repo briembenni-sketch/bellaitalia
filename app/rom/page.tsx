@@ -1,13 +1,13 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import TourCard from "../components/TourCard";
 import RomInquiry from "../components/RomInquiry";
-import Divider from "../components/Divider";
 import { tours, site } from "../data/site";
+import { ArrowIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
   title: "Róm – ferðir & upplifanir | Bella Italia",
@@ -16,64 +16,65 @@ export const metadata: Metadata = {
 };
 
 const byId = Object.fromEntries(tours.map((t) => [t.id, t]));
-const groupA = ["vatikan", "colosseum", "ganga"].map((id) => byId[id]);
-const groupB = ["vespa", "sidecar", "golfbill"].map((id) => byId[id]);
-const groupC = ["matreidsla", "amalfi", "flugvollur", "gisting"].map((id) => byId[id]);
+const groups = [
+  {
+    eyebrow: "Með leiðsögn",
+    title: "Róm með Rómverjum",
+    text: "Leiðsögn á ensku í litlum hópum (max 10 manns) frá faglærðum leiðsögumönnum sem vita allt og meira til um sögu Rómaveldis.",
+    ids: ["vatikan", "colosseum", "ganga"],
+  },
+  {
+    eyebrow: "Á hjólum",
+    title: "Vertu eins og innfæddur",
+    text: "Láttu keyra þig um þröngar götur Rómar á vespu, í hliðarvagni eða á golfbíl – með bílstjóra og leiðsögn.",
+    ids: ["vespa", "sidecar", "golfbill"],
+  },
+  {
+    eyebrow: "Meira í boði",
+    title: "Matur, dagsferðir & þjónusta",
+    text: "Matreiðslunámskeið, ferðir til Napoli, Amalfi og Capri, flugvallarakstur og gisting í Róm.",
+    ids: ["matreidsla", "amalfi", "flugvollur", "gisting"],
+  },
+];
 
 export default function RomPage() {
   return (
     <>
       <Navbar />
       <main>
-        {/* ═══════════════════════ HERO ═══════════════════════ */}
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden grain">
-          <Image
-            src="/images/hero-rome-street.jpg"
-            alt="Gata í Róm með bougainvillea"
-            fill
-            preload
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/85" />
-
-          <div className="relative z-10 text-center px-6 max-w-5xl pt-24">
-            <span className="inline-block text-gold/90 text-xs font-medium tracking-[0.4em] uppercase animate-fade-up">
-              Bella Italia · Róm
-            </span>
-            <h1 className="mt-6 font-serif text-7xl sm:text-8xl md:text-[9rem] lg:text-[11rem] font-bold text-cream tracking-[0.04em] animate-fade-up-delay-1 leading-[0.85]">
-              RÓM
-            </h1>
-            <p className="mt-8 text-lg md:text-xl text-cream/70 font-light max-w-2xl mx-auto animate-fade-up-delay-2 leading-relaxed">
-              Öðruvísi ferðir um borgina eilífu með Rómverjum – leiðsögn í litlum
-              hópum, vespur, matur og allt sem gerir dvölina áhyggjulausa.
-            </p>
-            <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center animate-fade-up-delay-3">
-              <a
-                href="#ferdir"
-                className="inline-block px-10 py-4 bg-gold text-[#1C0F0A] text-sm font-bold tracking-[0.2em] uppercase hover:bg-gold-light transition-colors"
-              >
-                Skoða ferðir
+        <Hero
+          image="/images/hero-rome-street.jpg"
+          imageAlt="Gata í Róm með bougainvillea"
+          eyebrow="Bella Italia · Róm"
+          title={
+            <>
+              Öðruvísi ferðir um <br className="hidden md:block" />
+              borgina eilífu
+            </>
+          }
+          text="Leiðsögn í litlum hópum, vespur, matur og allt sem gerir dvölina í Róm áhyggjulausa – með Rómverjum sem þekkja borgina eins og lófann á sér."
+          actions={
+            <>
+              <a href="#ferdir" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
+                Skoða ferðir <ArrowIcon className="w-4 h-4" />
               </a>
-              <a
-                href="#fyrirspurn"
-                className="inline-block px-10 py-4 border border-cream/40 text-cream text-sm font-medium tracking-[0.2em] uppercase hover:bg-cream/10 transition-all"
-              >
+              <a href="#fyrirspurn" className="inline-flex items-center rounded-full glass text-white px-6 py-3.5 text-sm font-semibold hover:bg-white/25 transition-colors">
                 Senda fyrirspurn
               </a>
-            </div>
-          </div>
-        </section>
+            </>
+          }
+          scrollTo="#ferdir"
+          minHeight="min-h-[86vh]"
+        />
 
-        {/* ═══════════════════════ FLÝTIVAL ═══════════════════════ */}
-        <section className="bg-[#1C0F0A] border-b border-cream/10">
-          <div className="mx-auto max-w-7xl px-6 py-5 flex gap-x-6 gap-y-2 flex-wrap justify-center">
+        {/* Flýtival */}
+        <section id="ferdir" className="mx-auto max-w-[1400px] px-6 md:px-10 pt-10 scroll-mt-24">
+          <div className="flex gap-2 overflow-x-auto pb-2 -mx-6 px-6 md:mx-0 md:px-0 md:flex-wrap [scrollbar-width:none]">
             {tours.map((t) => (
               <a
                 key={t.id}
                 href={`#${t.id}`}
-                className="text-[11px] tracking-[0.2em] uppercase text-cream/50 hover:text-gold transition-colors"
+                className="shrink-0 rounded-full border border-ink/12 bg-white px-4 py-2 text-sm text-ink/75 hover:bg-ink hover:text-white hover:border-ink transition-colors"
               >
                 {t.shortTitle}
               </a>
@@ -81,139 +82,93 @@ export default function RomPage() {
           </div>
         </section>
 
-        {/* ═══════════════════════ SKOÐUNARFERÐIR ═══════════════════════ */}
-        <section id="ferdir" className="py-24 md:py-32 bg-[#F0E6D3] scroll-mt-16">
-          <div className="mx-auto max-w-7xl px-6">
+        {groups.map((g, gi) => (
+          <section key={g.title} className={`mx-auto max-w-[1400px] px-6 md:px-10 ${gi === 0 ? "pt-14 md:pt-20" : "pt-24 md:pt-32"}`}>
             <RevealOnScroll>
-              <div className="text-center mb-16">
-                <span className="text-terracotta text-xs font-medium tracking-[0.4em] uppercase">Með leiðsögn</span>
-                <h2 className="mt-4 font-serif text-4xl md:text-5xl lg:text-6xl text-brown leading-tight">
-                  Róm með <span className="text-terracotta italic">Rómverjum</span>
-                </h2>
-                <p className="mt-6 text-brown/55 max-w-xl mx-auto leading-relaxed">
-                  Leiðsögn á ensku í litlum hópum (max 10 manns) frá faglærðum
-                  leiðsögumönnum sem vita allt og meira til um sögu Rómaveldis.
-                </p>
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+                <div>
+                  <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">{g.eyebrow}</span>
+                  <h2 className="mt-3 font-display text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">{g.title}</h2>
+                </div>
+                <p className="text-ink/60 max-w-md md:text-right">{g.text}</p>
               </div>
             </RevealOnScroll>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {groupA.map((t) => (
-                <RevealOnScroll key={t.id}>
-                  <TourCard tour={t} />
+            <div className={`grid grid-cols-1 md:grid-cols-2 ${g.ids.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"} gap-4 md:gap-5`}>
+              {g.ids.map((id) => (
+                <RevealOnScroll key={id} className="h-full">
+                  <TourCard tour={byId[id]} />
                 </RevealOnScroll>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
+        ))}
 
-        <Divider />
-
-        {/* ═══════════════════════ VESPUR & GOLFBÍLAR ═══════════════════════ */}
-        <section className="py-24 md:py-32 bg-[#F0E6D3]">
-          <div className="mx-auto max-w-7xl px-6">
-            <RevealOnScroll>
-              <div className="text-center mb-16">
-                <span className="text-terracotta text-xs font-medium tracking-[0.4em] uppercase">Á hjólum</span>
-                <h2 className="mt-4 font-serif text-4xl md:text-5xl lg:text-6xl text-brown leading-tight">
-                  Vertu eins og <span className="text-terracotta italic">innfæddur</span>
-                </h2>
-                <p className="mt-6 text-brown/55 max-w-xl mx-auto leading-relaxed">
-                  Láttu keyra þig um þröngar götur Rómar á vespu, í hliðarvagni eða á
-                  golfbíl – með bílstjóra og leiðsögn.
-                </p>
-              </div>
-            </RevealOnScroll>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {groupB.map((t) => (
-                <RevealOnScroll key={t.id}>
-                  <TourCard tour={t} />
-                </RevealOnScroll>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════ CTA BANNER ═══════════════════════ */}
-        <section className="relative overflow-hidden grain">
-          <div className="absolute inset-0 bg-[#8B2500]" />
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold/10 blur-[100px]" />
+        {/* CTA */}
+        <section className="mx-auto max-w-[1400px] px-3 md:px-4 pt-24 md:pt-32">
           <RevealOnScroll>
-            <div className="relative z-10 py-20 px-8 text-center">
-              <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl text-cream leading-tight">
-                Hópur, afmæli eða <span className="text-gold italic">sérstakt tilefni?</span>
-              </h3>
-              <p className="mt-6 text-cream/70 text-lg max-w-xl mx-auto">
-                Við útbúum ferðina allt eftir óskum – fyrir stóra sem litla hópa,
-                fjölskyldur og fyrirtæki.
-              </p>
-              <a
-                href="#fyrirspurn"
-                className="mt-10 inline-block px-12 py-4 border border-cream/40 text-cream text-sm font-medium tracking-[0.2em] uppercase hover:bg-cream/10 transition-all"
-              >
-                Fá tilboð
-              </a>
+            <div className="relative rounded-[2rem] md:rounded-[2.5rem] bg-ink text-white p-8 md:p-14 overflow-hidden">
+              <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-forest/50 blur-3xl" />
+              <div className="relative grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div className="md:col-span-8">
+                  <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Hópar & sérstök tilefni</span>
+                  <h2 className="mt-3 font-display text-3xl md:text-5xl font-medium tracking-tight leading-[1.05]">
+                    Afmæli, vinahópur eða fyrirtækjaferð?
+                  </h2>
+                  <p className="mt-4 text-white/70 max-w-xl">
+                    Við útbúum ferðina allt eftir óskum – fyrir stóra sem litla hópa, fjölskyldur
+                    og fyrirtæki. Endilega sendið okkur fyrirspurn og við gefum ykkur tilboð.
+                  </p>
+                </div>
+                <div className="md:col-span-4 flex md:justify-end">
+                  <a href="#fyrirspurn" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-7 py-4 text-sm font-semibold hover:bg-sand-light transition-colors">
+                    Fá tilboð <ArrowIcon className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
             </div>
           </RevealOnScroll>
         </section>
 
-        {/* ═══════════════════════ MATUR, DAGSFERÐIR & ÞJÓNUSTA ═══════════════════════ */}
-        <section className="py-24 md:py-32 bg-[#1C0F0A]">
-          <div className="mx-auto max-w-7xl px-6">
-            <RevealOnScroll>
-              <div className="text-center mb-16">
-                <span className="text-gold text-xs font-medium tracking-[0.4em] uppercase">Meira í boði</span>
-                <h2 className="mt-4 font-serif text-4xl md:text-5xl lg:text-6xl text-cream leading-tight">
-                  Matur, dagsferðir <span className="text-gold italic">& þjónusta</span>
-                </h2>
-              </div>
-            </RevealOnScroll>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {groupC.map((t) => (
-                <RevealOnScroll key={t.id}>
-                  <TourCard tour={t} tall dark />
-                </RevealOnScroll>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════ FYRIRSPURN ═══════════════════════ */}
-        <section id="fyrirspurn" className="py-24 md:py-32 bg-[#0D0905] scroll-mt-16">
-          <div className="mx-auto max-w-3xl px-6">
-            <RevealOnScroll>
-              <div className="text-center mb-10">
-                <span className="text-gold text-xs font-medium tracking-[0.3em] uppercase">Róm</span>
-                <h2 className="mt-2 font-serif text-3xl md:text-4xl text-cream">
-                  Senda <span className="text-gold italic">fyrirspurn</span>
-                </h2>
-                <p className="mt-4 text-cream/50 text-sm">
-                  Veldu viðburð og við höfum samband með tilboð og lausa tíma.
-                </p>
-              </div>
-              <RomInquiry />
-              <p className="mt-10 text-center text-xs text-cream/40">
-                Viltu frekar hringja? {site.phoneIS} (Ísland) · {site.phoneIT} (Ítalía / WhatsApp)
+        {/* Fyrirspurn */}
+        <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-6 md:px-10 pt-24 md:pt-32 pb-24 scroll-mt-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <RevealOnScroll className="lg:col-span-4">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Róm</span>
+              <h2 className="mt-3 font-display text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Senda fyrirspurn</h2>
+              <p className="mt-4 text-ink/60">
+                Veldu viðburð og við höfum samband með tilboð og lausa tíma.
+              </p>
+              <p className="mt-6 text-sm text-ink/50">
+                Viltu frekar hringja?
+                <br />
+                {site.phoneIS} (Ísland)
+                <br />
+                {site.phoneIT} (Ítalía / WhatsApp)
               </p>
             </RevealOnScroll>
+            <RevealOnScroll className="lg:col-span-8">
+              <div className="rounded-[2rem] bg-white border border-ink/5 p-6 md:p-10">
+                <RomInquiry />
+              </div>
+            </RevealOnScroll>
           </div>
         </section>
 
-        {/* ═══════════════════════ VILLUR CROSS-LINK ═══════════════════════ */}
-        <section className="relative py-20 bg-[#F0E6D3]">
-          <div className="mx-auto max-w-5xl px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-              <span className="text-terracotta text-xs font-medium tracking-[0.4em] uppercase">Lengri dvöl?</span>
-              <h3 className="mt-3 font-serif text-3xl md:text-4xl text-brown">
-                Sameinaðu Róm og viku í <span className="text-terracotta italic">villu í sveitinni</span>
-              </h3>
+        {/* Villur cross-link */}
+        <section className="mx-auto max-w-[1400px] px-6 md:px-10 pb-8">
+          <RevealOnScroll>
+            <div className="rounded-3xl bg-mist p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Lengri dvöl?</span>
+                <h3 className="mt-2 font-display text-2xl md:text-3xl font-medium tracking-tight">
+                  Sameinaðu Róm og viku í villu í sveitinni
+                </h3>
+              </div>
+              <Link href="/villur" className="shrink-0 inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-semibold hover:bg-forest transition-colors">
+                Skoða villur <ArrowIcon className="w-4 h-4" />
+              </Link>
             </div>
-            <Link
-              href="/villur"
-              className="shrink-0 inline-block px-10 py-4 bg-brown text-cream text-sm font-medium tracking-[0.2em] uppercase hover:bg-brown-light transition-colors"
-            >
-              Skoða villur
-            </Link>
-          </div>
+          </RevealOnScroll>
         </section>
       </main>
       <Footer />
