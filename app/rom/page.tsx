@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -6,7 +7,7 @@ import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import TourCard from "../components/TourCard";
 import RomInquiry from "../components/RomInquiry";
-import { tours, site } from "../data/site";
+import { tours, site, cityDestinations } from "../data/site";
 import { ArrowIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
@@ -142,6 +143,35 @@ export default function RomPage() {
                 <RomInquiry />
               </div>
             </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* Aðrar borgir */}
+        <section className="mx-auto max-w-[1400px] px-5 md:px-10 pb-10">
+          <RevealOnScroll>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+              <div>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Fleiri borgir</span>
+                <h2 className="mt-3 font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight leading-[1.05]">Flórens, Napoli & Feneyjar</h2>
+              </div>
+              <Link href="/borgir" className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-3 text-sm font-medium hover:bg-ink hover:text-white transition-colors w-fit">
+                Allar borgir <ArrowIcon className="w-4 h-4" />
+              </Link>
+            </div>
+          </RevealOnScroll>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-5">
+            {cityDestinations.map((o) => (
+              <RevealOnScroll key={o.slug}>
+                <Link href={`/borgir/${o.slug}`} className="group relative block aspect-[4/3] rounded-2xl md:rounded-3xl overflow-hidden bg-ink">
+                  <Image src={o.cardImage} alt={o.imageAlt} fill quality={60} sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/15 to-transparent" />
+                  <div className="absolute bottom-0 p-5 text-white">
+                    <span className="text-[11px] uppercase tracking-[0.15em] text-sand">{o.eyebrow}</span>
+                    <h3 className="mt-1 font-display text-2xl md:text-3xl font-medium tracking-tight">{o.title}</h3>
+                  </div>
+                </Link>
+              </RevealOnScroll>
+            ))}
           </div>
         </section>
 

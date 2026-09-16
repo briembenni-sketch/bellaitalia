@@ -5,21 +5,24 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import InquiryForm from "../components/InquiryForm";
-import { site, villaPricing, villaText } from "../data/site";
+import VillaCard from "../components/VillaCard";
+import ServiceCard from "../components/ServiceCard";
+import { site, villaPricing, villaText, villas, villaServices } from "../data/site";
 import { ArrowIcon, CheckIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
   title: "Villur á Ítalíu | Bella Italia",
   description:
-    "Villur og hús með sundlaug um alla Ítalíu – Toskana, Umbria, Le Marche, Puglia og Sikiley – í öllum verðflokkum. Gjaldfrjáls þjónusta þegar bókað er í gegnum Bella Italia.",
+    "Villur og hús með sundlaug um alla Ítalíu – Toskana, Umbria, Le Marche, Puglia og Sikiley – í öllum verðflokkum. Einkakokkur, ljósmyndari, vínsmökkun og akstur í kringum dvölina. Gjaldfrjáls þjónusta þegar bókað er í gegnum Bella Italia.",
 };
 
 // Svæðin sem nefnd eru á bellaitalia.is
 const regions = [
   { name: "Toskana", note: "Vinsælasta héraðið", image: "/images/gallery-09.jpg" },
-  { name: "Umbria", note: "Nágranni Toskana", image: "/images/villa-pool.jpg" },
+  { name: "Umbria", note: "Græna hjarta Ítalíu", image: "/images/region-umbria.jpg" },
   { name: "Le Marche", note: "Við Adríahafið", image: "/images/gallery-07.jpg" },
-  { name: "Puglia & Sikiley", note: "Suður-Ítalía", image: "/images/gallery-04.webp" },
+  { name: "Puglia", note: "Trulli & ólífulundir", image: "/images/villa-puglia.jpg" },
+  { name: "Sikiley", note: "Stórkostleg eyja", image: "/images/region-sikiley.jpg" },
 ];
 
 export default function VillurPage() {
@@ -37,8 +40,8 @@ export default function VillurPage() {
               <a href="#fyrirspurn" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
                 Fá tilboð <ArrowIcon className="w-4 h-4" />
               </a>
-              <a href={site.villaCatalog} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-full tint text-white px-6 py-3.5 text-sm font-semibold hover:bg-white hover:text-ink transition-colors">
-                Skoða úrval ↗
+              <a href="#villur" className="inline-flex items-center rounded-full tint text-white px-6 py-3.5 text-sm font-semibold hover:bg-white hover:text-ink transition-colors">
+                Skoða dæmi um villur
               </a>
             </>
           }
@@ -75,6 +78,65 @@ export default function VillurPage() {
           </div>
         </section>
 
+        {/* Dæmi um villur */}
+        <section id="villur" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 scroll-mt-24">
+          <RevealOnScroll>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
+              <div>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Úrval húsa</span>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Dæmi um villur</h2>
+              </div>
+              <p className="text-ink/60 max-w-md md:text-right">
+                Nokkur dæmi um gerðir af húsum sem eru í boði. Úrvalið er miklu stærra og við finnum
+                eign sem passar stærð hópsins, svæði og verðhugmynd.
+              </p>
+            </div>
+          </RevealOnScroll>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+            {villas.map((v) => (
+              <RevealOnScroll key={v.id} className="h-full">
+                <VillaCard villa={v} ctaHref="#fyrirspurn" large />
+              </RevealOnScroll>
+            ))}
+          </div>
+          <RevealOnScroll>
+            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-mist p-5 md:p-6">
+              <p className="text-ink/65 text-[15px] max-w-2xl">
+                Viltu skoða fleiri hús? Hér er hluti af úrvalinu hjá samstarfsaðila okkar – en best er
+                að senda okkur fyrirspurn svo við getum þrengt valið fyrir ykkur.
+              </p>
+              <a href={site.villaCatalog} target="_blank" rel="noopener noreferrer" className="shrink-0 inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3.5 text-sm font-medium hover:bg-ink hover:text-white transition-colors">
+                Skoða úrval ↗
+              </a>
+            </div>
+          </RevealOnScroll>
+        </section>
+
+        {/* Viðbótarþjónusta */}
+        <section id="thjonusta" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 scroll-mt-24">
+          <RevealOnScroll>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
+              <div>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Viðbótarþjónusta í villuna</span>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Meira en bara húsið</h2>
+              </div>
+              <p className="text-ink/60 max-w-md md:text-right">{villaText.bookingBenefit}</p>
+            </div>
+          </RevealOnScroll>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            {villaServices.map((s) => (
+              <RevealOnScroll key={s.id} className="h-full">
+                <ServiceCard service={s} />
+              </RevealOnScroll>
+            ))}
+          </div>
+          <RevealOnScroll>
+            <p className="mt-6 text-ink/60 text-[15px] leading-relaxed max-w-3xl">
+              {villaText.service[0]}
+            </p>
+          </RevealOnScroll>
+        </section>
+
         {/* Svæði */}
         <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32">
           <RevealOnScroll>
@@ -86,14 +148,14 @@ export default function VillurPage() {
               <p className="text-ink/60 max-w-md md:text-right">{villaText.intro[2]}</p>
             </div>
           </RevealOnScroll>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-5">
             {regions.map((r) => (
               <RevealOnScroll key={r.name}>
                 <div className="group relative aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden bg-mist">
-                  <Image src={r.image} alt={r.name} fill quality={60} sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                  <Image src={r.image} alt={r.name} fill quality={60} sizes="(max-width: 1024px) 50vw, 20vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
-                  <div className="absolute bottom-0 p-4 md:p-6 text-white">
-                    <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-medium tracking-tight">{r.name}</h3>
+                  <div className="absolute bottom-0 p-4 md:p-5 text-white">
+                    <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight">{r.name}</h3>
                     <p className="mt-1 text-xs sm:text-sm text-white/75">{r.note}</p>
                   </div>
                 </div>
@@ -124,31 +186,6 @@ export default function VillurPage() {
           </div>
         </section>
 
-        {/* Þjónusta */}
-        <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            <RevealOnScroll>
-              <div className="relative aspect-[4/3] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-mist">
-                <Image src="/images/gallery-07.jpg" alt="Villa með sundlaug í Toskana" fill quality={60} sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
-              </div>
-            </RevealOnScroll>
-            <RevealOnScroll>
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Gjaldfrjáls þjónusta</span>
-              <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Meira en bara húsið</h2>
-              <div className="mt-6 space-y-4 text-ink/65 leading-relaxed">
-                <p>{villaText.service[0]}</p>
-                <p>{villaText.bookingBenefit}</p>
-                <p>{villaText.service[1]}</p>
-              </div>
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {villaText.extras.map((e) => (
-                  <li key={e} className="rounded-full bg-mist px-4 py-2 text-sm text-ink/75">{e}</li>
-                ))}
-              </ul>
-            </RevealOnScroll>
-          </div>
-        </section>
-
         {/* Fyrirspurn */}
         <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 pb-20 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
@@ -158,10 +195,11 @@ export default function VillurPage() {
                 Viltu fá okkur til að finna réttu eignina?
               </h2>
               <p className="mt-4 text-ink/60">
-                Þar sem mörg hús eru í boði væri gott að vita dagsetningar, fjölda og
-                verðhugmynd fyrir vikudvöl svo við getum þrengt valið. Um leið og við höfum
-                svörin finnum við hús sem hentar ykkar hóp sem best.
+                Þar sem mörg hús eru í boði þurfum við að vita dagsetningar, hvaða svæði koma til
+                greina og hve mörg þið eruð – fullorðnir, börn og börn undir 2 ára – svo við getum
+                þrengt valið. Um leið og við höfum svörin finnum við hús sem hentar ykkar hóp.
               </p>
+              <p className="mt-6 text-sm text-ink/50">{villaText.service[1]}</p>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white border border-ink/5 p-5 sm:p-6 md:p-10">

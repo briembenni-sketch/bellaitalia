@@ -19,7 +19,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.bellaitalia.is"),
   title: {
-    default: "Bella Italia | Róm & Villur á Ítalíu",
+    default: "Bella Italia | Villur á Ítalíu · Róm & aðrar borgir",
     template: "%s",
   },
   description: site.description,
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "is_IS",
     siteName: site.name,
-    title: "Bella Italia | Róm & Villur á Ítalíu",
+    title: "Bella Italia | Villur á Ítalíu · Róm & aðrar borgir",
     description: site.description,
-    images: [{ url: "/images/card-rom.jpg", width: 2000, height: 1500, alt: "Colosseum í Róm" }],
+    images: [{ url: "/images/hero-villa.jpg", width: 2000, height: 1600, alt: "Villa með sundlaug í Toskana" }],
   },
   twitter: {
     card: "summary_large_image",

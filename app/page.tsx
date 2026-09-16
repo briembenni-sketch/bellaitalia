@@ -6,15 +6,15 @@ import Hero from "./components/Hero";
 import RevealOnScroll from "./components/RevealOnScroll";
 import Testimonials from "./components/Testimonials";
 import GalleryStrip from "./components/GalleryStrip";
-import { site, tours, villaText } from "./data/site";
+import VillaCard from "./components/VillaCard";
+import ServiceCard from "./components/ServiceCard";
+import { site, tours, villas, villaServices, villaText, destinations, wedding } from "./data/site";
 import { ArrowIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIcon } from "./components/Icons";
-
-const featured = tours.filter((t) => ["vatikan", "vespa", "sidecar", "matreidsla"].includes(t.id));
 
 // Staðreyndir af bellaitalia.is — engar uppspunnar tölur
 const facts = [
-  { title: "Litlir hópar", text: "Leiðsögn á ensku í hópum með max 10 manns." },
-  { title: "Gjaldfrjáls þjónusta", text: "Að bóka villu í gegnum okkur tryggir gjaldfrjálsa milligöngu og aðstoð." },
+  { title: "Villur í öllum verðflokkum", text: "Hús með sundlaug um alla Ítalíu – Toskana, Umbria, Le Marche, Puglia og Sikiley." },
+  { title: "Gjaldfrjáls þjónusta", text: "Að bóka villu í gegnum okkur tryggir gjaldfrjálsa milligöngu og aðstoð við allt sem viðkemur ferðinni." },
   { title: "Til staðar 24/7", text: "Ráðleggingar fyrir ferðina og aðstoð á meðan dvöl stendur." },
   { title: "Sími á Íslandi og Ítalíu", text: `${site.phoneIS} · ${site.phoneIT} (WhatsApp)` },
 ];
@@ -25,26 +25,26 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero
-          image="/images/gallery-01.jpg"
-          imageAlt="Trevi gosbrunnurinn í Róm"
+          image="/images/hero-villa.jpg"
+          imageAlt="Villa með sundlaug og sýprusviðum í Toskana"
           title={
             <>
-              Ferðir um Róm og villur <br className="hidden md:block" />
+              Villur með sundlaug <br className="hidden md:block" />
               um alla Ítalíu
             </>
           }
-          text="Villur & hús um alla Ítalíu. Persónuleg þjónusta og öðruvísi ferðir um Róm og nágrenni – fyrir einstaklinga og hópa, stóra sem smáa."
+          text="Við finnum réttu villuna fyrir ykkar hóp, útbúum tilboð og sjáum um allt í kringum dvölina – kokk, ljósmyndara, vínsmökkun og akstur. Gjaldfrjálst þegar bókað er í gegnum okkur."
           actions={
             <>
-              <Link href="/fyrirspurn" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
-                Fá tilboð <ArrowIcon className="w-4 h-4" />
+              <Link href="/villur" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
+                Skoða villur <ArrowIcon className="w-4 h-4" />
               </Link>
-              <a href="#thjonusta" className="inline-flex items-center rounded-full tint text-white px-6 py-3.5 text-sm font-semibold hover:bg-white hover:text-ink transition-colors">
-                Skoða ferðir og villur
-              </a>
+              <Link href="/villur#fyrirspurn" className="inline-flex items-center rounded-full tint text-white px-6 py-3.5 text-sm font-semibold hover:bg-white hover:text-ink transition-colors">
+                Fá tilboð í villu
+              </Link>
             </>
           }
-          scrollTo="#thjonusta"
+          scrollTo="#villur"
         />
 
         {/* ═══════════════ STAÐREYNDIR ═══════════════ */}
@@ -61,53 +61,94 @@ export default function Home() {
           </RevealOnScroll>
         </section>
 
-        {/* ═══════════════ RÓM / VILLUR ═══════════════ */}
-        <section id="thjonusta" className="mx-auto max-w-[1400px] px-2.5 md:px-4 scroll-mt-24">
+        {/* ═══════════════ 1 · VILLUR ═══════════════ */}
+        <section id="villur" className="mx-auto max-w-[1400px] px-5 md:px-10 scroll-mt-24">
           <RevealOnScroll>
-            <div className="px-2.5 md:px-6 mb-6 md:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Þjónusta</span>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Villur – okkar sérgrein</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.05]">
-                  Róm & villur á Ítalíu
+                  Finndu réttu villuna
                 </h2>
               </div>
               <p className="text-ink/60 max-w-md md:text-right">
-                Borgarferð til Rómar með leiðsögn, vika í villu með sundlaug – eða hvort tveggja.
+                Hér eru nokkur dæmi um gerðir af húsum sem við bjóðum. Úrvalið er miklu stærra – sendu
+                fyrirspurn og við finnum eign sem hentar ykkar hóp.
               </p>
             </div>
           </RevealOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-4">
-            {[
-              {
-                href: "/rom",
-                img: "/images/card-rom.jpg",
-                alt: "Colosseum í Róm",
-                tag: "Róm & nágrenni",
-                title: "Róm",
-                text: "Vatíkanið og Colosseum með leiðsögn, vespuferðir, gönguferðir, matreiðslunámskeið, flugvallarakstur, gisting og ferðir til Napoli, Amalfi og Capri.",
-                cta: `Skoða ${tours.length} ferðir`,
-              },
-              {
-                href: "/villur",
-                img: "/images/card-villur.jpg",
-                alt: "Villa með sundlaug í ítalskri sveit",
-                tag: "Toskana · Umbria · Le Marche · Puglia · Sikiley",
-                title: "Villur",
-                text: "Villur og hús með sundlaug um alla Ítalíu í öllum verðflokkum. Við finnum réttu eignina fyrir ykkar hóp og útbúum tilboð – gjaldfrjálst.",
-                cta: "Skoða villur",
-              },
-            ].map((c) => (
-              <RevealOnScroll key={c.href}>
-                <Link href={c.href} className="group relative block h-[440px] sm:h-[520px] md:h-[600px] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-ink">
-                  <Image src={c.img} alt={c.alt} fill quality={60} sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
-                  <span className="absolute top-4 left-4 md:top-5 md:left-5 rounded-full tint px-3.5 py-1.5 text-xs text-white">{c.tag}</span>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white">
-                    <h3 className="font-display text-4xl md:text-6xl font-medium tracking-tight">{c.title}</h3>
-                    <p className="mt-3 md:mt-4 text-white/80 text-[15px] md:text-base leading-relaxed max-w-md">{c.text}</p>
-                    <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold group-hover:bg-sand-light transition-colors">
-                      {c.cta} <ArrowIcon className="w-4 h-4" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
+            {villas.map((v) => (
+              <RevealOnScroll key={v.id} className="h-full">
+                <VillaCard villa={v} />
+              </RevealOnScroll>
+            ))}
+          </div>
+
+          <RevealOnScroll>
+            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-mist p-5 md:p-6">
+              <p className="text-ink/65 text-[15px] max-w-2xl">{villaText.pricingNote}</p>
+              <Link href="/villur" className="shrink-0 inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-semibold hover:bg-forest transition-colors">
+                Allar villur & verðhugmyndir <ArrowIcon className="w-4 h-4" />
+              </Link>
+            </div>
+          </RevealOnScroll>
+        </section>
+
+        {/* ═══════════════ VIÐBÓTARÞJÓNUSTA ═══════════════ */}
+        <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32">
+          <RevealOnScroll>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
+              <div>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Í kringum villuna</span>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
+                  Gerðu dvölina persónulegri
+                </h2>
+              </div>
+              <p className="text-ink/60 max-w-md md:text-right">
+                Viðbótarþjónusta sem tengist dvölinni og gerir ferðina sérstæðari – allt bókað í gegnum okkur.
+              </p>
+            </div>
+          </RevealOnScroll>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            {villaServices.map((s) => (
+              <RevealOnScroll key={s.id} className="h-full">
+                <ServiceCard service={s} />
+              </RevealOnScroll>
+            ))}
+          </div>
+        </section>
+
+        {/* ═══════════════ 2 · RÓM & AÐRAR BORGIR ═══════════════ */}
+        <section id="borgir" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 scroll-mt-24">
+          <RevealOnScroll>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
+              <div>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Skoðunarferðir & skipulagning</span>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
+                  Róm og aðrar borgir
+                </h2>
+              </div>
+              <p className="text-ink/60 max-w-md md:text-right">
+                Leiðsögn, miðakaup, einkabílar og aðstoð við að skipuleggja borgarferðina – hvort sem er
+                sér eða í sömu ferð og villan.
+              </p>
+            </div>
+          </RevealOnScroll>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+            {destinations.map((d) => (
+              <RevealOnScroll key={d.slug}>
+                <Link href={d.custom ? `/${d.slug}` : `/borgir/${d.slug}`} className="group relative block aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden bg-ink">
+                  <Image src={d.cardImage} alt={d.imageAlt} fill quality={60} sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
+                  <span className="absolute top-3 left-3 md:top-4 md:left-4 rounded-full tint px-3 py-1.5 text-[11px] md:text-xs text-white">{d.eyebrow}</span>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white">
+                    <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight">{d.title}</h3>
+                    <p className="mt-2 text-xs sm:text-sm text-white/75 leading-relaxed line-clamp-3 md:line-clamp-4">{d.lead}</p>
+                    <span className="mt-3 md:mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
+                      {d.custom ? `${tours.length} ferðir` : "Skoða"} <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                     </span>
                   </div>
                 </Link>
@@ -116,39 +157,24 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══════════════ VINSÆLAR UPPLIFANIR ═══════════════ */}
-        <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32">
+        {/* ═══════════════ 3 · BRÚÐKAUP ═══════════════ */}
+        <section className="mx-auto max-w-[1400px] px-2.5 md:px-4 pt-20 md:pt-32">
           <RevealOnScroll>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 md:mb-10">
-              <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Róm</span>
+            <Link href="/brudkaup" className="group relative block rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-ink min-h-[380px] md:min-h-[460px]">
+              <Image src={wedding.image} alt={wedding.imageAlt} fill quality={60} sizes="100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
+              <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/40 to-ink/10" />
+              <div className="relative z-10 p-6 sm:p-8 md:p-14 flex flex-col justify-end min-h-[380px] md:min-h-[460px] text-white max-w-2xl">
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{wedding.eyebrow}</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
-                  Vinsælar ferðir
+                  Brúðkaup, stórafmæli og önnur sérstök tilefni
                 </h2>
+                <p className="mt-4 text-white/80 leading-relaxed">{wedding.lead}</p>
+                <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold w-fit group-hover:bg-sand-light transition-colors">
+                  Lesa meira <ArrowIcon className="w-4 h-4" />
+                </span>
               </div>
-              <Link href="/rom" className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-3 text-sm font-medium hover:bg-ink hover:text-white transition-colors w-fit">
-                Allar ferðir <ArrowIcon className="w-4 h-4" />
-              </Link>
-            </div>
+            </Link>
           </RevealOnScroll>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-            {featured.map((t) => (
-              <RevealOnScroll key={t.id}>
-                <Link href={`/rom#${t.id}`} className="group block rounded-3xl bg-white border border-ink/5 overflow-hidden hover:border-ink/15 transition-colors">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-mist">
-                    <Image src={t.image} alt={t.imageAlt} fill quality={60} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                    <span className="absolute top-4 left-4 rounded-full tint px-3 py-1.5 text-xs text-white">{t.tag}</span>
-                    <span className="absolute top-4 right-4 rounded-full bg-white text-ink px-3 py-1.5 text-xs font-semibold">{t.priceLabel}</span>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-display text-xl font-medium tracking-tight leading-tight">{t.title}</h3>
-                    <p className="mt-2 text-sm text-ink/55 line-clamp-2">{t.summary}</p>
-                  </div>
-                </Link>
-              </RevealOnScroll>
-            ))}
-          </div>
         </section>
 
         {/* ═══════════════ UM OKKUR ═══════════════ */}
@@ -168,9 +194,9 @@ export default function Home() {
               <div className="mt-6 space-y-4 text-ink/65 leading-relaxed text-[16px] md:text-[17px]">
                 <p>{villaText.service[0]}</p>
                 <p>
-                  Í Róm bjóðum við leiðsögn í litlum hópum, vespuferðir, gönguferðir með
-                  Rómverjum, matreiðslunámskeið, flugvallarakstur og aðstoð við gistingu.
-                  Við getum líka pantað bíla hvar sem er á Ítalíu fyrir einstaklinga sem og hópa.
+                  Í Róm bjóðum við leiðsögn í litlum hópum, vespuferðir, gönguferðir með Rómverjum,
+                  matreiðslunámskeið, flugvallarakstur og aðstoð við gistingu – og aðstoðum sömuleiðis
+                  við skoðunarferðir í Flórens, Napoli, Amalfi, Pompei og Feneyjum.
                 </p>
               </div>
               <div className="mt-7 flex items-center gap-4 rounded-3xl bg-mist p-4 w-fit">
@@ -203,7 +229,7 @@ export default function Home() {
                 Það kostar ekkert að fá tilboð
               </h2>
               <p className="mt-4 text-ink/60 max-w-xl mx-auto">
-                Sendu okkur fyrirspurn um ferð til Rómar, villu á Ítalíu eða hvort tveggja.
+                Sendu okkur fyrirspurn um villu á Ítalíu, borgarferð eða hvort tveggja.
               </p>
             </div>
           </RevealOnScroll>
@@ -230,8 +256,11 @@ export default function Home() {
 
           <RevealOnScroll>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/fyrirspurn" className="inline-flex items-center gap-2 rounded-full bg-forest text-white px-8 py-4 text-sm font-semibold hover:bg-forest-deep transition-colors">
-                Senda fyrirspurn <ArrowIcon className="w-4 h-4" />
+              <Link href="/villur#fyrirspurn" className="inline-flex items-center gap-2 rounded-full bg-forest text-white px-8 py-4 text-sm font-semibold hover:bg-forest-deep transition-colors">
+                Fá tilboð í villu <ArrowIcon className="w-4 h-4" />
+              </Link>
+              <Link href="/fyrirspurn" className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-4 text-sm font-medium hover:bg-ink hover:text-white transition-colors">
+                Almenn fyrirspurn
               </Link>
               <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-ink/60 hover:text-ink transition-colors">
                 <InstagramIcon className="w-4 h-4" /> {site.instagramHandle}

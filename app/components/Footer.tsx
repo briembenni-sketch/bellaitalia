@@ -1,14 +1,28 @@
 import Link from "next/link";
 import Image from "next/image";
-import { site } from "../data/site";
+import { site, destinations } from "../data/site";
 import { InstagramIcon, FacebookIcon, WhatsAppIcon } from "./Icons";
+
+const pageLinks = [
+  { href: "/", label: "Heim" },
+  { href: "/villur", label: "Villur á Ítalíu" },
+  { href: "/villur#thjonusta", label: "Viðbótarþjónusta í villuna" },
+  { href: "/brudkaup", label: "Brúðkaup & sérstök tilefni" },
+  { href: "/fyrirspurn", label: "Senda fyrirspurn" },
+  { href: "/samband", label: "Hafa samband" },
+];
+
+const cityLinks = [
+  { href: "/borgir", label: "Skoðunarferðir & skipulagning" },
+  ...destinations.map((d) => ({ href: d.custom ? `/${d.slug}` : `/borgir/${d.slug}`, label: d.navLabel })),
+];
 
 export default function Footer() {
   return (
     <footer className="px-2.5 md:px-4 pb-2.5 md:pb-4 pt-6">
       <div className="mx-auto max-w-[1400px] rounded-[1.5rem] md:rounded-[2.5rem] bg-ink text-white/70 overflow-hidden">
         <div className="px-6 md:px-12 py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
-          <div className="md:col-span-5">
+          <div className="md:col-span-4">
             <div className="flex items-center gap-4">
               <Image
                 src="/images/logo.jpg"
@@ -19,12 +33,13 @@ export default function Footer() {
               />
               <div>
                 <span className="block font-display text-2xl font-semibold text-white tracking-tight">Bella Italia</span>
-                <span className="text-xs text-sand">Róm & Villur á Ítalíu</span>
+                <span className="text-xs text-sand">{site.tagline}</span>
               </div>
             </div>
             <p className="mt-6 text-[15px] leading-relaxed max-w-sm">
-              Villur & hús um alla Ítalíu. Persónuleg þjónusta og öðruvísi ferðir um Róm og
-              nágrenni. Þjónusta fyrir einstaklinga og hópa, stóra sem smáa.
+              Villur & hús með sundlaug um alla Ítalíu, viðbótarþjónusta í villuna og aðstoð við
+              skoðunarferðir í Róm, Flórens, Napoli, Amalfi, Pompei og Feneyjum. Persónuleg þjónusta
+              fyrir einstaklinga og hópa, stóra sem smáa.
             </p>
             <div className="mt-6 flex gap-3">
               {[
@@ -49,13 +64,7 @@ export default function Footer() {
           <div className="md:col-span-3">
             <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-sand mb-5">Síður</h4>
             <div className="flex flex-col gap-3 text-[15px]">
-              {[
-                { href: "/", label: "Heim" },
-                { href: "/rom", label: "Róm" },
-                { href: "/villur", label: "Villur" },
-                { href: "/fyrirspurn", label: "Senda fyrirspurn" },
-                { href: "/samband", label: "Hafa samband" },
-              ].map((link) => (
+              {pageLinks.map((link) => (
                 <Link key={link.href} href={link.href} className="hover:text-white transition-colors w-fit">
                   {link.label}
                 </Link>
@@ -63,7 +72,18 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="md:col-span-4">
+          <div className="md:col-span-2">
+            <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-sand mb-5">Borgir</h4>
+            <div className="flex flex-col gap-3 text-[15px]">
+              {cityLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="hover:text-white transition-colors w-fit">
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="md:col-span-3">
             <h4 className="text-xs font-medium tracking-[0.2em] uppercase text-sand mb-5">Hafa samband</h4>
             <div className="flex flex-col gap-3 text-[15px]">
               <p className="text-white">{site.legalName}</p>
