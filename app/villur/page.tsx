@@ -7,7 +7,7 @@ import RevealOnScroll from "../components/RevealOnScroll";
 import InquiryForm from "../components/InquiryForm";
 import VillaCard from "../components/VillaCard";
 import ServiceCard from "../components/ServiceCard";
-import { site, villaPricing, villaText, villas, villaServices } from "../data/site";
+import { getContent } from "../lib/content";
 import { ArrowIcon, CheckIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
@@ -26,6 +26,7 @@ const regions = [
 ];
 
 export default function VillurPage() {
+  const { site, villaPricing, villaText, villas, villaServices } = getContent();
   return (
     <>
       <Navbar />
@@ -203,7 +204,7 @@ export default function VillurPage() {
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <InquiryForm variant="villur" />
+                <InquiryForm variant="villur" serviceOptions={villaServices.map((s) => s.title)} email={site.email} />
               </div>
             </RevealOnScroll>
           </div>

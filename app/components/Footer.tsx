@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { site, destinations } from "../data/site";
+import { destinations } from "../data/site";
+import { getContent } from "../lib/content";
 import { InstagramIcon, FacebookIcon, WhatsAppIcon } from "./Icons";
 
 const pageLinks = [
@@ -18,6 +19,7 @@ const cityLinks = [
 ];
 
 export default function Footer() {
+  const { site } = getContent();
   return (
     <footer className="px-2.5 md:px-4 pb-2.5 md:pb-4 pt-6">
       <div className="mx-auto max-w-[1400px] rounded-[1.5rem] md:rounded-[2.5rem] bg-ink-soft border border-white/10 text-white/70 overflow-hidden">

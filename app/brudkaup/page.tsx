@@ -6,15 +6,18 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import InquiryForm from "../components/InquiryForm";
-import { site, wedding } from "../data/site";
+import { getContent } from "../lib/content";
 import { ArrowIcon, CheckIcon } from "../components/Icons";
 
-export const metadata: Metadata = {
-  title: "Brúðkaup & sérstök tilefni á Ítalíu | Bella Italia",
-  description: wedding.lead,
-};
+export function generateMetadata(): Metadata {
+  return {
+    title: "Brúðkaup & sérstök tilefni á Ítalíu | Bella Italia",
+    description: getContent().wedding.lead,
+  };
+}
 
 export default function BrudkaupPage() {
+  const { site, wedding } = getContent();
   return (
     <>
       <Navbar />
@@ -109,7 +112,7 @@ export default function BrudkaupPage() {
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <InquiryForm variant="almenn" defaultInterest="Brúðkaup / sérstakt tilefni" />
+                <InquiryForm variant="almenn" defaultInterest="Brúðkaup / sérstakt tilefni" email={site.email} />
               </div>
             </RevealOnScroll>
           </div>

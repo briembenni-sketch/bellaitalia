@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
-import { site } from "../data/site";
+import { getContent } from "../lib/content";
 import { ArrowIcon, FacebookIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function SambandPage() {
+  const { site } = getContent();
   const cards = [
     { icon: <PhoneIcon />, title: "Sími", value: site.phoneIS, sub: "Ísland", href: `tel:${site.phoneIS.replace(/\s/g, "")}` },
     { icon: <MailIcon />, title: "Netfang", value: site.email, sub: "Við svörum yfirleitt innan sólarhrings", href: `mailto:${site.email}` },

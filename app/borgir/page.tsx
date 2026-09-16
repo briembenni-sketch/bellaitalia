@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import InquiryForm from "../components/InquiryForm";
-import { destinations, tours } from "../data/site";
+import { getContent } from "../lib/content";
 import { ArrowIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default function BorgirPage() {
+  const { destinations, tours, site } = getContent();
   return (
     <>
       <Navbar />
@@ -93,7 +94,7 @@ export default function BorgirPage() {
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <InquiryForm variant="almenn" />
+                <InquiryForm variant="almenn" email={site.email} />
               </div>
             </RevealOnScroll>
           </div>

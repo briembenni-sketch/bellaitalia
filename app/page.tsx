@@ -6,7 +6,7 @@ import Hero from "./components/Hero";
 import RevealOnScroll from "./components/RevealOnScroll";
 import Testimonials from "./components/Testimonials";
 import SnapScroll from "./components/SnapScroll";
-import { site, tours, villas, villaServices, villaText, destinations, wedding } from "./data/site";
+import { getContent } from "./lib/content";
 import { ArrowIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIcon } from "./components/Icons";
 
 const btnWhite =
@@ -20,6 +20,7 @@ const h2 = "mt-3 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-
  * Forsíða (landing): dökk, myndir í fullri skjástærð í hverjum hluta og sem minnst af hvítu.
  */
 export default function Home() {
+  const { site, tours, villas, villaServices, villaText, destinations, wedding, testimonials } = getContent();
   return (
     <div className="bg-ink text-white">
       <SnapScroll />
@@ -252,7 +253,7 @@ export default function Home() {
           <Image src="/images/dinner-terrace.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-ink/85" />
           <div className="relative z-10 w-full">
-            <Testimonials tone="dark" />
+            <Testimonials tone="dark" items={testimonials} />
           </div>
         </section>
 

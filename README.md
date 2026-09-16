@@ -34,3 +34,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Stjórnborð (/admin)
+
+Á `/admin` getur Hildur breytt verðum og textum (ferðir í Róm, verðtafla og textar villna,
+dæmi um villur, viðbótarþjónusta, borgir, brúðkaup, umsagnir og samskiptaupplýsingar).
+Lykilorðið er `2026` (hægt að breyta með umhverfisbreytunni `ADMIN_PASSWORD`).
+
+Breytingarnar vistast í `data/content.json` og eru lagðar ofan á sjálfgefna efnið í
+`app/data/site.ts`. Myndir og uppbygging síðunnar koma alltaf úr kóðanum.
+
+- **Eigin þjónn / staðbundið:** skráin er skrifuð beint á disk og síðan endurbirt strax.
+- **Vercel eða önnur hýsing þar sem ekki má skrifa á disk:** stilltu `GITHUB_TOKEN`
+  (fine-grained token með skrifheimild á Contents) og `GITHUB_REPO`
+  (t.d. `briembenni-sketch/bellaitalia`). Þá er skránni commit-að í repóið og síðan
+  endurbyggist sjálfkrafa; breytingar birtast eftir 1–2 mínútur.

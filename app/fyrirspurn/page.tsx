@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import InquiryForm from "../components/InquiryForm";
-import { site } from "../data/site";
+import { getContent } from "../lib/content";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function FyrirspurnPage() {
+  const { site } = getContent();
   const contacts = [
     { icon: <MailIcon className="w-5 h-5" />, label: "Netfang", value: site.email, href: `mailto:${site.email}` },
     { icon: <PhoneIcon className="w-5 h-5" />, label: "Sími (Ísland)", value: site.phoneIS, href: `tel:${site.phoneIS.replace(/\s/g, "")}` },
@@ -53,7 +54,7 @@ export default function FyrirspurnPage() {
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <InquiryForm variant="almenn" />
+                <InquiryForm variant="almenn" email={site.email} />
               </div>
             </RevealOnScroll>
           </div>

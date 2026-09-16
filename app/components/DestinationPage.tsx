@@ -5,11 +5,13 @@ import Footer from "./Footer";
 import Hero from "./Hero";
 import RevealOnScroll from "./RevealOnScroll";
 import InquiryForm from "./InquiryForm";
-import { destinations, site, type Destination } from "../data/site";
+import type { Destination } from "../data/site";
+import { getContent } from "../lib/content";
 import { ArrowIcon, CheckIcon } from "./Icons";
 
 /** Sameiginleg uppsetning fyrir Flórens, Napoli·Amalfi·Pompei og Feneyjar. */
 export default function DestinationPage({ destination: d }: { destination: Destination }) {
+  const { destinations, site } = getContent();
   const others = destinations.filter((o) => o.slug !== d.slug);
 
   return (
@@ -140,7 +142,7 @@ export default function DestinationPage({ destination: d }: { destination: Desti
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <InquiryForm variant="borg" destination={d.name} options={d.services.map((s) => s.title)} />
+                <InquiryForm variant="borg" destination={d.name} options={d.services.map((s) => s.title)} email={site.email} />
               </div>
             </RevealOnScroll>
           </div>

@@ -15,6 +15,12 @@ type Props = {
   /** Fyrir „borg“: nafn borgar og þjónusta sem hægt er að velja */
   destination?: string;
   options?: string[];
+  /** Heiti ferða í Róm (úr ritstýranlegu efni) */
+  tourOptions?: string[];
+  /** Heiti viðbótarþjónustu í villuna (úr ritstýranlegu efni) */
+  serviceOptions?: string[];
+  /** Netfang sem fyrirspurnin fer á */
+  email?: string;
   compact?: boolean;
 };
 
@@ -42,6 +48,9 @@ export default function InquiryForm({
   defaultInterest,
   destination,
   options = [],
+  tourOptions,
+  serviceOptions,
+  email = site.email,
   compact = false,
 }: Props) {
   const [sent, setSent] = useState(false);
@@ -104,7 +113,7 @@ export default function InquiryForm({
 
     const subject = encodeURIComponent(subjectParts.filter(Boolean).join(" · "));
     const body = encodeURIComponent(lines.join("\n"));
-    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
     setSent(true);
   }
 
@@ -118,8 +127,8 @@ export default function InquiryForm({
         <p className="mt-3 max-w-md mx-auto leading-relaxed text-white/60">
           Tölvupóstforritið þitt ætti að hafa opnast með fyrirspurninni. Ef ekki, sendu okkur
           línu beint á{" "}
-          <a href={`mailto:${site.email}`} className="text-gold-light underline underline-offset-4">
-            {site.email}
+          <a href={`mailto:${email}`} className="text-gold-light underline underline-offset-4">
+            {email}
           </a>{" "}
           eða á WhatsApp.
         </p>
@@ -156,8 +165,8 @@ export default function InquiryForm({
             <label htmlFor="rom-vidburdur" className={label}>Velja viðburð *</label>
             <select id="rom-vidburdur" name="vidburdur" required defaultValue={defaultTour ?? ""} className={`${field} cursor-pointer`}>
               <option value="" disabled>Veldu ferð eða þjónustu…</option>
-              {tours.map((t) => (
-                <option key={t.id} value={t.title}>{t.title}</option>
+              {(tourOptions ?? tours.map((t) => t.title)).map((t) => (
+                <option key={t} value={t}>{t}</option>
               ))}
               <option value="Annað / sérsniðin ferð">Annað / sérsniðin ferð</option>
             </select>
@@ -224,10 +233,10 @@ export default function InquiryForm({
           <div className="flex flex-col gap-3 md:col-span-2">
             <span className={label}>Áhugi á viðbótarþjónustu <span className="font-normal text-white/45">(valfrjálst)</span></span>
             <div className="flex flex-wrap gap-2">
-              {villaServices.map((s) => (
-                <label key={s.id} className="relative">
-                  <input type="checkbox" name="thjonusta" value={s.title} className="peer sr-only" />
-                  <span className={`inline-flex ${pill}`}>{s.title}</span>
+              {(serviceOptions ?? villaServices.map((s) => s.title)).map((title) => (
+                <label key={title} className="relative">
+                  <input type="checkbox" name="thjonusta" value={title} className="peer sr-only" />
+                  <span className={`inline-flex ${pill}`}>{title}</span>
                 </label>
               ))}
             </div>

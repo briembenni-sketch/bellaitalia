@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // data/content.json (efni úr /admin) þarf að fylgja með í serverless-pakkanum
+  outputFileTracingIncludes: {
+    "/**": ["./data/**"],
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,

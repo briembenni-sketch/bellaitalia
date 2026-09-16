@@ -7,7 +7,8 @@ import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import TourCard from "../components/TourCard";
 import RomInquiry from "../components/RomInquiry";
-import { tours, site, cityDestinations } from "../data/site";
+import { cityDestinations } from "../data/site";
+import { getContent } from "../lib/content";
 import { ArrowIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
@@ -16,7 +17,6 @@ export const metadata: Metadata = {
     "Vatíkanið og Colosseum með leiðsögn, vespuferðir, gönguferðir með Rómverjum, matreiðslunámskeið, flugvallarakstur, gisting í Róm og ferðir til Napoli, Amalfi og Capri.",
 };
 
-const byId = Object.fromEntries(tours.map((t) => [t.id, t]));
 const groups = [
   {
     eyebrow: "Með leiðsögn",
@@ -39,6 +39,8 @@ const groups = [
 ];
 
 export default function RomPage() {
+  const { tours, site } = getContent();
+  const byId = Object.fromEntries(tours.map((t) => [t.id, t]));
   return (
     <>
       <Navbar />
@@ -142,7 +144,7 @@ export default function RomPage() {
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <RomInquiry />
+                <RomInquiry tourOptions={tours.map((t) => t.title)} email={site.email} />
               </div>
             </RevealOnScroll>
           </div>

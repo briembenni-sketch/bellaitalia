@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { testimonials } from "../data/site";
+import { testimonials as defaultTestimonials } from "../data/site";
 import { ArrowIcon } from "./Icons";
 import RevealOnScroll from "./RevealOnScroll";
 
@@ -22,13 +22,14 @@ const initials = (name: string) =>
     .map((n) => n[0])
     .join("");
 
-type Item = (typeof testimonials)[number];
+type Item = (typeof defaultTestimonials)[number];
 type Dir = 1 | -1;
 type Tone = "light" | "dark";
 
 function Card({
   t,
   index,
+  total,
   tone,
   className = "",
   style,
@@ -36,6 +37,7 @@ function Card({
 }: {
   t: Item;
   index: number;
+  total: number;
   tone: Tone;
   className?: string;
   style?: React.CSSProperties;
@@ -60,7 +62,7 @@ function Card({
           &ldquo;
         </span>
         <span className={`text-xs font-display tabular-nums ${dark ? "text-white/40" : "text-ink/40"}`}>
-          {pad(index + 1)} / {pad(testimonials.length)}
+          {pad(index + 1)} / {pad(total)}
         </span>
       </div>
       <blockquote className={`mt-5 text-[15px] sm:text-base leading-relaxed ${dark ? "text-white/85" : "text-ink/80"}`}>
@@ -84,8 +86,9 @@ function Card({
   );
 }
 
-export default function Testimonials({ tone = "dark" }: { tone?: Tone }) {
+export default function Testimonials({ tone = "dark", items }: { tone?: Tone; items?: Item[] }) {
   const dark = tone === "dark";
+  const testimonials = items && items.length ? items : defaultTestimonials;
   const total = testimonials.length;
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState<{ index: number; dir: Dir } | null>(
@@ -202,6 +205,7 @@ export default function Testimonials({ tone = "dark" }: { tone?: Tone }) {
                   key={`out-${leaving.index}`}
                   t={testimonials[leaving.index]}
                   index={leaving.index}
+                  total={total}
                   tone={tone}
                   className="absolute inset-x-0 top-0 card-out pointer-events-none"
                   style={dirStyle(leaving.dir)}
@@ -212,6 +216,7 @@ export default function Testimonials({ tone = "dark" }: { tone?: Tone }) {
                 ref={activeRef}
                 t={testimonials[index]}
                 index={index}
+                total={total}
                 tone={tone}
                 className={leaving ? "card-in" : ""}
                 style={leaving ? dirStyle(leaving.dir) : undefined}

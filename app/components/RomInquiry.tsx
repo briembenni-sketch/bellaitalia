@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import InquiryForm from "./InquiryForm";
 
 /** Róm-fyrirspurn sem forvelur ferð ef smellt var á „Bóka“ á korti. */
-export default function RomInquiry() {
+export default function RomInquiry({ tourOptions, email }: { tourOptions?: string[]; email?: string }) {
   const [tour, setTour] = useState<string | undefined>(undefined);
   const [key, setKey] = useState(0);
 
@@ -32,5 +32,5 @@ export default function RomInquiry() {
     return () => window.removeEventListener("bella-tour", onEvent);
   }, []);
 
-  return <InquiryForm key={key} variant="rom" defaultTour={tour} />;
+  return <InquiryForm key={key} variant="rom" defaultTour={tour} tourOptions={tourOptions} email={email} />;
 }
