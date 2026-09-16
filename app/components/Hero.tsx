@@ -9,11 +9,13 @@ type Props = {
   actions?: ReactNode;
   scrollTo?: string;
   size?: "full" | "short";
+  /** Fyllir allan skjáinn án ramma – notað á forsíðu (landing) */
+  bleed?: boolean;
 };
 
 /**
- * Hero í ávölum ramma með mynd í fullri breidd:
- * fyrirsögn neðst til vinstri, lýsing og hnappar neðst til hægri.
+ * Hero með mynd í fullri breidd: fyrirsögn neðst til vinstri, lýsing og hnappar neðst til hægri.
+ * Sjálfgefið í ávölum ramma; með `bleed` fyllir myndin allan skjáinn.
  */
 export default function Hero({
   image,
@@ -23,12 +25,21 @@ export default function Hero({
   actions,
   scrollTo,
   size = "full",
+  bleed = false,
 }: Props) {
-  const height = size === "full" ? "min-h-[88svh] md:min-h-[90svh]" : "min-h-[56svh] md:min-h-[60svh]";
+  const height = bleed
+    ? "min-h-svh"
+    : size === "full"
+      ? "min-h-[88svh] md:min-h-[90svh]"
+      : "min-h-[56svh] md:min-h-[60svh]";
 
   return (
-    <section className="px-2.5 md:px-4 pt-2.5 md:pt-4">
-      <div className={`relative ${height} rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-ink flex items-end`}>
+    <section className={bleed ? "" : "px-2.5 md:px-4 pt-2.5 md:pt-4"}>
+      <div
+        className={`relative ${height} overflow-hidden bg-ink flex items-end ${
+          bleed ? "" : "rounded-[1.5rem] md:rounded-[2.5rem]"
+        }`}
+      >
         <Image
           src={image}
           alt={imageAlt}
@@ -42,7 +53,7 @@ export default function Hero({
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/30" />
 
         <div className="relative z-10 w-full px-5 sm:px-8 md:px-12 lg:px-16 pb-8 md:pb-14 pt-32 md:pt-40">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end">
+          <div className={`grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end ${bleed ? "mx-auto max-w-[1600px]" : ""}`}>
             <div className="lg:col-span-7">
               <h1 className="font-display font-medium text-white text-[2.5rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-[5.25rem] lg:leading-[1.02] tracking-tight animate-fade-up-delay-1">
                 {title}
