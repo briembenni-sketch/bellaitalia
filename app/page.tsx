@@ -50,8 +50,8 @@ export default function Home() {
         {/* ═══════════════ 1 · VILLUR ═══════════════ */}
         <section id="villur" className="relative min-h-svh flex flex-col justify-end overflow-hidden scroll-mt-0">
           <Image
-            src="/images/villa-stone.jpg"
-            alt="Steinhús með sundlaug í ítalskri sveit"
+            src="/images/landing-villur.jpg"
+            alt="Loftmynd af toskanskri villu með sundlaug í kvöldsól"
             fill
             quality={85}
             sizes="100vw"
