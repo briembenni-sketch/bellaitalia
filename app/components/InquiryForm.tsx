@@ -30,11 +30,11 @@ export const interestOptions = [
 ];
 
 const field =
-  "w-full rounded-2xl border border-ink/10 bg-mist px-4 py-3.5 text-ink placeholder:text-ink/35 focus:outline-none focus:border-forest focus:ring-4 focus:ring-forest/10 transition";
-const label = "text-sm font-medium text-ink/80";
-const hint = "text-xs text-ink/45";
+  "w-full rounded-2xl border border-white/15 bg-white/8 px-4 py-3.5 text-white placeholder:text-white/40 focus:outline-none focus:border-gold-light focus:ring-4 focus:ring-white/10 transition";
+const label = "text-sm font-medium text-white/80";
+const hint = "text-xs text-white/45";
 const pill =
-  "cursor-pointer select-none rounded-full border border-ink/12 bg-white px-4 py-2.5 text-sm text-ink/75 transition-colors hover:border-ink/30 peer-checked:bg-forest peer-checked:border-forest peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-forest/15";
+  "cursor-pointer select-none rounded-full border border-white/15 bg-white/8 px-4 py-2.5 text-sm text-white/80 transition-colors hover:border-white/40 peer-checked:bg-white peer-checked:border-white peer-checked:text-ink peer-focus-visible:ring-4 peer-focus-visible:ring-white/20";
 
 export default function InquiryForm({
   variant,
@@ -111,14 +111,14 @@ export default function InquiryForm({
   if (sent) {
     return (
       <div className="text-center py-12">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-leaf/15 text-forest mb-6">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-leaf/20 text-leaf mb-6">
           <CheckIcon className="w-7 h-7" />
         </div>
         <h3 className="font-display text-3xl font-medium tracking-tight">Takk fyrir!</h3>
-        <p className="mt-3 max-w-md mx-auto leading-relaxed text-ink/60">
+        <p className="mt-3 max-w-md mx-auto leading-relaxed text-white/60">
           Tölvupóstforritið þitt ætti að hafa opnast með fyrirspurninni. Ef ekki, sendu okkur
           línu beint á{" "}
-          <a href={`mailto:${site.email}`} className="text-forest underline underline-offset-4">
+          <a href={`mailto:${site.email}`} className="text-gold-light underline underline-offset-4">
             {site.email}
           </a>{" "}
           eða á WhatsApp.
@@ -189,27 +189,27 @@ export default function InquiryForm({
             <input id="villur-dagsetningar" name="dagsetningar" type="text" required placeholder="t.d. 5.–12. júlí 2026" className={field} />
           </div>
 
-          <fieldset className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-3xl bg-mist/60 border border-ink/5 p-4 sm:p-5">
+          <fieldset className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-3xl bg-white/5 border border-white/10 p-4 sm:p-5">
             <legend className="sr-only">Fjöldi í hóp</legend>
             <div className="flex flex-col gap-2">
               <label htmlFor="villur-fullordnir" className={label}>Fullorðnir *</label>
-              <input id="villur-fullordnir" name="fullordnir" type="number" inputMode="numeric" min={1} max={40} required placeholder="t.d. 6" className={`${field} bg-white`} />
+              <input id="villur-fullordnir" name="fullordnir" type="number" inputMode="numeric" min={1} max={40} required placeholder="t.d. 6" className={`${field} bg-white/10`} />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="villur-born" className={label}>Börn 2–17 ára *</label>
-              <input id="villur-born" name="born" type="number" inputMode="numeric" min={0} max={40} required placeholder="0" className={`${field} bg-white`} />
+              <input id="villur-born" name="born" type="number" inputMode="numeric" min={0} max={40} required placeholder="0" className={`${field} bg-white/10`} />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="villur-born2" className={label}>Börn undir 2 ára *</label>
-              <input id="villur-born2" name="born2" type="number" inputMode="numeric" min={0} max={20} required placeholder="0" className={`${field} bg-white`} />
+              <input id="villur-born2" name="born2" type="number" inputMode="numeric" min={0} max={20} required placeholder="0" className={`${field} bg-white/10`} />
               <span className={hint}>Skrifið 0 ef engin. Börn undir 2 ára þurfa oftast ekki eigið rúm.</span>
             </div>
           </fieldset>
 
           <div id="villur-svaedi" className="flex flex-col gap-3 md:col-span-2 scroll-mt-32">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <span className={label}>Hvaða svæði? * <span className="font-normal text-ink/45">(hakaðu við eitt eða fleiri)</span></span>
-              {regionError && <span className="text-sm font-medium text-red-600">Veldu að minnsta kosti eitt svæði</span>}
+              <span className={label}>Hvaða svæði? * <span className="font-normal text-white/45">(hakaðu við eitt eða fleiri)</span></span>
+              {regionError && <span className="text-sm font-medium text-red-400">Veldu að minnsta kosti eitt svæði</span>}
             </div>
             <div className={`flex flex-wrap gap-2 ${regionError ? "rounded-2xl ring-2 ring-red-400/60 p-2 -m-2" : ""}`}>
               {villaRegions.map((r) => (
@@ -222,7 +222,7 @@ export default function InquiryForm({
           </div>
 
           <div className="flex flex-col gap-3 md:col-span-2">
-            <span className={label}>Áhugi á viðbótarþjónustu <span className="font-normal text-ink/45">(valfrjálst)</span></span>
+            <span className={label}>Áhugi á viðbótarþjónustu <span className="font-normal text-white/45">(valfrjálst)</span></span>
             <div className="flex flex-wrap gap-2">
               {villaServices.map((s) => (
                 <label key={s.id} className="relative">
@@ -306,11 +306,11 @@ export default function InquiryForm({
           href={site.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 px-6 py-4 text-sm font-medium text-ink hover:bg-ink hover:text-white transition-colors w-full sm:w-auto"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-4 text-sm font-medium text-white hover:bg-white hover:text-ink transition-colors w-full sm:w-auto"
         >
           <WhatsAppIcon className="w-4 h-4" /> eða WhatsApp
         </a>
-        <p className="sm:ml-auto text-xs text-ink/45 text-center sm:text-right">
+        <p className="sm:ml-auto text-xs text-white/45 text-center sm:text-right">
           Það kostar ekkert að fá tilboð.
           <br className="hidden sm:block" /> Við svörum yfirleitt innan sólarhrings.
         </p>

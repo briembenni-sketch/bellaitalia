@@ -40,32 +40,34 @@ export default function BrudkaupPage() {
         <section id="um" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-16 md:pt-28 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             <RevealOnScroll className="lg:col-span-7">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">{wedding.eyebrow}</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{wedding.eyebrow}</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
                 Dagurinn sem á að vera fullkominn
               </h2>
-              <div className="mt-6 space-y-4 text-ink/65 leading-relaxed text-[16px] md:text-[17px]">
+              <div className="mt-6 space-y-4 text-white/65 leading-relaxed text-[16px] md:text-[17px]">
                 {wedding.intro.map((p) => (
                   <p key={p}>{p}</p>
                 ))}
               </div>
               <ul className="mt-6 flex flex-wrap gap-2">
                 {wedding.ideas.map((i) => (
-                  <li key={i} className="rounded-full bg-mist px-4 py-2 text-sm text-ink/75">{i}</li>
+                  <li key={i} className="rounded-full bg-white/8 px-4 py-2 text-sm text-white/75">{i}</li>
                 ))}
               </ul>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-5">
-              <div className="relative aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-mist">
-                <Image src={wedding.image2} alt={wedding.image2Alt} fill quality={60} sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
+              <div className="relative aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-white/8">
+                <Image src={wedding.image2} alt={wedding.image2Alt} fill quality={85} sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
               </div>
             </RevealOnScroll>
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1400px] px-2.5 md:px-4 pt-20 md:pt-32">
-          <RevealOnScroll>
-            <div className="rounded-[1.5rem] md:rounded-[2.5rem] bg-forest text-white p-6 sm:p-8 md:p-14">
+        <section className="relative mt-20 md:mt-32 min-h-[70svh] flex items-center overflow-hidden">
+          <Image src="/images/gallery-08.jpg" alt="Kvöldverður á verönd í Toskana" fill quality={85} sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/60" />
+          <RevealOnScroll className="relative z-10 w-full">
+            <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-24 text-white">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
                 <div className="md:col-span-5">
                   <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Allt á einum stað</span>
@@ -92,12 +94,12 @@ export default function BrudkaupPage() {
         <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 pb-20 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <RevealOnScroll className="lg:col-span-4">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Brúðkaup & tilefni</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Brúðkaup & tilefni</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Segðu okkur frá tilefninu</h2>
-              <p className="mt-4 text-ink/60">
+              <p className="mt-4 text-white/60">
                 Hvenær, hve mörg og hvar á Ítalíu – við komum til baka með hugmyndir og tillögu.
               </p>
-              <p className="mt-6 text-sm text-ink/50">
+              <p className="mt-6 text-sm text-white/50">
                 {site.phoneIS} (Ísland)
                 <br />
                 {site.phoneIT} (Ítalía / WhatsApp)
@@ -106,7 +108,7 @@ export default function BrudkaupPage() {
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
-              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white border border-ink/5 p-5 sm:p-6 md:p-10">
+              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
                 <InquiryForm variant="almenn" defaultInterest="Brúðkaup / sérstakt tilefni" />
               </div>
             </RevealOnScroll>

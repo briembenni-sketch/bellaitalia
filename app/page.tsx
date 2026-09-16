@@ -25,7 +25,6 @@ export default function Home() {
       <main>
         {/* ═══════════════ HERO ═══════════════ */}
         <Hero
-          bleed
           image="/images/hero-villa.jpg"
           imageAlt="Villa með sundlaug og sýprusviðum í Toskana"
           title={
@@ -54,7 +53,7 @@ export default function Home() {
             src="/images/villa-stone.jpg"
             alt="Steinhús með sundlaug í ítalskri sveit"
             fill
-            quality={60}
+            quality={85}
             sizes="100vw"
             className="object-cover"
           />
@@ -94,7 +93,7 @@ export default function Home() {
                       src={v.image}
                       alt={v.imageAlt}
                       fill
-                      quality={60}
+                      quality={85}
                       sizes="(max-width: 1024px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     />
@@ -147,7 +146,7 @@ export default function Home() {
                   src={s.image}
                   alt={s.imageAlt}
                   fill
-                  quality={60}
+                  quality={85}
                   sizes="(max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                 />
@@ -194,7 +193,7 @@ export default function Home() {
                   src={d.cardImage}
                   alt={d.imageAlt}
                   fill
-                  quality={60}
+                  quality={85}
                   sizes={i === 0 ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 1024px) 50vw, 25vw"}
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
@@ -221,7 +220,7 @@ export default function Home() {
 
         {/* ═══════════════ 3 · BRÚÐKAUP ═══════════════ */}
         <section className="relative min-h-[85svh] md:min-h-svh flex items-end overflow-hidden">
-          <Image src={wedding.image} alt={wedding.imageAlt} fill quality={60} sizes="100vw" className="object-cover" />
+          <Image src={wedding.image} alt={wedding.imageAlt} fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-ink/25" />
           <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-32 pb-10 md:pb-16">
             <RevealOnScroll>
@@ -248,7 +247,7 @@ export default function Home() {
 
         {/* ═══════════════ UMSAGNIR ═══════════════ */}
         <section className="relative py-24 md:py-32 overflow-hidden">
-          <Image src="/images/gallery-08.jpg" alt="" fill quality={60} sizes="100vw" className="object-cover" />
+          <Image src="/images/gallery-08.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-ink/85" />
           <div className="relative z-10">
             <Testimonials tone="dark" />
@@ -257,7 +256,7 @@ export default function Home() {
 
         {/* ═══════════════ HAFA SAMBAND ═══════════════ */}
         <section className="relative min-h-svh flex items-center overflow-hidden">
-          <Image src="/images/gallery-01.jpg" alt="Trevi gosbrunnurinn í Róm" fill quality={60} sizes="100vw" className="object-cover" />
+          <Image src="/images/gallery-01.jpg" alt="Trevi gosbrunnurinn í Róm" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink" />
           <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 md:px-10 py-24 md:py-32">
             <RevealOnScroll>

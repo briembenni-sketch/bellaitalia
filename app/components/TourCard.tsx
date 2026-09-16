@@ -15,7 +15,7 @@ export default function TourCard({ tour, tall = false }: Props) {
     <>
       <article
         id={tour.id}
-        className="group relative flex flex-col rounded-3xl bg-white border border-ink/5 overflow-hidden scroll-mt-28 hover:border-ink/15 transition-colors h-full"
+        className="group relative flex flex-col rounded-3xl bg-white/5 border border-white/10 overflow-hidden scroll-mt-28 hover:border-white/25 transition-colors h-full"
       >
         <button
           type="button"
@@ -41,10 +41,10 @@ export default function TourCard({ tour, tall = false }: Props) {
 
         <div className="flex flex-col flex-1 p-6">
           <h3 className="font-display text-2xl font-medium tracking-tight leading-tight">{tour.title}</h3>
-          <p className="mt-3 text-[15px] text-ink/60 leading-relaxed line-clamp-3">{tour.summary}</p>
+          <p className="mt-3 text-[15px] text-white/60 leading-relaxed line-clamp-3">{tour.summary}</p>
           <ul className="mt-4 flex flex-wrap gap-2">
             {tour.highlights.slice(0, 3).map((h) => (
-              <li key={h} className="rounded-full bg-mist px-3 py-1 text-xs text-ink/70">
+              <li key={h} className="rounded-full bg-white/8 px-3 py-1 text-xs text-white/70">
                 {h}
               </li>
             ))}
@@ -53,14 +53,14 @@ export default function TourCard({ tour, tall = false }: Props) {
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-forest hover:text-forest-deep transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-gold-light hover:text-white transition-colors"
             >
               Lesa meira <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </button>
             <a
               href="#fyrirspurn"
               onClick={() => rememberTour(tour.title)}
-              className="inline-flex items-center rounded-full border border-ink/15 px-4 py-2 text-sm font-medium hover:bg-ink hover:text-white transition-colors"
+              className="inline-flex items-center rounded-full border border-white/20 px-4 py-2 text-sm font-medium hover:bg-white hover:text-ink transition-colors"
             >
               Bóka
             </a>
@@ -105,7 +105,7 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
       aria-labelledby={`modal-${tour.id}`}
     >
       <div className="absolute inset-0 bg-ink/70 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full md:max-w-4xl max-h-[92vh] md:max-h-[88vh] overflow-y-auto bg-paper text-ink rounded-t-[2rem] md:rounded-[2rem] shadow-2xl animate-slide-up">
+      <div className="relative w-full md:max-w-4xl max-h-[92vh] md:max-h-[88vh] overflow-y-auto bg-ink-soft text-white rounded-t-[2rem] md:rounded-[2rem] shadow-2xl animate-slide-up">
         <button
           type="button"
           onClick={onClose}
@@ -127,7 +127,7 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
               {tour.title}
             </h2>
 
-            <div className="mt-6 space-y-4 text-ink/70 leading-relaxed">
+            <div className="mt-6 space-y-4 text-white/70 leading-relaxed">
               {d.intro.map((p) => (
                 <p key={p}>{p}</p>
               ))}
@@ -136,8 +136,8 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
             {(d.schedule || d.duration) && (
               <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {d.schedule && (
-                  <div className="rounded-2xl bg-mist p-4">
-                    <h3 className="text-xs font-medium tracking-[0.15em] uppercase text-ink/50">Brottför</h3>
+                  <div className="rounded-2xl bg-white/8 p-4">
+                    <h3 className="text-xs font-medium tracking-[0.15em] uppercase text-white/50">Brottför</h3>
                     <ul className="mt-2 space-y-1 text-sm">
                       {d.schedule.map((s) => (
                         <li key={s}>{s}</li>
@@ -146,10 +146,10 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
                   </div>
                 )}
                 {d.duration && (
-                  <div className="rounded-2xl bg-mist p-4">
-                    <h3 className="text-xs font-medium tracking-[0.15em] uppercase text-ink/50">Lengd</h3>
+                  <div className="rounded-2xl bg-white/8 p-4">
+                    <h3 className="text-xs font-medium tracking-[0.15em] uppercase text-white/50">Lengd</h3>
                     <p className="mt-2 text-sm flex items-center gap-2">
-                      <ClockIcon className="w-4 h-4 text-forest" /> {d.duration}
+                      <ClockIcon className="w-4 h-4 text-gold-light" /> {d.duration}
                     </p>
                   </div>
                 )}
@@ -158,13 +158,13 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
 
             {d.stops && (
               <div className="mt-7">
-                <h3 className="text-xs font-medium tracking-[0.15em] uppercase text-ink/50">
+                <h3 className="text-xs font-medium tracking-[0.15em] uppercase text-white/50">
                   {d.stops.length > 6 ? `${d.stops.length} skemmtileg stopp um alla Róm` : "Staðir"}
                 </h3>
                 <ol className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-sm">
                   {d.stops.map((s, i) => (
                     <li key={s} className="flex gap-3">
-                      <span className="text-forest font-semibold w-5 shrink-0 text-right">{i + 1}.</span> {s}
+                      <span className="text-gold-light font-semibold w-5 shrink-0 text-right">{i + 1}.</span> {s}
                     </li>
                   ))}
                 </ol>
@@ -173,7 +173,7 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
 
             {d.included && (
               <div className="mt-7">
-                <h3 className="text-xs font-medium tracking-[0.15em] uppercase text-ink/50">Innifalið</h3>
+                <h3 className="text-xs font-medium tracking-[0.15em] uppercase text-white/50">Innifalið</h3>
                 <ul className="mt-3 space-y-2 text-sm">
                   {d.included.map((s) => (
                     <li key={s} className="flex gap-3">
@@ -184,7 +184,7 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
               </div>
             )}
 
-            <div className="mt-8 rounded-2xl bg-ink text-white p-5">
+            <div className="mt-8 rounded-2xl bg-white/8 border border-white/10 text-white p-5">
               <h3 className="text-xs font-medium tracking-[0.15em] uppercase text-sand">Kostnaður</h3>
               {tour.prices ? (
                 <dl className="mt-3 space-y-2">
@@ -216,7 +216,7 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
                 href={site.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 px-8 py-4 text-sm font-medium hover:bg-ink hover:text-white transition-colors"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-4 text-sm font-medium hover:bg-white hover:text-ink transition-colors"
               >
                 <WhatsAppIcon className="w-4 h-4" /> WhatsApp
               </a>

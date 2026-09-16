@@ -68,7 +68,7 @@ export default function RomPage() {
               <a
                 key={t.id}
                 href={`#${t.id}`}
-                className="shrink-0 rounded-full border border-ink/12 bg-white px-4 py-2 text-sm text-ink/75 hover:bg-ink hover:text-white hover:border-ink transition-colors"
+                className="shrink-0 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm text-white/80 hover:bg-white hover:text-ink hover:border-white transition-colors"
               >
                 {t.shortTitle}
               </a>
@@ -81,10 +81,10 @@ export default function RomPage() {
             <RevealOnScroll>
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
                 <div>
-                  <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">{g.eyebrow}</span>
+                  <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{g.eyebrow}</span>
                   <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">{g.title}</h2>
                 </div>
-                <p className="text-ink/60 max-w-md md:text-right">{g.text}</p>
+                <p className="text-white/60 max-w-md md:text-right">{g.text}</p>
               </div>
             </RevealOnScroll>
             <div className={`grid grid-cols-1 md:grid-cols-2 ${g.ids.length === 4 ? "xl:grid-cols-4" : "lg:grid-cols-3"} gap-4 md:gap-5`}>
@@ -98,9 +98,11 @@ export default function RomPage() {
         ))}
 
         {/* Hópar */}
-        <section className="mx-auto max-w-[1400px] px-2.5 md:px-4 pt-20 md:pt-32">
-          <RevealOnScroll>
-            <div className="rounded-[1.5rem] md:rounded-[2.5rem] bg-ink text-white p-6 sm:p-8 md:p-14">
+        <section className="relative mt-20 md:mt-32 min-h-[70svh] flex items-center overflow-hidden">
+          <Image src="/images/gallery-02.jpg" alt="Pantheon í Róm við sólarupprás" fill quality={85} sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/25" />
+          <RevealOnScroll className="relative z-10 w-full">
+            <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-24 text-white">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
                 <div className="md:col-span-8">
                   <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Hópar & sérstök tilefni</span>
@@ -127,10 +129,10 @@ export default function RomPage() {
         <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 pb-20 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <RevealOnScroll className="lg:col-span-4">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Róm</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Róm</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Senda fyrirspurn</h2>
-              <p className="mt-4 text-ink/60">Veldu viðburð og við höfum samband með tilboð og lausa tíma.</p>
-              <p className="mt-6 text-sm text-ink/50">
+              <p className="mt-4 text-white/60">Veldu viðburð og við höfum samband með tilboð og lausa tíma.</p>
+              <p className="mt-6 text-sm text-white/50">
                 {site.phoneIS} (Ísland)
                 <br />
                 {site.phoneIT} (Ítalía / WhatsApp)
@@ -139,7 +141,7 @@ export default function RomPage() {
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
-              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white border border-ink/5 p-5 sm:p-6 md:p-10">
+              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
                 <RomInquiry />
               </div>
             </RevealOnScroll>
@@ -151,10 +153,10 @@ export default function RomPage() {
           <RevealOnScroll>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Fleiri borgir</span>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Fleiri borgir</span>
                 <h2 className="mt-3 font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight leading-[1.05]">Flórens, Napoli & Feneyjar</h2>
               </div>
-              <Link href="/borgir" className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-3 text-sm font-medium hover:bg-ink hover:text-white transition-colors w-fit">
+              <Link href="/borgir" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-medium hover:bg-white hover:text-ink transition-colors w-fit">
                 Allar borgir <ArrowIcon className="w-4 h-4" />
               </Link>
             </div>
@@ -163,7 +165,7 @@ export default function RomPage() {
             {cityDestinations.map((o) => (
               <RevealOnScroll key={o.slug}>
                 <Link href={`/borgir/${o.slug}`} className="group relative block aspect-[4/3] rounded-2xl md:rounded-3xl overflow-hidden bg-ink">
-                  <Image src={o.cardImage} alt={o.imageAlt} fill quality={60} sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                  <Image src={o.cardImage} alt={o.imageAlt} fill quality={85} sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/15 to-transparent" />
                   <div className="absolute bottom-0 p-5 text-white">
                     <span className="text-[11px] uppercase tracking-[0.15em] text-sand">{o.eyebrow}</span>
@@ -177,9 +179,9 @@ export default function RomPage() {
 
         <section className="mx-auto max-w-[1400px] px-5 md:px-10 pb-8">
           <RevealOnScroll>
-            <div className="rounded-3xl bg-mist p-5 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div className="rounded-3xl bg-white/8 p-5 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-5">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Villur</span>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Villur</span>
                 <h3 className="mt-2 font-display text-xl sm:text-2xl md:text-3xl font-medium tracking-tight">
                   Róm og vika í villu á Ítalíu í sömu ferð
                 </h3>

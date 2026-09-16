@@ -9,7 +9,7 @@ type Props = {
   actions?: ReactNode;
   scrollTo?: string;
   size?: "full" | "short";
-  /** Fyllir allan skjáinn án ramma – notað á forsíðu (landing) */
+  /** Fyllir allan skjáinn án ramma (sjálfgefið); false gefur ávalan ramma */
   bleed?: boolean;
 };
 
@@ -25,10 +25,12 @@ export default function Hero({
   actions,
   scrollTo,
   size = "full",
-  bleed = false,
+  bleed = true,
 }: Props) {
   const height = bleed
-    ? "min-h-svh"
+    ? size === "short"
+      ? "min-h-[72svh] md:min-h-[78svh]"
+      : "min-h-svh"
     : size === "full"
       ? "min-h-[88svh] md:min-h-[90svh]"
       : "min-h-[56svh] md:min-h-[60svh]";
@@ -46,7 +48,7 @@ export default function Hero({
           fill
           preload
           fetchPriority="high"
-          quality={60}
+          quality={90}
           sizes="100vw"
           className="object-cover"
         />

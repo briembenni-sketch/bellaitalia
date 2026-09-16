@@ -97,7 +97,7 @@ function Card({
   );
 }
 
-export default function Testimonials({ tone = "light" }: { tone?: Tone }) {
+export default function Testimonials({ tone = "dark" }: { tone?: Tone }) {
   const dark = tone === "dark";
   const total = testimonials.length;
   const [index, setIndex] = useState(0);

@@ -20,7 +20,7 @@ const cityLinks = [
 export default function Footer() {
   return (
     <footer className="px-2.5 md:px-4 pb-2.5 md:pb-4 pt-6">
-      <div className="mx-auto max-w-[1400px] rounded-[1.5rem] md:rounded-[2.5rem] bg-ink text-white/70 overflow-hidden">
+      <div className="mx-auto max-w-[1400px] rounded-[1.5rem] md:rounded-[2.5rem] bg-ink-soft border border-white/10 text-white/70 overflow-hidden">
         <div className="px-6 md:px-12 py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
             <div className="flex items-center gap-4">

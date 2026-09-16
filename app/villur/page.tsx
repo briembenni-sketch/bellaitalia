@@ -52,11 +52,11 @@ export default function VillurPage() {
         <section id="um" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-16 md:pt-28 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
             <RevealOnScroll className="lg:col-span-7">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Að leigja hús á Ítalíu</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Að leigja hús á Ítalíu</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
                 Við finnum réttu eignina
               </h2>
-              <div className="mt-6 space-y-4 text-ink/65 leading-relaxed text-[16px] md:text-[17px]">
+              <div className="mt-6 space-y-4 text-white/65 leading-relaxed text-[16px] md:text-[17px]">
                 {villaText.intro.map((p) => (
                   <p key={p}>{p}</p>
                 ))}
@@ -83,10 +83,10 @@ export default function VillurPage() {
           <RevealOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Úrval húsa</span>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Úrval húsa</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Dæmi um villur</h2>
               </div>
-              <p className="text-ink/60 max-w-md md:text-right">
+              <p className="text-white/60 max-w-md md:text-right">
                 Nokkur dæmi um gerðir af húsum sem eru í boði. Úrvalið er miklu stærra og við finnum
                 eign sem passar stærð hópsins, svæði og verðhugmynd.
               </p>
@@ -100,12 +100,12 @@ export default function VillurPage() {
             ))}
           </div>
           <RevealOnScroll>
-            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-mist p-5 md:p-6">
-              <p className="text-ink/65 text-[15px] max-w-2xl">
+            <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-white/8 p-5 md:p-6">
+              <p className="text-white/65 text-[15px] max-w-2xl">
                 Viltu skoða fleiri hús? Hér er hluti af úrvalinu hjá samstarfsaðila okkar – en best er
                 að senda okkur fyrirspurn svo við getum þrengt valið fyrir ykkur.
               </p>
-              <a href={site.villaCatalog} target="_blank" rel="noopener noreferrer" className="shrink-0 inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3.5 text-sm font-medium hover:bg-ink hover:text-white transition-colors">
+              <a href={site.villaCatalog} target="_blank" rel="noopener noreferrer" className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm font-medium hover:bg-white hover:text-ink transition-colors">
                 Skoða úrval ↗
               </a>
             </div>
@@ -117,10 +117,10 @@ export default function VillurPage() {
           <RevealOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Viðbótarþjónusta í villuna</span>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Viðbótarþjónusta í villuna</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Meira en bara húsið</h2>
               </div>
-              <p className="text-ink/60 max-w-md md:text-right">{villaText.bookingBenefit}</p>
+              <p className="text-white/60 max-w-md md:text-right">{villaText.bookingBenefit}</p>
             </div>
           </RevealOnScroll>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
@@ -131,7 +131,7 @@ export default function VillurPage() {
             ))}
           </div>
           <RevealOnScroll>
-            <p className="mt-6 text-ink/60 text-[15px] leading-relaxed max-w-3xl">
+            <p className="mt-6 text-white/60 text-[15px] leading-relaxed max-w-3xl">
               {villaText.service[0]}
             </p>
           </RevealOnScroll>
@@ -142,17 +142,17 @@ export default function VillurPage() {
           <RevealOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Svæði</span>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Svæði</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Hvert á Ítalíu?</h2>
               </div>
-              <p className="text-ink/60 max-w-md md:text-right">{villaText.intro[2]}</p>
+              <p className="text-white/60 max-w-md md:text-right">{villaText.intro[2]}</p>
             </div>
           </RevealOnScroll>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-5">
             {regions.map((r) => (
               <RevealOnScroll key={r.name}>
-                <div className="group relative aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden bg-mist">
-                  <Image src={r.image} alt={r.name} fill quality={60} sizes="(max-width: 1024px) 50vw, 20vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                <div className="group relative aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden bg-white/8">
+                  <Image src={r.image} alt={r.name} fill quality={85} sizes="(max-width: 1024px) 50vw, 20vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
                   <div className="absolute bottom-0 p-4 md:p-5 text-white">
                     <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight">{r.name}</h3>
@@ -168,17 +168,17 @@ export default function VillurPage() {
         <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <RevealOnScroll className="lg:col-span-4">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Verðhugmyndir á leigu</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Verðhugmyndir á leigu</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Viðmið eftir stærð</h2>
-              <p className="mt-4 text-ink/60 text-[15px] leading-relaxed">{villaText.pricingNote}</p>
+              <p className="mt-4 text-white/60 text-[15px] leading-relaxed">{villaText.pricingNote}</p>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
-              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white border border-ink/5 divide-y divide-ink/5 overflow-hidden">
+              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 divide-y divide-white/10 overflow-hidden">
                 {villaPricing.map((row) => (
                   <div key={row.size} className="grid grid-cols-1 sm:grid-cols-3 gap-0.5 sm:gap-6 items-baseline px-5 md:px-8 py-4 md:py-5">
                     <span className="font-medium">{row.size}</span>
-                    <span className="font-display text-xl md:text-2xl font-medium text-forest">{row.eur}</span>
-                    <span className="text-sm text-ink/50 sm:text-right">({row.isk})</span>
+                    <span className="font-display text-xl md:text-2xl font-medium text-gold-light">{row.eur}</span>
+                    <span className="text-sm text-white/50 sm:text-right">({row.isk})</span>
                   </div>
                 ))}
               </div>
@@ -190,19 +190,19 @@ export default function VillurPage() {
         <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 pb-20 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <RevealOnScroll className="lg:col-span-4">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Villur</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Villur</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
                 Viltu fá okkur til að finna réttu eignina?
               </h2>
-              <p className="mt-4 text-ink/60">
+              <p className="mt-4 text-white/60">
                 Þar sem mörg hús eru í boði þurfum við að vita dagsetningar, hvaða svæði koma til
                 greina og hve mörg þið eruð – fullorðnir, börn og börn undir 2 ára – svo við getum
                 þrengt valið. Um leið og við höfum svörin finnum við hús sem hentar ykkar hóp.
               </p>
-              <p className="mt-6 text-sm text-ink/50">{villaText.service[1]}</p>
+              <p className="mt-6 text-sm text-white/50">{villaText.service[1]}</p>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
-              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white border border-ink/5 p-5 sm:p-6 md:p-10">
+              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
                 <InquiryForm variant="villur" />
               </div>
             </RevealOnScroll>

@@ -1,11 +1,11 @@
-// Minnkar og þjappar myndum í public/images (max 2000px breidd, mozjpeg q80).
+// Minnkar og þjappar myndum í public/images (max 2400px breidd, mozjpeg q88).
 // Keyrt með: node scripts/optimize-images.mjs
 import sharp from "sharp";
 import { readdir, readFile, stat, rename, unlink } from "node:fs/promises";
 import path from "node:path";
 
 const dir = path.resolve("public/images");
-const MAX_W = 2000;
+const MAX_W = 2400;
 const files = (await readdir(dir)).filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
 
 let before = 0;
@@ -23,9 +23,9 @@ for (const f of files) {
   const ext = path.extname(f).toLowerCase();
   const tmp = src + ".tmp";
   let pipeline = img.resize({ width: w, withoutEnlargement: true });
-  if (ext === ".webp") pipeline = pipeline.webp({ quality: 80 });
+  if (ext === ".webp") pipeline = pipeline.webp({ quality: 88 });
   else if (ext === ".png") pipeline = pipeline.png({ compressionLevel: 9 });
-  else pipeline = pipeline.jpeg({ quality: 80, mozjpeg: true, progressive: true });
+  else pipeline = pipeline.jpeg({ quality: 88, mozjpeg: true, progressive: true });
 
   await pipeline.toFile(tmp);
   const { size: newSize } = await stat(tmp);

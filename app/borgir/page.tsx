@@ -42,10 +42,10 @@ export default function BorgirPage() {
           <RevealOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Skoðunarferðir & skipulagning</span>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Skoðunarferðir & skipulagning</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Hvert á að fara?</h2>
               </div>
-              <p className="text-ink/60 max-w-md md:text-right">
+              <p className="text-white/60 max-w-md md:text-right">
                 Við vinnum fyrst og fremst með þessa fjóra áfangastaði og setjum saman dagskrá, leiðsögn og miða fyrir ykkur.
               </p>
             </div>
@@ -62,7 +62,7 @@ export default function BorgirPage() {
                     src={d.cardImage}
                     alt={d.imageAlt}
                     fill
-                    quality={60}
+                    quality={85}
                     sizes={i === 0 ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
@@ -84,15 +84,15 @@ export default function BorgirPage() {
         <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 pb-20 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <RevealOnScroll className="lg:col-span-4">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Skipulagning</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Skipulagning</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Ekki viss hvar á að byrja?</h2>
-              <p className="mt-4 text-ink/60">
+              <p className="mt-4 text-white/60">
                 Segðu okkur hvenær þið farið, hve mörg þið eruð og hvað ykkur langar að sjá – við bendum á
                 bestu leiðina og setjum saman dagskrá.
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
-              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white border border-ink/5 p-5 sm:p-6 md:p-10">
+              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
                 <InquiryForm variant="almenn" />
               </div>
             </RevealOnScroll>

@@ -34,16 +34,16 @@ export default function FyrirspurnPage() {
         <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-12 md:pt-20 pb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <RevealOnScroll className="lg:col-span-4">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-gold">Eða hafðu samband beint</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Eða hafðu samband beint</span>
               <ul className="mt-5 space-y-3">
                 {contacts.map((c) => (
                   <li key={c.label}>
-                    <a href={c.href} className="group flex items-center gap-4 rounded-2xl bg-white border border-ink/5 p-4 hover:border-forest/30 transition-colors">
-                      <span className="w-11 h-11 shrink-0 rounded-xl bg-forest/10 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
+                    <a href={c.href} className="group flex items-center gap-4 rounded-2xl bg-white/5 border border-white/10 p-4 hover:border-white/30 transition-colors">
+                      <span className="w-11 h-11 shrink-0 rounded-xl bg-white/10 text-white flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
                         {c.icon}
                       </span>
                       <span className="min-w-0">
-                        <span className="block text-xs text-ink/50">{c.label}</span>
+                        <span className="block text-xs text-white/50">{c.label}</span>
                         <span className="block font-medium truncate">{c.value}</span>
                       </span>
                     </a>
@@ -52,7 +52,7 @@ export default function FyrirspurnPage() {
               </ul>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
-              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white border border-ink/5 p-5 sm:p-6 md:p-10">
+              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
                 <InquiryForm variant="almenn" />
               </div>
             </RevealOnScroll>

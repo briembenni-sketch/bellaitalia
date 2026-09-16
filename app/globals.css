@@ -29,8 +29,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--color-ink);
+  color: #fff;
   overflow-x: hidden;
 }
 
@@ -163,8 +163,8 @@ input, textarea, select, button {
   font-family: var(--font-sans);
 }
 select option {
-  color: var(--color-ink);
-  background: #fff;
+  color: #fff;
+  background: var(--color-ink-soft);
 }
 
 /* Fela scrollbar á láréttum flýtivals-listum */

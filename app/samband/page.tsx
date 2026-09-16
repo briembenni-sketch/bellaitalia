@@ -41,21 +41,23 @@ export default function SambandPage() {
                   href={c.href}
                   target={c.href.startsWith("http") ? "_blank" : undefined}
                   rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group block rounded-3xl bg-white border border-ink/5 p-8 h-full hover:border-forest/30 transition-colors"
+                  className="group block rounded-3xl bg-white/5 border border-white/10 p-8 h-full hover:border-white/30 transition-colors"
                 >
-                  <span className="w-12 h-12 rounded-2xl bg-forest/10 text-forest flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
+                  <span className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
                     {c.icon}
                   </span>
-                  <h2 className="mt-6 text-xs text-ink/50">{c.title}</h2>
+                  <h2 className="mt-6 text-xs text-white/50">{c.title}</h2>
                   <p className="mt-1 font-display text-2xl font-medium tracking-tight break-all">{c.value}</p>
-                  <p className="mt-1 text-sm text-ink/50">{c.sub}</p>
+                  <p className="mt-1 text-sm text-white/50">{c.sub}</p>
                 </a>
               </RevealOnScroll>
             ))}
           </div>
 
           <RevealOnScroll>
-            <div className="mt-5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-[1.5rem] md:rounded-[2.5rem] bg-ink text-white p-6 sm:p-8 md:p-14 overflow-hidden relative">
+            <div className="mt-5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-[1.5rem] md:rounded-[2.5rem] text-white p-6 sm:p-8 md:p-14 overflow-hidden relative">
+              <Image src="/images/gallery-02.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/40" />
               
               <div className="relative lg:col-span-8">
                 <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{site.legalName}</span>

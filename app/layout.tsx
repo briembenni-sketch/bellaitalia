@@ -49,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="is" className={`${outfit.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-paper text-ink antialiased">{children}</body>
+      <body className="min-h-screen bg-ink text-white antialiased">{children}</body>
     </html>
   );
 }
