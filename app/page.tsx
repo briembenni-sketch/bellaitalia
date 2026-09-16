@@ -122,47 +122,51 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══════════════ VIÐBÓTARÞJÓNUSTA – fjórar myndsúlur ═══════════════ */}
-        <section className="relative">
-          <div className="relative z-10 bg-ink pb-8 lg:absolute lg:inset-x-0 lg:top-0 lg:pointer-events-none lg:bg-transparent lg:bg-gradient-to-b lg:from-ink/85 lg:via-ink/50 lg:to-transparent lg:pb-32">
-            <div className="mx-auto max-w-[1600px] px-5 md:px-10 pt-12 lg:pt-28">
-              <RevealOnScroll>
-                <span className={eyebrow}>Í kringum villuna</span>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] text-white">
-                  Gerðu dvölina persónulegri
-                </h2>
-                <p className="mt-3 text-white/75 max-w-xl text-[15px] md:text-base">
+        {/* ═══════════════ VIÐBÓTARÞJÓNUSTA – hrein spjöld ═══════════════ */}
+        <section className="relative min-h-svh flex items-center bg-ink">
+          <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-28 pb-14 lg:pt-28 lg:pb-12">
+            <RevealOnScroll>
+              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 lg:gap-10 mb-8 md:mb-10">
+                <div className="max-w-2xl">
+                  <span className={eyebrow}>Í kringum villuna</span>
+                  <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] text-white">
+                    Gerðu dvölina persónulegri
+                  </h2>
+                </div>
+                <p className="text-white/60 text-[15px] md:text-base leading-relaxed max-w-md lg:text-right">
                   Viðbótarþjónusta sem tengist dvölinni og gerir ferðina sérstæðari – allt bókað í gegnum okkur.
                 </p>
-              </RevealOnScroll>
-            </div>
-          </div>
+              </div>
+            </RevealOnScroll>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-ink">
-            {villaServices.map((s) => (
-              <Link
-                key={s.id}
-                href="/villur#thjonusta"
-                className="group relative block min-h-[60svh] lg:min-h-svh overflow-hidden bg-ink-soft"
-              >
-                <Image
-                  src={s.image}
-                  alt={s.imageAlt}
-                  fill
-                  quality={85}
-                  sizes="(max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/25 to-ink/30" />
-                <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
-                  <h3 className="font-display text-xl md:text-2xl xl:text-3xl font-medium tracking-tight leading-tight break-words [hyphens:auto]">{s.title}</h3>
-                  <p className="mt-3 text-[14px] md:text-[15px] text-white/75 leading-relaxed max-w-xs">{s.text}</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
-                    Lesa meira <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </div>
-              </Link>
-            ))}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+              {villaServices.map((s, i) => (
+                <RevealOnScroll key={s.id} className="h-full">
+                  <Link href="/villur#thjonusta" className="group flex flex-col h-full">
+                    <div className="relative aspect-[4/5] lg:aspect-square rounded-2xl md:rounded-3xl overflow-hidden bg-ink-soft">
+                      <Image
+                        src={s.image}
+                        alt={s.imageAlt}
+                        fill
+                        quality={85}
+                        sizes="(max-width: 1024px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                      />
+                      <span className="absolute top-3 left-3 md:top-4 md:left-4 rounded-full tint px-3 py-1.5 text-[11px] md:text-xs text-white tabular-nums">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 font-display text-lg sm:text-xl md:text-2xl font-medium tracking-tight leading-tight text-white">
+                      {s.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-white/60 leading-relaxed line-clamp-3">{s.text}</p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-light group-hover:text-white transition-colors">
+                      Lesa meira <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </Link>
+                </RevealOnScroll>
+              ))}
+            </div>
           </div>
         </section>
 
