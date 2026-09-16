@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import RevealOnScroll from "./components/RevealOnScroll";
 import Testimonials from "./components/Testimonials";
+import SnapScroll from "./components/SnapScroll";
 import { site, tours, villas, villaServices, villaText, destinations, wedding } from "./data/site";
 import { ArrowIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIcon } from "./components/Icons";
 
@@ -21,6 +22,7 @@ const h2 = "mt-3 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-
 export default function Home() {
   return (
     <div className="bg-ink text-white">
+      <SnapScroll />
       <Navbar />
       <main>
         {/* ═══════════════ HERO ═══════════════ */}
@@ -59,7 +61,7 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/35 to-ink/95" />
 
-          <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-32 pb-8 md:pb-12">
+          <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-28 pb-5 md:pb-7">
             <RevealOnScroll>
               <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
                 <div className="max-w-2xl">
@@ -115,14 +117,14 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="mt-5 text-xs md:text-sm text-white/45 max-w-3xl">{villaText.pricingNote}</p>
+            <p className="mt-4 text-xs text-white/45 max-w-3xl">{villaText.pricingNote}</p>
           </div>
         </section>
 
         {/* ═══════════════ VIÐBÓTARÞJÓNUSTA – fjórar myndsúlur ═══════════════ */}
         <section className="relative">
           <div className="relative z-10 bg-ink pb-8 lg:absolute lg:inset-x-0 lg:top-0 lg:pointer-events-none lg:bg-transparent lg:bg-gradient-to-b lg:from-ink/85 lg:via-ink/50 lg:to-transparent lg:pb-32">
-            <div className="mx-auto max-w-[1600px] px-5 md:px-10 pt-12 lg:pt-14">
+            <div className="mx-auto max-w-[1600px] px-5 md:px-10 pt-12 lg:pt-28">
               <RevealOnScroll>
                 <span className={eyebrow}>Í kringum villuna</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] text-white">
@@ -166,7 +168,7 @@ export default function Home() {
         {/* ═══════════════ 2 · RÓM & AÐRAR BORGIR – myndamósaík ═══════════════ */}
         <section id="borgir" className="relative">
           <div className="relative z-10 bg-ink pb-8 lg:absolute lg:left-0 lg:right-1/2 lg:top-0 lg:pointer-events-none lg:bg-transparent lg:bg-gradient-to-b lg:from-ink/85 lg:via-ink/50 lg:to-transparent lg:pb-32">
-            <div className="mx-auto max-w-[1600px] px-5 md:px-10 pt-12 lg:pt-14">
+            <div className="mx-auto max-w-[1600px] px-5 md:px-10 pt-12 lg:pt-28">
               <RevealOnScroll>
                 <span className={eyebrow}>Skoðunarferðir & skipulagning</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] text-white">
@@ -246,10 +248,10 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ UMSAGNIR ═══════════════ */}
-        <section className="relative py-24 md:py-32 overflow-hidden">
+        <section className="relative min-h-svh flex items-center py-20 overflow-hidden">
           <Image src="/images/dinner-terrace.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-ink/85" />
-          <div className="relative z-10">
+          <div className="relative z-10 w-full">
             <Testimonials tone="dark" />
           </div>
         </section>
@@ -258,9 +260,9 @@ export default function Home() {
         <section className="relative min-h-svh flex items-center overflow-hidden">
           <Image src="/images/gallery-01.jpg" alt="Trevi gosbrunnurinn í Róm" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink" />
-          <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 md:px-10 py-24 md:py-32">
+          <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 md:px-10 py-24">
             <RevealOnScroll>
-              <div className="text-center mb-10 md:mb-14">
+              <div className="text-center mb-8 md:mb-10">
                 <span className={eyebrow}>Hafa samband</span>
                 <h2 className={h2}>Það kostar ekkert að fá tilboð</h2>
                 <p className="mt-4 text-white/70 max-w-xl mx-auto">
@@ -306,7 +308,7 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="mt-12 md:mt-16 mx-auto flex items-center gap-4 rounded-3xl bg-white/5 border border-white/10 p-4 w-fit">
+              <div className="mt-8 mx-auto flex items-center gap-4 rounded-3xl bg-white/5 border border-white/10 p-4 w-fit">
                 <Image src="/images/logo.jpg" alt="" width={48} height={48} className="w-12 h-12 rounded-2xl object-cover" />
                 <div className="pr-2">
                   <span className="block text-sm font-semibold">Hildur</span>

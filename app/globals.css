@@ -90,20 +90,17 @@ p {
   will-change: transform;
 }
 
-/* Umsagnakort: fráfarandi rennur út til hliðar með halla, nýtt kemur inn frá hinni hliðinni.
-   --dir er 1 (áfram) eða -1 (til baka). Aðeins transform og opacity (compositor). */
+/* Umsagnakort: hrein útfelling – fráfarandi dofnar, nýtt birtist með örlítilli lyftingu. */
 @keyframes card-out {
-  0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); opacity: 1; }
-  60%  { opacity: 1; }
-  100% { transform: translate3d(calc(var(--dir, 1) * -112%), 0, 0) rotate(calc(var(--dir, 1) * -6deg)) scale(0.96); opacity: 0; }
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 @keyframes card-in {
-  0%   { transform: translate3d(calc(var(--dir, 1) * 112%), 0, 0) rotate(calc(var(--dir, 1) * 6deg)) scale(0.96); opacity: 0; }
-  30%  { opacity: 1; }
-  100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); opacity: 1; }
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 .card-stage {
-  transition: height 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: height 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 @keyframes progress {
   from { transform: scaleX(0); }
@@ -119,21 +116,22 @@ p {
   will-change: transform, opacity;
   backface-visibility: hidden;
 }
-.card-out { animation: card-out 0.7s cubic-bezier(0.65, 0, 0.35, 1) both; }
-.card-in { animation: card-in 0.7s cubic-bezier(0.65, 0, 0.35, 1) both; }
+.card-out { animation: card-out 0.45s ease-out both; }
+.card-in { animation: card-in 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 
-/* Límband: gegnsætt, rifnir endar, ljósrák og daufar línur eins og í alvöru bandi */
-.tape {
-  background:
-    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.1) 0 1.5px, rgba(255, 255, 255, 0) 1.5px 6px),
-    linear-gradient(180deg, rgba(255, 252, 244, 0.7), rgba(236, 226, 205, 0.62) 55%, rgba(222, 210, 186, 0.66));
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -1px 0 rgba(120, 100, 70, 0.08);
-  clip-path: polygon(
-    0% 8%, 2.5% 0%, 97.5% 3%, 100% 12%, 98.5% 28%, 100% 46%, 98% 62%, 100% 78%, 97.5% 100%,
-    2% 97%, 0% 86%, 1.5% 70%, 0% 52%, 2% 34%, 0.5% 20%
-  );
+/* „Slideshow“-skrun á forsíðu: hver hluti læsist efst í glugganum, einn í einu.
+   Aðeins á stórum skjám þar sem hver hluti er ein skjáfylli; á síma flæðir skrunið frjálst. */
+@media (min-width: 1024px) {
+  html.snap {
+    scroll-snap-type: y mandatory;
+  }
+  html.snap main > section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  html.snap footer {
+    scroll-snap-align: end;
+  }
 }
 
 /* Scroll-triggered reveal — aðeins opacity + transform (compositor) */

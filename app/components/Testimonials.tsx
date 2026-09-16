@@ -12,7 +12,7 @@ import { ArrowIcon } from "./Icons";
 import RevealOnScroll from "./RevealOnScroll";
 
 const INTERVAL = 7000;
-const SWAP_MS = 700;
+const SWAP_MS = 550;
 const pad = (n: number) => String(n).padStart(2, "0");
 const initials = (name: string) =>
   name
@@ -25,18 +25,6 @@ const initials = (name: string) =>
 type Item = (typeof testimonials)[number];
 type Dir = 1 | -1;
 type Tone = "light" | "dark";
-
-function Tape() {
-  return (
-    <span
-      aria-hidden
-      className="absolute left-1/2 -top-3.5 w-28 h-8 -translate-x-1/2 -rotate-[4deg] pointer-events-none"
-      style={{ filter: "drop-shadow(0 1px 1px rgba(7,21,23,0.18))" }}
-    >
-      <span className="tape block w-full h-full" />
-    </span>
-  );
-}
 
 function Card({
   t,
@@ -57,14 +45,13 @@ function Card({
   return (
     <figure
       ref={ref}
-      className={`relative w-full rounded-3xl p-6 sm:p-8 md:p-10 ${
+      className={`relative w-full rounded-3xl p-6 sm:p-8 ${
         dark
           ? "bg-ink-soft/85 backdrop-blur-md border border-white/10 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)]"
           : "bg-white border border-ink/5 shadow-[0_24px_60px_-24px_rgba(7,21,23,0.25)]"
       } ${className}`}
       style={style}
     >
-      <Tape />
       <div className="flex items-center justify-between">
         <span
           aria-hidden
@@ -76,10 +63,10 @@ function Card({
           {pad(index + 1)} / {pad(testimonials.length)}
         </span>
       </div>
-      <blockquote className={`mt-6 text-[15px] sm:text-base md:text-lg leading-relaxed ${dark ? "text-white/85" : "text-ink/80"}`}>
+      <blockquote className={`mt-5 text-[15px] sm:text-base leading-relaxed ${dark ? "text-white/85" : "text-ink/80"}`}>
         <p>{t.text}</p>
       </blockquote>
-      <figcaption className={`mt-7 pt-6 border-t flex items-center gap-3 ${dark ? "border-white/10" : "border-ink/5"}`}>
+      <figcaption className={`mt-6 pt-5 border-t flex items-center gap-3 ${dark ? "border-white/10" : "border-ink/5"}`}>
         <span
           aria-hidden
           className={`w-11 h-11 shrink-0 rounded-full text-sm font-semibold flex items-center justify-center ${
@@ -174,7 +161,7 @@ export default function Testimonials({ tone = "dark" }: { tone?: Tone }) {
       }}
     >
       <RevealOnScroll>
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-8 md:mb-10">
           <span className={`text-xs font-medium tracking-[0.2em] uppercase ${dark ? "text-sand" : "text-gold"}`}>
             Umsagnir
           </span>
@@ -232,7 +219,7 @@ export default function Testimonials({ tone = "dark" }: { tone?: Tone }) {
             </div>
           </div>
 
-          <div className="mt-8 md:mt-10 flex justify-center">
+          <div className="mt-6 md:mt-8 flex justify-center">
             <div
               className={`inline-flex items-center rounded-full p-1.5 border ${
                 dark
