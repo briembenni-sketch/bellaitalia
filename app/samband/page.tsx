@@ -26,7 +26,7 @@ export default function SambandPage() {
       <Navbar />
       <main>
         <Hero
-          image="/images/gallery-03.jpg"
+          image="/images/rome-rooftops.jpg"
           imageAlt="Þök og kirkjuhvelfingar Rómar"
           title="Hafa samband"
           text="Hér eru allar helstu upplýsingar til þess að hafa samband. Það kostar ekkert að fá tilboð."
@@ -56,7 +56,7 @@ export default function SambandPage() {
 
           <RevealOnScroll>
             <div className="mt-5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-[1.5rem] md:rounded-[2.5rem] text-white p-6 sm:p-8 md:p-14 overflow-hidden relative">
-              <Image src="/images/gallery-02.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
+              <Image src="/images/rome-pantheon.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/40" />
               
               <div className="relative lg:col-span-8">

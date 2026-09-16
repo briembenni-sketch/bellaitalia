@@ -64,7 +64,7 @@ export default function BrudkaupPage() {
         </section>
 
         <section className="relative mt-20 md:mt-32 min-h-[70svh] flex items-center overflow-hidden">
-          <Image src="/images/gallery-08.jpg" alt="Kvöldverður á verönd í Toskana" fill quality={85} sizes="100vw" className="object-cover" />
+          <Image src="/images/dinner-terrace.jpg" alt="Kvöldverður á verönd í Toskana" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/60" />
           <RevealOnScroll className="relative z-10 w-full">
             <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-24 text-white">

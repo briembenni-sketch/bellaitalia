@@ -44,7 +44,7 @@ export default function RomPage() {
       <Navbar />
       <main>
         <Hero
-          image="/images/hero-rome-street.jpg"
+          image="/images/hero-rome-2.jpg"
           imageAlt="Gata í Róm með bougainvillea"
           title="Öðruvísi ferðir um Róm og nágrenni"
           text="Skoðunarferðir með leiðsögn í litlum hópum, vespuferðir, matreiðslunámskeið, flugvallarakstur og gisting. Þjónusta fyrir einstaklinga og hópa, stóra sem smáa."
@@ -99,7 +99,7 @@ export default function RomPage() {
 
         {/* Hópar */}
         <section className="relative mt-20 md:mt-32 min-h-[70svh] flex items-center overflow-hidden">
-          <Image src="/images/gallery-02.jpg" alt="Pantheon í Róm við sólarupprás" fill quality={85} sizes="100vw" className="object-cover" />
+          <Image src="/images/rome-pantheon.jpg" alt="Pantheon í Róm við sólarupprás" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/25" />
           <RevealOnScroll className="relative z-10 w-full">
             <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-24 text-white">

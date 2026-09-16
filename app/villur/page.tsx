@@ -18,9 +18,9 @@ export const metadata: Metadata = {
 
 // Svæðin sem nefnd eru á bellaitalia.is
 const regions = [
-  { name: "Toskana", note: "Vinsælasta héraðið", image: "/images/gallery-09.jpg" },
+  { name: "Toskana", note: "Vinsælasta héraðið", image: "/images/toskana-hills.jpg" },
   { name: "Umbria", note: "Græna hjarta Ítalíu", image: "/images/region-umbria.jpg" },
-  { name: "Le Marche", note: "Við Adríahafið", image: "/images/gallery-07.jpg" },
+  { name: "Le Marche", note: "Við Adríahafið", image: "/images/villa-marche-2.jpg" },
   { name: "Puglia", note: "Trulli & ólífulundir", image: "/images/villa-puglia.jpg" },
   { name: "Sikiley", note: "Stórkostleg eyja", image: "/images/region-sikiley.jpg" },
 ];
@@ -31,8 +31,8 @@ export default function VillurPage() {
       <Navbar />
       <main>
         <Hero
-          image="/images/villa-pool.jpg"
-          imageAlt="Steinvilla með upplýstri sundlaug í rökkri"
+          image="/images/villur-hero.jpg"
+          imageAlt="Sundlaug við villu í sólsetri"
           title="Villur með sundlaug í öllum verðflokkum"
           text="Við erum með fjöldann allan af villum í boði um alla Ítalíu og útbúum tilboð fyrir hverja og eina fjölskyldu, allt eftir óskum hvers og eins."
           actions={

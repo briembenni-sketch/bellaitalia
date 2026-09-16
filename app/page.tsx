@@ -247,7 +247,7 @@ export default function Home() {
 
         {/* ═══════════════ UMSAGNIR ═══════════════ */}
         <section className="relative py-24 md:py-32 overflow-hidden">
-          <Image src="/images/gallery-08.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
+          <Image src="/images/dinner-terrace.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-ink/85" />
           <div className="relative z-10">
             <Testimonials tone="dark" />
