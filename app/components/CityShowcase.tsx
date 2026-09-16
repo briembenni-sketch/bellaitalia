@@ -16,7 +16,7 @@ export type ShowcaseCity = {
   cta: string;
 };
 
-const INTERVAL = 6000;
+const INTERVAL = 5000;
 
 /**
  * Borgir á forsíðu: stór myndarammi til vinstri sýnir valda borg, listi til hægri.
@@ -69,13 +69,13 @@ export default function CityShowcase({ cities }: { cities: ShowcaseCity[] }) {
             fill
             quality={85}
             sizes="(max-width: 1024px) 100vw, 60vw"
-            className={`object-cover transition-opacity duration-700 ease-out ${i === active ? "opacity-100" : "opacity-0"}`}
+            className={`object-cover transition-opacity duration-400 ease-out ${i === active ? "opacity-100" : "opacity-0"}`}
             aria-hidden={i !== active}
           />
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/10" />
 
-        <div key={current.slug} className="absolute inset-x-0 bottom-0 p-5 sm:p-6 md:p-8 lg:p-9 animate-fade-up">
+        <div key={current.slug} className="absolute inset-x-0 bottom-0 p-5 sm:p-6 md:p-8 lg:p-9 animate-fade-up-fast">
           <span className="text-[11px] md:text-xs font-medium tracking-[0.2em] uppercase text-sand">{current.eyebrow}</span>
           <h3 className="mt-2 font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight leading-[1.05] text-white text-balance">
             {current.title}

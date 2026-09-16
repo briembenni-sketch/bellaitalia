@@ -1,18 +1,11 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { testimonials as defaultTestimonials } from "../data/site";
 import { ArrowIcon } from "./Icons";
 import RevealOnScroll from "./RevealOnScroll";
 
-const INTERVAL = 7000;
-const SWAP_MS = 550;
+const INTERVAL = 6000;
 const pad = (n: number) => String(n).padStart(2, "0");
 const initials = (name: string) =>
   name
@@ -23,128 +16,44 @@ const initials = (name: string) =>
     .join("");
 
 type Item = (typeof defaultTestimonials)[number];
-type Dir = 1 | -1;
 type Tone = "light" | "dark";
 
-function Card({
-  t,
-  index,
-  total,
-  tone,
-  className = "",
-  style,
-  ref,
-}: {
-  t: Item;
-  index: number;
-  total: number;
-  tone: Tone;
-  className?: string;
-  style?: React.CSSProperties;
-  ref?: React.Ref<HTMLElement>;
-}) {
-  const dark = tone === "dark";
-  return (
-    <figure
-      ref={ref}
-      className={`relative w-full rounded-3xl p-6 sm:p-8 ${
-        dark
-          ? "bg-ink-soft/85 backdrop-blur-md border border-white/10 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)]"
-          : "bg-white border border-ink/5 shadow-[0_24px_60px_-24px_rgba(7,21,23,0.25)]"
-      } ${className}`}
-      style={style}
-    >
-      <div className="flex items-center justify-between">
-        <span
-          aria-hidden
-          className="font-display text-5xl leading-[0.6] text-gold"
-        >
-          &ldquo;
-        </span>
-        <span className={`text-xs font-display tabular-nums ${dark ? "text-white/40" : "text-ink/40"}`}>
-          {pad(index + 1)} / {pad(total)}
-        </span>
-      </div>
-      <blockquote className={`mt-5 text-[15px] sm:text-base leading-relaxed ${dark ? "text-white/85" : "text-ink/80"}`}>
-        <p>{t.text}</p>
-      </blockquote>
-      <figcaption className={`mt-6 pt-5 border-t flex items-center gap-3 ${dark ? "border-white/10" : "border-ink/5"}`}>
-        <span
-          aria-hidden
-          className={`w-11 h-11 shrink-0 rounded-full text-sm font-semibold flex items-center justify-center ${
-            dark ? "bg-white/10 text-gold-light" : "bg-forest/10 text-forest"
-          }`}
-        >
-          {initials(t.name)}
-        </span>
-        <span className="min-w-0">
-          <span className={`block text-sm font-semibold ${dark ? "text-white" : "text-ink"}`}>{t.name}</span>
-          <span className={`block text-xs mt-0.5 ${dark ? "text-white/50" : "text-ink/50"}`}>{t.trip}</span>
-        </span>
-      </figcaption>
-    </figure>
-  );
-}
-
+/**
+ * Umsagnir: öll kortin liggja í sama reit, aðeins virka kortið er sýnilegt og skipt er
+ * með hreinni útfellingu. Rúllar sjálfkrafa; stoppar þegar bendill er yfir.
+ */
 export default function Testimonials({ tone = "dark", items }: { tone?: Tone; items?: Item[] }) {
   const dark = tone === "dark";
-  const testimonials = items && items.length ? items : defaultTestimonials;
-  const total = testimonials.length;
+  const list = items && items.length ? items : defaultTestimonials;
+  const total = list.length;
+
   const [index, setIndex] = useState(0);
-  const [leaving, setLeaving] = useState<{ index: number; dir: Dir } | null>(
-    null,
-  );
   const [paused, setPaused] = useState(false);
-  const [height, setHeight] = useState<number>();
-  const indexRef = useRef(0);
+  const [reduceMotion, setReduceMotion] = useState(false);
   const touchX = useRef<number | null>(null);
-  const activeRef = useRef<HTMLElement>(null);
 
-  const select = useCallback(
-    (next: number, dir: Dir) => {
-      const current = indexRef.current;
-      const target = ((next % total) + total) % total;
-      if (target === current) return;
-      indexRef.current = target;
-      setLeaving({ index: current, dir });
-      setIndex(target);
-    },
-    [total],
-  );
-  const go = useCallback(
-    (dir: Dir) => select(indexRef.current + dir, dir),
-    [select],
-  );
+  const go = useCallback((dir: 1 | -1) => setIndex((i) => (i + dir + total) % total), [total]);
 
-  // Fjarlægja fráfarandi kort þegar hreyfingunni lýkur
   useEffect(() => {
-    if (!leaving) return;
-    const id = setTimeout(() => setLeaving(null), SWAP_MS);
-    return () => clearTimeout(id);
-  }, [leaving]);
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduceMotion(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
-  // Hæð umgjarðar fylgir virka kortinu svo hún líði mjúklega milli umsagna
-  useLayoutEffect(() => {
-    const measure = () => {
-      if (activeRef.current) setHeight(activeRef.current.offsetHeight);
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [index]);
-
-  // Sjálfvirk skipting; endurstillist þegar notandi velur sjálfur
+  // Sjálfvirkt rúll – byrjar upp á nýtt þegar notandi velur sjálfur (index breytist)
   useEffect(() => {
-    if (paused) return;
+    if (paused || reduceMotion || total < 2) return;
     const id = setInterval(() => go(1), INTERVAL);
     return () => clearInterval(id);
-  }, [paused, go, index]);
+  }, [paused, reduceMotion, total, go, index]);
 
-  const dirStyle = (dir: Dir) => ({ "--dir": dir }) as React.CSSProperties;
+  const running = !paused && !reduceMotion;
 
   return (
     <div
-      className="mx-auto max-w-[1400px] px-5 md:px-10 overflow-x-clip"
+      className="mx-auto max-w-[1400px] px-5 md:px-10"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -164,72 +73,70 @@ export default function Testimonials({ tone = "dark", items }: { tone?: Tone; it
       }}
     >
       <RevealOnScroll>
-        <div className="text-center mb-8 md:mb-10">
-          <span className={`text-xs font-medium tracking-[0.2em] uppercase ${dark ? "text-sand" : "text-gold"}`}>
-            Umsagnir
-          </span>
+        <div className="text-center mb-6 md:mb-8">
+          <span className={`text-xs font-medium tracking-[0.2em] uppercase ${dark ? "text-sand" : "text-gold"}`}>Umsagnir</span>
           <h2 className={`mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] ${dark ? "text-white" : ""}`}>
             Það sem gestir okkar segja
           </h2>
           <p className={`mt-4 max-w-md mx-auto ${dark ? "text-white/60" : "text-ink/55"}`}>
-            Umsagnir frá gestum sem hafa ferðast með Bella Italia til Rómar og
-            dvalið í villum um alla Ítalíu.
+            Umsagnir frá gestum sem hafa ferðast með Bella Italia til Rómar og dvalið í villum um alla Ítalíu.
           </p>
         </div>
       </RevealOnScroll>
 
       <RevealOnScroll>
-        <div
-          className="max-w-2xl mx-auto"
-          aria-roledescription="carousel"
-          aria-label="Umsagnir gesta"
-        >
-          <div className="relative pt-4">
-            {/* Bunki á bak við */}
-            <span
-              aria-hidden
-              className={`absolute inset-x-8 top-4 bottom-3 rounded-3xl -translate-y-3 border ${
-                dark ? "bg-white/5 border-white/10" : "bg-white/60 border-ink/5"
-              }`}
-            />
-            <span
-              aria-hidden
-              className={`absolute inset-x-4 top-4 bottom-1 rounded-3xl -translate-y-1.5 border ${
-                dark ? "bg-white/8 border-white/10" : "bg-white/80 border-ink/5"
-              }`}
-            />
-
-            <div className="relative card-stage" style={{ height }}>
-              {leaving && (
-                <Card
-                  key={`out-${leaving.index}`}
-                  t={testimonials[leaving.index]}
-                  index={leaving.index}
-                  total={total}
-                  tone={tone}
-                  className="absolute inset-x-0 top-0 card-out pointer-events-none"
-                  style={dirStyle(leaving.dir)}
-                />
-              )}
-              <Card
-                key={`in-${index}`}
-                ref={activeRef}
-                t={testimonials[index]}
-                index={index}
-                total={total}
-                tone={tone}
-                className={leaving ? "card-in" : ""}
-                style={leaving ? dirStyle(leaving.dir) : undefined}
-              />
-            </div>
+        <div className="max-w-2xl mx-auto" aria-roledescription="carousel" aria-label="Umsagnir gesta">
+          {/* Öll kortin í sama reit – hæðin fylgir hæsta kortinu svo ekkert hoppar */}
+          <div className="grid">
+            {list.map((t, i) => {
+              const on = i === index;
+              return (
+                <figure
+                  key={`${t.name}-${i}`}
+                  aria-hidden={!on}
+                  className={`col-start-1 row-start-1 w-full rounded-3xl p-6 sm:p-7 transition-opacity duration-500 ease-out ${
+                    on ? "opacity-100" : "opacity-0 pointer-events-none"
+                  } ${
+                    dark
+                      ? "bg-ink-soft/85 backdrop-blur-md border border-white/10 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)]"
+                      : "bg-white border border-ink/5 shadow-[0_24px_60px_-24px_rgba(7,21,23,0.25)]"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span aria-hidden className="font-display text-5xl leading-[0.6] text-gold">
+                      &ldquo;
+                    </span>
+                    <span className={`text-xs font-display tabular-nums ${dark ? "text-white/40" : "text-ink/40"}`}>
+                      {pad(i + 1)} / {pad(total)}
+                    </span>
+                  </div>
+                  <blockquote className={`mt-5 text-[15px] sm:text-base leading-relaxed ${dark ? "text-white/85" : "text-ink/80"}`}>
+                    <p>{t.text}</p>
+                  </blockquote>
+                  <figcaption className={`mt-6 pt-5 border-t flex items-center gap-3 ${dark ? "border-white/10" : "border-ink/5"}`}>
+                    <span
+                      aria-hidden
+                      className={`w-11 h-11 shrink-0 rounded-full text-sm font-semibold flex items-center justify-center ${
+                        dark ? "bg-white/10 text-gold-light" : "bg-forest/10 text-forest"
+                      }`}
+                    >
+                      {initials(t.name)}
+                    </span>
+                    <span className="min-w-0">
+                      <span className={`block text-sm font-semibold ${dark ? "text-white" : "text-ink"}`}>{t.name}</span>
+                      <span className={`block text-xs mt-0.5 ${dark ? "text-white/50" : "text-ink/50"}`}>{t.trip}</span>
+                    </span>
+                  </figcaption>
+                </figure>
+              );
+            })}
           </div>
 
-          <div className="mt-6 md:mt-8 flex justify-center">
+          {/* Stýring: fyrri / næsta og tímalínubútar sem fyllast fram að næstu umsögn */}
+          <div className="mt-5 md:mt-6 flex justify-center">
             <div
               className={`inline-flex items-center rounded-full p-1.5 border ${
-                dark
-                  ? "bg-white/10 border-white/10 backdrop-blur-md"
-                  : "bg-white border-ink/5 shadow-[0_12px_32px_-14px_rgba(7,21,23,0.25)]"
+                dark ? "bg-white/10 border-white/10 backdrop-blur-md" : "bg-white border-ink/5 shadow-[0_12px_32px_-14px_rgba(7,21,23,0.25)]"
               }`}
             >
               <button
@@ -243,39 +150,30 @@ export default function Testimonials({ tone = "dark", items }: { tone?: Tone; it
                 <ArrowIcon className="w-4 h-4 rotate-180 transition-transform group-hover:-translate-x-0.5" />
               </button>
 
-              {/* Tímalínubútar: virki búturinn fyllist á meðan beðið er eftir næstu umsögn */}
-              <div
-                className="flex items-center gap-1.5 px-3"
-                role="tablist"
-                aria-label="Veldu umsögn"
-              >
-                {testimonials.map((t, i) => {
+              <div className="flex items-center gap-1.5 px-3" role="tablist" aria-label="Veldu umsögn">
+                {list.map((t, i) => {
                   const on = i === index;
                   const track = dark ? "bg-white/25" : "bg-ink/15";
-                  const trackHover = dark ? "group-hover/seg:bg-white/50" : "group-hover/seg:bg-ink/35";
                   return (
                     <button
-                      key={t.name}
+                      key={`${t.name}-${i}`}
                       type="button"
                       role="tab"
                       aria-selected={on}
                       aria-label={`Umsögn ${i + 1}: ${t.name}`}
-                      onClick={() => select(i, i > index ? 1 : -1)}
+                      onClick={() => setIndex(i)}
                       className="group/seg py-2.5"
                     >
                       <span
                         className={`relative block h-[3px] rounded-full overflow-hidden transition-[width,background-color] duration-300 ${
-                          on ? `w-8 ${track}` : `w-3 ${track} ${trackHover}`
+                          on ? `w-8 ${track}` : `w-3 ${track} ${dark ? "group-hover/seg:bg-white/50" : "group-hover/seg:bg-ink/35"}`
                         }`}
                       >
                         {on && (
                           <span
-                            key={index}
+                            key={`${index}-${running}`}
                             className={`absolute inset-0 rounded-full animate-progress ${dark ? "bg-white" : "bg-ink"}`}
-                            style={{
-                              animationDuration: `${INTERVAL}ms`,
-                              animationPlayState: paused ? "paused" : "running",
-                            }}
+                            style={{ animationDuration: `${INTERVAL}ms`, animationPlayState: running ? "running" : "paused" }}
                           />
                         )}
                       </span>

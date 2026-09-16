@@ -90,18 +90,9 @@ p {
   will-change: transform;
 }
 
-/* Umsagnakort: hrein útfelling – fráfarandi dofnar, nýtt birtist með örlítilli lyftingu. */
-@keyframes card-out {
-  from { opacity: 1; }
-  to   { opacity: 0; }
-}
-@keyframes card-in {
-  from { opacity: 0; transform: translate3d(0, 10px, 0); }
-  to   { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-.card-stage {
-  transition: height 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
+.animate-fade-up-fast { animation: fade-up 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* Tímalína í rúllandi hlutum (umsagnir, borgir): fyllist fram að næstu skiptingu */
 @keyframes progress {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
@@ -110,14 +101,6 @@ p {
   transform-origin: left;
   animation: progress linear both;
 }
-.card-out,
-.card-in {
-  transform-origin: 50% 100%;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-}
-.card-out { animation: card-out 0.45s ease-out both; }
-.card-in { animation: card-in 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 
 /* „Slideshow“-skrun á forsíðu: hver hluti læsist efst í glugganum, einn í einu.
    Aðeins á stórum skjám þar sem hver hluti er ein skjáfylli; á síma flæðir skrunið frjálst. */
@@ -148,11 +131,9 @@ p {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .animate-marquee, .animate-fade-up, .animate-fade-up-delay-1, .animate-fade-up-delay-2,
-  .animate-fade-up-delay-3, .animate-fade-in, .animate-slide-up, .card-in {
+  .animate-fade-up-delay-3, .animate-fade-in, .animate-slide-up, .animate-fade-up-fast {
     animation: none;
   }
-  .card-out { animation: none; opacity: 0; }
-  .card-stage { transition: none; }
   .animate-progress { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }

@@ -238,7 +238,7 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ UMSAGNIR ═══════════════ */}
-        <section className="relative min-h-svh flex items-center py-20 overflow-hidden">
+        <section className="relative min-h-svh flex items-center py-16 lg:py-14 overflow-hidden">
           <Image src="/images/dinner-terrace.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-ink/85" />
           <div className="relative z-10 w-full">

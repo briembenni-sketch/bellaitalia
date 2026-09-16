@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Diskskyndiminni Turbopack í dev missti ítrekað af breytingum á globals.css – slökkt á meðan unnið er
+  experimental: {
+    turbopackFileSystemCacheForDev: false,
+  },
   // data/content.json (efni úr /admin) þarf að fylgja með í serverless-pakkanum
   outputFileTracingIncludes: {
     "/**": ["./data/**"],
