@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import RevealOnScroll from "./components/RevealOnScroll";
 import Testimonials from "./components/Testimonials";
 import SnapScroll from "./components/SnapScroll";
+import CityShowcase from "./components/CityShowcase";
 import { getContent } from "./lib/content";
 import { ArrowIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIcon } from "./components/Icons";
 
@@ -90,7 +91,7 @@ export default function Home() {
                 <RevealOnScroll key={v.id} className="h-full">
                   <Link
                     href={`/villur#${v.id}`}
-                    className="group relative block aspect-[4/5] lg:aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden bg-ink-soft"
+                    className="group relative block aspect-[4/5] lg:aspect-square rounded-2xl md:rounded-3xl overflow-hidden bg-ink-soft"
                   >
                     <Image
                       src={v.image}
@@ -170,58 +171,42 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══════════════ 2 · RÓM & AÐRAR BORGIR – myndamósaík ═══════════════ */}
-        <section id="borgir" className="relative">
-          <div className="relative z-10 bg-ink pb-8 lg:absolute lg:left-0 lg:right-1/2 lg:top-0 lg:pointer-events-none lg:bg-transparent lg:bg-gradient-to-b lg:from-ink/85 lg:via-ink/50 lg:to-transparent lg:pb-32">
-            <div className="mx-auto max-w-[1600px] px-5 md:px-10 pt-12 lg:pt-28">
-              <RevealOnScroll>
-                <span className={eyebrow}>Skoðunarferðir & skipulagning</span>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] text-white">
-                  Róm og aðrar borgir
-                </h2>
-                <p className="mt-3 text-white/75 max-w-xl text-[15px] md:text-base">
-                  Leiðsögn, miðakaup, einkabílar og aðstoð við að skipuleggja borgarferðina – sér eða í
-                  sömu ferð og villan.
-                </p>
-              </RevealOnScroll>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-px bg-ink lg:h-svh lg:min-h-[760px]">
-            {destinations.map((d, i) => (
-              <Link
-                key={d.slug}
-                href={d.custom ? `/${d.slug}` : `/borgir/${d.slug}`}
-                className={`group relative block overflow-hidden bg-ink-soft ${
-                  i === 0 ? "col-span-2 row-span-1 lg:row-span-2 min-h-[70svh] lg:min-h-0" : "min-h-[50svh] lg:min-h-0"
-                }`}
-              >
-                <Image
-                  src={d.cardImage}
-                  alt={d.imageAlt}
-                  fill
-                  quality={85}
-                  sizes={i === 0 ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 1024px) 50vw, 25vw"}
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/25 to-ink/20" />
-                <span className="absolute top-4 left-4 md:top-5 md:left-5 rounded-full tint px-3 py-1.5 text-[11px] md:text-xs text-white">
-                  {d.eyebrow}
-                </span>
-                <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
-                  <h3 className={`font-display font-medium tracking-tight leading-tight ${i === 0 ? "text-3xl md:text-5xl xl:text-6xl" : "text-xl md:text-3xl"}`}>
-                    {d.title}
-                  </h3>
-                  <p className={`mt-3 text-white/75 leading-relaxed ${i === 0 ? "text-[15px] md:text-base max-w-xl" : "text-sm max-w-sm line-clamp-3"}`}>
-                    {d.lead}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
-                    {d.custom ? `Skoða ${tours.length} ferðir` : `Skoða ${d.name}`}{" "}
-                    <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
+        {/* ═══════════════ 2 · RÓM & AÐRAR BORGIR – hreinn sýningarrammi ═══════════════ */}
+        <section id="borgir" className="relative min-h-svh flex items-center bg-ink scroll-mt-0">
+          <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-28 pb-14 lg:pt-28 lg:pb-12">
+            <RevealOnScroll>
+              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 lg:gap-10 mb-8 md:mb-10">
+                <div className="max-w-2xl">
+                  <span className={eyebrow}>Skoðunarferðir & skipulagning</span>
+                  <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] text-white">
+                    Róm og aðrar borgir
+                  </h2>
                 </div>
-              </Link>
-            ))}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 lg:gap-6">
+                  <p className="text-white/60 text-[15px] md:text-base leading-relaxed max-w-md lg:text-right">
+                    Leiðsögn, miðakaup, einkabílar og aðstoð við að skipuleggja borgarferðina – sér eða í sömu ferð og villan.
+                  </p>
+                  <Link href="/borgir" className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-medium hover:bg-white hover:text-ink transition-colors w-fit">
+                    Allar borgir <ArrowIcon className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </RevealOnScroll>
+
+            <RevealOnScroll>
+              <CityShowcase
+                cities={destinations.map((d) => ({
+                  slug: d.slug,
+                  href: d.custom ? `/${d.slug}` : `/borgir/${d.slug}`,
+                  eyebrow: d.eyebrow,
+                  title: d.title,
+                  lead: d.lead,
+                  image: d.cardImage,
+                  imageAlt: d.imageAlt,
+                  cta: d.custom ? `Skoða ${tours.length} ferðir í Róm` : `Skoða ${d.name}`,
+                }))}
+              />
+            </RevealOnScroll>
           </div>
         </section>
 
