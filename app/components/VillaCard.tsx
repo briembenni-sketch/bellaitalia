@@ -13,7 +13,7 @@ type Props = {
 
 export default function VillaCard({ villa, ctaHref = "/villur#fyrirspurn", large = false }: Props) {
   return (
-    <article className="group flex flex-col h-full rounded-3xl bg-white/5 border border-white/10 overflow-hidden hover:border-white/25 transition-colors">
+    <article id={villa.id} className="group flex flex-col h-full rounded-3xl bg-white/5 border border-white/10 overflow-hidden hover:border-white/25 transition-colors scroll-mt-28">
       <div className={`relative overflow-hidden bg-white/8 ${large ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
         <Image
           src={villa.image}

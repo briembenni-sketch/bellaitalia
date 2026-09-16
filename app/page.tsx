@@ -86,7 +86,7 @@ export default function Home() {
               {villas.map((v) => (
                 <RevealOnScroll key={v.id} className="h-full">
                   <Link
-                    href="/villur#villur"
+                    href={`/villur#${v.id}`}
                     className="group relative block aspect-[4/5] lg:aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden bg-ink-soft"
                   >
                     <Image
@@ -107,7 +107,7 @@ export default function Home() {
                       </h3>
                       <p className="mt-2 hidden sm:block lg:hidden xl:block text-sm text-white/70 leading-relaxed line-clamp-2">{v.text}</p>
                       <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold">
-                        Fá tilboð <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                        Skoða villu <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                       </span>
                     </div>
                   </Link>

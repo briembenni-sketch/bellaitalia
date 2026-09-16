@@ -96,25 +96,31 @@ export default function Navbar() {
 
               return (
                 <div key={link.href} ref={menuRef} className="relative group/menu">
-                  <button
-                    type="button"
-                    onClick={() => setMenuOpen((o) => !o)}
-                    aria-expanded={menuOpen}
-                    aria-haspopup="menu"
-                    className={`${cls} inline-flex items-center gap-1.5`}
-                  >
-                    {link.label}
-                    <svg
-                      className={`w-3.5 h-3.5 transition-transform duration-300 ${menuOpen ? "rotate-180" : ""}`}
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
+                  {/* Textinn er tengill á yfirlitssíðuna; örin opnar fellivalmyndina (hover opnar hana líka) */}
+                  <div className={`${cls} inline-flex items-center gap-1 !pr-2`}>
+                    <Link href={link.href} onClick={() => setMenuOpen(false)}>
+                      {link.label}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setMenuOpen((o) => !o)}
+                      aria-expanded={menuOpen}
+                      aria-haspopup="menu"
+                      aria-label={menuOpen ? "Loka borgavalmynd" : "Opna borgavalmynd"}
+                      className="w-6 h-6 rounded-full inline-flex items-center justify-center hover:bg-white/15 transition-colors"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
-                    </svg>
-                  </button>
+                      <svg
+                        className={`w-3.5 h-3.5 transition-transform duration-300 ${menuOpen ? "rotate-180" : ""}`}
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+                      </svg>
+                    </button>
+                  </div>
 
                   <div
                     role="menu"

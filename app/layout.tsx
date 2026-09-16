@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import { site } from "./data/site";
+import HashScroll from "./components/HashScroll";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -49,7 +50,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="is" className={`${outfit.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-ink text-white antialiased">{children}</body>
+      <body className="min-h-screen bg-ink text-white antialiased">
+        <HashScroll />
+        {children}
+      </body>
     </html>
   );
 }
