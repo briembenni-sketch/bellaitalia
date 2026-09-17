@@ -204,7 +204,7 @@ export default function VillurPage() {
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <InquiryForm variant="villur" serviceOptions={villaServices.map((s) => s.title)} email={site.email} />
+                <InquiryForm variant="villur" serviceOptions={villaServices.map((s) => ({ id: s.id, title: s.title }))} email={site.email} />
               </div>
             </RevealOnScroll>
           </div>

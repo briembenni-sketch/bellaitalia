@@ -124,7 +124,7 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ VIÐBÓTARÞJÓNUSTA – hrein spjöld ═══════════════ */}
-        <section className="relative min-h-svh flex items-center bg-ink">
+        <section className="relative min-h-svh flex flex-col justify-center-safe bg-ink">
           <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-28 pb-14 lg:pt-28 lg:pb-12">
             <RevealOnScroll>
               <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 lg:gap-10 mb-8 md:mb-10">
@@ -143,8 +143,8 @@ export default function Home() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
               {villaServices.map((s, i) => (
                 <RevealOnScroll key={s.id} className="h-full">
-                  <Link href="/villur#thjonusta" className="group flex flex-col h-full">
-                    <div className="relative aspect-[4/5] lg:aspect-square rounded-2xl md:rounded-3xl overflow-hidden bg-ink-soft">
+                  <Link href={`/villur?thjonusta=${s.id}#fyrirspurn`} className="group flex flex-col h-full">
+                    <div className="relative w-full aspect-[4/5] lg:aspect-auto lg:h-[clamp(200px,34svh,380px)] rounded-2xl md:rounded-3xl overflow-hidden bg-ink-soft">
                       <Image
                         src={s.image}
                         alt={s.imageAlt}
@@ -160,9 +160,9 @@ export default function Home() {
                     <h3 className="mt-4 font-display text-lg sm:text-xl md:text-2xl font-medium tracking-tight leading-tight text-white">
                       {s.title}
                     </h3>
-                    <p className="mt-2 text-sm text-white/60 leading-relaxed line-clamp-3">{s.text}</p>
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-light group-hover:text-white transition-colors">
-                      Lesa meira <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                    <p className="mt-2 text-sm text-white/60 leading-relaxed line-clamp-4">{s.text}</p>
+                    <span className="mt-auto pt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-light group-hover:text-white transition-colors">
+                      Fá tilboð <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                     </span>
                   </Link>
                 </RevealOnScroll>
@@ -172,7 +172,7 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ 2 · RÓM & AÐRAR BORGIR – hreinn sýningarrammi ═══════════════ */}
-        <section id="borgir" className="relative min-h-svh flex items-center bg-ink scroll-mt-0">
+        <section id="borgir" className="relative min-h-svh flex flex-col justify-center-safe bg-ink scroll-mt-0">
           <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-28 pb-14 lg:pt-28 lg:pb-12">
             <RevealOnScroll>
               <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 lg:gap-10 mb-8 md:mb-10">
@@ -238,7 +238,7 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ UMSAGNIR ═══════════════ */}
-        <section className="relative min-h-svh flex items-center py-16 lg:py-14 overflow-hidden">
+        <section className="relative min-h-svh flex flex-col justify-center-safe py-16 lg:py-14 overflow-hidden">
           <Image src="/images/dinner-terrace.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-ink/85" />
           <div className="relative z-10 w-full">
@@ -247,7 +247,7 @@ export default function Home() {
         </section>
 
         {/* ═══════════════ HAFA SAMBAND ═══════════════ */}
-        <section className="relative min-h-svh flex items-center overflow-hidden">
+        <section className="relative min-h-svh flex flex-col justify-center-safe overflow-hidden">
           <Image src="/images/gallery-01.jpg" alt="Trevi gosbrunnurinn í Róm" fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink" />
           <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 md:px-10 py-24">

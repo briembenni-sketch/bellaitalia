@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { site, tours, villaRegions, villaServices } from "../data/site";
 import { CheckIcon, WhatsAppIcon } from "./Icons";
 
@@ -17,8 +17,8 @@ type Props = {
   options?: string[];
   /** Heiti ferða í Róm (úr ritstýranlegu efni) */
   tourOptions?: string[];
-  /** Heiti viðbótarþjónustu í villuna (úr ritstýranlegu efni) */
-  serviceOptions?: string[];
+  /** Viðbótarþjónusta í villuna (úr ritstýranlegu efni); id notað til að forvelja úr slóð (?thjonusta=kokkur) */
+  serviceOptions?: { id: string; title: string }[];
   /** Netfang sem fyrirspurnin fer á */
   email?: string;
   compact?: boolean;
@@ -55,6 +55,18 @@ export default function InquiryForm({
 }: Props) {
   const [sent, setSent] = useState(false);
   const [regionError, setRegionError] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const services = serviceOptions ?? villaServices.map((s) => ({ id: s.id, title: s.title }));
+
+  // Forvelja viðbótarþjónustu úr slóðinni (t.d. spjald á forsíðu -> /villur?thjonusta=kokkur#fyrirspurn)
+  useEffect(() => {
+    if (variant !== "villur" || !servicesRef.current) return;
+    const ids = new URLSearchParams(window.location.search).get("thjonusta")?.split(",").filter(Boolean) ?? [];
+    if (!ids.length) return;
+    servicesRef.current.querySelectorAll<HTMLInputElement>("input[name=thjonusta]").forEach((input) => {
+      if (ids.includes(input.dataset.id ?? "")) input.checked = true;
+    });
+  }, [variant]);
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -232,10 +244,10 @@ export default function InquiryForm({
 
           <div className="flex flex-col gap-3 md:col-span-2">
             <span className={label}>Áhugi á viðbótarþjónustu <span className="font-normal text-white/45">(valfrjálst)</span></span>
-            <div className="flex flex-wrap gap-2">
-              {(serviceOptions ?? villaServices.map((s) => s.title)).map((title) => (
-                <label key={title} className="relative">
-                  <input type="checkbox" name="thjonusta" value={title} className="peer sr-only" />
+            <div ref={servicesRef} className="flex flex-wrap gap-2">
+              {services.map(({ id, title }) => (
+                <label key={id} className="relative">
+                  <input type="checkbox" name="thjonusta" value={title} data-id={id} className="peer sr-only" />
                   <span className={`inline-flex ${pill}`}>{title}</span>
                 </label>
               ))}
