@@ -450,6 +450,8 @@ export const villaServices: VillaService[] = [
 
 /* --------------- RÓM & AÐRAR BORGIR – SKOÐUNARFERÐIR --------------- */
 
+export type CityService = { title: string; text: string; image: string; imageAlt: string };
+
 export type Destination = {
   slug: string;
   name: string;
@@ -461,7 +463,7 @@ export type Destination = {
   imageAlt: string;
   cardImage: string;
   intro: string[];
-  services: { title: string; text: string }[];
+  services: { title: string; text: string; image?: string; imageAlt?: string }[];
   planning: string;
   /** Róm hefur sína eigin sérsmíðuðu síðu með ferðaspjöldum */
   custom?: boolean;
@@ -498,11 +500,11 @@ export const destinations: Destination[] = [
       "Flórens er líka fullkominn viðkomustaður fyrir þá sem dvelja í villu í Toskana og vilja skreppa í borgina í dagsferð.",
     ],
     services: [
-      { title: "Gönguferðir með leiðsögumanni", text: "Einkaleiðsögn á ensku um miðbæinn: Duomo, Piazza della Signoria, Ponte Vecchio, Uffizi-torgið og Oltrarno." },
-      { title: "Leiðsögn um borgina", text: "Sérsniðin leiðsögn eftir áhuga – list, saga, matur eða handverk – fyrir einstaklinga og hópa." },
-      { title: "Miðakaup í Accademia", text: "Við sjáum um miða á Davíð Michelangelos í Accademia-safninu og leiðsögn ef óskað er." },
-      { title: "Duomo og Cupola", text: "Miðar og tímabókun í dómkirkjuna, hvelfingu Brunelleschis, klukkuturninn og skírnarkapelluna." },
-      { title: "Skipulagning heimsókna og dagskrár", text: "Við setjum saman dagskrá fyrir dvölina: söfn, veitingastaðir, vínsmökkun í Chianti og dagsferðir til Siena, San Gimignano eða Pisa." },
+      { title: "Gönguferðir með leiðsögumanni", image: "/images/svc-florens-ganga.jpg", imageAlt: "Gata í Flórens með Ponte Vecchio í baksýn", text: "Einkaleiðsögn á ensku um miðbæinn: Duomo, Piazza della Signoria, Ponte Vecchio, Uffizi-torgið og Oltrarno." },
+      { title: "Leiðsögn um borgina", image: "/images/svc-florens-leidsogn.jpg", imageAlt: "Stytta og Palazzo Vecchio í kvöldsól", text: "Sérsniðin leiðsögn eftir áhuga – list, saga, matur eða handverk – fyrir einstaklinga og hópa." },
+      { title: "Miðakaup í Accademia", image: "/images/svc-florens-accademia.jpg", imageAlt: "Davíð eftir Michelangelo í Accademia-safninu", text: "Við sjáum um miða á Davíð Michelangelos í Accademia-safninu og leiðsögn ef óskað er." },
+      { title: "Duomo og Cupola", image: "/images/svc-florens-duomo.jpg", imageAlt: "Hvelfing Brunelleschis yfir þökum Flórens", text: "Miðar og tímabókun í dómkirkjuna, hvelfingu Brunelleschis, klukkuturninn og skírnarkapelluna." },
+      { title: "Skipulagning heimsókna og dagskrár", image: "/images/svc-florens-skipulag.jpg", imageAlt: "Hæðaþorp og vínekrur í Chianti", text: "Við setjum saman dagskrá fyrir dvölina: söfn, veitingastaðir, vínsmökkun í Chianti og dagsferðir til Siena, San Gimignano eða Pisa." },
     ],
     planning: "Segðu okkur hvenær þið eruð í Flórens, hve mörg og hvað ykkur langar að sjá – við setjum saman dagskrá og sjáum um miða og leiðsögn.",
   },
@@ -521,11 +523,11 @@ export const destinations: Destination[] = [
       "Leiðsögumenn, bílstjórar, bátar – við plönum allt eftir ykkar óskum, hvort sem er í dagsferð frá Róm eða lengri ferð.",
     ],
     services: [
-      { title: "Dagsferðir frá Róm", text: "Sótt á hótel í Róm að morgni með einkabíl og bílstjóra, farið til Pompeii, Napoli eða Amalfi-strandarinnar og komið til baka að kvöldi." },
-      { title: "Einkabíll og leiðsögn", text: "Bílstjóri og leiðsögumaður allan daginn – engar biðraðir, engin rúta, dagskráin eftir ykkar höfði." },
-      { title: "Pompeii", text: "Leiðsögn um fornu borgina sem grófst undir ösku Vesúvíusar árið 79. Hægt að bæta við Herculaneum eða göngu upp á Vesúvíus." },
-      { title: "Napoli", text: "Gönguferð um miðbæinn, Spaccanapoli og pizzan sem borgin er fræg fyrir. Miðakaup á söfn og fornminjar." },
-      { title: "Amalfi-ströndin", text: "Positano, Amalfi og Ravello með bílstjóra eða á bát. Bátsferðir til Capri, sund og hádegisverður við sjóinn." },
+      { title: "Dagsferðir frá Róm", image: "/images/svc-napoli-dagsferd.jpg", imageAlt: "Bærinn Amalfi og ströndin", text: "Sótt á hótel í Róm að morgni með einkabíl og bílstjóra, farið til Pompeii, Napoli eða Amalfi-strandarinnar og komið til baka að kvöldi." },
+      { title: "Einkabíll og leiðsögn", image: "/images/service-bilstjori.jpg", imageAlt: "Klassískur bíll á sýprusviðargötu", text: "Bílstjóri og leiðsögumaður allan daginn – engar biðraðir, engin rúta, dagskráin eftir ykkar höfði." },
+      { title: "Pompeii", image: "/images/dest-pompei.jpg", imageAlt: "Rústir Pompeii með Vesúvíus í baksýn", text: "Leiðsögn um fornu borgina sem grófst undir ösku Vesúvíusar árið 79. Hægt að bæta við Herculaneum eða göngu upp á Vesúvíus." },
+      { title: "Napoli", image: "/images/svc-napoli-pizza.jpg", imageAlt: "Napólísk pizza beint úr ofninum", text: "Gönguferð um miðbæinn, Spaccanapoli og pizzan sem borgin er fræg fyrir. Miðakaup á söfn og fornminjar." },
+      { title: "Amalfi-ströndin", image: "/images/dest-amalfi.jpg", imageAlt: "Positano við Amalfi ströndina", text: "Positano, Amalfi og Ravello með bílstjóra eða á bát. Bátsferðir til Capri, sund og hádegisverður við sjóinn." },
     ],
     planning: "Hafðu samband ef þú ert á leið til Campania héraðsins og vantar aðstoð við að plana áhyggjulausa ferð – dagsferð eða lengri dvöl.",
   },
@@ -544,12 +546,12 @@ export const destinations: Destination[] = [
       "Við bjóðum heildarþjónustu fyrir þá sem heimsækja Feneyjar og aðstoðum við að skipuleggja dvölina og allt sem til þarf.",
     ],
     services: [
-      { title: "Gondólaferðir", text: "Einkagondóla um þröngu síkin – tilvalið í sólsetrinu eða sem sérstakt tilefni." },
-      { title: "Gönguferðir með leiðsögumanni", text: "Markúsartorgið, Rialto, Dorsoduro og leyndu hverfin sem ferðamenn finna sjaldan sjálfir." },
-      { title: "Matarferðir", text: "Cicchetti og vín á bacari-börum með innfæddum leiðsögumanni." },
-      { title: "Murano", text: "Bátsferð til Murano og Burano – glerblástur, litrík hús og hádegisverður á eyjunum." },
-      { title: "Palazzo Ducale", text: "Miðar og leiðsögn um Hertogahöllina, Markúsarkirkjuna og Andvarpsbrúna." },
-      { title: "Miðakaup & transfer", text: "Miðar á söfn og viðburði, vatnataxi frá Marco Polo flugvelli og aðstoð við gistingu." },
+      { title: "Gondólaferðir", image: "/images/svc-feneyjar-gondola.jpg", imageAlt: "Gondóla á Canal Grande", text: "Einkagondóla um þröngu síkin – tilvalið í sólsetrinu eða sem sérstakt tilefni." },
+      { title: "Gönguferðir með leiðsögumanni", image: "/images/svc-feneyjar-ganga.jpg", imageAlt: "Markúsartorgið og klukkuturninn í Feneyjum", text: "Markúsartorgið, Rialto, Dorsoduro og leyndu hverfin sem ferðamenn finna sjaldan sjálfir." },
+      { title: "Matarferðir", image: "/images/svc-feneyjar-matur.jpg", imageAlt: "Cicchetti-smáréttir á bacaro-bar", text: "Cicchetti og vín á bacari-börum með innfæddum leiðsögumanni." },
+      { title: "Murano", image: "/images/svc-feneyjar-murano.jpg", imageAlt: "Litrík hús við síki á Burano", text: "Bátsferð til Murano og Burano – glerblástur, litrík hús og hádegisverður á eyjunum." },
+      { title: "Palazzo Ducale", image: "/images/svc-feneyjar-palazzo.jpg", imageAlt: "Hertogahöllin séð frá lóninu", text: "Miðar og leiðsögn um Hertogahöllina, Markúsarkirkjuna og Andvarpsbrúna." },
+      { title: "Miðakaup & transfer", image: "/images/svc-feneyjar-taxi.jpg", imageAlt: "Vatnataxi á siglingu í Feneyjum", text: "Miðar á söfn og viðburði, vatnataxi frá Marco Polo flugvelli og aðstoð við gistingu." },
     ],
     planning: "Sendu okkur dagsetningar og fjölda – við setjum saman dvölina í Feneyjum frá flugvelli til gondólu.",
   },

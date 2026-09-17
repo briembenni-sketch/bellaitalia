@@ -85,16 +85,33 @@ export default function DestinationPage({ destination: d }: { destination: Desti
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {d.services.map((s, i) => (
               <RevealOnScroll key={s.title} className="h-full">
-                <article className="flex flex-col h-full rounded-3xl bg-white/5 border border-white/10 p-6 md:p-7 hover:border-white/25 transition-colors">
-                  <span className="font-display text-4xl font-medium text-gold/70 leading-none">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="mt-4 font-display text-2xl font-medium tracking-tight leading-tight">{s.title}</h3>
-                  <p className="mt-3 text-[15px] text-white/60 leading-relaxed">{s.text}</p>
-                  <a
-                    href="#fyrirspurn"
-                    className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-gold-light hover:text-white transition-colors"
-                  >
-                    Fá tilboð <ArrowIcon className="w-4 h-4" />
-                  </a>
+                <article className="group flex flex-col h-full rounded-3xl bg-white/5 border border-white/10 overflow-hidden hover:border-white/25 transition-colors">
+                  {s.image && (
+                    <div className="relative aspect-[16/10] overflow-hidden bg-ink-soft">
+                      <Image
+                        src={s.image}
+                        alt={s.imageAlt ?? ""}
+                        fill
+                        quality={85}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
+                      <span className="absolute top-4 left-5 font-display text-sm text-white/90 tabular-nums label-on-image">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                  )}
+                  <div className="flex flex-col flex-1 p-6 md:p-7">
+                    <h3 className="font-display text-2xl font-medium tracking-tight leading-tight">{s.title}</h3>
+                    <p className="mt-3 text-[15px] text-white/60 leading-relaxed">{s.text}</p>
+                    <a
+                      href="#fyrirspurn"
+                      className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-gold-light hover:text-white transition-colors"
+                    >
+                      Fá tilboð <ArrowIcon className="w-4 h-4" />
+                    </a>
+                  </div>
                 </article>
               </RevealOnScroll>
             ))}

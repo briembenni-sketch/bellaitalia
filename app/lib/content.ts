@@ -137,7 +137,7 @@ export function toEditable(c: Content): Editable {
       title: d.title,
       lead: d.lead,
       intro: d.intro,
-      services: d.services,
+      services: d.services.map(({ title, text }) => ({ title, text })),
       planning: d.planning,
     })),
     wedding: {
@@ -249,9 +249,14 @@ export function applyEditable(base: Content, raw: unknown): Content {
     out.destinations = base.destinations.map((d) => {
       const s = bySlug.get(d.slug);
       if (!s) return d;
+      // Myndir koma alltaf úr kóðanum: parað á heiti, annars á stöðu í lista
       const services = Array.isArray(s.services)
         ? (s.services as Record<string, unknown>[])
-            .map((x) => ({ title: str(x?.title), text: str(x?.text) }))
+            .map((x, i) => {
+              const title = str(x?.title);
+              const base = d.services.find((b) => b.title === title) ?? d.services[i];
+              return { title, text: str(x?.text), image: base?.image, imageAlt: base?.imageAlt };
+            })
             .filter((x) => x.title)
         : d.services;
       return {
