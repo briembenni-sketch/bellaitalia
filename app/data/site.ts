@@ -450,8 +450,6 @@ export const villaServices: VillaService[] = [
 
 /* --------------- RÓM & AÐRAR BORGIR – SKOÐUNARFERÐIR --------------- */
 
-export type CityService = { title: string; text: string; image: string; imageAlt: string };
-
 export type Destination = {
   slug: string;
   name: string;
@@ -524,10 +522,10 @@ export const destinations: Destination[] = [
     ],
     services: [
       { title: "Dagsferðir frá Róm", image: "/images/svc-napoli-dagsferd.jpg", imageAlt: "Bærinn Amalfi og ströndin", text: "Sótt á hótel í Róm að morgni með einkabíl og bílstjóra, farið til Pompeii, Napoli eða Amalfi-strandarinnar og komið til baka að kvöldi." },
-      { title: "Einkabíll og leiðsögn", image: "/images/service-bilstjori.jpg", imageAlt: "Klassískur bíll á sýprusviðargötu", text: "Bílstjóri og leiðsögumaður allan daginn – engar biðraðir, engin rúta, dagskráin eftir ykkar höfði." },
+      { title: "Einkabíll og leiðsögn", image: "/images/borg-amalfi-vegur.jpg", imageAlt: "Strandvegurinn við Amalfi-ströndina", text: "Bílstjóri og leiðsögumaður allan daginn – engar biðraðir, engin rúta, dagskráin eftir ykkar höfði." },
       { title: "Pompeii", image: "/images/dest-pompei.jpg", imageAlt: "Rústir Pompeii með Vesúvíus í baksýn", text: "Leiðsögn um fornu borgina sem grófst undir ösku Vesúvíusar árið 79. Hægt að bæta við Herculaneum eða göngu upp á Vesúvíus." },
       { title: "Napoli", image: "/images/svc-napoli-pizza.jpg", imageAlt: "Napólísk pizza beint úr ofninum", text: "Gönguferð um miðbæinn, Spaccanapoli og pizzan sem borgin er fræg fyrir. Miðakaup á söfn og fornminjar." },
-      { title: "Amalfi-ströndin", image: "/images/dest-amalfi.jpg", imageAlt: "Positano við Amalfi ströndina", text: "Positano, Amalfi og Ravello með bílstjóra eða á bát. Bátsferðir til Capri, sund og hádegisverður við sjóinn." },
+      { title: "Amalfi-ströndin", image: "/images/borg-ravello-terrace.jpg", imageAlt: "Útsýnisverönd Villa Cimbrone í Ravello yfir Amalfi-ströndina", text: "Positano, Amalfi og Ravello með bílstjóra eða á bát. Bátsferðir til Capri, sund og hádegisverður við sjóinn." },
     ],
     planning: "Hafðu samband ef þú ert á leið til Campania héraðsins og vantar aðstoð við að plana áhyggjulausa ferð – dagsferð eða lengri dvöl.",
   },
@@ -551,7 +549,7 @@ export const destinations: Destination[] = [
       { title: "Matarferðir", image: "/images/svc-feneyjar-matur.jpg", imageAlt: "Cicchetti-smáréttir á bacaro-bar", text: "Cicchetti og vín á bacari-börum með innfæddum leiðsögumanni." },
       { title: "Murano", image: "/images/svc-feneyjar-murano.jpg", imageAlt: "Litrík hús við síki á Burano", text: "Bátsferð til Murano og Burano – glerblástur, litrík hús og hádegisverður á eyjunum." },
       { title: "Palazzo Ducale", image: "/images/svc-feneyjar-palazzo.jpg", imageAlt: "Hertogahöllin séð frá lóninu", text: "Miðar og leiðsögn um Hertogahöllina, Markúsarkirkjuna og Andvarpsbrúna." },
-      { title: "Miðakaup & transfer", image: "/images/svc-feneyjar-taxi.jpg", imageAlt: "Vatnataxi á siglingu í Feneyjum", text: "Miðar á söfn og viðburði, vatnataxi frá Marco Polo flugvelli og aðstoð við gistingu." },
+      { title: "Miðakaup & transfer", image: "/images/borg-feneyjar-vatnataxi.jpg", imageAlt: "Vatnataxi á Canal Grande í Feneyjum", text: "Miðar á söfn og viðburði, vatnataxi frá Marco Polo flugvelli og aðstoð við gistingu." },
     ],
     planning: "Sendu okkur dagsetningar og fjölda – við setjum saman dvölina í Feneyjum frá flugvelli til gondólu.",
   },
