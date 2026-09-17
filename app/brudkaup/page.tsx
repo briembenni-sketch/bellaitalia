@@ -52,11 +52,7 @@ export default function BrudkaupPage() {
                   <p key={p}>{p}</p>
                 ))}
               </div>
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {wedding.ideas.map((i) => (
-                  <li key={i} className="rounded-full bg-white/8 px-4 py-2 text-sm text-white/75">{i}</li>
-                ))}
-              </ul>
+              <p className="mt-6 text-sm text-white/55 leading-relaxed">{wedding.ideas.join("  ·  ")}</p>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-5">
               <div className="relative aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-white/8">

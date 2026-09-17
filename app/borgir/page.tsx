@@ -68,7 +68,7 @@ export default function BorgirPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
-                  <span className="absolute top-4 left-4 md:top-5 md:left-5 rounded-full tint px-3.5 py-1.5 text-xs text-white">{d.eyebrow}</span>
+                  <span className="absolute top-5 left-5 md:top-6 md:left-6 text-[11px] font-medium tracking-[0.22em] uppercase text-white label-on-image">{d.eyebrow}</span>
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white">
                     <h3 className="font-display text-3xl md:text-5xl font-medium tracking-tight">{d.title}</h3>
                     <p className="mt-3 text-white/80 text-[15px] md:text-base leading-relaxed max-w-xl">{d.lead}</p>

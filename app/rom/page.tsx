@@ -65,12 +65,12 @@ export default function RomPage() {
 
         {/* Flýtival */}
         <section id="ferdir" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-8 md:pt-10 scroll-mt-24">
-          <div className="flex gap-2 overflow-x-auto no-scrollbar -mx-5 px-5 md:mx-0 md:px-0 md:flex-wrap">
+          <div className="flex gap-x-6 gap-y-3 overflow-x-auto no-scrollbar -mx-5 px-5 md:mx-0 md:px-0 md:flex-wrap">
             {tours.map((t) => (
               <a
                 key={t.id}
                 href={`#${t.id}`}
-                className="shrink-0 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm text-white/80 hover:bg-white hover:text-ink hover:border-white transition-colors"
+                className="shrink-0 border-b border-white/20 pb-1 text-sm text-white/70 hover:text-white hover:border-white transition-colors"
               >
                 {t.shortTitle}
               </a>

@@ -102,7 +102,7 @@ export default function Home() {
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
-                    <span className="absolute top-3 left-3 md:top-4 md:left-4 rounded-full tint px-3 py-1.5 text-[11px] md:text-xs text-white">
+                    <span className="absolute top-4 left-4 md:top-5 md:left-5 text-[11px] font-medium tracking-[0.22em] uppercase text-white label-on-image">
                       {v.region}
                     </span>
                     <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
@@ -153,7 +153,7 @@ export default function Home() {
                         sizes="(max-width: 1024px) 50vw, 25vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                       />
-                      <span className="absolute top-3 left-3 md:top-4 md:left-4 rounded-full tint px-3 py-1.5 text-[11px] md:text-xs text-white tabular-nums">
+                      <span className="absolute top-4 left-4 md:top-5 md:left-5 font-display text-sm text-white/90 tabular-nums label-on-image">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>

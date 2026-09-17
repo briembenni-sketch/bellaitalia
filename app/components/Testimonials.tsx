@@ -135,7 +135,7 @@ export default function Testimonials({ tone = "dark", items }: { tone?: Tone; it
           {/* Stýring: fyrri / næsta og tímalínubútar sem fyllast fram að næstu umsögn */}
           <div className="mt-5 md:mt-6 flex justify-center">
             <div
-              className={`inline-flex items-center rounded-full p-1.5 border ${
+              className={`inline-flex items-center rounded-xl p-1.5 border ${
                 dark ? "bg-white/10 border-white/10 backdrop-blur-md" : "bg-white border-ink/5 shadow-[0_12px_32px_-14px_rgba(7,21,23,0.25)]"
               }`}
             >

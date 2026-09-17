@@ -31,24 +31,18 @@ export default function TourCard({ tour, tall = false }: Props) {
             className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
-          <span className="absolute top-4 left-4 rounded-full tint px-3 py-1.5 text-xs text-white">
-            {tour.tag}
-          </span>
-          <span className="absolute top-4 right-4 rounded-full bg-white text-ink px-3 py-1.5 text-xs font-semibold">
-            {tour.priceLabel}
-          </span>
         </button>
 
         <div className="flex flex-col flex-1 p-6">
-          <h3 className="font-display text-2xl font-medium tracking-tight leading-tight">{tour.title}</h3>
+          <div className="flex items-baseline justify-between gap-4">
+            <span className="text-[11px] font-medium tracking-[0.22em] uppercase text-sand">{tour.tag}</span>
+            <span className="font-display text-base font-medium text-gold-light whitespace-nowrap">{tour.priceLabel}</span>
+          </div>
+          <h3 className="mt-2 font-display text-2xl font-medium tracking-tight leading-tight">{tour.title}</h3>
           <p className="mt-3 text-[15px] text-white/60 leading-relaxed line-clamp-3">{tour.summary}</p>
-          <ul className="mt-4 flex flex-wrap gap-2">
-            {tour.highlights.slice(0, 3).map((h) => (
-              <li key={h} className="rounded-full bg-white/8 px-3 py-1 text-xs text-white/70">
-                {h}
-              </li>
-            ))}
-          </ul>
+          <p className="mt-4 text-xs text-white/50 leading-relaxed">
+            {tour.highlights.slice(0, 3).join(" · ")}
+          </p>
           <div className="mt-auto pt-6 flex items-center justify-between gap-3">
             <button
               type="button"
@@ -119,7 +113,7 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
           <div className="relative h-60 md:h-auto md:min-h-[540px] md:col-span-2">
             <Image src={tour.image} alt={tour.imageAlt} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent md:bg-none" />
-            <span className="absolute top-4 left-4 rounded-full tint px-3 py-1.5 text-xs text-white">{tour.tag}</span>
+            <span className="absolute top-5 left-5 text-[11px] font-medium tracking-[0.22em] uppercase text-white label-on-image">{tour.tag}</span>
           </div>
 
           <div className="md:col-span-3 p-7 md:p-10">

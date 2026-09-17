@@ -40,7 +40,7 @@ const field =
 const label = "text-sm font-medium text-white/80";
 const hint = "text-xs text-white/45";
 const pill =
-  "cursor-pointer select-none rounded-full border border-white/15 bg-white/8 px-4 py-2.5 text-sm text-white/80 transition-colors hover:border-white/40 peer-checked:bg-white peer-checked:border-white peer-checked:text-ink peer-focus-visible:ring-4 peer-focus-visible:ring-white/20";
+  "cursor-pointer select-none rounded-lg border border-white/15 bg-white/5 px-3.5 py-2.5 text-sm text-white/80 transition-colors hover:border-white/40 peer-checked:bg-white peer-checked:border-white peer-checked:text-ink peer-focus-visible:ring-4 peer-focus-visible:ring-white/20";
 
 export default function InquiryForm({
   variant,
