@@ -548,7 +548,7 @@ export const destinations: Destination[] = [
       { title: "Gönguferðir með leiðsögumanni", image: "/images/svc-feneyjar-ganga.jpg", imageAlt: "Markúsartorgið og klukkuturninn í Feneyjum", text: "Markúsartorgið, Rialto, Dorsoduro og leyndu hverfin sem ferðamenn finna sjaldan sjálfir." },
       { title: "Matarferðir", image: "/images/svc-feneyjar-matur.jpg", imageAlt: "Cicchetti-smáréttir á bacaro-bar", text: "Cicchetti og vín á bacari-börum með innfæddum leiðsögumanni." },
       { title: "Murano", image: "/images/svc-feneyjar-murano.jpg", imageAlt: "Litrík hús við síki á Burano", text: "Bátsferð til Murano og Burano – glerblástur, litrík hús og hádegisverður á eyjunum." },
-      { title: "Palazzo Ducale", image: "/images/svc-feneyjar-palazzo.jpg", imageAlt: "Hertogahöllin séð frá lóninu", text: "Miðar og leiðsögn um Hertogahöllina, Markúsarkirkjuna og Andvarpsbrúna." },
+      { title: "Palazzo Ducale", image: "/images/borg-feneyjar-palazzo-ducale.jpg", imageAlt: "Hertogahöllin í Feneyjum séð frá Canal Grande", text: "Miðar og leiðsögn um Hertogahöllina, Markúsarkirkjuna og Andvarpsbrúna." },
       { title: "Miðakaup & transfer", image: "/images/borg-feneyjar-vatnataxi.jpg", imageAlt: "Vatnataxi á Canal Grande í Feneyjum", text: "Miðar á söfn og viðburði, vatnataxi frá Marco Polo flugvelli og aðstoð við gistingu." },
     ],
     planning: "Sendu okkur dagsetningar og fjölda – við setjum saman dvölina í Feneyjum frá flugvelli til gondólu.",
