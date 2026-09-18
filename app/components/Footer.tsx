@@ -4,7 +4,7 @@ import { destinations } from "../data/site";
 import { getContent } from "../lib/content";
 import { InstagramIcon, FacebookIcon, WhatsAppIcon } from "./Icons";
 
-const pageLinks = [
+export const pageLinks = [
   { href: "/", label: "Heim" },
   { href: "/villur", label: "Villur á Ítalíu" },
   { href: "/villur#thjonusta", label: "Viðbótarþjónusta í villuna" },
@@ -13,7 +13,7 @@ const pageLinks = [
   { href: "/samband", label: "Hafa samband" },
 ];
 
-const cityLinks = [
+export const cityLinks = [
   { href: "/borgir", label: "Skoðunarferðir & skipulagning" },
   ...destinations.map((d) => ({ href: d.custom ? `/${d.slug}` : `/borgir/${d.slug}`, label: d.navLabel })),
 ];

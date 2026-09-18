@@ -1,14 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import ClosingFooter from "./components/ClosingFooter";
 import Hero from "./components/Hero";
 import RevealOnScroll from "./components/RevealOnScroll";
 import Testimonials from "./components/Testimonials";
 import SnapScroll from "./components/SnapScroll";
 import CityShowcase from "./components/CityShowcase";
 import { getContent } from "./lib/content";
-import { ArrowIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIcon } from "./components/Icons";
+import { ArrowIcon } from "./components/Icons";
 
 const btnWhite =
   "inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors";
@@ -21,7 +21,7 @@ const h2 = "mt-3 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-
  * Forsíða (landing): dökk, myndir í fullri skjástærð í hverjum hluta og sem minnst af hvítu.
  */
 export default function Home() {
-  const { site, tours, villas, villaServices, destinations, wedding, testimonials } = getContent();
+  const { tours, villas, villaServices, destinations, wedding, testimonials } = getContent();
   return (
     <div className="bg-ink text-white">
       <SnapScroll />
@@ -230,70 +230,8 @@ export default function Home() {
             <Testimonials tone="dark" items={testimonials} />
           </div>
         </section>
-
-        {/* ═══════════════ HAFA SAMBAND ═══════════════ */}
-        <section className="relative min-h-svh flex flex-col justify-center-safe overflow-hidden">
-          <Image src="/images/gallery-01.jpg" alt="Trevi gosbrunnurinn í Róm" fill quality={85} sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink" />
-          <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 md:px-10 py-24">
-            <RevealOnScroll>
-              <div className="text-center mb-8 md:mb-10">
-                <span className={eyebrow}>Hafa samband</span>
-                <h2 className={h2}>Það kostar ekkert að fá tilboð</h2>
-                <p className="mt-4 text-white/70 max-w-xl mx-auto">
-                  Við svörum yfirleitt innan sólarhrings.
-                </p>
-              </div>
-            </RevealOnScroll>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-              {[
-                { icon: <MailIcon />, title: "Netfang", value: site.email, href: `mailto:${site.email}` },
-                { icon: <PhoneIcon />, title: "Sími (Ísland)", value: site.phoneIS, href: `tel:${site.phoneIS.replace(/\s/g, "")}` },
-                { icon: <WhatsAppIcon className="w-6 h-6" />, title: "WhatsApp (Ítalía)", value: site.phoneIT, href: site.whatsapp },
-              ].map((c) => (
-                <RevealOnScroll key={c.title}>
-                  <a
-                    href={c.href}
-                    className="group flex items-center gap-4 rounded-3xl bg-white/10 border border-white/15 backdrop-blur-md p-4 md:p-5 hover:bg-white hover:text-ink transition-colors"
-                  >
-                    <span className="w-12 h-12 shrink-0 rounded-2xl bg-white/15 text-white flex items-center justify-center group-hover:bg-forest transition-colors">
-                      {c.icon}
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-xs text-white/60 group-hover:text-ink/50">{c.title}</span>
-                      <span className="block font-medium truncate">{c.value}</span>
-                    </span>
-                  </a>
-                </RevealOnScroll>
-              ))}
-            </div>
-
-            <RevealOnScroll>
-              <div className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/villur#fyrirspurn" className={btnWhite}>
-                  Fá tilboð í villu <ArrowIcon className="w-4 h-4" />
-                </Link>
-                <Link href="/fyrirspurn" className={btnGlass}>
-                  Almenn fyrirspurn
-                </Link>
-                <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
-                  <InstagramIcon className="w-4 h-4" /> {site.instagramHandle}
-                </a>
-              </div>
-
-              <div className="mt-8 mx-auto flex items-center gap-4 rounded-3xl bg-white/5 border border-white/10 p-4 w-fit">
-                <Image src="/images/logo.jpg" alt="" width={48} height={48} className="w-12 h-12 rounded-2xl object-cover" />
-                <div className="pr-2">
-                  <span className="block text-sm font-semibold">Hildur</span>
-                  <span className="text-xs text-white/55">{site.legalName}</span>
-                </div>
-              </div>
-            </RevealOnScroll>
-          </div>
-        </section>
       </main>
-      <Footer />
+      <ClosingFooter />
     </div>
   );
 }
