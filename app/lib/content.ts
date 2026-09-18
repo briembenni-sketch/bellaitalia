@@ -151,6 +151,32 @@ export function toEditable(c: Content): Editable {
   };
 }
 
+/** Myndir og merki sem stjórnborðið sýnir með textunum (ekki ritstýranlegt). */
+export type AdminMedia = {
+  tours: Record<string, { image: string; imageAlt: string }>;
+  villas: Record<string, { image: string; imageAlt: string }>;
+  villaServices: Record<string, { image: string; imageAlt: string }>;
+  destinations: Record<string, { image: string; imageAlt: string; eyebrow: string; services: { title: string; image?: string }[] }>;
+  wedding: { image: string; imageAlt: string; eyebrow: string };
+};
+
+export function toMedia(c: Content): AdminMedia {
+  const pick = <T extends { image: string; imageAlt: string }>(items: T[], key: (t: T) => string) =>
+    Object.fromEntries(items.map((t) => [key(t), { image: t.image, imageAlt: t.imageAlt }]));
+  return {
+    tours: pick(c.tours, (t) => t.id),
+    villas: pick(c.villas, (v) => v.id),
+    villaServices: pick(c.villaServices, (s) => s.id),
+    destinations: Object.fromEntries(
+      c.destinations.map((d) => [
+        d.slug,
+        { image: d.cardImage, imageAlt: d.imageAlt, eyebrow: d.eyebrow, services: d.services.map((s) => ({ title: s.title, image: s.image })) },
+      ])
+    ),
+    wedding: { image: c.wedding.image, imageAlt: c.wedding.imageAlt, eyebrow: c.wedding.eyebrow },
+  };
+}
+
 /**
  * Leggur vistaðar breytingar ofan á sjálfgefið efni. Aðeins ritstýranleg svið eru tekin,
  * hlutir eru paraðir á id/slug (ferðir, villur, þjónusta, borgir) eða staðsetningu (verðtafla, umsagnir),

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { isAuthed } from "../lib/auth";
-import { getContent, toEditable } from "../lib/content";
+import { getContent, toEditable, toMedia } from "../lib/content";
 import { login, logout } from "./actions";
 import AdminEditor from "./AdminEditor";
 
@@ -50,13 +50,15 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     );
   }
 
-  const content = toEditable(getContent());
+  const full = getContent();
+  const content = toEditable(full);
+  const media = toMedia(full);
   const storage = process.env.GITHUB_TOKEN && process.env.GITHUB_REPO ? "github" : "file";
 
   return (
     <main className="min-h-svh bg-ink text-white">
       <header className="sticky top-0 z-40 glass-dark">
-        <div className="mx-auto max-w-[1200px] px-5 md:px-8 h-16 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-[1400px] px-5 md:px-8 h-16 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
             <span className="font-display font-semibold text-lg tracking-tight">Bella Italia</span>
             <span className="text-xs text-white/50 truncate">Stjórnborð · verð og textar</span>
@@ -73,7 +75,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
           </div>
         </div>
       </header>
-      <AdminEditor initial={content} storage={storage} />
+      <AdminEditor initial={content} media={media} storage={storage} />
     </main>
   );
 }
