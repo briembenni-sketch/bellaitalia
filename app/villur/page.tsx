@@ -8,7 +8,7 @@ import InquiryForm from "../components/InquiryForm";
 import VillaCard from "../components/VillaCard";
 import ServiceCard from "../components/ServiceCard";
 import { getContent } from "../lib/content";
-import { ArrowIcon, CheckIcon } from "../components/Icons";
+import { ArrowIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
   title: "Villur á Ítalíu | Bella Italia",
@@ -51,32 +51,35 @@ export default function VillurPage() {
 
         {/* Intro */}
         <section id="um" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-16 md:pt-28 scroll-mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-            <RevealOnScroll className="lg:col-span-7">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Að leigja hús á Ítalíu</span>
-              <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
-                Við finnum réttu eignina
-              </h2>
-              <div className="mt-6 space-y-4 text-white/65 leading-relaxed text-[16px] md:text-[17px]">
+          <RevealOnScroll>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-12">
+              <div>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Að leigja hús á Ítalíu</span>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
+                  Við finnum réttu eignina
+                </h2>
+              </div>
+              <div className="max-w-md md:text-right space-y-3 text-white/60">
                 {villaText.intro.map((p) => (
                   <p key={p}>{p}</p>
                 ))}
               </div>
-            </RevealOnScroll>
-            <RevealOnScroll className="lg:col-span-5">
-              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-forest text-white p-6 md:p-9">
-                <h3 className="font-display text-2xl font-medium">Gott að vita</h3>
-                <ul className="mt-5 space-y-4 text-[15px] text-white/80 leading-relaxed">
-                  {villaText.practical.map((p) => (
-                    <li key={p} className="flex gap-3">
-                      <CheckIcon className="w-4 h-4 mt-1 text-gold-light shrink-0" />
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </RevealOnScroll>
-          </div>
+            </div>
+          </RevealOnScroll>
+          {/* Gott að vita – stuttir punktar í einni röð */}
+          <RevealOnScroll>
+            <ul
+              className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 lg:gap-x-10 lg:[grid-template-columns:repeat(var(--cols),minmax(0,1fr))]"
+              style={{ "--cols": Math.min(villaText.practical.length, 4) } as React.CSSProperties}
+            >
+              {villaText.practical.map((p, i) => (
+                <li key={p} className="border-t border-white/15 pt-5 pb-7 lg:pb-0">
+                  <span className="font-display text-sm text-gold-light tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="mt-3 font-display text-lg md:text-xl font-medium tracking-tight leading-snug text-white/90 text-balance">{p}</p>
+                </li>
+              ))}
+            </ul>
+          </RevealOnScroll>
         </section>
 
         {/* Dæmi um villur */}
