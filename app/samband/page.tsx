@@ -30,7 +30,7 @@ export default function SambandPage() {
           image="/images/rome-rooftops.jpg"
           imageAlt="Þök og kirkjuhvelfingar Rómar"
           title="Hafa samband"
-          text="Hér eru allar helstu upplýsingar til þess að hafa samband. Það kostar ekkert að fá tilboð."
+          text="Það kostar ekkert að fá tilboð."
           size="short"
         />
 
@@ -66,8 +66,7 @@ export default function SambandPage() {
                   Hildur – Róm & Villur á Ítalíu
                 </h2>
                 <p className="mt-4 text-white/70 max-w-xl leading-relaxed">
-                  Sendu okkur fyrirspurn um ferð til Rómar, villu á Ítalíu eða hvort tveggja. Við
-                  sníðum allt að ykkar óskum.
+                  Við sníðum allt að ykkar óskum.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link href="/fyrirspurn" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">

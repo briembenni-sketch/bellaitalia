@@ -74,8 +74,7 @@ export default function BrudkaupPage() {
                     Við tengjum saman villuna og þjónustuna
                   </h2>
                   <p className="mt-4 text-white/75 leading-relaxed">
-                    Sama teymi sem sér um villurnar okkar og viðbótarþjónustuna í þær hjálpar við að
-                    útfæra tilefnið – frá húsi fyrir allan hópinn til kokks, ljósmyndara og akstur.
+                    Sama teymi sér um húsið, veisluna og allt þar á milli.
                   </p>
                 </div>
                 <ul className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -96,7 +95,7 @@ export default function BrudkaupPage() {
               <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Brúðkaup & tilefni</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Segðu okkur frá tilefninu</h2>
               <p className="mt-4 text-white/60">
-                Hvenær, hve mörg og hvar á Ítalíu – við komum til baka með hugmyndir og tillögu.
+                Hvenær, hve mörg og hvar á Ítalíu – við komum með tillögu.
               </p>
               <p className="mt-6 text-sm text-white/50">
                 {site.phoneIS} (Ísland)

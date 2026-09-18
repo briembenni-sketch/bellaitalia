@@ -21,7 +21,7 @@ const h2 = "mt-3 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-
  * Forsíða (landing): dökk, myndir í fullri skjástærð í hverjum hluta og sem minnst af hvítu.
  */
 export default function Home() {
-  const { site, tours, villas, villaServices, villaText, destinations, wedding, testimonials } = getContent();
+  const { site, tours, villas, villaServices, destinations, wedding, testimonials } = getContent();
   return (
     <div className="bg-ink text-white">
       <SnapScroll />
@@ -37,7 +37,7 @@ export default function Home() {
               um alla Ítalíu
             </>
           }
-          text="Við finnum réttu villuna fyrir ykkar hóp, útbúum tilboð og sjáum um allt í kringum dvölina – kokk, ljósmyndara, vínsmökkun og akstur. Gjaldfrjálst þegar bókað er í gegnum okkur."
+          text="Við finnum réttu villuna og sjáum um allt í kringum dvölina – gjaldfrjálst."
           actions={
             <>
               <Link href="/villur" className={btnWhite}>
@@ -70,9 +70,7 @@ export default function Home() {
                   <span className={eyebrow}>Villur – okkar sérgrein</span>
                   <h2 className={h2}>Finndu réttu villuna</h2>
                   <p className="mt-4 text-white/80 text-[15px] md:text-lg leading-relaxed max-w-xl">
-                    Hús með sundlaug í Toskana, Umbríu, Le Marche, Puglia og á Sikiley – í öllum
-                    verðflokkum. Hér eru dæmi um húsgerðir; úrvalið er miklu stærra og við þrengjum
-                    valið fyrir ykkur.
+                    Dæmi um húsgerðir – úrvalið er miklu stærra.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3 shrink-0">
@@ -109,7 +107,6 @@ export default function Home() {
                       <h3 className="font-display text-xl sm:text-2xl xl:text-[1.75rem] font-medium tracking-tight leading-tight">
                         {v.name}
                       </h3>
-                      <p className="mt-2 hidden sm:block lg:hidden xl:block text-sm text-white/70 leading-relaxed line-clamp-2">{v.text}</p>
                       <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold">
                         Skoða villu <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                       </span>
@@ -118,8 +115,6 @@ export default function Home() {
                 </RevealOnScroll>
               ))}
             </div>
-
-            <p className="mt-4 text-xs text-white/45 max-w-3xl">{villaText.pricingNote}</p>
           </div>
         </section>
 
@@ -127,16 +122,11 @@ export default function Home() {
         <section className="relative min-h-svh flex flex-col justify-center-safe bg-ink">
           <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-28 pb-14 lg:pt-28 lg:pb-12">
             <RevealOnScroll>
-              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 lg:gap-10 mb-8 md:mb-10">
-                <div className="max-w-2xl">
-                  <span className={eyebrow}>Í kringum villuna</span>
-                  <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] text-white">
-                    Gerðu dvölina persónulegri
-                  </h2>
-                </div>
-                <p className="text-white/60 text-[15px] md:text-base leading-relaxed max-w-md lg:text-right">
-                  Viðbótarþjónusta sem tengist dvölinni og gerir ferðina sérstæðari – allt bókað í gegnum okkur.
-                </p>
+              <div className="max-w-2xl mb-8 md:mb-10">
+                <span className={eyebrow}>Í kringum villuna</span>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] text-white">
+                  Gerðu dvölina persónulegri
+                </h2>
               </div>
             </RevealOnScroll>
 
@@ -182,14 +172,9 @@ export default function Home() {
                     Róm og aðrar borgir
                   </h2>
                 </div>
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 lg:gap-6">
-                  <p className="text-white/60 text-[15px] md:text-base leading-relaxed max-w-md lg:text-right">
-                    Leiðsögn, miðakaup, einkabílar og aðstoð við að skipuleggja borgarferðina – sér eða í sömu ferð og villan.
-                  </p>
-                  <Link href="/borgir" className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-medium hover:bg-white hover:text-ink transition-colors w-fit">
-                    Allar borgir <ArrowIcon className="w-4 h-4" />
-                  </Link>
-                </div>
+                <Link href="/borgir" className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-medium hover:bg-white hover:text-ink transition-colors w-fit">
+                  Allar borgir <ArrowIcon className="w-4 h-4" />
+                </Link>
               </div>
             </RevealOnScroll>
 
@@ -256,8 +241,7 @@ export default function Home() {
                 <span className={eyebrow}>Hafa samband</span>
                 <h2 className={h2}>Það kostar ekkert að fá tilboð</h2>
                 <p className="mt-4 text-white/70 max-w-xl mx-auto">
-                  Sendu okkur fyrirspurn um villu á Ítalíu, borgarferð eða hvort tveggja. Við svörum
-                  yfirleitt innan sólarhrings og erum til staðar 24/7 á meðan dvöl stendur.
+                  Við svörum yfirleitt innan sólarhrings.
                 </p>
               </div>
             </RevealOnScroll>
@@ -302,7 +286,7 @@ export default function Home() {
                 <Image src="/images/logo.jpg" alt="" width={48} height={48} className="w-12 h-12 rounded-2xl object-cover" />
                 <div className="pr-2">
                   <span className="block text-sm font-semibold">Hildur</span>
-                  <span className="text-xs text-white/55">{site.legalName} · {site.email}</span>
+                  <span className="text-xs text-white/55">{site.legalName}</span>
                 </div>
               </div>
             </RevealOnScroll>

@@ -35,7 +35,7 @@ export default function VillurPage() {
           image="/images/villur-hero.jpg"
           imageAlt="Sundlaug við villu í sólsetri"
           title="Villur með sundlaug í öllum verðflokkum"
-          text="Við erum með fjöldann allan af villum í boði um alla Ítalíu og útbúum tilboð fyrir hverja og eina fjölskyldu, allt eftir óskum hvers og eins."
+          text="Við finnum réttu villuna fyrir ykkar hóp – það kostar ekkert að fá tilboð."
           actions={
             <>
               <a href="#fyrirspurn" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
@@ -87,10 +87,7 @@ export default function VillurPage() {
                 <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Úrval húsa</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Dæmi um villur</h2>
               </div>
-              <p className="text-white/60 max-w-md md:text-right">
-                Nokkur dæmi um gerðir af húsum sem eru í boði. Úrvalið er miklu stærra og við finnum
-                eign sem passar stærð hópsins, svæði og verðhugmynd.
-              </p>
+              <p className="text-white/60 max-w-md md:text-right">Dæmi um húsgerðir – úrvalið er miklu stærra.</p>
             </div>
           </RevealOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
@@ -102,10 +99,7 @@ export default function VillurPage() {
           </div>
           <RevealOnScroll>
             <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-white/8 p-5 md:p-6">
-              <p className="text-white/65 text-[15px] max-w-2xl">
-                Viltu skoða fleiri hús? Hér er hluti af úrvalinu hjá samstarfsaðila okkar – en best er
-                að senda okkur fyrirspurn svo við getum þrengt valið fyrir ykkur.
-              </p>
+              <p className="text-white/65 text-[15px] max-w-2xl">Fleiri hús hjá samstarfsaðila okkar.</p>
               <a href={site.villaCatalog} target="_blank" rel="noopener noreferrer" className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm font-medium hover:bg-white hover:text-ink transition-colors">
                 Skoða úrval ↗
               </a>
@@ -131,22 +125,14 @@ export default function VillurPage() {
               </RevealOnScroll>
             ))}
           </div>
-          <RevealOnScroll>
-            <p className="mt-6 text-white/60 text-[15px] leading-relaxed max-w-3xl">
-              {villaText.service[0]}
-            </p>
-          </RevealOnScroll>
         </section>
 
         {/* Svæði */}
         <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32">
           <RevealOnScroll>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
-              <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Svæði</span>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Hvert á Ítalíu?</h2>
-              </div>
-              <p className="text-white/60 max-w-md md:text-right">{villaText.intro[2]}</p>
+            <div className="mb-8 md:mb-10">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Svæði</span>
+              <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Hvert á Ítalíu?</h2>
             </div>
           </RevealOnScroll>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-5">
@@ -196,11 +182,12 @@ export default function VillurPage() {
                 Viltu fá okkur til að finna réttu eignina?
               </h2>
               <p className="mt-4 text-white/60">
-                Þar sem mörg hús eru í boði þurfum við að vita dagsetningar, hvaða svæði koma til
-                greina og hve mörg þið eruð – fullorðnir, börn og börn undir 2 ára – svo við getum
-                þrengt valið. Um leið og við höfum svörin finnum við hús sem hentar ykkar hóp.
+                Dagsetningar, svæði og fjöldi – fullorðnir, börn og börn undir 2 ára – og við finnum
+                hús sem hentar.
               </p>
-              <p className="mt-6 text-sm text-white/50">{villaText.service[1]}</p>
+              {villaText.service.map((p) => (
+                <p key={p} className="mt-6 text-sm text-white/50">{p}</p>
+              ))}
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">

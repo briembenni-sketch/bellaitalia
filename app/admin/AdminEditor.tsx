@@ -182,9 +182,9 @@ export default function AdminEditor({ initial, storage }: { initial: Editable; s
           </Card>
           <Card title="Textar á villusíðu">
             <Lines label="Inngangur („Við finnum réttu eignina“) – ein málsgrein í línu" value={c.villaText.intro} onChange={(v) => set((d) => ((d.villaText.intro = v), d))} rows={5} />
-            <Lines label="Gott að vita" value={c.villaText.practical} onChange={(v) => set((d) => ((d.villaText.practical = v), d))} rows={4} />
+            <Lines label="Gott að vita – einn stuttur punktur í línu" value={c.villaText.practical} onChange={(v) => set((d) => ((d.villaText.practical = v), d))} rows={4} />
             <Area label="Gjaldfrjáls þjónusta – texti" value={c.villaText.bookingBenefit} onChange={(v) => set((d) => ((d.villaText.bookingBenefit = v), d))} rows={3} />
-            <Lines label="Um þjónustuna (tvær málsgreinar)" value={c.villaText.service} onChange={(v) => set((d) => ((d.villaText.service = v), d))} rows={5} />
+            <Lines label="Undir fyrirspurnartexta – stutt lína" value={c.villaText.service} onChange={(v) => set((d) => ((d.villaText.service = v), d))} rows={2} />
           </Card>
         </Section>
 

@@ -25,7 +25,7 @@ export default function BorgirPage() {
           image="/images/dest-napoli.jpg"
           imageAlt="Napoliflói með Vesúvíus í baksýn"
           title="Róm og aðrar borgir á Ítalíu"
-          text="Skoðunarferðir með leiðsögn, miðakaup, einkabílar og aðstoð við að skipuleggja borgarferðina – í Róm, Flórens, Napoli, Amalfi, Pompei og Feneyjum."
+          text="Leiðsögn, miðakaup, einkabílar og skipulagning."
           actions={
             <>
               <a href="#borgir" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
@@ -41,14 +41,9 @@ export default function BorgirPage() {
 
         <section id="borgir" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-16 md:pt-28 scroll-mt-24">
           <RevealOnScroll>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
-              <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Skoðunarferðir & skipulagning</span>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Hvert á að fara?</h2>
-              </div>
-              <p className="text-white/60 max-w-md md:text-right">
-                Við vinnum fyrst og fremst með þessa fjóra áfangastaði og setjum saman dagskrá, leiðsögn og miða fyrir ykkur.
-              </p>
+            <div className="mb-8 md:mb-10">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Skoðunarferðir & skipulagning</span>
+              <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Hvert á að fara?</h2>
             </div>
           </RevealOnScroll>
 
@@ -88,8 +83,7 @@ export default function BorgirPage() {
               <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Skipulagning</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Ekki viss hvar á að byrja?</h2>
               <p className="mt-4 text-white/60">
-                Segðu okkur hvenær þið farið, hve mörg þið eruð og hvað ykkur langar að sjá – við bendum á
-                bestu leiðina og setjum saman dagskrá.
+                Segðu okkur hvenær, hve mörg og hvað ykkur langar að sjá.
               </p>
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">

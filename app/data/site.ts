@@ -59,7 +59,7 @@ export const tours: Tour[] = [
       duration: "3,5 klukkustundir",
       included: [
         "Aðgangsmiði og guide á ensku",
-        "Farið er í litlum hópum, max 10 manns, með leiðsögn svo hópurinn er mjög lítill sem gerir upplifunina betri.",
+        "Litlir hópar, max 10 manns",
       ],
     },
   },
@@ -70,8 +70,7 @@ export const tours: Tour[] = [
     tag: "Upplifun",
     image: "/images/rom-vespa-2.jpg",
     imageAlt: "Rauð vespa á steinlagðri götu í Róm",
-    summary:
-      "Vertu eins og innfæddur og láttu keyra þig um Róm á vespu! Rómversku vespu strákarnir sækja ykkur upp á hótel og keyra ykkur um þröngar götur Rómar.",
+    summary: "Láttu keyra þig um þröngar götur Rómar á vespu.",
     highlights: ["Vespa með einkabílstjóra", "Sótt upp á hótel", "Tilvalið sem afmælisgjöf"],
     priceLabel: "frá €150 á mann",
     prices: [
@@ -96,8 +95,7 @@ export const tours: Tour[] = [
     tag: "Bílstjóri",
     image: "/images/rom-flugvollur-2.jpg",
     imageAlt: "Svartur skutlubíll í götu í Róm að kvöldi",
-    summary:
-      "Við erum með bíla í öllum stærðum og gerðum og sjáum um að koma þér til og frá FCO flugvellinum á einfaldan og öruggan máta.",
+    summary: "Bílstjóri bíður ykkar á FCO og keyrir beint upp á hótel.",
     highlights: ["Bíll (1–3 manns)", "Skutla (4–6 manns)", "Stór skutla (6–8 manns)"],
     priceLabel: "Verð eftir fyrirspurn",
     prices: [
@@ -120,8 +118,7 @@ export const tours: Tour[] = [
     tag: "Dagsferð",
     image: "/images/dest-amalfi.jpg",
     imageAlt: "Positano við Amalfi ströndina",
-    summary:
-      "Dreymir þig um að sjá Amalfi ströndina, sigla til Capri, sjá Pompeii eða skoða Napolí hvort sem er í dagsferð frá Róm eða lengri ferð.",
+    summary: "Amalfi, Capri, Pompeii og Napoli – dagsferð frá Róm eða lengri ferð.",
     highlights: ["Dagsferðir eða lengri ferðir", "Leiðsögumenn", "Bílstjórar", "Bátsferðir", "Miðakaup"],
     priceLabel: "Verð eftir fyrirspurn",
     details: {
@@ -140,8 +137,7 @@ export const tours: Tour[] = [
     tag: "Skoðunarferð",
     image: "/images/rom-golfbill-2.jpg",
     imageAlt: "Golfbíll í skoðunarferð um Róm",
-    summary:
-      "Viltu ferðast á þægilegan hátt um borgina og ná að komast yfir sem mest á stuttum tíma með leiðsögumanni.",
+    summary: "Sem mest af Róm á stuttum tíma – með einkaleiðsögn.",
     highlights: ["Góð leið til að sjá sem mest af Róm", "Tilvalið fyrir þá sem ferðast með börn eða eldra fólk"],
     priceLabel: "Verð eftir fjölda",
     details: {
@@ -173,7 +169,7 @@ export const tours: Tour[] = [
       duration: "3 klukkustundir",
       included: [
         "Aðgangsmiði og guide á ensku",
-        "Farið er í litlum hópum, max 10 manns, með leiðsögn svo hópurinn er mjög lítill sem gerir upplifunina betri.",
+        "Litlir hópar, max 10 manns",
       ],
     },
   },
@@ -184,8 +180,7 @@ export const tours: Tour[] = [
     tag: "Upplifun",
     image: "/images/rom-sidecar-2.jpg",
     imageAlt: "Fjölskylda á rauðum vespum með hliðarvagni",
-    summary:
-      "Komdu og uppgötvaðu Róm á öðruvísi og skemmtilegri hátt á vespu í hliðarvagni. Skemmtileg skoðunarferð sem hentar allri fjölskyldunni.",
+    summary: "Róm í hliðarvagni – skoðunarferð fyrir alla fjölskylduna.",
     highlights: ["Leiðsögumaður sér um aksturinn", "12 skemmtileg stopp um alla Róm", "Lágmarksaldur 5 ára"],
     priceLabel: "€135 á mann",
     prices: [
@@ -222,8 +217,7 @@ export const tours: Tour[] = [
     tag: "Skoðunarferð",
     image: "/images/rom-ganga-2.jpg",
     imageAlt: "Trevi gosbrunnurinn í Róm",
-    summary:
-      "Róm með Rómverjum! Gönguferð með innfæddum um borgina eilífu sem vita allt og meira til um sögu Rómaveldis.",
+    summary: "Róm með Rómverjum – einkaleiðsögn um borgina eilífu.",
     highlights: ["Besta af Róm", "Hjarta Rómar", "Gyðingahverfið & Trastevere", "Matar- & vínferðir"],
     priceLabel: "Verð eftir fjölda",
     details: {
@@ -242,8 +236,7 @@ export const tours: Tour[] = [
     tag: "Gisting",
     image: "/images/rom-gisting.jpg",
     imageAlt: "Hótel við Spænsku tröppurnar í Róm",
-    summary:
-      "Við getum aðstoðað við að finna réttu gistinguna í Róm. Erum með úrval af gistingum í öllum verðflokkum.",
+    summary: "Við finnum réttu gistinguna, í öllum verðflokkum.",
     highlights: ["Hótel", "Íbúðir", "Flott B&B"],
     priceLabel: "Allir verðflokkar",
     details: {
@@ -260,8 +253,7 @@ export const tours: Tour[] = [
     tag: "Matur",
     image: "/images/rom-matreidsla-2.jpg",
     imageAlt: "Hendur fletja út pizzudeig",
-    summary:
-      "Viltu læra að elda pizzu eða gera alvöru pasta og gelato í Róm! Áhersla er lögð á ferskt árstíðabundið hráefni hverju sinni. Skemmtileg upplifun fyrir alla fjölskylduna.",
+    summary: "Lærðu að gera alvöru pizzu eða pasta – fyrir alla fjölskylduna.",
     highlights: ["Pasta & Gelato", "Pizza & Gelato", "Ítalskur aperitivo"],
     priceLabel: "€150 á mann",
     prices: [{ label: "Verð á mann", value: "€150" }],
@@ -282,7 +274,7 @@ export const testimonials = [
   {
     name: "Elka Ósk Hrólfsdóttir",
     trip: "Villa í Toskana og dagar í Róm",
-    text: "Áttum alveg frábæra ferð 6 fullorðnir og 2 börn til Ítalíu. Dvöldum 12 daga þar af 10 í villu í Tuscany og 2 í Róm. Hildur var alltaf til staðar og með ráðleggingar upp á 10 bæði fyrir ferðina og á meðan henni stóð. Mæli hiklaust með að skipuleggja ferðalagið með Hildi, margborgar sig.",
+    text: "Áttum alveg frábæra ferð 6 fullorðnir og 2 börn til Ítalíu. Hildur var alltaf til staðar og með ráðleggingar upp á 10 bæði fyrir ferðina og á meðan henni stóð. Mæli hiklaust með að skipuleggja ferðalagið með Hildi, margborgar sig.",
   },
   {
     name: "Sólrún Sverrisdóttir",
@@ -302,12 +294,12 @@ export const testimonials = [
   {
     name: "Anna Toher",
     trip: "Stutt stopp í Róm",
-    text: "Stutt stopp í Róm nýttist vel með skjótri og góðri þjónustu Hildar hjá Bella Italia. Hótel, akstursþjónusta á flugvöll, gönguferð um Gyðingahverfið og Trastevere með frábærum leiðsögumanni, Riccardo, og önnur samskipti voru til fyrirmyndar. Allt stenst eins og stafur á bók. Mæli með Bella Italia til að fá sem mest út úr ferð til Ítalíu.",
+    text: "Stutt stopp í Róm nýttist vel með skjótri og góðri þjónustu Hildar hjá Bella Italia. Allt stenst eins og stafur á bók. Mæli með Bella Italia til að fá sem mest út úr ferð til Ítalíu.",
   },
   {
     name: "Ásbjörg Morthens",
     trip: "Rómarheimsókn með vespuferð",
-    text: "Þetta var bara frábært allt og hrikalega gott að fá svona góða punkta og þjónustu hjá Bella Italia. Farið til og frá flugvellinum munar öllu. Vespuferðin var alveg svakalega skemmtileg og virkilega gaman að skoða borgina svoleiðis. Hann Luca leiðsögumaðurinn mjög skemmtilegur og sagði skemmtilega frá, mæli klárlega með vespuferð. Veitingastaðurinn AD Hoc var líka frábær. Ekkert smá flottur, þjónustan og maturinn/vínin upp á 10. Mæli klárlega með að hafa samband við Hildi sem setur saman Rómar heimsókn upp á 10.",
+    text: "Þetta var bara frábært allt og hrikalega gott að fá svona góða punkta og þjónustu hjá Bella Italia. Vespuferðin var alveg svakalega skemmtileg og virkilega gaman að skoða borgina svoleiðis. Mæli klárlega með að hafa samband við Hildi sem setur saman Rómar heimsókn upp á 10.",
   },
 ];
 
@@ -335,23 +327,16 @@ export const villaPricing = [
 export const villaRegions = ["Toskana", "Umbria", "Le Marche", "Puglia", "Sikiley", "Norður-Ítalía", "Annað / óákveðið"];
 
 export const villaText = {
-  intro: [
-    "Það getur oft verið vandasamt að velja réttu eignina eða leiguaðila þegar kemur að því að leigja hús á Ítalíu, enda mikið í boði.",
-    "Við erum með fjöldann allan af villum í boði um alla Ítalíu og í öllum verðflokkum, og útbúum tilboð fyrir hverja og eina fjölskyldu allt eftir óskum hvers og eins.",
-    "Vinsælasta héraðið er án efa Toskana, en ekki má gleyma að önnur svæði hafa líka sinn sérstaka sjarma, líkt og Umbria, Le Marche, að ógleymdu Puglia og stórkostlegu Sikiley.",
-  ],
+  intro: ["Fjöldi villa um alla Ítalíu, í öllum verðflokkum – við útbúum tilboð eftir óskum hvers hóps."],
   practical: [
-    "Öll húsin eru með sundlaug og staðsett uppi í sveit í rólegheitum en þó í grennd við markverða staði. Oftast er 2–5 km fjarlægð frá næsta þorpi/þjónustu og því nauðsynlegt að leigja bíl á meðan dvöl stendur.",
-    "Flestar villur á Ítalíu eru leigðar út frá laugardegi til laugardags en við takmörkum okkur ekki við þá reglu og er hægt að leigja húsin hvaða daga vikunnar í eins marga daga og óskað er, að frátöldu tímabilinu frá júlí til ágúst þar sem vikudvöl frá laugardegi er krafist.",
+    "Öll húsin eru með sundlaug, í rólegri sveit",
+    "2–5 km í næsta þorp – bílaleigubíll er nauðsynlegur",
+    "Leiga hvaða daga sem er – nema í júlí og ágúst: laugardagur til laugardags",
+    "Við erum til staðar 24/7 á meðan dvöl stendur",
   ],
-  service: [
-    "Bella Italia – Róm & Villur á Ítalíu sérhæfir sig í að finna réttu eignina fyrir hvern og einn hóp. Við vinnum með örfáum traustum útvöldum samstarfsaðilum og að panta í gegnum okkur tryggir þér gjaldfrjálst alla okkar þjónustu og milligöngu við þá aðila, bæði við bókun á húsi og ekki síður við öll plön sem viðkoma ferðinni, hvort sem það eru bílaleigubílar, kokkar, ljósmyndarar, vínferðir eða hvað annað sem fjölskyldan hefur áhuga á að gera á meðan dvöl stendur.",
-    "Það kostar ekkert að fá tilboð, endilega hafðu samband og sjáðu hvort við finnum ekki réttu eignina fyrir ykkur!",
-  ],
-  pricingNote:
-    "Hér er viðmiðun á meðalverði fyrir villur eftir stærð (ekki algilt, enda fer verðið eftir árstíma, fjölda herbergja og hvar á Ítalíu húsið er staðsett).",
-  bookingBenefit:
-    "Að bóka í gegnum okkur gefur þér aðgang að allri þjónustu gjaldfrjálst sem viðkemur heildarskipulagi á ferðinni, hvort sem það er aðstoð með bílaleigur, hótelpantanir, veitingastaði eða kokk upp í hús. Við erum til staðar 24/7 meðan á dvölinni stendur.",
+  service: ["Það kostar ekkert að fá tilboð – þjónusta okkar og milliganga er gjaldfrjáls."],
+  pricingNote: "Meðalverð eftir stærð – fer eftir árstíma og staðsetningu.",
+  bookingBenefit: "Allt bókað í gegnum okkur – gjaldfrjálst.",
   extras: ["Bílaleigubílar", "Kokkur upp í hús", "Ljósmyndari", "Vínferðir", "Hótelpantanir", "Veitingastaðir"],
 };
 
@@ -375,7 +360,7 @@ export const villas: Villa[] = [
     region: "Toskana",
     image: "/images/villa-toskana-2.jpg",
     imageAlt: "Toskönsk villa með sundlaug, grasflöt og sýprusviðum",
-    text: "Klassísk toskönsk villa úr steini með stórri sundlaug, ólífutrjám og útsýni yfir vínekrur. Rólegt sveitaumhverfi en stutt í þorp, veitingastaði og vínbændur.",
+    text: "Klassísk steinvilla innan um ólífutré og sýprusviði.",
     features: ["Sundlaug", "Útsýni yfir vínekrur", "Stutt í þorp"],
   },
   {
@@ -384,7 +369,7 @@ export const villas: Villa[] = [
     region: "Umbria",
     image: "/images/villa-umbria.jpg",
     imageAlt: "Sundlaug í grænum hæðum Umbríu",
-    text: "Græna hjarta Ítalíu. Endurgerð sveitahús í fallegri náttúru, oft með stórum garði og sundlaug, og miðaldabæir eins og Assisi, Orvieto og Spello í nágrenninu.",
+    text: "Endurgerð sveitahús í græna hjarta Ítalíu.",
     features: ["Sundlaug", "Friðsælt", "Miðaldabæir í nánd"],
   },
   {
@@ -393,7 +378,7 @@ export const villas: Villa[] = [
     region: "Le Marche",
     image: "/images/villa-marche-2.jpg",
     imageAlt: "Villa með sundlaug milli vínekra og hæða með þorpi í baksýn",
-    text: "Le Marche við Adríahafið er minna þekkt en Toskana en hefur sama sjarma – hæðir, kastalar og strendur í grennd. Frábært verð fyrir fjölskyldur og vinahópa.",
+    text: "Minna þekkt en Toskana, sami sjarmi – hæðir og kastalar við Adríahafið.",
     features: ["Sundlaug", "Strönd í nánd", "Gott verð"],
   },
   {
@@ -402,7 +387,7 @@ export const villas: Villa[] = [
     region: "Puglia",
     image: "/images/villa-puglia.jpg",
     imageAlt: "Hvít trullo-hús með keilulöguðu þaki í Puglia",
-    text: "Suður-Ítalía á sínu besta. Hvítkölkuð trullo- og masseria-hús með sundlaug, ólífulundir svo langt sem augað eygir og strendur Adríahafsins skammt undan.",
+    text: "Hvítkölkuð trullo- og masseria-hús – Suður-Ítalía á sínu besta.",
     features: ["Sundlaug", "Ólífulundir", "Strendur"],
   },
 ];
@@ -423,28 +408,28 @@ export const villaServices: VillaService[] = [
     title: "Einkakokkur & matreiðslunámskeið",
     image: "/images/service-pasta.jpg",
     imageAlt: "Hendur móta ferskt heimagert pasta",
-    text: "Kokkur kemur heim í villuna, eldar hátíðarkvöldverð úr hráefni úr héraðinu og gengur frá. Eða lærið að gera pasta, pizzu og gelato saman í eldhúsinu.",
+    text: "Kokkur eldar hátíðarkvöldverð í villunni – eða þið lærið að gera pasta og gelato.",
   },
   {
     id: "ljosmyndari",
     title: "Ljósmyndari",
     image: "/images/service-ljosmyndari.jpg",
     imageAlt: "Ljósmyndari tekur myndir af pari í ítölskum garði",
-    text: "Fagljósmyndari kemur í villuna eða á fallegan stað í nágrenninu og fangar fjölskylduna, vinahópinn eða tilefnið á ítölsku sumarkvöldi.",
+    text: "Fagljósmyndari fangar hópinn á ítölsku sumarkvöldi.",
   },
   {
     id: "vin",
     title: "Vínsmökkun",
     image: "/images/service-vinsmokkun.jpg",
     imageAlt: "Vínsmökkun með rauðvínsglösum og ítölskum smáréttum",
-    text: "Heimsókn til vínbónda í héraðinu með smökkun og léttum hádegisverði, eða vínsmökkun með sommelier heima í villunni.",
+    text: "Hjá vínbónda í héraðinu eða með sommelier heima í villunni.",
   },
   {
     id: "akstur",
     title: "Akstur & transfer",
     image: "/images/service-bilstjori.jpg",
     imageAlt: "Klassískur bíll á sýprusviðargötu í Toskana",
-    text: "Bílstjóri sækir ykkur á flugvöll eða lestarstöð og keyrir beint í villuna. Einnig dagsferðir með bílstjóra svo enginn þurfi að keyra heim eftir vínsmökkunina.",
+    text: "Sótt á flugvöll og keyrt beint í villuna – og dagsferðir með bílstjóra.",
   },
 ];
 
@@ -474,7 +459,7 @@ export const destinations: Destination[] = [
     navLabel: "Róm",
     eyebrow: "Borgin eilífa",
     title: "Róm",
-    lead: "Vatíkanið og Colosseum með leiðsögn, gönguferðir með Rómverjum, golfbíla- og vespuferðir, matarferðir, matreiðslunámskeið, flugvallarakstur og gisting.",
+    lead: "Vatíkanið, Colosseum, vespuferðir, matur og gisting.",
     image: "/images/hero-rome-2.jpg",
     imageAlt: "Gata í Róm með bougainvillea",
     cardImage: "/images/card-rom.jpg",
@@ -489,22 +474,19 @@ export const destinations: Destination[] = [
     navLabel: "Flórens",
     eyebrow: "Toskana",
     title: "Flórens",
-    lead: "Vagga endurreisnarinnar. Gönguferðir með leiðsögumanni, miðakaup í Accademia og Duomo og aðstoð við að skipuleggja heimsóknir og dagskrá.",
+    lead: "Gönguferðir með leiðsögn og miðar í Accademia og Duomo.",
     image: "/images/dest-florens.jpg",
     imageAlt: "Dómkirkjan í Flórens séð yfir þökin",
     cardImage: "/images/dest-florens.jpg",
-    intro: [
-      "Flórens er borg sem best er að upplifa fótgangandi með einhverjum sem þekkir hana. Við aðstoðum við að skipuleggja daginn – hvað á að sjá, í hvaða röð og hvernig maður sleppur við biðraðirnar.",
-      "Flórens er líka fullkominn viðkomustaður fyrir þá sem dvelja í villu í Toskana og vilja skreppa í borgina í dagsferð.",
-    ],
+    intro: ["Best fótgangandi með einhverjum sem þekkir borgina – og fullkomin dagsferð úr villu í Toskana."],
     services: [
-      { title: "Gönguferðir með leiðsögumanni", image: "/images/svc-florens-ganga.jpg", imageAlt: "Gata í Flórens með Ponte Vecchio í baksýn", text: "Einkaleiðsögn á ensku um miðbæinn: Duomo, Piazza della Signoria, Ponte Vecchio, Uffizi-torgið og Oltrarno." },
-      { title: "Leiðsögn um borgina", image: "/images/svc-florens-leidsogn.jpg", imageAlt: "Stytta og Palazzo Vecchio í kvöldsól", text: "Sérsniðin leiðsögn eftir áhuga – list, saga, matur eða handverk – fyrir einstaklinga og hópa." },
-      { title: "Miðakaup í Accademia", image: "/images/svc-florens-accademia.jpg", imageAlt: "Davíð eftir Michelangelo í Accademia-safninu", text: "Við sjáum um miða á Davíð Michelangelos í Accademia-safninu og leiðsögn ef óskað er." },
-      { title: "Duomo og Cupola", image: "/images/svc-florens-duomo.jpg", imageAlt: "Hvelfing Brunelleschis yfir þökum Flórens", text: "Miðar og tímabókun í dómkirkjuna, hvelfingu Brunelleschis, klukkuturninn og skírnarkapelluna." },
-      { title: "Skipulagning heimsókna og dagskrár", image: "/images/svc-florens-skipulag.jpg", imageAlt: "Hæðaþorp og vínekrur í Chianti", text: "Við setjum saman dagskrá fyrir dvölina: söfn, veitingastaðir, vínsmökkun í Chianti og dagsferðir til Siena, San Gimignano eða Pisa." },
+      { title: "Gönguferðir með leiðsögumanni", image: "/images/svc-florens-ganga.jpg", imageAlt: "Gata í Flórens með Ponte Vecchio í baksýn", text: "Einkaleiðsögn á ensku um miðbæinn." },
+      { title: "Leiðsögn um borgina", image: "/images/svc-florens-leidsogn.jpg", imageAlt: "Stytta og Palazzo Vecchio í kvöldsól", text: "Sérsniðin eftir áhuga – list, saga, matur eða handverk." },
+      { title: "Miðakaup í Accademia", image: "/images/svc-florens-accademia.jpg", imageAlt: "Davíð eftir Michelangelo í Accademia-safninu", text: "Miðar á Davíð Michelangelos – leiðsögn ef óskað er." },
+      { title: "Duomo og Cupola", image: "/images/svc-florens-duomo.jpg", imageAlt: "Hvelfing Brunelleschis yfir þökum Flórens", text: "Miðar og tímabókun í dómkirkjuna og hvelfingu Brunelleschis." },
+      { title: "Skipulagning heimsókna og dagskrár", image: "/images/svc-florens-skipulag.jpg", imageAlt: "Hæðaþorp og vínekrur í Chianti", text: "Söfn, veitingastaðir, vínsmökkun í Chianti og dagsferðir til Siena eða Pisa." },
     ],
-    planning: "Segðu okkur hvenær þið eruð í Flórens, hve mörg og hvað ykkur langar að sjá – við setjum saman dagskrá og sjáum um miða og leiðsögn.",
+    planning: "Segðu okkur hvenær og hve mörg – við sjáum um dagskrá, miða og leiðsögn.",
   },
   {
     slug: "napoli-amalfi-pompei",
@@ -512,22 +494,19 @@ export const destinations: Destination[] = [
     navLabel: "Napoli · Amalfi · Pompei",
     eyebrow: "Campania",
     title: "Napoli, Amalfi & Pompei",
-    lead: "Dagsferðir frá Róm með einkabíl og leiðsögn, Pompeii, Napoli og Amalfi-ströndin – eða lengri dvöl við ströndina.",
+    lead: "Dagsferðir frá Róm með einkabíl – eða lengri dvöl við ströndina.",
     image: "/images/dest-amalfi.jpg",
     imageAlt: "Positano við Amalfi ströndina",
     cardImage: "/images/dest-amalfi.jpg",
-    intro: [
-      "Dreymir þig um að sjá Amalfi-ströndina, sigla til Capri, skoða Pompeii eða borða bestu pizzuna í heimi í Napoli? Við erum með frábært teymi í Campania og búum til ferðir fyrir hópa, einstaklinga og fjölskyldur.",
-      "Leiðsögumenn, bílstjórar, bátar – við plönum allt eftir ykkar óskum, hvort sem er í dagsferð frá Róm eða lengri ferð.",
-    ],
+    intro: ["Leiðsögumenn, bílstjórar og bátar – teymið okkar í Campania plönar allt eftir ykkar óskum."],
     services: [
-      { title: "Dagsferðir frá Róm", image: "/images/svc-napoli-dagsferd.jpg", imageAlt: "Bærinn Amalfi og ströndin", text: "Sótt á hótel í Róm að morgni með einkabíl og bílstjóra, farið til Pompeii, Napoli eða Amalfi-strandarinnar og komið til baka að kvöldi." },
-      { title: "Einkabíll og leiðsögn", image: "/images/borg-amalfi-vegur.jpg", imageAlt: "Strandvegurinn við Amalfi-ströndina", text: "Bílstjóri og leiðsögumaður allan daginn – engar biðraðir, engin rúta, dagskráin eftir ykkar höfði." },
-      { title: "Pompeii", image: "/images/dest-pompei.jpg", imageAlt: "Rústir Pompeii með Vesúvíus í baksýn", text: "Leiðsögn um fornu borgina sem grófst undir ösku Vesúvíusar árið 79. Hægt að bæta við Herculaneum eða göngu upp á Vesúvíus." },
-      { title: "Napoli", image: "/images/svc-napoli-pizza.jpg", imageAlt: "Napólísk pizza beint úr ofninum", text: "Gönguferð um miðbæinn, Spaccanapoli og pizzan sem borgin er fræg fyrir. Miðakaup á söfn og fornminjar." },
-      { title: "Amalfi-ströndin", image: "/images/borg-ravello-terrace.jpg", imageAlt: "Útsýnisverönd Villa Cimbrone í Ravello yfir Amalfi-ströndina", text: "Positano, Amalfi og Ravello með bílstjóra eða á bát. Bátsferðir til Capri, sund og hádegisverður við sjóinn." },
+      { title: "Dagsferðir frá Róm", image: "/images/svc-napoli-dagsferd.jpg", imageAlt: "Bærinn Amalfi og ströndin", text: "Sótt á hótel að morgni með einkabíl og komið til baka að kvöldi." },
+      { title: "Einkabíll og leiðsögn", image: "/images/borg-amalfi-vegur.jpg", imageAlt: "Strandvegurinn við Amalfi-ströndina", text: "Engar biðraðir, engin rúta – dagskráin eftir ykkar höfði." },
+      { title: "Pompeii", image: "/images/dest-pompei.jpg", imageAlt: "Rústir Pompeii með Vesúvíus í baksýn", text: "Leiðsögn um fornu borgina – Herculaneum eða Vesúvíus ef óskað er." },
+      { title: "Napoli", image: "/images/svc-napoli-pizza.jpg", imageAlt: "Napólísk pizza beint úr ofninum", text: "Gönguferð um Spaccanapoli og pizzan sem borgin er fræg fyrir." },
+      { title: "Amalfi-ströndin", image: "/images/borg-ravello-terrace.jpg", imageAlt: "Útsýnisverönd Villa Cimbrone í Ravello yfir Amalfi-ströndina", text: "Positano, Amalfi og Ravello með bílstjóra – eða á bát til Capri." },
     ],
-    planning: "Hafðu samband ef þú ert á leið til Campania héraðsins og vantar aðstoð við að plana áhyggjulausa ferð – dagsferð eða lengri dvöl.",
+    planning: "Áhyggjulaus ferð um Campania – dagsferð eða lengri dvöl.",
   },
   {
     slug: "feneyjar",
@@ -535,23 +514,20 @@ export const destinations: Destination[] = [
     navLabel: "Feneyjar",
     eyebrow: "Veneto",
     title: "Feneyjar",
-    lead: "Heildarþjónusta fyrir þá sem heimsækja borgina: gondólaferðir, gönguferðir með leiðsögumanni, matarferðir, Murano, Palazzo Ducale, miðakaup og transfer.",
+    lead: "Gondólar, leiðsögn, Murano, miðar og transfer.",
     image: "/images/dest-feneyjar.jpg",
     imageAlt: "Kirkjan Santa Maria della Salute við Canal Grande í Feneyjum",
     cardImage: "/images/dest-feneyjar-2.jpg",
-    intro: [
-      "Feneyjar eru ólíkar öllum öðrum borgum og það skiptir öllu að skipuleggja dvölina vel – hvar á að gista, hvernig kemst maður frá flugvellinum og hvernig sleppur maður við mestu mannþröngina.",
-      "Við bjóðum heildarþjónustu fyrir þá sem heimsækja Feneyjar og aðstoðum við að skipuleggja dvölina og allt sem til þarf.",
-    ],
+    intro: ["Í Feneyjum skiptir öllu að skipuleggja vel – gistingu, transfer og hvernig maður sleppur við mannþröngina."],
     services: [
-      { title: "Gondólaferðir", image: "/images/svc-feneyjar-gondola.jpg", imageAlt: "Gondóla á Canal Grande", text: "Einkagondóla um þröngu síkin – tilvalið í sólsetrinu eða sem sérstakt tilefni." },
-      { title: "Gönguferðir með leiðsögumanni", image: "/images/svc-feneyjar-ganga.jpg", imageAlt: "Markúsartorgið og klukkuturninn í Feneyjum", text: "Markúsartorgið, Rialto, Dorsoduro og leyndu hverfin sem ferðamenn finna sjaldan sjálfir." },
+      { title: "Gondólaferðir", image: "/images/svc-feneyjar-gondola.jpg", imageAlt: "Gondóla á Canal Grande", text: "Einkagondóla um þröngu síkin – tilvalið í sólsetrinu." },
+      { title: "Gönguferðir með leiðsögumanni", image: "/images/svc-feneyjar-ganga.jpg", imageAlt: "Markúsartorgið og klukkuturninn í Feneyjum", text: "Markúsartorgið, Rialto og leyndu hverfin." },
       { title: "Matarferðir", image: "/images/svc-feneyjar-matur.jpg", imageAlt: "Cicchetti-smáréttir á bacaro-bar", text: "Cicchetti og vín á bacari-börum með innfæddum leiðsögumanni." },
-      { title: "Murano", image: "/images/svc-feneyjar-murano.jpg", imageAlt: "Litrík hús við síki á Burano", text: "Bátsferð til Murano og Burano – glerblástur, litrík hús og hádegisverður á eyjunum." },
-      { title: "Palazzo Ducale", image: "/images/borg-feneyjar-palazzo-ducale.jpg", imageAlt: "Hertogahöllin í Feneyjum séð frá Canal Grande", text: "Miðar og leiðsögn um Hertogahöllina, Markúsarkirkjuna og Andvarpsbrúna." },
-      { title: "Miðakaup & transfer", image: "/images/borg-feneyjar-vatnataxi.jpg", imageAlt: "Vatnataxi á Canal Grande í Feneyjum", text: "Miðar á söfn og viðburði, vatnataxi frá Marco Polo flugvelli og aðstoð við gistingu." },
+      { title: "Murano", image: "/images/svc-feneyjar-murano.jpg", imageAlt: "Litrík hús við síki á Burano", text: "Bátsferð til Murano og Burano – glerblástur og litrík hús." },
+      { title: "Palazzo Ducale", image: "/images/borg-feneyjar-palazzo-ducale.jpg", imageAlt: "Hertogahöllin í Feneyjum séð frá Canal Grande", text: "Miðar og leiðsögn um Hertogahöllina og Markúsarkirkjuna." },
+      { title: "Miðakaup & transfer", image: "/images/borg-feneyjar-vatnataxi.jpg", imageAlt: "Vatnataxi á Canal Grande í Feneyjum", text: "Miðar á söfn, vatnataxi frá flugvelli og aðstoð við gistingu." },
     ],
-    planning: "Sendu okkur dagsetningar og fjölda – við setjum saman dvölina í Feneyjum frá flugvelli til gondólu.",
+    planning: "Sendu okkur dagsetningar og fjölda – við sjáum um rest, frá flugvelli til gondólu.",
   },
 ];
 
@@ -562,14 +538,14 @@ export const cityDestinations = destinations.filter((d) => !d.custom);
 export const wedding = {
   eyebrow: "Brúðkaup & sérstök tilefni",
   title: "Brúðkaup og sérstök tilefni á Ítalíu",
-  lead: "Brúðkaup í villu í Toskana, stórafmæli með einkakokk eða bónorð í gondólu í Feneyjum – við hjálpum til við að gera daginn ógleymanlegan.",
+  lead: "Brúðkaup í villu í Toskana, stórafmæli með einkakokk eða bónorð í gondólu.",
   image: "/images/brudkaup-villa.jpg",
   imageAlt: "Ítölsk villa með stórum garði í kvöldsól – umgjörð fyrir brúðkaup",
   image2: "/images/brudkaup-2.jpg",
   image2Alt: "Brúðhjón í gondólu í Feneyjum",
   intro: [
-    "Ítalía er einn vinsælasti staðurinn í Evrópu fyrir brúðkaup og sérstök tilefni – og villa með sundlaug, útsýni og stórum garði er fullkominn rammi.",
-    "Við erum að byggja upp þennan hluta þjónustunnar og tökum nú við fyrirspurnum. Segðu okkur frá tilefninu og við setjum saman tillögu í samstarfi við okkar fólk á Ítalíu.",
+    "Villa með sundlaug, útsýni og stórum garði er fullkominn rammi.",
+    "Við erum að byggja upp þessa þjónustu og tökum nú við fyrirspurnum – segðu okkur frá tilefninu.",
   ],
   ideas: ["Brúðkaup í villu", "Stórafmæli & ættarmót", "Bónorð & brúðkaupsafmæli", "Steggja- og gæsaferðir", "Fyrirtækjaferðir & hvataferðir"],
   extras: ["Villa fyrir allan hópinn", "Einkakokkur & veislumatur", "Ljósmyndari", "Vínsmökkun", "Akstur & transfer", "Blóm, tónlist & skreytingar"],

@@ -7,7 +7,7 @@ import RevealOnScroll from "./RevealOnScroll";
 import InquiryForm from "./InquiryForm";
 import type { Destination } from "../data/site";
 import { getContent } from "../lib/content";
-import { ArrowIcon, CheckIcon } from "./Icons";
+import { ArrowIcon } from "./Icons";
 
 /** Sameiginleg uppsetning fyrir Flórens, Napoli·Amalfi·Pompei og Feneyjar. */
 export default function DestinationPage({ destination: d }: { destination: Destination }) {
@@ -33,53 +33,20 @@ export default function DestinationPage({ destination: d }: { destination: Desti
               </a>
             </>
           }
-          scrollTo="#um"
+          scrollTo="#thjonusta"
         />
 
-        {/* Intro */}
-        <section id="um" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-16 md:pt-28 scroll-mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-            <RevealOnScroll className="lg:col-span-7">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{d.eyebrow}</span>
-              <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
-                Skoðunarferðir og aðstoð við að skipuleggja ferðina
-              </h2>
-              <div className="mt-6 space-y-4 text-white/65 leading-relaxed text-[16px] md:text-[17px]">
-                {d.intro.map((p) => (
-                  <p key={p}>{p}</p>
-                ))}
-              </div>
-            </RevealOnScroll>
-            <RevealOnScroll className="lg:col-span-5">
-              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-forest text-white p-6 md:p-9">
-                <h3 className="font-display text-2xl font-medium">Við sjáum um</h3>
-                <ul className="mt-5 space-y-3 text-[15px] text-white/85">
-                  {d.services.map((s) => (
-                    <li key={s.title} className="flex gap-3">
-                      <CheckIcon className="w-4 h-4 mt-1 text-gold-light shrink-0" />
-                      <span>{s.title}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-6 text-sm text-white/65 leading-relaxed">
-                  Sími {site.phoneIS} (Ísland) · {site.phoneIT} (Ítalía / WhatsApp)
-                </p>
-              </div>
-            </RevealOnScroll>
-          </div>
-        </section>
-
         {/* Þjónusta */}
-        <section id="thjonusta" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 scroll-mt-24">
+        <section id="thjonusta" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-16 md:pt-28 scroll-mt-24">
           <RevealOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Þjónusta í {d.name}</span>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{d.eyebrow}</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Hvað er í boði</h2>
               </div>
-              <p className="text-white/60 max-w-md md:text-right">
-                Verð fer eftir fjölda og útfærslu – sendið okkur fyrirspurn og við gefum ykkur tilboð.
-              </p>
+              {d.intro.map((p) => (
+                <p key={p} className="text-white/60 max-w-md md:text-right">{p}</p>
+              ))}
             </div>
           </RevealOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
@@ -148,7 +115,7 @@ export default function DestinationPage({ destination: d }: { destination: Desti
             <RevealOnScroll className="lg:col-span-4">
               <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{d.name}</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Senda fyrirspurn</h2>
-              <p className="mt-4 text-white/60">Veldu þjónustu og við höfum samband með tilboð og lausa tíma.</p>
+              <p className="mt-4 text-white/60">Veldu þjónustu og við sendum tilboð – verð fer eftir fjölda og útfærslu.</p>
               <p className="mt-6 text-sm text-white/50">
                 {site.phoneIS} (Ísland)
                 <br />

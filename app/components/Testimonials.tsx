@@ -78,9 +78,6 @@ export default function Testimonials({ tone = "dark", items }: { tone?: Tone; it
           <h2 className={`mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] ${dark ? "text-white" : ""}`}>
             Það sem gestir okkar segja
           </h2>
-          <p className={`mt-4 max-w-md mx-auto ${dark ? "text-white/60" : "text-ink/55"}`}>
-            Umsagnir frá gestum sem hafa ferðast með Bella Italia til Rómar og dvalið í villum um alla Ítalíu.
-          </p>
         </div>
       </RevealOnScroll>
 

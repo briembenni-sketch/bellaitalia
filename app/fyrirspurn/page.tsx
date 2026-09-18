@@ -28,7 +28,7 @@ export default function FyrirspurnPage() {
           image="/images/florens-ponte-vecchio.jpg"
           imageAlt="Ponte Vecchio í Flórens"
           title="Senda fyrirspurn"
-          text="Segðu okkur hvað þig langar að gera, hvenær og hve mörg þið eruð. Það kostar ekkert að fá tilboð."
+          text="Hvað, hvenær og hve mörg – það kostar ekkert að fá tilboð."
           size="short"
         />
 

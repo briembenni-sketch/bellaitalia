@@ -21,19 +21,19 @@ const groups = [
   {
     eyebrow: "Með leiðsögn",
     title: "Róm með Rómverjum",
-    text: "Leiðsögn á ensku í litlum hópum (max 10 manns) frá faglærðum leiðsögumönnum sem vita allt og meira til um sögu Rómaveldis.",
+    text: "Leiðsögn á ensku – max 10 manns í hóp.",
     ids: ["vatikan", "colosseum", "ganga"],
   },
   {
     eyebrow: "Vespur & golfbílar",
     title: "Vertu eins og innfæddur",
-    text: "Láttu keyra þig um þröngar götur Rómar á vespu, í hliðarvagni eða á golfbíl – með bílstjóra og leiðsögn.",
+    text: "Með bílstjóra og leiðsögn.",
     ids: ["vespa", "sidecar", "golfbill"],
   },
   {
     eyebrow: "Meira í boði",
     title: "Matur, dagsferðir & þjónusta",
-    text: "Matreiðslunámskeið, ferðir til Napoli, Amalfi og Capri, flugvallarakstur og gisting í Róm.",
+    text: "",
     ids: ["matreidsla", "amalfi", "flugvollur", "gisting"],
   },
 ];
@@ -49,7 +49,7 @@ export default function RomPage() {
           image="/images/hero-rome-2.jpg"
           imageAlt="Gata í Róm með bougainvillea"
           title="Öðruvísi ferðir um Róm og nágrenni"
-          text="Skoðunarferðir með leiðsögn í litlum hópum, vespuferðir, matreiðslunámskeið, flugvallarakstur og gisting. Þjónusta fyrir einstaklinga og hópa, stóra sem smáa."
+          text="Skoðunarferðir í litlum hópum, vespur, matur, akstur og gisting."
           actions={
             <>
               <a href="#ferdir" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
@@ -86,7 +86,7 @@ export default function RomPage() {
                   <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{g.eyebrow}</span>
                   <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">{g.title}</h2>
                 </div>
-                <p className="text-white/60 max-w-md md:text-right">{g.text}</p>
+                {g.text && <p className="text-white/60 max-w-md md:text-right">{g.text}</p>}
               </div>
             </RevealOnScroll>
             <div className={`grid grid-cols-1 md:grid-cols-2 ${g.ids.length === 4 ? "xl:grid-cols-4" : "lg:grid-cols-3"} gap-4 md:gap-5`}>
@@ -112,9 +112,7 @@ export default function RomPage() {
                     Tilvalið fyrir stóra sem litla hópa
                   </h2>
                   <p className="mt-4 text-white/70 max-w-xl">
-                    Við getum útbúið ferðina allt eftir óskum – fyrir fjölskyldur, vinahópa og
-                    fyrirtæki. Verð fer eftir fjölda þátttakenda, sendið okkur fyrirspurn og við
-                    gefum ykkur tilboð.
+                    Við sníðum ferðina að hópnum – verð fer eftir fjölda.
                   </p>
                 </div>
                 <div className="md:col-span-4 flex md:justify-end">

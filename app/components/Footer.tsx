@@ -39,9 +39,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="mt-6 text-[15px] leading-relaxed max-w-sm">
-              Villur & hús með sundlaug um alla Ítalíu, viðbótarþjónusta í villuna og aðstoð við
-              skoðunarferðir í Róm, Flórens, Napoli, Amalfi, Pompei og Feneyjum. Persónuleg þjónusta
-              fyrir einstaklinga og hópa, stóra sem smáa.
+              Persónuleg þjónusta fyrir einstaklinga og hópa, stóra sem smáa.
             </p>
             <div className="mt-6 flex gap-3">
               {[
