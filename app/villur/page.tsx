@@ -50,9 +50,9 @@ export default function VillurPage() {
         />
 
         {/* Intro */}
-        <section id="um" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-16 md:pt-28 scroll-mt-24">
+        <section id="um" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-12 md:pt-20 scroll-mt-24">
           <RevealOnScroll>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
                 <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Að leigja hús á Ítalíu</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
@@ -83,7 +83,7 @@ export default function VillurPage() {
         </section>
 
         {/* Dæmi um villur */}
-        <section id="villur" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 scroll-mt-24">
+        <section id="villur" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-10 md:pt-20 scroll-mt-24">
           <RevealOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
