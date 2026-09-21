@@ -97,7 +97,7 @@ p {
 
 .animate-fade-up-fast { animation: fade-up 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 
-/* Tímalína í rúllandi hlutum (umsagnir, borgir): fyllist fram að næstu skiptingu */
+/* Tímalína í rúllandi hlutum (umsagnir): fyllist fram að næstu skiptingu */
 @keyframes progress {
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
@@ -105,21 +105,6 @@ p {
 .animate-progress {
   transform-origin: left;
   animation: progress linear both;
-}
-
-/* „Slideshow“-skrun á forsíðu: hver hluti læsist efst í glugganum, einn í einu.
-   Aðeins á stórum skjám þar sem hver hluti er ein skjáfylli; á síma flæðir skrunið frjálst. */
-@media (min-width: 1024px) {
-  html.snap {
-    scroll-snap-type: y mandatory;
-  }
-  html.snap main > section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-  html.snap footer {
-    scroll-snap-align: end;
-  }
 }
 
 /* Scroll-triggered reveal — aðeins opacity + transform (compositor) */

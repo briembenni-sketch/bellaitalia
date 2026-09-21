@@ -5,8 +5,6 @@ import ClosingFooter from "./components/ClosingFooter";
 import Hero from "./components/Hero";
 import RevealOnScroll from "./components/RevealOnScroll";
 import Testimonials from "./components/Testimonials";
-import SnapScroll from "./components/SnapScroll";
-import CityShowcase from "./components/CityShowcase";
 import { getContent } from "./lib/content";
 import { ArrowIcon } from "./components/Icons";
 
@@ -16,21 +14,29 @@ const btnGlass =
   "inline-flex items-center gap-2 rounded-full tint text-white px-6 py-3.5 text-sm font-semibold hover:bg-white hover:text-ink transition-colors";
 const eyebrow = "text-xs font-medium tracking-[0.2em] uppercase text-sand";
 const h2 = "mt-3 font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.05] text-white";
+const pathCard =
+  "group relative flex flex-col justify-end h-full min-h-[440px] md:min-h-[600px] rounded-2xl md:rounded-3xl overflow-hidden bg-ink-soft";
+const pathTitle = "mt-2 font-display text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-none text-white";
+
+// Stutt heiti borganna á forsíðuspjaldinu
+const cityLabels: Record<string, string> = {
+  "napoli-amalfi-pompei": "Napoli",
+};
 
 /**
- * Forsíða (landing): dökk, myndir í fullri skjástærð í hverjum hluta og sem minnst af hvítu.
+ * Forsíða (landing): ein heil síða með skýru vali – leið A: villur eða leið B: borgir.
+ * Dæmi um villur og viðbótarþjónusta birtast fyrst eftir að villur eru valdar (/villur).
  */
 export default function Home() {
-  const { tours, villas, villaServices, destinations, wedding, testimonials } = getContent();
+  const { destinations, wedding, testimonials } = getContent();
   return (
     <div className="bg-ink text-white">
-      <SnapScroll />
       <Navbar />
       <main>
         {/* ═══════════════ HERO ═══════════════ */}
         <Hero
-          image="/images/hero-villa.jpg"
-          imageAlt="Villa með sundlaug og sýprusviðum í Toskana"
+          image="/images/card-villur.jpg"
+          imageAlt="Steinhlaðin villa með sundlaug og útsýni yfir ítalska sveit í ljósaskiptunum"
           title={
             <>
               Villur með sundlaug <br className="hidden md:block" />
@@ -41,194 +47,123 @@ export default function Home() {
           actions={
             <>
               <Link href="/villur" className={btnWhite}>
-                Skoða villur <ArrowIcon className="w-4 h-4" />
+                Villur <ArrowIcon className="w-4 h-4" />
               </Link>
-              <Link href="/villur#fyrirspurn" className={btnGlass}>
-                Fá tilboð í villu
+              <Link href="/borgir" className={btnGlass}>
+                Borgir <ArrowIcon className="w-4 h-4" />
               </Link>
             </>
           }
-          scrollTo="#villur"
+          scrollTo="#leidir"
         />
 
-        {/* ═══════════════ 1 · VILLUR ═══════════════ */}
-        <section id="villur" className="relative min-h-svh flex flex-col justify-end overflow-hidden scroll-mt-0">
-          <Image
-            src="/images/landing-villur.jpg"
-            alt="Loftmynd af toskanskri villu með sundlaug í kvöldsól"
-            fill
-            quality={85}
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/35 to-ink/95" />
+        {/* ═══════════════ VELDU LEIÐ – A: villur · B: borgir ═══════════════ */}
+        <section id="leidir" className="mx-auto w-full max-w-[1600px] px-5 md:px-10 py-16 md:py-24 scroll-mt-16">
+          <RevealOnScroll>
+            <div className="max-w-2xl mb-8 md:mb-12">
+              <span className={eyebrow}>Þjónusta okkar</span>
+              <h2 className={h2}>Hvert er ferðinni heitið?</h2>
+            </div>
+          </RevealOnScroll>
 
-          <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-28 pb-5 md:pb-7">
-            <RevealOnScroll>
-              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-                <div className="max-w-2xl">
-                  <span className={eyebrow}>Villur – okkar sérgrein</span>
-                  <h2 className={h2}>Finndu réttu villuna</h2>
-                  <p className="mt-4 text-white/80 text-[15px] md:text-lg leading-relaxed max-w-xl">
-                    Dæmi um húsgerðir – úrvalið er miklu stærra.
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {/* A · VILLUR */}
+            <RevealOnScroll className="h-full">
+              <Link href="/villur" className={pathCard}>
+                <Image
+                  src="/images/landing-villur.jpg"
+                  alt="Loftmynd af toskanskri villu með sundlaug í kvöldsól"
+                  fill
+                  quality={85}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/10" />
+                <div className="relative z-10 p-6 md:p-10">
+                  <span className={eyebrow}>Okkar sérgrein</span>
+                  <h3 className={pathTitle}>Villur</h3>
+                  <p className="mt-4 text-sm md:text-base font-medium tracking-[0.18em] uppercase text-white/85">
+                    Hús með sundlaug um alla Ítalíu
                   </p>
+                  <span className={`mt-6 ${btnWhite}`}>
+                    Skoða villur <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
                 </div>
-                <div className="flex flex-wrap gap-3 shrink-0">
-                  <Link href="/villur" className={btnWhite}>
-                    Allar villur <ArrowIcon className="w-4 h-4" />
-                  </Link>
-                  <Link href="/villur#fyrirspurn" className={btnGlass}>
-                    Fá tilboð
-                  </Link>
-                </div>
-              </div>
+              </Link>
             </RevealOnScroll>
 
-            <div className="mt-8 md:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-4">
-              {villas.map((v) => (
-                <RevealOnScroll key={v.id} className="h-full">
-                  <Link
-                    href={`/villur#${v.id}`}
-                    className="group relative block aspect-[4/5] lg:aspect-square rounded-2xl md:rounded-3xl overflow-hidden bg-ink-soft"
-                  >
-                    <Image
-                      src={v.image}
-                      alt={v.imageAlt}
-                      fill
-                      quality={85}
-                      sizes="(max-width: 1024px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
-                    <span className="absolute top-4 left-4 md:top-5 md:left-5 text-[11px] font-medium tracking-[0.22em] uppercase text-white label-on-image">
-                      {v.region}
-                    </span>
-                    <div className="absolute inset-x-0 bottom-0 p-4 md:p-6">
-                      <h3 className="font-display text-xl sm:text-2xl xl:text-[1.75rem] font-medium tracking-tight leading-tight">
-                        {v.name}
-                      </h3>
-                      <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold">
-                        Skoða villu <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                      </span>
-                    </div>
-                  </Link>
-                </RevealOnScroll>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════ VIÐBÓTARÞJÓNUSTA – hrein spjöld ═══════════════ */}
-        <section className="relative min-h-svh flex flex-col justify-center-safe bg-ink">
-          <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-28 pb-14 lg:pt-28 lg:pb-12">
-            <RevealOnScroll>
-              <div className="max-w-2xl mb-8 md:mb-10">
-                <span className={eyebrow}>Í kringum villuna</span>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] text-white">
-                  Gerðu dvölina persónulegri
-                </h2>
-              </div>
-            </RevealOnScroll>
-
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-              {villaServices.map((s, i) => (
-                <RevealOnScroll key={s.id} className="h-full">
-                  <Link href={`/villur?thjonusta=${s.id}#fyrirspurn`} className="group flex flex-col h-full">
-                    <div className="relative w-full aspect-[4/5] lg:aspect-auto lg:h-[clamp(200px,34svh,380px)] rounded-2xl md:rounded-3xl overflow-hidden bg-ink-soft">
-                      <Image
-                        src={s.image}
-                        alt={s.imageAlt}
-                        fill
-                        quality={85}
-                        sizes="(max-width: 1024px) 50vw, 25vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                      />
-                      <span className="absolute top-4 left-4 md:top-5 md:left-5 font-display text-sm text-white/90 tabular-nums label-on-image">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <h3 className="mt-4 font-display text-lg sm:text-xl md:text-2xl font-medium tracking-tight leading-tight text-white">
-                      {s.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-white/60 leading-relaxed line-clamp-4">{s.text}</p>
-                    <span className="mt-auto pt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-light group-hover:text-white transition-colors">
-                      Fá tilboð <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                    </span>
-                  </Link>
-                </RevealOnScroll>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════ 2 · RÓM & AÐRAR BORGIR – hreinn sýningarrammi ═══════════════ */}
-        <section id="borgir" className="relative min-h-svh flex flex-col justify-center-safe bg-ink scroll-mt-0">
-          <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-28 pb-14 lg:pt-28 lg:pb-12">
-            <RevealOnScroll>
-              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 lg:gap-10 mb-8 md:mb-10">
-                <div className="max-w-2xl">
+            {/* B · BORGIR – allt spjaldið leiðir á /borgir, hvert borgarheiti á sína síðu */}
+            <RevealOnScroll className="h-full">
+              <div className={pathCard}>
+                <Image
+                  src="/images/card-rom.jpg"
+                  alt="Colosseum í Róm"
+                  fill
+                  quality={85}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/10" />
+                <Link href="/borgir" aria-label="Skoða borgir" className="absolute inset-0 z-10" />
+                <div className="relative z-20 p-6 md:p-10 pointer-events-none">
                   <span className={eyebrow}>Skoðunarferðir & skipulagning</span>
-                  <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] text-white">
-                    Róm og aðrar borgir
+                  <h3 className={pathTitle}>Borgir</h3>
+                  <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm md:text-base font-medium tracking-[0.18em] uppercase text-white/85">
+                    {destinations.map((d, i) => (
+                      <li key={d.slug} className="flex items-center gap-x-3">
+                        {i > 0 && <span className="text-white/40" aria-hidden>–</span>}
+                        <Link
+                          href={d.custom ? `/${d.slug}` : `/borgir/${d.slug}`}
+                          className="pointer-events-auto hover:text-gold-light transition-colors"
+                        >
+                          {cityLabels[d.slug] ?? d.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <span className={`mt-6 ${btnWhite}`}>
+                    Skoða borgir <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* ═══════════════ BRÚÐKAUP – lágstemmdur borði ═══════════════ */}
+        <section className="mx-auto w-full max-w-[1600px] px-5 md:px-10 pb-16 md:pb-24">
+          <RevealOnScroll>
+            <Link
+              href="/brudkaup"
+              className="group relative flex items-end min-h-[300px] md:min-h-[360px] rounded-2xl md:rounded-3xl overflow-hidden bg-ink-soft"
+            >
+              <Image
+                src={wedding.image}
+                alt={wedding.imageAlt}
+                fill
+                quality={85}
+                sizes="100vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/15" />
+              <div className="relative z-10 w-full p-6 md:p-10 flex flex-col md:flex-row md:items-end justify-between gap-5">
+                <div className="max-w-2xl">
+                  <span className={eyebrow}>{wedding.eyebrow}</span>
+                  <h2 className="mt-2 font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight leading-[1.1] text-white">
+                    Brúðkaup, stórafmæli og önnur sérstök tilefni
                   </h2>
                 </div>
-                <Link href="/borgir" className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-medium hover:bg-white hover:text-ink transition-colors w-fit">
-                  Allar borgir <ArrowIcon className="w-4 h-4" />
-                </Link>
+                <span className={`shrink-0 w-fit ${btnGlass}`}>
+                  Lesa meira <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
               </div>
-            </RevealOnScroll>
-
-            <RevealOnScroll>
-              <CityShowcase
-                cities={destinations.map((d) => ({
-                  slug: d.slug,
-                  href: d.custom ? `/${d.slug}` : `/borgir/${d.slug}`,
-                  eyebrow: d.eyebrow,
-                  title: d.title,
-                  lead: d.lead,
-                  image: d.cardImage,
-                  imageAlt: d.imageAlt,
-                  cta: d.custom ? `Skoða ${tours.length} ferðir í Róm` : `Skoða ${d.name}`,
-                }))}
-              />
-            </RevealOnScroll>
-          </div>
-        </section>
-
-        {/* ═══════════════ 3 · BRÚÐKAUP ═══════════════ */}
-        <section className="relative min-h-[85svh] md:min-h-svh flex items-end overflow-hidden">
-          <Image src={wedding.image} alt={wedding.imageAlt} fill quality={85} sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-ink/25" />
-          <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 md:px-10 pt-32 pb-10 md:pb-16">
-            <RevealOnScroll>
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end">
-                <div className="lg:col-span-7">
-                  <span className={eyebrow}>{wedding.eyebrow}</span>
-                  <h2 className={h2}>Brúðkaup, stórafmæli og önnur sérstök tilefni</h2>
-                </div>
-                <div className="lg:col-span-5 flex flex-col gap-6">
-                  <p className="text-white/80 text-[15px] md:text-lg leading-relaxed max-w-md">{wedding.lead}</p>
-                  <div className="flex flex-wrap gap-3">
-                    <Link href="/brudkaup" className={btnWhite}>
-                      Lesa meira <ArrowIcon className="w-4 h-4" />
-                    </Link>
-                    <Link href="/brudkaup#fyrirspurn" className={btnGlass}>
-                      Segja frá tilefninu
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </RevealOnScroll>
-          </div>
+            </Link>
+          </RevealOnScroll>
         </section>
 
         {/* ═══════════════ UMSAGNIR ═══════════════ */}
-        <section className="relative min-h-svh flex flex-col justify-center-safe py-16 lg:py-14 overflow-hidden">
-          <Image src="/images/dinner-terrace.jpg" alt="" fill quality={85} sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-ink/85" />
-          <div className="relative z-10 w-full">
-            <Testimonials tone="dark" items={testimonials} />
-          </div>
+        <section className="pb-16 md:pb-24">
+          <Testimonials tone="dark" items={testimonials} />
         </section>
       </main>
       <ClosingFooter />
