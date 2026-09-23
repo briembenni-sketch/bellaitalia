@@ -24,7 +24,7 @@ const cityLabels: Record<string, string> = {
 
 /**
  * Forsíða (landing): skjárinn skiptist í tvennt – aðeins tveir möguleikar í byrjun,
- * leið A: villur eða leið B: borgir. Dæmi um villur og viðbótarþjónusta birtast
+ * villur eða borgir. Dæmi um villur og viðbótarþjónusta birtast
  * fyrst eftir að villur eru valdar (/villur).
  */
 export default function Home() {
@@ -40,18 +40,18 @@ export default function Home() {
           {/* A · VILLUR */}
           <Link href="/villur" className={panel}>
             <Image
-              src="/images/card-villur.jpg"
-              alt="Steinhlaðin villa með sundlaug og útsýni yfir ítalska sveit í ljósaskiptunum"
+              src="/images/villa-toskana-2.jpg"
+              alt="Steinhús með stórri sundlaug og grasflöt í ítalskri sveit"
               fill
               preload
               fetchPriority="high"
               quality={90}
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+              className="object-cover object-[30%_center] transition-transform duration-700 group-hover:scale-[1.04]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/20" />
             <div className="relative z-10 p-6 sm:p-10 lg:p-14 pt-28 animate-fade-up-delay-1">
-              <span className={eyebrow}>Leið A · Okkar sérgrein</span>
+              <span className={eyebrow}>Okkar sérgrein</span>
               <h2 className={panelTitle}>Villur</h2>
               <p className={panelSub}>Hús með sundlaug um alla Ítalíu</p>
               <span className={`mt-7 ${btnWhite}`}>
@@ -75,7 +75,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/20" />
             <Link href="/borgir" aria-label="Skoða borgir" className="absolute inset-0 z-10" />
             <div className="relative z-20 p-6 sm:p-10 lg:p-14 pt-28 pointer-events-none animate-fade-up-delay-2">
-              <span className={eyebrow}>Leið B · Skoðunarferðir & skipulagning</span>
+              <span className={eyebrow}>Skoðunarferðir & skipulagning</span>
               <h2 className={panelTitle}>Borgir</h2>
               <ul className={`${panelSub} flex flex-wrap items-center gap-x-3 gap-y-1`}>
                 {destinations.map((d, i) => (
