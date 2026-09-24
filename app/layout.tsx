@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Inter } from "next/font/google";
+import { Outfit, Inter, Kaushan_Script } from "next/font/google";
 import "./globals.css";
 import { site } from "./data/site";
 import HashScroll from "./components/HashScroll";
@@ -14,6 +14,14 @@ const outfit = Outfit({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+// Pensilskrift fyrir stóru orðin á forsíðunni
+const kaushan = Kaushan_Script({
+  variable: "--font-kaushan",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
   display: "swap",
 });
 
@@ -49,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="is" className={`${outfit.variable} ${inter.variable}`}>
+    <html lang="is" className={`${outfit.variable} ${inter.variable} ${kaushan.variable}`}>
       <body className="min-h-screen bg-ink text-white antialiased">
         <HashScroll />
         {children}

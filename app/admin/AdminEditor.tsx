@@ -145,7 +145,7 @@ const TABS = [
   { id: "villur", label: "Villur" },
   { id: "rom", label: "Róm" },
   { id: "borgir", label: "Borgir" },
-  { id: "brudkaup", label: "Brúðkaup" },
+  { id: "brudkaup", label: "Hópar & tilefni" },
   { id: "umsagnir", label: "Umsagnir" },
   { id: "samband", label: "Samband" },
 ] as const;

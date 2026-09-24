@@ -32,14 +32,32 @@ export default function VillaCard({ villa, ctaHref = "/villur#fyrirspurn", large
       <div className={`flex flex-col flex-1 ${large ? "p-6 md:p-8" : "p-5 md:p-6"}`}>
         <p className={`text-white/60 leading-relaxed ${large ? "text-[15px] md:text-base" : "text-[15px] line-clamp-3"}`}>{villa.text}</p>
         <p className="mt-4 text-xs text-white/50 leading-relaxed">{villa.features.join(" · ")}</p>
-        <div className="mt-auto pt-5 flex items-center justify-between gap-3">
-          <span className="text-sm text-white/50">Verð eftir fyrirspurn</span>
-          <Link
-            href={ctaHref}
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm font-medium hover:bg-white hover:text-ink transition-colors"
-          >
-            Fá tilboð <ArrowIcon className="w-4 h-4" />
-          </Link>
+        <div className="mt-auto pt-5 flex flex-wrap items-center justify-between gap-3">
+          {villa.catalogUrl ? (
+            <>
+              <Link href={ctaHref} className="text-sm text-white/60 underline-offset-4 hover:text-white hover:underline">
+                Fá tilboð
+              </Link>
+              <a
+                href={villa.catalogUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-4 py-2 text-sm font-semibold hover:bg-sand-light transition-colors"
+              >
+                Skoða villur í {villa.region} ↗
+              </a>
+            </>
+          ) : (
+            <>
+              <span className="text-sm text-white/50">Verð eftir fyrirspurn</span>
+              <Link
+                href={ctaHref}
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm font-medium hover:bg-white hover:text-ink transition-colors"
+              >
+                Fá tilboð <ArrowIcon className="w-4 h-4" />
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </article>

@@ -16,7 +16,7 @@ const navLinks = [
   { href: "/", label: "Heim" },
   { href: "/villur", label: "Villur" },
   { href: "/borgir", label: "Borgir & ferðir", children: cityLinks },
-  { href: "/brudkaup", label: "Brúðkaup" },
+  { href: "/brudkaup", label: "Hópar & tilefni" },
   { href: "/samband", label: "Hafa samband" },
 ];
 

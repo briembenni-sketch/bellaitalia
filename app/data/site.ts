@@ -5,7 +5,7 @@ export const site = {
   legalName: "Bella Italia slf.",
   tagline: "Villur á Ítalíu · Róm & aðrar borgir",
   description:
-    "BellaItalia.is – Villur & hús með sundlaug um alla Ítalíu, viðbótarþjónusta í villuna og aðstoð við skoðunarferðir í Róm, Flórens, Napoli, Amalfi, Pompei og Feneyjum. Persónuleg þjónusta fyrir einstaklinga og hópa.",
+    "BellaItalia.is – Villur & hús með sundlaug um alla Ítalíu, viðbótarþjónusta í villuna og aðstoð við skoðunarferðir í Róm, Flórens, Napoli, Amalfi, Pompei, Feneyjum og á Sikiley. Persónuleg þjónusta fyrir einstaklinga og hópa.",
   owner: "Hildur Jónsdóttir",
   email: "hildur.bellaitalia@gmail.com",
   phoneIS: "+354 869 4556",
@@ -17,6 +17,10 @@ export const site = {
   villaCatalog:
     "https://www.exclusiveitalianvillas.com/en/search/a96e66ba-040a-4232-9710-2d5f7334557a",
 };
+
+/** Leit hjá samstarfsaðilanum síuð á eitt hérað (heitið eins og það er á ensku þar, t.d. "Tuscany"). */
+export const villaCatalogRegion = (county: string) =>
+  `${site.villaCatalog}?Text=${encodeURIComponent(county)}&TagType=county&SelectedAccessories=&pageIndex=&Checkin=&Checkout=&Adults=1`;
 
 export type Tour = {
   id: string;
@@ -350,12 +354,15 @@ export type Villa = {
   imageAlt: string;
   text: string;
   features: string[];
+  /** Slóð á villur í sama héraði hjá samstarfsaðilanum */
+  catalogUrl?: string;
 };
 
 // Dæmi um gerðir af húsum sem eru í boði – úrvalið er miklu stærra.
 export const villas: Villa[] = [
   {
     id: "toskana",
+    catalogUrl: villaCatalogRegion("Tuscany"),
     name: "Sveitasetur í Toskana",
     region: "Toskana",
     image: "/images/villa-toskana-2.jpg",
@@ -365,6 +372,7 @@ export const villas: Villa[] = [
   },
   {
     id: "umbria",
+    catalogUrl: villaCatalogRegion("Umbria"),
     name: "Sveitahús í Umbríu",
     region: "Umbria",
     image: "/images/villa-umbria.jpg",
@@ -374,6 +382,7 @@ export const villas: Villa[] = [
   },
   {
     id: "marche",
+    catalogUrl: villaCatalogRegion("Marche"),
     name: "Villa í Le Marche",
     region: "Le Marche",
     image: "/images/villa-marche-2.jpg",
@@ -383,6 +392,7 @@ export const villas: Villa[] = [
   },
   {
     id: "puglia",
+    catalogUrl: villaCatalogRegion("Puglia"),
     name: "Trullo í Puglia",
     region: "Puglia",
     image: "/images/villa-puglia.jpg",
@@ -390,6 +400,18 @@ export const villas: Villa[] = [
     text: "Hvítkölkuð trullo- og masseria-hús – Suður-Ítalía á sínu besta.",
     features: ["Sundlaug", "Ólífulundir", "Strendur"],
   },
+];
+
+/* ------------------- VILLUR EFTIR ÁHUGAMÁLUM ------------------- */
+
+// Þemasöfn hjá Emma Villas, samstarfsaðila okkar
+export const villaCollections = [
+  { title: "Golf", note: "Villur nálægt golfvöllum", image: "/images/villa-golf.jpg", imageAlt: "Golfvöllur með tjörnum og furutrjám séður ofan frá", href: "https://www.emmavillas.com/en/collections/sul-green" },
+  { title: "Tennis", note: "Tennisvöllur við húsið", image: "/images/villa-tennis.jpg", imageAlt: "Villa með tennisvelli við sjóinn séð ofan frá", href: "https://www.emmavillas.com/en/collections/tennis-in-nature" },
+  { title: "Við vötnin", note: "Como, Garda og Maggiore", image: "/images/villa-vatn.jpg", imageAlt: "Villa með sundlaug í gróðri við Como-vatn", href: "https://www.emmavillas.com/en/collections/blue-lakes" },
+  { title: "Sjávarútsýni", note: "Hús við ströndina", image: "/images/villa-sjor.jpg", imageAlt: "Sundlaug á verönd með útsýni yfir hafið", href: "https://www.emmavillas.com/en/collections/seaview-home" },
+  { title: "Vín & vínekrur", note: "Í miðjum vínhéruðunum", image: "/images/villa-vin.jpg", imageAlt: "Vínekrur í grænum hæðum", href: "https://www.emmavillas.com/en/collections/wine-passion" },
+  { title: "Stórar villur", note: "Fyrir stórfjölskylduna", image: "/images/villa-fjolskylda.jpg", imageAlt: "Langborð dekkað undir vínviði á verönd", href: "https://www.emmavillas.com/en/collections/large-family-villas" },
 ];
 
 /* ------------------- VIÐBÓTARÞJÓNUSTA Í VILLUNA ------------------- */
@@ -529,6 +551,27 @@ export const destinations: Destination[] = [
     ],
     planning: "Sendu okkur dagsetningar og fjölda – við sjáum um rest, frá flugvelli til gondólu.",
   },
+  {
+    slug: "sikiley",
+    name: "Sikiley",
+    navLabel: "Sikiley",
+    eyebrow: "Eyjan í suðri",
+    title: "Sikiley",
+    lead: "Taormina, Etna, Palermo og grísku hofin – með bílstjóra og leiðsögn.",
+    image: "/images/dest-sikiley-hero.jpg",
+    imageAlt: "Taormina á hæðinni fyrir ofan hafið á Sikiley",
+    cardImage: "/images/dest-sikiley.jpg",
+    intro: ["Sikiley er heill heimur út af fyrir sig – best að ferðast um eyjuna með bílstjóra og leiðsögumanni sem þekkja hana."],
+    services: [
+      { title: "Taormina", image: "/images/svc-sikiley-taormina.jpg", imageAlt: "Útsýni úr gríska leikhúsinu í Taormina yfir ströndina", text: "Gríska leikhúsið, Corso Umberto og útsýnið yfir Jónahafið." },
+      { title: "Etna", image: "/images/svc-sikiley-etna.jpg", imageAlt: "Snæviþakið Etna-fjall yfir strönd Sikileyjar", text: "Ferð upp á virkasta eldfjall Evrópu – og vínsmökkun í hlíðunum." },
+      { title: "Palermo", image: "/images/svc-sikiley-palermo.jpg", imageAlt: "Dómkirkjan í Palermo", text: "Markaðir, götumatur og arabísk-normönsk byggingarlist með leiðsögn." },
+      { title: "Agrigento", image: "/images/svc-sikiley-agrigento.jpg", imageAlt: "Concordia-hofið í Dal hofanna í Agrigento", text: "Dalur hofanna – best varðveittu grísku hof utan Grikklands." },
+      { title: "Siracusa & Ortigia", image: "/images/svc-sikiley-ortigia.jpg", imageAlt: "Gömul hús á sjávarvegg Ortigia í Siracusa", text: "Gamla eyjan Ortigia, fornleifagarðurinn og sjávarréttir við höfnina." },
+      { title: "Cefalù & strendurnar", image: "/images/svc-sikiley-cefalu.jpg", imageAlt: "Cefalù og ströndin séð ofan frá klettinum", text: "Strandbæir, bátsferðir og akstur á milli staða." },
+    ],
+    planning: "Dagsferðir, hringferð um eyjuna eða villa á Sikiley – við plönum ferðina með ykkur.",
+  },
 ];
 
 export const cityDestinations = destinations.filter((d) => !d.custom);
@@ -536,17 +579,17 @@ export const cityDestinations = destinations.filter((d) => !d.custom);
 /* --------------- BRÚÐKAUP & SÉRSTÖK TILEFNI --------------- */
 
 export const wedding = {
-  eyebrow: "Brúðkaup & sérstök tilefni",
-  title: "Brúðkaup og sérstök tilefni á Ítalíu",
-  lead: "Brúðkaup í villu í Toskana, stórafmæli með einkakokk eða bónorð í gondólu.",
+  eyebrow: "Hópar & sérstök tilefni",
+  title: "Hópferðir og sérstök tilefni á Ítalíu",
+  lead: "Lítil brúðkaup í villum, stórafmæli, litlir sem stórir hópar og rútuferðir – við plönum ferðina fyrir ykkur.",
   image: "/images/brudkaup-villa.jpg",
-  imageAlt: "Ítölsk villa með stórum garði í kvöldsól – umgjörð fyrir brúðkaup",
+  imageAlt: "Ítölsk villa með stórum garði í kvöldsól – umgjörð fyrir veislu",
   image2: "/images/brudkaup-2.jpg",
   image2Alt: "Brúðhjón í gondólu í Feneyjum",
   intro: [
-    "Villa með sundlaug, útsýni og stórum garði er fullkominn rammi.",
-    "Við erum að byggja upp þessa þjónustu og tökum nú við fyrirspurnum – segðu okkur frá tilefninu.",
+    "Villa með sundlaug, útsýni og stórum garði er fullkomin umgjörð – hvort sem það er lítið brúðkaup, stórafmæli eða ættarmót.",
+    "Við skipuleggjum líka ferðir fyrir hópa af öllum stærðum, með rútu, leiðsögn og gistingu. Segðu okkur frá tilefninu og við komum með tillögu.",
   ],
-  ideas: ["Brúðkaup í villu", "Stórafmæli & ættarmót", "Bónorð & brúðkaupsafmæli", "Steggja- og gæsaferðir", "Fyrirtækjaferðir & hvataferðir"],
-  extras: ["Villa fyrir allan hópinn", "Einkakokkur & veislumatur", "Ljósmyndari", "Vínsmökkun", "Akstur & transfer", "Blóm, tónlist & skreytingar"],
+  ideas: ["Lítil brúðkaup í villum", "Stórafmæli & ættarmót", "Litlir sem stórir hópar", "Rútuferðir", "Fyrirtækja- & hvataferðir"],
+  extras: ["Villa fyrir allan hópinn", "Rúta & bílstjóri", "Einkakokkur & veislumatur", "Leiðsögn & dagskrá", "Ljósmyndari", "Blóm, tónlist & skreytingar"],
 };

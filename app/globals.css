@@ -38,6 +38,14 @@ h1, h2, h3, h4 {
   font-family: var(--font-display);
   text-wrap: balance;
 }
+
+/* Handskrifaðar fyrirsagnir á forsíðunni (Villur / Róm) */
+.font-script {
+  font-family: var(--font-kaushan), "Brush Script MT", cursive;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-shadow: 0 2px 18px rgb(7 21 23 / 0.35);
+}
 p {
   text-wrap: pretty;
 }

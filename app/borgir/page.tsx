@@ -12,7 +12,7 @@ import { ArrowIcon } from "../components/Icons";
 export const metadata: Metadata = {
   title: "Róm & aðrar borgir – skoðunarferðir og skipulagning | Bella Italia",
   description:
-    "Skoðunarferðir og aðstoð við að skipuleggja ferðina í Róm, Flórens, Napoli, Amalfi, Pompei og Feneyjum. Leiðsögn, miðakaup, einkabílar og transfer.",
+    "Skoðunarferðir og aðstoð við að skipuleggja ferðina í Róm, Flórens, Napoli, Amalfi, Pompei, Feneyjum og á Sikiley. Leiðsögn, miðakaup, einkabílar og transfer.",
 };
 
 export default function BorgirPage() {

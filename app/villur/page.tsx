@@ -8,6 +8,7 @@ import InquiryForm from "../components/InquiryForm";
 import VillaCard from "../components/VillaCard";
 import ServiceCard from "../components/ServiceCard";
 import { getContent } from "../lib/content";
+import { villaCatalogRegion, villaCollections } from "../data/site";
 import { ArrowIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
     "Villur og hús með sundlaug um alla Ítalíu – Toskana, Umbria, Le Marche, Puglia og Sikiley – í öllum verðflokkum. Einkakokkur, ljósmyndari, vínsmökkun og akstur í kringum dvölina. Gjaldfrjáls þjónusta þegar bókað er í gegnum Bella Italia.",
 };
 
-// Svæðin sem nefnd eru á bellaitalia.is
+// Svæðin sem nefnd eru á bellaitalia.is – hvert vísar á villur í héraðinu hjá samstarfsaðilanum
 const regions = [
-  { name: "Toskana", note: "Vinsælasta héraðið", image: "/images/toskana-hills.jpg" },
-  { name: "Umbria", note: "Græna hjarta Ítalíu", image: "/images/region-umbria.jpg" },
-  { name: "Le Marche", note: "Við Adríahafið", image: "/images/villa-marche-2.jpg" },
-  { name: "Puglia", note: "Trulli & ólífulundir", image: "/images/villa-puglia.jpg" },
-  { name: "Sikiley", note: "Stórkostleg eyja", image: "/images/region-sikiley.jpg" },
+  { name: "Toskana", note: "Vinsælasta héraðið", image: "/images/toskana-hills.jpg", county: "Tuscany" },
+  { name: "Umbria", note: "Græna hjarta Ítalíu", image: "/images/region-umbria.jpg", county: "Umbria" },
+  { name: "Le Marche", note: "Við Adríahafið", image: "/images/villa-marche-2.jpg", county: "Marche" },
+  { name: "Puglia", note: "Trulli & ólífulundir", image: "/images/villa-puglia.jpg", county: "Puglia" },
+  { name: "Sikiley", note: "Stórkostleg eyja", image: "/images/region-sikiley.jpg", county: "Sicily" },
 ];
 
 export default function VillurPage() {
@@ -32,8 +33,8 @@ export default function VillurPage() {
       <Navbar />
       <main>
         <Hero
-          image="/images/villur-hero.jpg"
-          imageAlt="Sundlaug við villu í sólsetri"
+          image="/images/villur-hero-2.jpg"
+          imageAlt="Sundlaug með útsýni yfir vínekrur og hæðir Toskana undir bláum himni"
           title="Villur með sundlaug í öllum verðflokkum"
           text="Við finnum réttu villuna fyrir ykkar hóp – það kostar ekkert að fá tilboð."
           actions={
@@ -103,6 +104,43 @@ export default function VillurPage() {
           </RevealOnScroll>
         </section>
 
+        {/* Villur eftir áhugamálum */}
+        <section id="ahugamal" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 scroll-mt-24">
+          <RevealOnScroll>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
+              <div>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Golf, tennis, vötn & haf</span>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Villur eftir áhugamálum</h2>
+              </div>
+              <p className="text-white/60 max-w-md md:text-right">Úrval hjá samstarfsaðila okkar – við bókum fyrir ykkur.</p>
+            </div>
+          </RevealOnScroll>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+            {villaCollections.map((c) => (
+              <RevealOnScroll key={c.title}>
+                <a
+                  href={c.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block aspect-[4/5] sm:aspect-[4/3] rounded-2xl md:rounded-3xl overflow-hidden bg-white/8"
+                >
+                  <Image src={c.image} alt={c.imageAlt} fill quality={85} sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white flex items-end justify-between gap-3">
+                    <div>
+                      <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-medium tracking-tight">{c.title}</h3>
+                      <p className="mt-1 text-xs sm:text-sm text-white/75">{c.note}</p>
+                    </div>
+                    <span className="hidden sm:inline-flex shrink-0 items-center rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-3 py-1.5 text-xs font-semibold transition-colors">
+                      Skoða ↗
+                    </span>
+                  </div>
+                </a>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </section>
+
         {/* Viðbótarþjónusta */}
         <section id="thjonusta" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 scroll-mt-24">
           <RevealOnScroll>
@@ -129,19 +167,28 @@ export default function VillurPage() {
             <div className="mb-8 md:mb-10">
               <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Svæði</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Hvert á Ítalíu?</h2>
+              <p className="mt-3 text-white/60">Veldu svæði og skoðaðu villurnar þar.</p>
             </div>
           </RevealOnScroll>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-5">
             {regions.map((r) => (
               <RevealOnScroll key={r.name}>
-                <div className="group relative aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden bg-white/8">
+                <a
+                  href={villaCatalogRegion(r.county)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden bg-white/8"
+                >
                   <Image src={r.image} alt={r.name} fill quality={85} sizes="(max-width: 1024px) 50vw, 20vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
                   <div className="absolute bottom-0 p-4 md:p-5 text-white">
                     <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight">{r.name}</h3>
                     <p className="mt-1 text-xs sm:text-sm text-white/75">{r.note}</p>
+                    <span className="mt-3 inline-flex items-center rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-3 py-1.5 text-xs font-semibold transition-colors">
+                      Skoða villur ↗
+                    </span>
                   </div>
-                </div>
+                </a>
               </RevealOnScroll>
             ))}
           </div>

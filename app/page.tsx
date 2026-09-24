@@ -14,7 +14,7 @@ const btnGlass =
 const eyebrow = "text-xs font-medium tracking-[0.2em] uppercase text-sand";
 const panel = "group relative flex flex-col justify-end min-h-[50svh] md:min-h-svh overflow-hidden bg-ink-soft";
 const panelTitle =
-  "mt-3 font-display text-[3.5rem] sm:text-7xl lg:text-8xl xl:text-[7.5rem] font-medium tracking-tight leading-none text-white";
+  "mt-2 -ml-1 font-script text-[4rem] sm:text-8xl lg:text-[7.5rem] xl:text-[9rem] leading-[1.05] pb-1 text-white";
 const panelSub = "mt-4 text-sm md:text-base font-medium tracking-[0.18em] uppercase text-white/85";
 
 // Stutt heiti borganna á forsíðunni
@@ -40,14 +40,14 @@ export default function Home() {
           {/* A · VILLUR */}
           <Link href="/villur" className={panel}>
             <Image
-              src="/images/villa-toskana-2.jpg"
-              alt="Steinhús með stórri sundlaug og grasflöt í ítalskri sveit"
+              src="/images/landing-villur-2.jpg"
+              alt="Toskönsk steinvilla með sundlaug, sýprusviði og hæðum undir bláum himni"
               fill
               preload
               fetchPriority="high"
               quality={90}
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-[30%_center] transition-transform duration-700 group-hover:scale-[1.04]"
+              className="object-cover object-[12%_center] transition-transform duration-700 group-hover:scale-[1.04]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/20" />
             <div className="relative z-10 p-6 sm:p-10 lg:p-14 pt-28 animate-fade-up-delay-1">
@@ -76,9 +76,13 @@ export default function Home() {
             <Link href="/borgir" aria-label="Skoða borgir" className="absolute inset-0 z-10" />
             <div className="relative z-20 p-6 sm:p-10 lg:p-14 pt-28 pointer-events-none animate-fade-up-delay-2">
               <span className={eyebrow}>Skoðunarferðir & skipulagning</span>
-              <h2 className={panelTitle}>Borgir</h2>
-              <ul className={`${panelSub} flex flex-wrap items-center gap-x-3 gap-y-1`}>
-                {destinations.map((d, i) => (
+              {/* Róm fyrst – þar er mest af starfseminni – og hinar borgirnar undir */}
+              <h2 className={panelTitle}>
+                <Link href="/rom" className="pointer-events-auto hover:text-sand-light transition-colors">Róm</Link>
+              </h2>
+              <p className={`${panelSub} text-white/60`}>& aðrar borgir</p>
+              <ul className={`${panelSub.replace("mt-4", "mt-2")} flex flex-wrap items-center gap-x-3 gap-y-1`}>
+                {destinations.filter((d) => !d.custom).map((d, i) => (
                   <li key={d.slug} className="flex items-center gap-x-3">
                     {i > 0 && <span className="text-white/40" aria-hidden>–</span>}
                     <Link
@@ -91,7 +95,7 @@ export default function Home() {
                 ))}
               </ul>
               <span className={`mt-7 ${btnWhite}`}>
-                Skoða borgir <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                Skoða Róm & borgir <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </span>
             </div>
           </div>
@@ -117,8 +121,9 @@ export default function Home() {
                 <div className="max-w-2xl">
                   <span className={eyebrow}>{wedding.eyebrow}</span>
                   <h2 className="mt-2 font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight leading-[1.1] text-white">
-                    Brúðkaup, stórafmæli og önnur sérstök tilefni
+                    Hópferðir og sérstök tilefni
                   </h2>
+                  <p className="mt-3 text-white/80 text-[15px] md:text-base leading-relaxed">{wedding.lead}</p>
                 </div>
                 <span className={`shrink-0 w-fit ${btnGlass}`}>
                   Lesa meira <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />

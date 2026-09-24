@@ -31,7 +31,8 @@ export const interestOptions = [
   "Flórens",
   "Napoli · Amalfi · Pompei",
   "Feneyjar",
-  "Brúðkaup / sérstakt tilefni",
+  "Sikiley",
+  "Hópferð / sérstakt tilefni",
   "Annað",
 ];
 

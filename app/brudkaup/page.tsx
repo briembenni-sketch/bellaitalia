@@ -11,7 +11,7 @@ import { ArrowIcon, CheckIcon } from "../components/Icons";
 
 export function generateMetadata(): Metadata {
   return {
-    title: "Brúðkaup & sérstök tilefni á Ítalíu | Bella Italia",
+    title: "Hópar, brúðkaup & sérstök tilefni á Ítalíu | Bella Italia",
     description: getContent().wedding.lead,
   };
 }
@@ -45,7 +45,7 @@ export default function BrudkaupPage() {
             <RevealOnScroll className="lg:col-span-7">
               <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{wedding.eyebrow}</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">
-                Dagurinn sem á að vera fullkominn
+                Við plönum ferðina fyrir ykkur
               </h2>
               <div className="mt-6 space-y-4 text-white/65 leading-relaxed text-[16px] md:text-[17px]">
                 {wedding.intro.map((p) => (
@@ -92,7 +92,7 @@ export default function BrudkaupPage() {
         <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 pb-20 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <RevealOnScroll className="lg:col-span-4">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Brúðkaup & tilefni</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Hópar & tilefni</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Segðu okkur frá tilefninu</h2>
               <p className="mt-4 text-white/60">
                 Hvenær, hve mörg og hvar á Ítalíu – við komum með tillögu.
@@ -107,7 +107,7 @@ export default function BrudkaupPage() {
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <InquiryForm variant="almenn" defaultInterest="Brúðkaup / sérstakt tilefni" email={site.email} />
+                <InquiryForm variant="almenn" defaultInterest="Hópferð / sérstakt tilefni" email={site.email} />
               </div>
             </RevealOnScroll>
           </div>

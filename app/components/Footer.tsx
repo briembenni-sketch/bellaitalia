@@ -8,7 +8,7 @@ export const pageLinks = [
   { href: "/", label: "Heim" },
   { href: "/villur", label: "Villur á Ítalíu" },
   { href: "/villur#thjonusta", label: "Viðbótarþjónusta í villuna" },
-  { href: "/brudkaup", label: "Brúðkaup & sérstök tilefni" },
+  { href: "/brudkaup", label: "Hópar & sérstök tilefni" },
   { href: "/fyrirspurn", label: "Senda fyrirspurn" },
   { href: "/samband", label: "Hafa samband" },
 ];
