@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Inter, Kaushan_Script } from "next/font/google";
+import { Outfit, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { site } from "./data/site";
 import HashScroll from "./components/HashScroll";
@@ -17,10 +18,10 @@ const inter = Inter({
   display: "swap",
 });
 
-// Pensilskrift fyrir stóru orðin á forsíðunni
-const kaushan = Kaushan_Script({
+// Pensilskrift fyrir stóru orðin á forsíðunni – Kaushan Script (OFL), hýst í verkefninu
+const kaushan = localFont({
+  src: "./fonts/KaushanScript-Regular.woff2",
   variable: "--font-kaushan",
-  subsets: ["latin", "latin-ext"],
   weight: "400",
   display: "swap",
 });
