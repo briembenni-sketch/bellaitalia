@@ -9,7 +9,6 @@ Myndir í þjónustuspjöldum borgarsíðanna (Flórens, Napoli·Amalfi·Pompei,
 
 Nýjar myndir (september 2026) af Unsplash, undir Unsplash-leyfinu (https://unsplash.com/license):
 
-- `villa-hero.jpg` — https://unsplash.com/photos/nm7vif5GTeI
 - `dest-sikiley.jpg` — https://unsplash.com/photos/pWTVDQiqoGg
 - `dest-sikiley-hero.jpg` — https://unsplash.com/photos/Pyd82qAoxDk
 - `svc-sikiley-taormina.jpg` — https://unsplash.com/photos/RxTA6d4RoT8
@@ -24,3 +23,7 @@ Nýjar myndir (september 2026) af Unsplash, undir Unsplash-leyfinu (https://unsp
 - `villa-sjor.jpg` — https://unsplash.com/photos/VCW_2bJl0uA
 - `villa-vin.jpg` — https://unsplash.com/photos/GGHwCjJ73Kk
 - `villa-fjolskylda.jpg` — https://unsplash.com/photos/z9MAxYlXv3s
+
+Mynd frá samstarfsaðila okkar, Exclusive Italian Villas (https://www.exclusiveitalianvillas.com):
+
+- `villa-sundlaug-2.jpg` — villa með sundlaug, forsíðumynd samstarfsaðilans

@@ -40,14 +40,14 @@ export default function Home() {
           {/* A · VILLUR */}
           <Link href="/villur" className={panel}>
             <Image
-              src="/images/villa-hero.jpg"
-              alt="Toskanskt sveitasetur með blárri sundlaug, garði og skógivöxnum hæðum"
+              src="/images/villa-sundlaug-2.jpg"
+              alt="Steinvilla með blárri sundlaug, lavender-garði og skógivöxnum hæðum undir bláum himni"
               fill
               preload
               fetchPriority="high"
               quality={90}
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-[35%_center] transition-transform duration-700 group-hover:scale-[1.04]"
+              className="object-cover object-[15%_center] transition-transform duration-700 group-hover:scale-[1.04]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/20" />
             <div className="relative z-10 p-6 sm:p-10 lg:p-14 pt-28 animate-fade-up-delay-1">
