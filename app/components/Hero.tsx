@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 type Props = {
   image: string;
   imageAlt?: string;
+  /** Tailwind object-position klasi, t.d. "object-[65%_center]" – ræður hvaða hluti myndarinnar sést þegar hún er skorin */
+  imagePosition?: string;
   title: ReactNode;
   text?: ReactNode;
   actions?: ReactNode;
@@ -20,6 +22,7 @@ type Props = {
 export default function Hero({
   image,
   imageAlt = "",
+  imagePosition = "",
   title,
   text,
   actions,
@@ -50,7 +53,7 @@ export default function Hero({
           fetchPriority="high"
           quality={90}
           sizes="100vw"
-          className="object-cover"
+          className={`object-cover ${imagePosition}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/30" />
 
