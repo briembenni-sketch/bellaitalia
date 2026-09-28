@@ -33,9 +33,9 @@ export default function VillurPage() {
       <Navbar />
       <main>
         <Hero
-          image="/images/villur-hero-3.jpg"
-          imagePosition="object-[70%_center]"
-          imageAlt="Toskönsk steinvilla með sundlaug milli sýprustrjáa og furutrjáa"
+          image="/images/villur-hero-4.jpg"
+          imagePosition="object-[62%_bottom]"
+          imageAlt="Toskönsk steinvilla umkringd sýprustrjám með útsýni yfir hæðir Toskana í kvöldsól"
           title="Villur með sundlaug í öllum verðflokkum"
           text="Við finnum réttu villuna fyrir ykkar hóp – það kostar ekkert að fá tilboð."
           actions={
