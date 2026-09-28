@@ -10,7 +10,7 @@ Myndir í þjónustuspjöldum borgarsíðanna (Flórens, Napoli·Amalfi·Pompei,
 Nýjar myndir (september 2026) af Unsplash, undir Unsplash-leyfinu (https://unsplash.com/license):
 
 - `landing-villur-2.jpg` — https://unsplash.com/photos/_LCnNnM0cyc
-- `villur-hero-2.jpg` — https://unsplash.com/photos/kCTh87GQU7s
+- `villur-hero-3.jpg` — https://unsplash.com/photos/cCb5SMpxusA
 - `dest-sikiley.jpg` — https://unsplash.com/photos/pWTVDQiqoGg
 - `dest-sikiley-hero.jpg` — https://unsplash.com/photos/Pyd82qAoxDk
 - `svc-sikiley-taormina.jpg` — https://unsplash.com/photos/RxTA6d4RoT8
