@@ -135,7 +135,7 @@ export default function Home() {
 
         {/* ═══════════════ UMSAGNIR ═══════════════ */}
         <section className="pb-16 md:pb-24">
-          <Testimonials tone="dark" items={testimonials} />
+          <Testimonials items={testimonials} />
         </section>
       </main>
       <ClosingFooter />

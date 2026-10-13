@@ -1,29 +1,28 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { testimonials as defaultTestimonials } from "../data/site";
 import { ArrowIcon } from "./Icons";
 import RevealOnScroll from "./RevealOnScroll";
 
-const INTERVAL = 6000;
+const INTERVAL = 7000;
 const pad = (n: number) => String(n).padStart(2, "0");
-const initials = (name: string) =>
-  name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((n) => n[0])
-    .join("");
 
 type Item = (typeof defaultTestimonials)[number];
-type Tone = "light" | "dark";
 
 /**
- * Umsagnir: öll kortin liggja í sama reit, aðeins virka kortið er sýnilegt og skipt er
- * með hreinni útfellingu. Rúllar sjálfkrafa; stoppar þegar bendill er yfir.
+ * Umsagnir í sama anda og forsíðan: ljósmynd í bakgrunni undir dökkum lit, skrautletursfyrirsögn
+ * og umsögnin sjálf í stóru letri. Allar umsagnir liggja í sama reit og skipt er með útfellingu.
+ * Rúllar sjálfkrafa; stoppar þegar bendill er yfir.
  */
-export default function Testimonials({ tone = "dark", items }: { tone?: Tone; items?: Item[] }) {
-  const dark = tone === "dark";
+export default function Testimonials({
+  items,
+  image = "/images/dinner-terrace.jpg",
+}: {
+  items?: Item[];
+  image?: string;
+}) {
   const list = items && items.length ? items : defaultTestimonials;
   const total = list.length;
 
@@ -50,145 +49,120 @@ export default function Testimonials({ tone = "dark", items }: { tone?: Tone; it
   }, [paused, reduceMotion, total, go, index]);
 
   const running = !paused && !reduceMotion;
+  const arrowBtn =
+    "group w-12 h-12 rounded-full tint text-white flex items-center justify-center hover:bg-white hover:text-ink transition-colors";
 
   return (
-    <div
-      className="mx-auto max-w-[1400px] px-5 md:px-10"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
-      onKeyDown={(e) => {
-        if (e.key === "ArrowLeft") go(-1);
-        if (e.key === "ArrowRight") go(1);
-      }}
-      onTouchStart={(e) => {
-        touchX.current = e.touches[0].clientX;
-      }}
-      onTouchEnd={(e) => {
-        if (touchX.current === null) return;
-        const dx = e.changedTouches[0].clientX - touchX.current;
-        touchX.current = null;
-        if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
-      }}
-    >
+    <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10">
       <RevealOnScroll>
-        <div className="text-center mb-6 md:mb-8">
-          <span className={`text-xs font-medium tracking-[0.2em] uppercase ${dark ? "text-sand" : "text-gold"}`}>Umsagnir</span>
-          <h2 className={`mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05] ${dark ? "text-white" : ""}`}>
-            Það sem gestir okkar segja
-          </h2>
-        </div>
-      </RevealOnScroll>
+        <div
+          className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-ink-soft"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") go(-1);
+            if (e.key === "ArrowRight") go(1);
+          }}
+          onTouchStart={(e) => {
+            touchX.current = e.touches[0].clientX;
+          }}
+          onTouchEnd={(e) => {
+            if (touchX.current === null) return;
+            const dx = e.changedTouches[0].clientX - touchX.current;
+            touchX.current = null;
+            if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+          }}
+        >
+          <Image src={image} alt="" fill quality={85} sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/85 to-ink/60" />
 
-      <RevealOnScroll>
-        <div className="max-w-2xl mx-auto" aria-roledescription="carousel" aria-label="Umsagnir gesta">
-          {/* Öll kortin í sama reit – hæðin fylgir hæsta kortinu svo ekkert hoppar */}
-          <div className="grid">
-            {list.map((t, i) => {
-              const on = i === index;
-              return (
-                <figure
-                  key={`${t.name}-${i}`}
-                  aria-hidden={!on}
-                  className={`col-start-1 row-start-1 w-full rounded-3xl p-6 sm:p-7 transition-opacity duration-500 ease-out ${
-                    on ? "opacity-100" : "opacity-0 pointer-events-none"
-                  } ${
-                    dark
-                      ? "bg-ink-soft/85 backdrop-blur-md border border-white/10 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)]"
-                      : "bg-white border border-ink/5 shadow-[0_24px_60px_-24px_rgba(7,21,23,0.25)]"
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span aria-hidden className="font-display text-5xl leading-[0.6] text-gold">
-                      &ldquo;
-                    </span>
-                    <span className={`text-xs font-display tabular-nums ${dark ? "text-white/40" : "text-ink/40"}`}>
-                      {pad(i + 1)} / {pad(total)}
-                    </span>
-                  </div>
-                  <blockquote className={`mt-5 text-[15px] sm:text-base leading-relaxed ${dark ? "text-white/85" : "text-ink/80"}`}>
-                    <p>{t.text}</p>
-                  </blockquote>
-                  <figcaption className={`mt-6 pt-5 border-t flex items-center gap-3 ${dark ? "border-white/10" : "border-ink/5"}`}>
-                    <span
-                      aria-hidden
-                      className={`w-11 h-11 shrink-0 rounded-full text-sm font-semibold flex items-center justify-center ${
-                        dark ? "bg-white/10 text-gold-light" : "bg-forest/10 text-forest"
-                      }`}
-                    >
-                      {initials(t.name)}
-                    </span>
-                    <span className="min-w-0">
-                      <span className={`block text-sm font-semibold ${dark ? "text-white" : "text-ink"}`}>{t.name}</span>
-                      <span className={`block text-xs mt-0.5 ${dark ? "text-white/50" : "text-ink/50"}`}>{t.trip}</span>
-                    </span>
-                  </figcaption>
-                </figure>
-              );
-            })}
-          </div>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 p-6 sm:p-10 lg:p-14">
+            {/* Fyrirsögn */}
+            <div className="lg:col-span-4">
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Umsagnir</span>
+              <h2 className="mt-2 -ml-1 font-script text-5xl sm:text-6xl lg:text-7xl leading-[1.1] pb-1 text-white">
+                Gestirnir segja
+              </h2>
+              <p className="mt-4 text-sm md:text-base font-medium tracking-[0.18em] uppercase text-white/70">
+                Frá fólki sem ferðaðist með okkur
+              </p>
+            </div>
 
-          {/* Stýring: fyrri / næsta og tímalínubútar sem fyllast fram að næstu umsögn */}
-          <div className="mt-5 md:mt-6 flex justify-center">
-            <div
-              className={`inline-flex items-center rounded-xl p-1.5 border ${
-                dark ? "bg-white/10 border-white/10 backdrop-blur-md" : "bg-white border-ink/5 shadow-[0_12px_32px_-14px_rgba(7,21,23,0.25)]"
-              }`}
-            >
-              <button
-                type="button"
-                onClick={() => go(-1)}
-                aria-label="Fyrri umsögn"
-                className={`group w-10 h-10 rounded-full transition-colors flex items-center justify-center ${
-                  dark ? "text-white/70 hover:bg-white hover:text-ink" : "text-ink/55 hover:bg-ink hover:text-white"
-                }`}
-              >
-                <ArrowIcon className="w-4 h-4 rotate-180 transition-transform group-hover:-translate-x-0.5" />
-              </button>
-
-              <div className="flex items-center gap-1.5 px-3" role="tablist" aria-label="Veldu umsögn">
+            {/* Umsögn + stýring */}
+            <div className="lg:col-span-8 flex flex-col" aria-roledescription="carousel" aria-label="Umsagnir gesta">
+              {/* Allar umsagnir í sama reit – hæðin fylgir þeirri lengstu svo ekkert hoppar */}
+              <div className="grid">
                 {list.map((t, i) => {
                   const on = i === index;
-                  const track = dark ? "bg-white/25" : "bg-ink/15";
                   return (
-                    <button
+                    <figure
                       key={`${t.name}-${i}`}
-                      type="button"
-                      role="tab"
-                      aria-selected={on}
-                      aria-label={`Umsögn ${i + 1}: ${t.name}`}
-                      onClick={() => setIndex(i)}
-                      className="group/seg py-2.5"
+                      aria-hidden={!on}
+                      className={`col-start-1 row-start-1 transition-opacity duration-700 ease-out ${
+                        on ? "opacity-100" : "opacity-0 pointer-events-none"
+                      }`}
                     >
-                      <span
-                        className={`relative block h-[3px] rounded-full overflow-hidden transition-[width,background-color] duration-300 ${
-                          on ? `w-8 ${track}` : `w-3 ${track} ${dark ? "group-hover/seg:bg-white/50" : "group-hover/seg:bg-ink/35"}`
-                        }`}
-                      >
-                        {on && (
-                          <span
-                            key={`${index}-${running}`}
-                            className={`absolute inset-0 rounded-full animate-progress ${dark ? "bg-white" : "bg-ink"}`}
-                            style={{ animationDuration: `${INTERVAL}ms`, animationPlayState: running ? "running" : "paused" }}
-                          />
-                        )}
+                      <span aria-hidden className="block font-display text-7xl md:text-8xl leading-[0.5] text-gold">
+                        &ldquo;
                       </span>
-                    </button>
+                      <blockquote className="mt-4 font-display text-xl sm:text-2xl md:text-[1.75rem] font-medium leading-snug tracking-tight text-white text-balance">
+                        <p>{t.text}</p>
+                      </blockquote>
+                      <figcaption className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <span className="text-sm md:text-base font-semibold tracking-[0.18em] uppercase text-gold-light">{t.name}</span>
+                        <span className="text-sm text-white/60">{t.trip}</span>
+                      </figcaption>
+                    </figure>
                   );
                 })}
               </div>
 
-              <button
-                type="button"
-                onClick={() => go(1)}
-                aria-label="Næsta umsögn"
-                className={`group w-10 h-10 rounded-full transition-colors flex items-center justify-center ${
-                  dark ? "text-white/70 hover:bg-white hover:text-ink" : "text-ink/55 hover:bg-ink hover:text-white"
-                }`}
-              >
-                <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-              </button>
+              {/* Stýring: fyrri / næsta, tímalínubútar sem fyllast fram að næstu umsögn og teljari */}
+              <div className="mt-8 md:mt-10 pt-6 border-t border-white/15 flex items-center gap-4">
+                <button type="button" onClick={() => go(-1)} aria-label="Fyrri umsögn" className={arrowBtn}>
+                  <ArrowIcon className="w-4 h-4 rotate-180 transition-transform group-hover:-translate-x-0.5" />
+                </button>
+                <button type="button" onClick={() => go(1)} aria-label="Næsta umsögn" className={arrowBtn}>
+                  <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </button>
+
+                <div className="ml-2 hidden sm:flex items-center gap-1.5" role="tablist" aria-label="Veldu umsögn">
+                  {list.map((t, i) => {
+                    const on = i === index;
+                    return (
+                      <button
+                        key={`${t.name}-${i}`}
+                        type="button"
+                        role="tab"
+                        aria-selected={on}
+                        aria-label={`Umsögn ${i + 1}: ${t.name}`}
+                        onClick={() => setIndex(i)}
+                        className="group/seg py-3"
+                      >
+                        <span
+                          className={`relative block h-[3px] rounded-full overflow-hidden bg-white/25 transition-[width,background-color] duration-300 ${
+                            on ? "w-10" : "w-4 group-hover/seg:bg-white/50"
+                          }`}
+                        >
+                          {on && (
+                            <span
+                              key={`${index}-${running}`}
+                              className="absolute inset-0 rounded-full animate-progress bg-gold-light"
+                              style={{ animationDuration: `${INTERVAL}ms`, animationPlayState: running ? "running" : "paused" }}
+                            />
+                          )}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <span className="ml-auto font-display text-sm tabular-nums text-white/50">
+                  {pad(index + 1)} / {pad(total)}
+                </span>
+              </div>
             </div>
           </div>
         </div>
