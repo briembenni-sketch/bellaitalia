@@ -40,7 +40,7 @@ export default function Home() {
           {/* A · VILLUR */}
           <Link href="/villur" className={panel}>
             <Image
-              src="/images/landing-villa-kvold.jpg"
+              src="/images/landing-villa-kvold-hq.jpg"
               alt="Toskönsk steinvilla í kvöldbirtu með upplýstri sundlaug, sólstólum og sýprustrjám"
               fill
               preload
