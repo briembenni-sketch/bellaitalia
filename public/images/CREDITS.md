@@ -27,3 +27,4 @@ Nýjar myndir (september 2026) af Unsplash, undir Unsplash-leyfinu (https://unsp
 Mynd frá samstarfsaðila okkar, Exclusive Italian Villas (https://www.exclusiveitalianvillas.com):
 
 - `villa-sundlaug-2.jpg` — villa með sundlaug, forsíðumynd samstarfsaðilans
+- `landing-villa-kvold.jpg` — toskönsk villa í kvöldbirtu, mynd frá Bella Italia
