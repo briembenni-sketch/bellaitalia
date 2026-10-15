@@ -224,7 +224,7 @@ export default function InquiryForm({
             <div className="flex flex-col gap-2">
               <label htmlFor="villur-born2" className={label}>Börn undir 2 ára *</label>
               <input id="villur-born2" name="born2" type="number" inputMode="numeric" min={0} max={20} required placeholder="0" className={`${field} bg-white/10`} />
-              <span className={hint}>Skrifið 0 ef engin. Börn undir 2 ára þurfa oftast ekki eigið rúm.</span>
+              <span className={hint}>Skrifið 0 ef engin.</span>
             </div>
           </fieldset>
 

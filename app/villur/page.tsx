@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function VillurPage() {
-  const { site, villaPricing, villaText, villas, villaServices } = getContent();
+  const { site, villaText, villas, villaServices } = getContent();
   return (
     <>
       <Navbar />
@@ -177,28 +177,6 @@ export default function VillurPage() {
                 <ServiceCard service={s} />
               </RevealOnScroll>
             ))}
-          </div>
-        </section>
-
-        {/* Verð */}
-        <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-            <RevealOnScroll className="lg:col-span-4">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Verðhugmyndir á leigu</span>
-              <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Viðmið eftir stærð</h2>
-              <p className="mt-4 text-white/60 text-[15px] leading-relaxed">{villaText.pricingNote}</p>
-            </RevealOnScroll>
-            <RevealOnScroll className="lg:col-span-8">
-              <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 divide-y divide-white/10 overflow-hidden">
-                {villaPricing.map((row) => (
-                  <div key={row.size} className="grid grid-cols-1 sm:grid-cols-3 gap-0.5 sm:gap-6 items-baseline px-5 md:px-8 py-4 md:py-5">
-                    <span className="font-medium">{row.size}</span>
-                    <span className="font-display text-xl md:text-2xl font-medium text-gold-light">{row.eur}</span>
-                    <span className="text-sm text-white/50 sm:text-right">({row.isk})</span>
-                  </div>
-                ))}
-              </div>
-            </RevealOnScroll>
           </div>
         </section>
 

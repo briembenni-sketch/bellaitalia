@@ -389,9 +389,6 @@ export const villaPricing = [
   { size: "10+ herbergja villa", eur: "frá €7.000 vikan", isk: "um 1.000.000 kr." },
 ];
 
-// Svæði sem hægt er að haka við í villu-fyrirspurn
-export const villaRegions = ["Toskana", "Umbria", "Le Marche", "Norður-Ítalía", "Sikiley", "Annað / óákveðið"];
-
 export const villaText = {
   intro: ["Fjöldi villa um alla Ítalíu, í öllum verðflokkum – við útbúum tilboð eftir óskum hvers hóps."],
   practical: [
@@ -474,6 +471,9 @@ export const villas: Villa[] = [
     features: [],
   },
 ];
+
+// Sömu svæði og spjöldin á villusíðunni (í sömu röð) + „annað“ – notað í villu-fyrirspurninni
+export const villaRegions = [...villas.map((v) => v.region), "Annað / óákveðið"];
 
 /* ------------------- VILLUR EFTIR ÁHUGAMÁLUM ------------------- */
 
