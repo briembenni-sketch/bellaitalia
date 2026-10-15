@@ -28,3 +28,10 @@ Mynd frá samstarfsaðila okkar, Exclusive Italian Villas (https://www.exclusive
 
 - `villa-sundlaug-2.jpg` — villa með sundlaug, forsíðumynd samstarfsaðilans
 - `landing-villa-kvold-hq.jpg` — toskönsk villa í kvöldbirtu, mynd frá Bella Italia
+
+Myndir bættar við í október 2026 (breytingar frá Hildi):
+
+- `ferdalag-rom-gata.jpg`, `tilefni-kertabord.jpg` — The Inn at the Roman Forum, https://www.theinnattheromanforum.com/en/gallery/ (valdar af Hildi)
+- `svaedi-toskana.jpg`, `svaedi-umbria.jpg`, `svaedi-nordur-italia.jpg`, `svaedi-sikiley.jpg` — villur hjá Exclusive Italian Villas / Emma Villas, samstarfsaðila Bella Italia (valdar af Hildi)
+- `svc-florens-pisa.jpg` — Dudva, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Piazza_dei_Miracoli_-_The_Cathedral_and_the_Leaning_Tower_in_Pisa_(2).jpg
+- `svc-sikiley-noto.jpg` — Alexander Baxevanis, CC BY 2.0, https://commons.wikimedia.org/wiki/File:Basilica_Cattedrale_di_San_Nicolò_(Noto)_-_Province_of_Syracuse_-_South-Eastern_Sicily_-_Italy_-_11_July_2013.jpg

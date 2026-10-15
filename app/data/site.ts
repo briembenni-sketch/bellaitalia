@@ -161,13 +161,19 @@ export const tours: Tour[] = [
     image: "/images/rom-colosseum-2.jpg",
     imageAlt: "Colosseum í Róm",
     summary: "Ferð í Colosseum með leiðsögn á ensku.",
-    highlights: ["Aðgangur í Colosseum", "Roman Forum (Rómversku torgin)"],
+    highlights: [
+      "Aðgangur í Colosseum",
+      "Roman Forum (Rómversku torgin)",
+      "Arena þar sem skylmingaþrælar (gladiatorar) börðust til forna",
+    ],
     priceLabel: "€150 á mann",
     prices: [{ label: "Verð á mann með miða & guide", value: "€150" }],
     details: {
       intro: [
+        "Aðgangur í Colosseum · Roman Forum (Rómversku torgin) · Arena þar sem skylmingaþrælar (gladiatorar) börðust til forna.",
         "Ferðin hefst í Colosseum þar sem leiðsögumaðurinn mun fræða gesti um þetta ótrúlega mannvirki sem var í senn leikhús og aftökustaður.",
         "Að því loknu verður gengið að sigurboga Konstantínusar mikla og áfram yfir á gömlu keisaratorgin (Roman Forum).",
+        "* Aðgangur að leikvangsgólfinu felur ekki sjálfkrafa í sér heimsókn niður í neðanjarðargöngin (Underground/Hypogeum).",
       ],
       schedule: ["Farið alla daga kl. 08:15"],
       duration: "3 klukkustundir",
@@ -215,22 +221,78 @@ export const tours: Tour[] = [
     },
   },
   {
-    id: "ganga",
-    title: "Gönguferð með leiðsögumanni",
-    shortTitle: "Gönguferð",
-    tag: "Skoðunarferð",
-    image: "/images/rom-ganga-2.jpg",
-    imageAlt: "Trevi gosbrunnurinn í Róm",
-    summary: "Róm með Rómverjum – einkaleiðsögn um borgina eilífu.",
-    highlights: ["Besta af Róm", "Hjarta Rómar", "Gyðingahverfið & Trastevere", "Matar- & vínferðir"],
+    id: "ganga-perlur",
+    title: "Perlur Rómar",
+    shortTitle: "Perlur Rómar",
+    tag: "Gönguferð",
+    image: "/images/rome-pantheon.jpg",
+    imageAlt: "Pantheon í Róm við sólarupprás",
+    summary: "Gönguferð um sögufræga miðborgina.",
+    highlights: ["Spænsku tröppurnar", "Trevi-gosbrunnurinn", "Pantheon", "Navona-torgið"],
     priceLabel: "Verð eftir fjölda",
     details: {
       intro: [
-        "Gönguferðir um Róm með Rómverjum, einkaleiðsögn á ensku frá okkar faglærðu leiðsögumönnum. Allar helstu perlur Rómar heimsóttar með leiðsögn: Navona torgið, Spænsku tröppurnar, Trevi brunnurinn, Gyðingahverfið, Trastevere og aðrar perlur miðbæjarins.",
-        "Hægt að útfæra sérferð í samræmi við óskir hvers og eins. Einnig í boði einkaferðir bæði í Vatíkanið og Colosseum með eigin leiðsögn.",
-        "Tilvalið fyrir einstaklinga og hópa af öllum stærðum.",
+        "Í þessari þriggja klukkustunda gönguferð kynnumst við helstu perlum hinnar eilífu borgar. Við heimsækjum Spænsku tröppurnar, Trevi-gosbrunninn, hið stórbrotna Pantheon og Navona-torgið, eitt fallegasta torg Rómar.",
+        "Skemmtileg og fróðleg einkagönguferð um sögufrægar götur og heillandi torg þar sem saga, menning og einstök stemning Rómar mætast.",
+      ],
+      duration: "3 klukkustundir",
+      note: "Verð fer eftir fjölda þátttakenda – endilega sendið okkur fyrirspurn og við gefum ykkur tilboð.",
+    },
+  },
+  {
+    id: "ganga-hjarta",
+    title: "Hjarta Rómar",
+    shortTitle: "Hjarta Rómar",
+    tag: "Gönguferð",
+    image: "/images/rom-ganga-2.jpg",
+    imageAlt: "Gömul gata í Róm",
+    summary: "Gönguferð um faldar perlur borgarinnar.",
+    highlights: ["Campo de’ Fiori", "Gyðingahverfið", "Tíbereyjan", "Trastevere"],
+    priceLabel: "Verð eftir fjölda",
+    details: {
+      intro: [
+        "Upplifðu hina sönnu Róm í heillandi gönguferð um lífleg hverfi og sögufrægar götur, fjarri fjölförnustu ferðamannastöðunum.",
+        "Við heimsækjum Campo de’ Fiori, sögufræga gyðingahverfið og Tíbereyjuna áður en við röltum um þröngar steinlagðar götur Trastevere, eins skemmtilegasta og litríkasta hverfis Rómar.",
+        "Skemmtileg og fróðleg einkagönguferð þar sem við kynnumst daglegu lífi, hefðum og földum gersemum hinnar eilífu borgar.",
       ],
       note: "Verð fer eftir fjölda þátttakenda – endilega sendið okkur fyrirspurn og við gefum ykkur tilboð.",
+    },
+  },
+  {
+    id: "ganga-trastevere",
+    title: "Gyðingahverfið & Trastevere",
+    shortTitle: "Gyðingahverfið & Trastevere",
+    tag: "Gönguferð",
+    image: "/images/rome-rooftops.jpg",
+    imageAlt: "Þök og kirkjuhvelfingar Rómar",
+    summary: "Gönguferð um sögufræga Róm.",
+    highlights: ["Janiculum-hæð", "Trastevere", "Gyðingahverfið"],
+    priceLabel: "Verð eftir fjölda",
+    details: {
+      intro: [
+        "Uppgötvaðu heillandi hverfi Rómar í skemmtilegri einkagönguferð þar sem saga, menning og hefðir borgarinnar fléttast saman.",
+        "Við hefjum ferðina á Janiculum-hæð með stórkostlegu útsýni yfir Róm og höldum þaðan niður í líflegt Trastevere-hverfið með sínum þröngu steinlögðu götum, litríku húsum og notalegu kaffihúsum.",
+        "Að lokum heimsækjum við sögufræga gyðingahverfið, þar sem við kynnumst yfir 2.000 ára sögu gyðinga í Róm og skoðum einstaka byggingar og faldar perlur borgarinnar.",
+      ],
+      note: "Verð fer eftir fjölda þátttakenda – endilega sendið okkur fyrirspurn og við gefum ykkur tilboð.",
+    },
+  },
+  {
+    id: "rutur",
+    title: "Rútur",
+    shortTitle: "Rútur",
+    tag: "Akstur",
+    image: "/images/service-bilstjori.jpg",
+    imageAlt: "Bíll á sýprusviðargötu í Toskana",
+    summary: "Rútur með bílstjóra – milli borga, í skoðunarferðir eða frá flugvelli.",
+    highlights: ["Rútur af öllum stærðum", "Bílstjóri", "Um alla Ítalíu"],
+    priceLabel: "Verð eftir fyrirspurn",
+    details: {
+      intro: [
+        "Við pöntum rútur af öllum stærðum með bílstjóra, hvort sem um er að ræða akstur til og frá flugvelli, á milli borga eða í skoðunarferðir.",
+        "Hvert sem leiðin liggur – við komum ykkur á áfangastað.",
+      ],
+      note: "Segið okkur leiðina, dagsetningu og fjölda og við sendum ykkur tilboð.",
     },
   },
   {
@@ -328,14 +390,14 @@ export const villaPricing = [
 ];
 
 // Svæði sem hægt er að haka við í villu-fyrirspurn
-export const villaRegions = ["Toskana", "Umbria", "Le Marche", "Puglia", "Sikiley", "Norður-Ítalía", "Annað / óákveðið"];
+export const villaRegions = ["Toskana", "Umbria", "Le Marche", "Norður-Ítalía", "Sikiley", "Annað / óákveðið"];
 
 export const villaText = {
   intro: ["Fjöldi villa um alla Ítalíu, í öllum verðflokkum – við útbúum tilboð eftir óskum hvers hóps."],
   practical: [
     "Öll húsin eru með sundlaug, í rólegri sveit",
     "2–5 km í næsta þorp – bílaleigubíll er nauðsynlegur",
-    "Leiga hvaða daga sem er – nema í júlí og ágúst: laugardagur til laugardags",
+    "Leigutímabil allt árið um kring, hvaða vikudag sem er",
     "Við erum til staðar 24/7 á meðan dvöl stendur",
   ],
   service: ["Það kostar ekkert að fá tilboð – þjónusta okkar og milliganga er gjaldfrjáls."],
@@ -358,60 +420,77 @@ export type Villa = {
   catalogUrl?: string;
 };
 
-// Dæmi um gerðir af húsum sem eru í boði – úrvalið er miklu stærra.
+// „Brot af því úrvali sem við bjóðum uppá“ – eitt spjald á hérað, hvert vísar á villurnar þar
+// hjá samstarfsaðilanum. Myndirnar eru villur sem Hildur valdi (október 2026).
 export const villas: Villa[] = [
   {
     id: "toskana",
     catalogUrl: villaCatalogRegion("Tuscany"),
-    name: "Sveitasetur í Toskana",
+    name: "Toskana",
     region: "Toskana",
-    image: "/images/villa-toskana-2.jpg",
-    imageAlt: "Toskönsk villa með sundlaug, grasflöt og sýprusviðum",
-    text: "Klassísk steinvilla innan um ólífutré og sýprusviði.",
-    features: ["Sundlaug", "Útsýni yfir vínekrur", "Stutt í þorp"],
+    image: "/images/svaedi-toskana.jpg",
+    imageAlt: "Steinvilla með sundlaug og vínekrum í hæðum Toskana",
+    text: "Vinsælasta héraðið – vínekrur, sýprusviðir og miðaldabæir.",
+    features: [],
   },
   {
     id: "umbria",
     catalogUrl: villaCatalogRegion("Umbria"),
-    name: "Sveitahús í Umbríu",
+    name: "Umbria",
     region: "Umbria",
-    image: "/images/villa-umbria.jpg",
-    imageAlt: "Sundlaug í grænum hæðum Umbríu",
-    text: "Endurgerð sveitahús í græna hjarta Ítalíu.",
-    features: ["Sundlaug", "Friðsælt", "Miðaldabæir í nánd"],
+    image: "/images/svaedi-umbria.jpg",
+    imageAlt: "Steinhús með sundlaug og verönd innan um tré í Umbríu",
+    text: "Græna hjarta Ítalíu.",
+    features: [],
   },
   {
     id: "marche",
     catalogUrl: villaCatalogRegion("Marche"),
-    name: "Villa í Le Marche",
+    name: "Le Marche",
     region: "Le Marche",
     image: "/images/villa-marche-2.jpg",
     imageAlt: "Villa með sundlaug milli vínekra og hæða með þorpi í baksýn",
-    text: "Minna þekkt en Toskana, sami sjarmi – hæðir og kastalar við Adríahafið.",
-    features: ["Sundlaug", "Strönd í nánd", "Gott verð"],
+    text: "Hæðir og kastalar við Adríahafið.",
+    features: [],
   },
   {
-    id: "puglia",
-    catalogUrl: villaCatalogRegion("Puglia"),
-    name: "Trullo í Puglia",
-    region: "Puglia",
-    image: "/images/villa-puglia.jpg",
-    imageAlt: "Hvít trullo-hús með keilulöguðu þaki í Puglia",
-    text: "Hvítkölkuð trullo- og masseria-hús – Suður-Ítalía á sínu besta.",
-    features: ["Sundlaug", "Ólífulundir", "Strendur"],
+    id: "nordur-italia",
+    catalogUrl: villaCatalogRegion("Lombardy"),
+    name: "Norður-Ítalía",
+    region: "Norður-Ítalía",
+    image: "/images/svaedi-nordur-italia.jpg",
+    imageAlt: "Villa með sundlaug og útsýni yfir Como-vatn og fjöllin",
+    text: "Vötnin og fjöllin – Como, Garda og Maggiore.",
+    features: [],
+  },
+  {
+    id: "sikiley",
+    catalogUrl: villaCatalogRegion("Sicily"),
+    name: "Sikiley",
+    region: "Sikiley",
+    image: "/images/svaedi-sikiley.jpg",
+    imageAlt: "Villa með upplýstri sundlaug yfir hafinu á Sikiley í ljósaskiptunum",
+    text: "Stórkostleg eyja með sjávarútsýni.",
+    features: [],
   },
 ];
 
 /* ------------------- VILLUR EFTIR ÁHUGAMÁLUM ------------------- */
 
-// Þemasöfn hjá Emma Villas, samstarfsaðila okkar
-export const villaCollections = [
-  { title: "Golf", note: "Villur nálægt golfvöllum", image: "/images/villa-golf.jpg", imageAlt: "Golfvöllur með tjörnum og furutrjám séður ofan frá", href: "https://www.emmavillas.com/en/collections/sul-green" },
-  { title: "Tennis", note: "Tennisvöllur við húsið", image: "/images/villa-tennis.jpg", imageAlt: "Villa með tennisvelli við sjóinn séð ofan frá", href: "https://www.emmavillas.com/en/collections/tennis-in-nature" },
-  { title: "Við vötnin", note: "Como, Garda og Maggiore", image: "/images/villa-vatn.jpg", imageAlt: "Villa með sundlaug í gróðri við Como-vatn", href: "https://www.emmavillas.com/en/collections/blue-lakes" },
-  { title: "Sjávarútsýni", note: "Hús við ströndina", image: "/images/villa-sjor.jpg", imageAlt: "Sundlaug á verönd með útsýni yfir hafið", href: "https://www.emmavillas.com/en/collections/seaview-home" },
-  { title: "Vín & vínekrur", note: "Í miðjum vínhéruðunum", image: "/images/villa-vin.jpg", imageAlt: "Vínekrur í grænum hæðum", href: "https://www.emmavillas.com/en/collections/wine-passion" },
-  { title: "Stórar villur", note: "Fyrir stórfjölskylduna", image: "/images/villa-fjolskylda.jpg", imageAlt: "Langborð dekkað undir vínviði á verönd", href: "https://www.emmavillas.com/en/collections/large-family-villas" },
+// Þrír flokkar með nokkrum völdum villum hver (Hildur velur villurnar – um 5 í flokk).
+// Á meðan listinn er tómur vísar spjaldið á fyrirspurnina.
+export type VillaCollection = {
+  title: string;
+  note: string;
+  image: string;
+  imageAlt: string;
+  villas: { name: string; href: string }[];
+};
+
+export const villaCollections: VillaCollection[] = [
+  { title: "Golf", note: "Villur nálægt golfvöllum", image: "/images/villa-golf.jpg", imageAlt: "Golfvöllur með tjörnum og furutrjám séður ofan frá", villas: [] },
+  { title: "Tennis", note: "Tennisvöllur við húsið", image: "/images/villa-tennis.jpg", imageAlt: "Villa með tennisvelli við sjóinn séð ofan frá", villas: [] },
+  { title: "Stórar fjölskylduvillur", note: "Pláss fyrir alla stórfjölskylduna", image: "/images/villa-fjolskylda.jpg", imageAlt: "Langborð dekkað undir vínviði á verönd", villas: [] },
 ];
 
 /* ------------------- VIÐBÓTARÞJÓNUSTA Í VILLUNA ------------------- */
@@ -468,6 +547,8 @@ export type Destination = {
   imageAlt: string;
   cardImage: string;
   intro: string[];
+  /** Fyrirsögn yfir ferðunum – sjálfgefið „Hvað er í boði“ */
+  servicesTitle?: string;
   services: { title: string; text: string; image?: string; imageAlt?: string }[];
   planning: string;
   /** Róm hefur sína eigin sérsmíðuðu síðu með ferðaspjöldum */
@@ -502,11 +583,10 @@ export const destinations: Destination[] = [
     cardImage: "/images/dest-florens.jpg",
     intro: ["Best fótgangandi með einhverjum sem þekkir borgina – og fullkomin dagsferð úr villu í Toskana."],
     services: [
-      { title: "Gönguferðir með leiðsögumanni", image: "/images/svc-florens-ganga.jpg", imageAlt: "Gata í Flórens með Ponte Vecchio í baksýn", text: "Einkaleiðsögn á ensku um miðbæinn." },
-      { title: "Leiðsögn um borgina", image: "/images/svc-florens-leidsogn.jpg", imageAlt: "Stytta og Palazzo Vecchio í kvöldsól", text: "Sérsniðin eftir áhuga – list, saga, matur eða handverk." },
+      { title: "Gönguferð með leiðsögumanni", image: "/images/florens-ponte-vecchio.jpg", imageAlt: "Ponte Vecchio brúin yfir Arno í Flórens", text: "Við vinnum með frábærum, reyndum og enskumælandi leiðsögumönnum sem þekkja Flórens út og inn. Í einkagönguferð um sögufræga miðborgina fáið þið að kynnast helstu kennileitum, sögu og földum perlum borgarinnar á skemmtilegan og persónulegan hátt." },
       { title: "Miðakaup í Accademia", image: "/images/svc-florens-accademia.jpg", imageAlt: "Davíð eftir Michelangelo í Accademia-safninu", text: "Miðar á Davíð Michelangelos – leiðsögn ef óskað er." },
       { title: "Duomo og Cupola", image: "/images/svc-florens-duomo.jpg", imageAlt: "Hvelfing Brunelleschis yfir þökum Flórens", text: "Miðar og tímabókun í dómkirkjuna og hvelfingu Brunelleschis." },
-      { title: "Skipulagning heimsókna og dagskrár", image: "/images/svc-florens-skipulag.jpg", imageAlt: "Hæðaþorp og vínekrur í Chianti", text: "Söfn, veitingastaðir, vínsmökkun í Chianti og dagsferðir til Siena eða Pisa." },
+      { title: "Flórens dagsferðir", image: "/images/svc-florens-pisa.jpg", imageAlt: "Skakki turninn og dómkirkjan á Piazza dei Miracoli í Pisa", text: "Vínsmökkun í Chianti, dagsferðir til Siena, Pisa eða San Gimignano." },
     ],
     planning: "Segðu okkur hvenær og hve mörg – við sjáum um dagskrá, miða og leiðsögn.",
   },
@@ -522,11 +602,12 @@ export const destinations: Destination[] = [
     cardImage: "/images/dest-amalfi.jpg",
     intro: ["Leiðsögumenn, bílstjórar og bátar – teymið okkar í Campania plönar allt eftir ykkar óskum."],
     services: [
-      { title: "Dagsferðir frá Róm", image: "/images/svc-napoli-dagsferd.jpg", imageAlt: "Bærinn Amalfi og ströndin", text: "Sótt á hótel að morgni með einkabíl og komið til baka að kvöldi." },
-      { title: "Einkabíll og leiðsögn", image: "/images/borg-amalfi-vegur.jpg", imageAlt: "Strandvegurinn við Amalfi-ströndina", text: "Engar biðraðir, engin rúta – dagskráin eftir ykkar höfði." },
+      { title: "Perlur Napólí – Gönguferð um borgina", image: "/images/svc-napoli-pizza.jpg", imageAlt: "Napólísk pizza beint úr ofninum", text: "Kynnumst líflegum götum, sögufrægum torgum og einstakri menningu Napólí. Upplifum hina sönnu ítölsku stemningu og frægu matarhefðir borgarinnar." },
       { title: "Pompeii", image: "/images/dest-pompei.jpg", imageAlt: "Rústir Pompeii með Vesúvíus í baksýn", text: "Leiðsögn um fornu borgina – Herculaneum eða Vesúvíus ef óskað er." },
-      { title: "Napoli", image: "/images/svc-napoli-pizza.jpg", imageAlt: "Napólísk pizza beint úr ofninum", text: "Gönguferð um Spaccanapoli og pizzan sem borgin er fræg fyrir." },
-      { title: "Amalfi-ströndin", image: "/images/borg-ravello-terrace.jpg", imageAlt: "Útsýnisverönd Villa Cimbrone í Ravello yfir Amalfi-ströndina", text: "Positano, Amalfi og Ravello með bílstjóra – eða á bát til Capri." },
+      { title: "Amalfi-ströndin – Dagsferð", image: "/images/svc-napoli-dagsferd.jpg", imageAlt: "Bærinn Amalfi og ströndin", text: "Njóttu einnar fegurstu strandlengju Ítalíu með heimsókn til heillandi bæja á borð við Positano, Amalfi og Ravello." },
+      { title: "Capri – Perla Napólíflóa", image: "/images/gallery-06.jpg", imageAlt: "Veitingastaður með útsýni yfir hafið á Capri", text: "Dagsferð til hinnar fögru eyju Capri þar sem kristaltær sjór, glæsilegt útsýni og heillandi bæjarlíf bíða gestanna." },
+      { title: "Akstursþjónusta – Flugvellir og Amalfi-ströndin", image: "/images/borg-amalfi-vegur.jpg", imageAlt: "Strandvegurinn við Amalfi-ströndina", text: "Við bjóðum upp á þægilega akstursþjónustu með einkabílstjóra, hvort sem um er að ræða akstur til og frá flugvelli, milli borga eða um hina fögru Amalfi-strönd – allt frá bílum upp í rútur." },
+      { title: "Vínferðir – Vínekrur Vesúvíusar og Irpinia", image: "/images/service-vinsmokkun.jpg", imageAlt: "Vínsmökkun með rauðvínsglösum og ítölskum smáréttum", text: "Uppgötvaðu vínmenningu Suður-Ítalíu í heillandi vínferð um vínekrurnar í hlíðum Vesúvíusar eða hið rómaða vínhérað Irpinia. Heimsækið vínbændur, fræðist um vínrækt svæðisins og njótið vínsmökkunar með úrvali af staðbundnum vínum, gjarnan ásamt ljúffengum ítölskum hádegisverði. Einstök upplifun þar sem náttúrufegurð, vínmenning og matargerð Suður-Ítalíu mætast." },
     ],
     planning: "Áhyggjulaus ferð um Campania – dagsferð eða lengri dvöl.",
   },
@@ -562,13 +643,14 @@ export const destinations: Destination[] = [
     imageAlt: "Taormina á hæðinni fyrir ofan hafið á Sikiley",
     cardImage: "/images/dest-sikiley.jpg",
     intro: ["Sikiley er heill heimur út af fyrir sig – best að ferðast um eyjuna með bílstjóra og leiðsögumanni sem þekkja hana."],
+    servicesTitle: "Ferðir og upplifanir á Sikiley",
     services: [
-      { title: "Taormina", image: "/images/svc-sikiley-taormina.jpg", imageAlt: "Útsýni úr gríska leikhúsinu í Taormina yfir ströndina", text: "Gríska leikhúsið, Corso Umberto og útsýnið yfir Jónahafið." },
-      { title: "Etna", image: "/images/svc-sikiley-etna.jpg", imageAlt: "Snæviþakið Etna-fjall yfir strönd Sikileyjar", text: "Ferð upp á virkasta eldfjall Evrópu – og vínsmökkun í hlíðunum." },
-      { title: "Palermo", image: "/images/svc-sikiley-palermo.jpg", imageAlt: "Dómkirkjan í Palermo", text: "Markaðir, götumatur og arabísk-normönsk byggingarlist með leiðsögn." },
-      { title: "Agrigento", image: "/images/svc-sikiley-agrigento.jpg", imageAlt: "Concordia-hofið í Dal hofanna í Agrigento", text: "Dalur hofanna – best varðveittu grísku hof utan Grikklands." },
-      { title: "Siracusa & Ortigia", image: "/images/svc-sikiley-ortigia.jpg", imageAlt: "Gömul hús á sjávarvegg Ortigia í Siracusa", text: "Gamla eyjan Ortigia, fornleifagarðurinn og sjávarréttir við höfnina." },
-      { title: "Cefalù & strendurnar", image: "/images/svc-sikiley-cefalu.jpg", imageAlt: "Cefalù og ströndin séð ofan frá klettinum", text: "Strandbæir, bátsferðir og akstur á milli staða." },
+      { title: "Taormina – Perla Sikileyjar", image: "/images/svc-sikiley-taormina.jpg", imageAlt: "Útsýni úr gríska leikhúsinu í Taormina yfir ströndina", text: "Gönguferð um einn fallegasta bæ Sikileyjar, með heimsókn í hið forna gríska leikhús og tíma til að njóta heillandi miðbæjarins." },
+      { title: "Etna – Ævintýri á eldfjallinu", image: "/images/svc-sikiley-etna.jpg", imageAlt: "Snæviþakið Etna-fjall yfir strönd Sikileyjar", text: "Upplifðu stórbrotna náttúru Etnu með leiðsögumanni. Boðið er upp á fjölbreyttar ferðir, meðal annars jeppaferðir og gönguferðir um eldfjallasvæðið." },
+      { title: "Palermo og Monreale – Saga og menning", image: "/images/svc-sikiley-palermo.jpg", imageAlt: "Dómkirkjan í Palermo", text: "Uppgötvaðu líflegar götur Palermo, sögufrægar byggingar, matarmarkaði og stórkostlegu dómkirkjuna í Monreale." },
+      { title: "Siracusa og Ortigia – Faldar perlur", image: "/images/svc-sikiley-ortigia.jpg", imageAlt: "Gömul hús á sjávarvegg Ortigia í Siracusa", text: "Gönguferð um heillandi götur Ortigia þar sem saga Grikkja og Rómverja mætir fallegum barokkbyggingum og líflegri stemningu." },
+      { title: "Noto og Ragusa – Barokkperlur Sikileyjar", image: "/images/svc-sikiley-noto.jpg", imageAlt: "Barokkdómkirkjan San Nicolò í Noto efst á breiðum tröppum", text: "Ferð um tvo af fallegustu barokkbæjum Sikileyjar þar sem stórkostlegur arkitektúr, þröngar götur og falleg torg heilla gesti." },
+      { title: "Agrigento – Dalur hofanna", image: "/images/svc-sikiley-agrigento.jpg", imageAlt: "Concordia-hofið í Dal hofanna í Agrigento", text: "Heimsókn á eitt merkilegasta fornminjasvæði Sikileyjar með glæsilegum grískum hofum og fróðlegri leiðsögn." },
     ],
     planning: "Dagsferðir, hringferð um eyjuna eða villa á Sikiley – við plönum ferðina með ykkur.",
   },
@@ -576,20 +658,38 @@ export const destinations: Destination[] = [
 
 export const cityDestinations = destinations.filter((d) => !d.custom);
 
-/* --------------- BRÚÐKAUP & SÉRSTÖK TILEFNI --------------- */
+/* --------------- FERÐALAGIÐ & SÉRSTÖK TILEFNI --------------- */
 
+// Bella Italia er ekki með hópferðaleyfi – því er talað um ferðalagið og sérstök tilefni, ekki hópferðir.
 export const wedding = {
-  eyebrow: "Hópar & sérstök tilefni",
-  title: "Hópferðir og sérstök tilefni á Ítalíu",
-  lead: "Lítil brúðkaup í villum, stórafmæli, litlir sem stórir hópar og rútuferðir – við plönum ferðina fyrir ykkur.",
-  image: "/images/brudkaup-villa.jpg",
-  imageAlt: "Ítölsk villa með stórum garði í kvöldsól – umgjörð fyrir veislu",
+  eyebrow: "Ferðalög um Ítalíu",
+  title: "Allt fyrir ferðalagið þitt á Ítalíu",
+  lead: "Hjá Bella Italia tökum við á móti öllum fyrirspurnum sem tengjast ferðalögum um Ítalíu, hvort sem um er að ræða einstaklinga, pör, fjölskyldur, vinahópa eða stærri hópa.",
+  image: "/images/ferdalag-rom-gata.jpg",
+  imageAlt: "Litrík gata í Róm með bougainvillea á húsveggjunum",
   image2: "/images/brudkaup-2.jpg",
   image2Alt: "Brúðhjón í gondólu í Feneyjum",
   intro: [
-    "Villa með sundlaug, útsýni og stórum garði er fullkomin umgjörð – hvort sem það er lítið brúðkaup, stórafmæli eða ættarmót.",
-    "Við skipuleggjum líka ferðir fyrir hópa af öllum stærðum, með rútu, leiðsögn og gistingu. Segðu okkur frá tilefninu og við komum með tillögu.",
+    "Við aðstoðum við skipulagningu ferða af öllum stærðum og gerðum, hvort sem það eru rútuferðir, lestarferðir, einkabílar, akstur með bílstjóra, skoðunarferðir eða önnur þjónusta sem tengist ferðalaginu.",
+    "Með þekkingu okkar á Ítalíu og öflugu samstarfsneti um allt land hjálpum við ykkur að finna réttu lausnirnar og gera ferðalagið sem ánægjulegast.",
+    "Hafið samband við okkur með ykkar hugmyndir og óskir – við aðstoðum ykkur með ánægju!",
   ],
-  ideas: ["Lítil brúðkaup í villum", "Stórafmæli & ættarmót", "Litlir sem stórir hópar", "Rútuferðir", "Fyrirtækja- & hvataferðir"],
-  extras: ["Villa fyrir allan hópinn", "Rúta & bílstjóri", "Einkakokkur & veislumatur", "Leiðsögn & dagskrá", "Ljósmyndari", "Blóm, tónlist & skreytingar"],
+  ideas: [] as string[],
+  occasionsTitle: "Við sjáum um skipulagið fyrir ykkur",
+  occasionsImage: "/images/tilefni-kertabord.jpg",
+  occasionsImageAlt: "Dekkuð borð með kertaljósum á þakverönd í Róm að kvöldi",
+  occasions: [
+    "Hvort sem þið eruð að skipuleggja lítið fjölskylduafmæli, stórafmæli, ættarmót, vinnuferð eða ráðstefnu á Ítalíu, þá aðstoðum við ykkur við að finna réttu lausnina.",
+    "Við tökum að okkur skipulagningu ferða fyrir einstaklinga og hópa af öllum stærðum, allt frá gistingu, ráðstefnusölum og veitingum til rútuferða, akstursþjónustu og skoðunarferða með leiðsögn.",
+    "Engin hugmynd er of lítil eða of stór. Segið okkur hvað þið hafið í huga og við hjálpum ykkur að láta það verða að veruleika.",
+  ],
+  extras: [
+    "Fjölskylduafmæli & ættarmót",
+    "Brúðkaup",
+    "Vinnuferðir & ráðstefnur",
+    "Fyrirtækja- & hvataferðir",
+    "Rútuferðir",
+    "Skoðunarferðir & leiðsögn",
+    "Sérsniðin ferðaþjónusta",
+  ],
 };

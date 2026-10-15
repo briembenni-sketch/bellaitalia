@@ -42,7 +42,7 @@ export default function DestinationPage({ destination: d }: { destination: Desti
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
                 <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{d.eyebrow}</span>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Hvað er í boði</h2>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">{d.servicesTitle ?? "Hvað er í boði"}</h2>
               </div>
               {d.intro.map((p) => (
                 <p key={p} className="text-white/60 max-w-md md:text-right">{p}</p>
@@ -50,7 +50,7 @@ export default function DestinationPage({ destination: d }: { destination: Desti
             </div>
           </RevealOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-            {d.services.map((s, i) => (
+            {d.services.map((s) => (
               <RevealOnScroll key={s.title} className="h-full">
                 <article className="group flex flex-col h-full rounded-3xl bg-white/5 border border-white/10 overflow-hidden hover:border-white/25 transition-colors">
                   {s.image && (
@@ -64,9 +64,6 @@ export default function DestinationPage({ destination: d }: { destination: Desti
                         className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
-                      <span className="absolute top-4 left-5 font-display text-sm text-white/90 tabular-nums label-on-image">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
                     </div>
                   )}
                   <div className="flex flex-col flex-1 p-6 md:p-7">

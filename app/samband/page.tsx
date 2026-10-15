@@ -11,16 +11,12 @@ import { ArrowIcon, FacebookIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIc
 export const metadata: Metadata = {
   title: "Hafa samband | Bella Italia",
   description:
-    "Hafðu samband við Hildi hjá Bella Italia – sími +354 869 4556, WhatsApp +39 338 698 5868, hildur.bellaitalia@gmail.com.",
+    "Hafðu samband við Bella Italia – sími +354 869 4556, sími & WhatsApp +39 338 698 5868, hildur.bellaitalia@gmail.com.",
 };
 
 export default function SambandPage() {
   const { site } = getContent();
-  const cards = [
-    { icon: <PhoneIcon />, title: "Sími", value: site.phoneIS, sub: "Ísland", href: `tel:${site.phoneIS.replace(/\s/g, "")}` },
-    { icon: <MailIcon />, title: "Netfang", value: site.email, sub: "Við svörum yfirleitt innan sólarhrings", href: `mailto:${site.email}` },
-    { icon: <WhatsAppIcon className="w-6 h-6" />, title: "WhatsApp sími", value: site.phoneIT, sub: "Ítalía", href: site.whatsapp },
-  ];
+  const tel = (n: string) => `tel:${n.replace(/\s/g, "")}`;
 
   return (
     <>
@@ -35,24 +31,49 @@ export default function SambandPage() {
         />
 
         <section className="mx-auto max-w-[1400px] px-6 md:px-10 pt-16 md:pt-24 pb-24">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-            {cards.map((c) => (
-              <RevealOnScroll key={c.title}>
-                <a
-                  href={c.href}
-                  target={c.href.startsWith("http") ? "_blank" : undefined}
-                  rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group block rounded-3xl bg-white/5 border border-white/10 p-8 h-full hover:border-white/30 transition-colors"
-                >
-                  <span className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
-                    {c.icon}
-                  </span>
-                  <h2 className="mt-6 text-xs text-white/50">{c.title}</h2>
-                  <p className="mt-1 font-display text-2xl font-medium tracking-tight break-all">{c.value}</p>
-                  <p className="mt-1 text-sm text-white/50">{c.sub}</p>
-                </a>
-              </RevealOnScroll>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+            {/* Gluggi 1: bæði símanúmerin – íslenska og ítalska (líka WhatsApp) */}
+            <RevealOnScroll>
+              <div className="rounded-3xl bg-white/5 border border-white/10 p-8 h-full">
+                <span className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center">
+                  <PhoneIcon />
+                </span>
+                <h2 className="mt-6 text-xs text-white/50">Sími</h2>
+                <ul className="mt-2 space-y-4">
+                  <li>
+                    <a href={tel(site.phoneIS)} className="font-display text-2xl font-medium tracking-tight hover:text-gold-light transition-colors">
+                      {site.phoneIS}
+                    </a>
+                    <p className="mt-0.5 text-sm text-white/50">Ísland</p>
+                  </li>
+                  <li>
+                    <a href={tel(site.phoneIT)} className="font-display text-2xl font-medium tracking-tight hover:text-gold-light transition-colors">
+                      {site.phoneIT}
+                    </a>
+                    <p className="mt-0.5 text-sm text-white/50 flex flex-wrap items-center gap-x-2">
+                      Ítalía · ásamt
+                      <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-white/70 hover:text-white transition-colors">
+                        <WhatsAppIcon className="w-4 h-4" /> WhatsApp
+                      </a>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </RevealOnScroll>
+            {/* Gluggi 2: netfang */}
+            <RevealOnScroll>
+              <a
+                href={`mailto:${site.email}`}
+                className="group block rounded-3xl bg-white/5 border border-white/10 p-8 h-full hover:border-white/30 transition-colors"
+              >
+                <span className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center group-hover:bg-forest group-hover:text-white transition-colors">
+                  <MailIcon />
+                </span>
+                <h2 className="mt-6 text-xs text-white/50">Netfang</h2>
+                <p className="mt-2 font-display text-2xl font-medium tracking-tight break-all">{site.email}</p>
+                <p className="mt-1 text-sm text-white/50">Við svörum yfirleitt innan sólarhrings</p>
+              </a>
+            </RevealOnScroll>
           </div>
 
           <RevealOnScroll>
@@ -63,7 +84,7 @@ export default function SambandPage() {
               <div className="relative lg:col-span-8">
                 <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{site.legalName}</span>
                 <h2 className="mt-3 font-display text-3xl md:text-5xl font-medium tracking-tight leading-[1.05]">
-                  Hildur – Róm & Villur á Ítalíu
+                  Bella Italia – Róm & Villur á Ítalíu
                 </h2>
                 <p className="mt-4 text-white/70 max-w-xl leading-relaxed">
                   Við sníðum allt að ykkar óskum.

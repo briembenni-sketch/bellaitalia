@@ -19,10 +19,16 @@ export const metadata: Metadata = {
 
 const groups = [
   {
-    eyebrow: "Með leiðsögn",
+    eyebrow: "Ferðir í Róm",
     title: "Róm með Rómverjum",
     text: "Leiðsögn á ensku – max 10 manns í hóp.",
-    ids: ["vatikan", "colosseum", "ganga"],
+    ids: ["vatikan", "colosseum"],
+  },
+  {
+    eyebrow: "Gönguferðir",
+    title: "Gönguferðir með leiðsögumanni",
+    text: "Einkagönguferðir á ensku um sögufræga Róm.",
+    ids: ["ganga-perlur", "ganga-hjarta", "ganga-trastevere"],
   },
   {
     eyebrow: "Vespur & golfbílar",
@@ -32,11 +38,23 @@ const groups = [
   },
   {
     eyebrow: "Meira í boði",
-    title: "Matur, dagsferðir & þjónusta",
+    title: "Matur, dagsferðir & gisting",
     text: "",
-    ids: ["matreidsla", "amalfi", "flugvollur", "gisting"],
+    ids: ["matreidsla", "amalfi", "gisting"],
+  },
+  {
+    eyebrow: "Akstur & rútuþjónusta á Ítalíu",
+    title: "Hvert sem leiðin liggur – við komum ykkur á áfangastað",
+    text: "",
+    ids: ["flugvollur", "rutur"],
   },
 ];
+
+const gridCols: Record<number, string> = {
+  2: "md:grid-cols-2",
+  3: "md:grid-cols-2 lg:grid-cols-3",
+  4: "md:grid-cols-2 xl:grid-cols-4",
+};
 
 export default function RomPage() {
   const { tours, site } = getContent();
@@ -89,7 +107,7 @@ export default function RomPage() {
                 {g.text && <p className="text-white/60 max-w-md md:text-right">{g.text}</p>}
               </div>
             </RevealOnScroll>
-            <div className={`grid grid-cols-1 md:grid-cols-2 ${g.ids.length === 4 ? "xl:grid-cols-4" : "lg:grid-cols-3"} gap-4 md:gap-5`}>
+            <div className={`grid grid-cols-1 ${gridCols[g.ids.length] ?? gridCols[3]} gap-4 md:gap-5`}>
               {g.ids.map((id) => (
                 <RevealOnScroll key={id} className="h-full">
                   <TourCard tour={byId[id]} />
@@ -98,32 +116,6 @@ export default function RomPage() {
             </div>
           </section>
         ))}
-
-        {/* Hópar */}
-        <section className="relative mt-20 md:mt-32 min-h-[70svh] flex items-center overflow-hidden">
-          <Image src="/images/rome-pantheon.jpg" alt="Pantheon í Róm við sólarupprás" fill quality={85} sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/25" />
-          <RevealOnScroll className="relative z-10 w-full">
-            <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-24 text-white">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
-                <div className="md:col-span-8">
-                  <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Hópar & sérstök tilefni</span>
-                  <h2 className="mt-3 font-display text-2xl sm:text-3xl md:text-5xl font-medium tracking-tight leading-[1.05]">
-                    Tilvalið fyrir stóra sem litla hópa
-                  </h2>
-                  <p className="mt-4 text-white/70 max-w-xl">
-                    Við sníðum ferðina að hópnum – verð fer eftir fjölda.
-                  </p>
-                </div>
-                <div className="md:col-span-4 flex md:justify-end">
-                  <a href="#fyrirspurn" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-7 py-4 text-sm font-semibold hover:bg-sand-light transition-colors">
-                    Fá tilboð <ArrowIcon className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </RevealOnScroll>
-        </section>
 
         {/* Fyrirspurn */}
         <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 pb-20 scroll-mt-24">

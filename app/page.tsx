@@ -101,7 +101,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══════════════ BRÚÐKAUP – lágstemmdur borði ═══════════════ */}
+        {/* ═══════════════ FERÐALAGIÐ & SÉRSTÖK TILEFNI – lágstemmdur borði ═══════════════ */}
         <section className="mx-auto w-full max-w-[1600px] px-5 md:px-10 py-16 md:py-24">
           <RevealOnScroll>
             <Link
@@ -121,7 +121,7 @@ export default function Home() {
                 <div className="max-w-2xl">
                   <span className={eyebrow}>{wedding.eyebrow}</span>
                   <h2 className="mt-2 font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight leading-[1.1] text-white">
-                    Hópferðir og sérstök tilefni
+                    {wedding.title}
                   </h2>
                   <p className="mt-3 text-white/80 text-[15px] md:text-base leading-relaxed">{wedding.lead}</p>
                 </div>

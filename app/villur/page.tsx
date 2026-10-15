@@ -5,26 +5,16 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import InquiryForm from "../components/InquiryForm";
-import VillaCard from "../components/VillaCard";
 import ServiceCard from "../components/ServiceCard";
 import { getContent } from "../lib/content";
-import { villaCatalogRegion, villaCollections } from "../data/site";
+import { villaCollections } from "../data/site";
 import { ArrowIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
   title: "Villur á Ítalíu | Bella Italia",
   description:
-    "Villur og hús með sundlaug um alla Ítalíu – Toskana, Umbria, Le Marche, Puglia og Sikiley – í öllum verðflokkum. Einkakokkur, ljósmyndari, vínsmökkun og akstur í kringum dvölina. Gjaldfrjáls þjónusta þegar bókað er í gegnum Bella Italia.",
+    "Villur og hús með sundlaug um alla Ítalíu – Toskana, Umbria, Le Marche, Norður-Ítalía og Sikiley – í öllum verðflokkum. Einkakokkur, ljósmyndari, vínsmökkun og akstur í kringum dvölina. Gjaldfrjáls þjónusta þegar bókað er í gegnum Bella Italia.",
 };
-
-// Svæðin sem nefnd eru á bellaitalia.is – hvert vísar á villur í héraðinu hjá samstarfsaðilanum
-const regions = [
-  { name: "Toskana", note: "Vinsælasta héraðið", image: "/images/toskana-hills.jpg", county: "Tuscany" },
-  { name: "Umbria", note: "Græna hjarta Ítalíu", image: "/images/region-umbria.jpg", county: "Umbria" },
-  { name: "Le Marche", note: "Við Adríahafið", image: "/images/villa-marche-2.jpg", county: "Marche" },
-  { name: "Puglia", note: "Trulli & ólífulundir", image: "/images/villa-puglia.jpg", county: "Puglia" },
-  { name: "Sikiley", note: "Stórkostleg eyja", image: "/images/region-sikiley.jpg", county: "Sicily" },
-];
 
 export default function VillurPage() {
   const { site, villaPricing, villaText, villas, villaServices } = getContent();
@@ -44,7 +34,7 @@ export default function VillurPage() {
                 Fá tilboð <ArrowIcon className="w-4 h-4" />
               </a>
               <a href="#villur" className="inline-flex items-center rounded-full tint text-white px-6 py-3.5 text-sm font-semibold hover:bg-white hover:text-ink transition-colors">
-                Skoða dæmi um villur
+                Skoða svæðin
               </a>
             </>
           }
@@ -77,23 +67,41 @@ export default function VillurPage() {
           </RevealOnScroll>
         </section>
 
-        {/* Dæmi um villur */}
+        {/* Úrvalið eftir svæðum – eitt spjald á hérað, vísar á villurnar þar */}
         <section id="villur" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-10 md:pt-20 scroll-mt-24">
           <RevealOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Úrval húsa</span>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Dæmi um villur</h2>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Veldu svæði</span>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Brot af því úrvali sem við bjóðum uppá</h2>
               </div>
-              <p className="text-white/60 max-w-md md:text-right">Dæmi um húsgerðir – úrvalið er miklu stærra.</p>
             </div>
           </RevealOnScroll>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-            {villas.map((v) => (
-              <RevealOnScroll key={v.id} className="h-full">
-                <VillaCard villa={v} ctaHref="#fyrirspurn" large />
+          <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 md:gap-5">
+            {villas.map((v, i) => {
+              // Tvö stór spjöld efst og þrjú undir; á síma fær síðasta spjaldið fulla breidd ef fjöldinn er oddatala
+              const lastOdd = i === villas.length - 1 && villas.length % 2 === 1;
+              const aspect = i < 2 ? "aspect-[4/5] sm:aspect-[16/10]" : lastOdd ? "aspect-[16/9] lg:aspect-[4/3]" : "aspect-[4/5] sm:aspect-[4/3]";
+              return (
+              <RevealOnScroll key={v.id} className={`${i < 2 ? "lg:col-span-3" : "lg:col-span-2"} ${lastOdd ? "col-span-2" : ""}`}>
+                <a
+                  href={v.catalogUrl ?? site.villaCatalog}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group relative flex items-center justify-center rounded-2xl md:rounded-3xl overflow-hidden bg-white/8 ${aspect}`}
+                >
+                  <Image src={v.image} alt={v.imageAlt} fill quality={85} sizes="(max-width: 1024px) 50vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                  <div className="absolute inset-0 bg-ink/35 group-hover:bg-ink/25 transition-colors" />
+                  <div className="relative z-10 px-4 text-center text-white">
+                    <h3 className={`font-display text-2xl sm:text-3xl ${i < 2 ? "md:text-5xl" : "md:text-4xl"} font-medium tracking-[0.08em] uppercase drop-shadow`}>{v.name}</h3>
+                    <span className="mt-3 inline-flex items-center rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-3 py-1.5 text-xs font-semibold transition-colors">
+                      Skoða villur ↗
+                    </span>
+                  </div>
+                </a>
               </RevealOnScroll>
-            ))}
+              );
+            })}
           </div>
           <RevealOnScroll>
             <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-white/8 p-5 md:p-6">
@@ -110,33 +118,43 @@ export default function VillurPage() {
           <RevealOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
               <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Golf, tennis, vötn & haf</span>
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Golf, tennis & stórfjölskyldan</span>
                 <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Villur eftir áhugamálum</h2>
               </div>
-              <p className="text-white/60 max-w-md md:text-right">Úrval hjá samstarfsaðila okkar – við bókum fyrir ykkur.</p>
+              <p className="text-white/60 max-w-md md:text-right">Nokkrar valdar villur í hverjum flokki – við bókum fyrir ykkur.</p>
             </div>
           </RevealOnScroll>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
             {villaCollections.map((c) => (
-              <RevealOnScroll key={c.title}>
-                <a
-                  href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block aspect-[4/5] sm:aspect-[4/3] rounded-2xl md:rounded-3xl overflow-hidden bg-white/8"
-                >
-                  <Image src={c.image} alt={c.imageAlt} fill quality={85} sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white flex items-end justify-between gap-3">
-                    <div>
-                      <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-medium tracking-tight">{c.title}</h3>
-                      <p className="mt-1 text-xs sm:text-sm text-white/75">{c.note}</p>
+              <RevealOnScroll key={c.title} className="h-full">
+                <article className="group flex flex-col h-full rounded-3xl bg-white/5 border border-white/10 overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-white/8">
+                    <Image src={c.image} alt={c.imageAlt} fill quality={85} sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
+                    <div className="absolute bottom-0 p-5 md:p-6 text-white">
+                      <h3 className="font-display text-2xl md:text-3xl font-medium tracking-tight">{c.title}</h3>
+                      <p className="mt-1 text-sm text-white/75">{c.note}</p>
                     </div>
-                    <span className="hidden sm:inline-flex shrink-0 items-center rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-3 py-1.5 text-xs font-semibold transition-colors">
-                      Skoða ↗
-                    </span>
                   </div>
-                </a>
+                  <div className="flex flex-col flex-1 p-5 md:p-6">
+                    {c.villas.length > 0 ? (
+                      <ul className="divide-y divide-white/10">
+                        {c.villas.map((v) => (
+                          <li key={v.href}>
+                            <a href={v.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-3 py-2.5 text-[15px] text-white/80 hover:text-white transition-colors">
+                              {v.name} <span aria-hidden>↗</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-[15px] text-white/60 leading-relaxed">Segðu okkur hvað þið leitið að og við sendum ykkur tillögur að villum.</p>
+                    )}
+                    <a href="#fyrirspurn" className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-gold-light hover:text-white transition-colors">
+                      Fá tillögur <ArrowIcon className="w-4 h-4" />
+                    </a>
+                  </div>
+                </article>
               </RevealOnScroll>
             ))}
           </div>
@@ -157,39 +175,6 @@ export default function VillurPage() {
             {villaServices.map((s) => (
               <RevealOnScroll key={s.id} className="h-full">
                 <ServiceCard service={s} />
-              </RevealOnScroll>
-            ))}
-          </div>
-        </section>
-
-        {/* Svæði */}
-        <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32">
-          <RevealOnScroll>
-            <div className="mb-8 md:mb-10">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Svæði</span>
-              <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Hvert á Ítalíu?</h2>
-              <p className="mt-3 text-white/60">Veldu svæði og skoðaðu villurnar þar.</p>
-            </div>
-          </RevealOnScroll>
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-5">
-            {regions.map((r) => (
-              <RevealOnScroll key={r.name}>
-                <a
-                  href={villaCatalogRegion(r.county)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden bg-white/8"
-                >
-                  <Image src={r.image} alt={r.name} fill quality={85} sizes="(max-width: 1024px) 50vw, 20vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
-                  <div className="absolute bottom-0 p-4 md:p-5 text-white">
-                    <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight">{r.name}</h3>
-                    <p className="mt-1 text-xs sm:text-sm text-white/75">{r.note}</p>
-                    <span className="mt-3 inline-flex items-center rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-3 py-1.5 text-xs font-semibold transition-colors">
-                      Skoða villur ↗
-                    </span>
-                  </div>
-                </a>
               </RevealOnScroll>
             ))}
           </div>

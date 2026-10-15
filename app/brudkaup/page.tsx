@@ -11,7 +11,7 @@ import { ArrowIcon, CheckIcon } from "../components/Icons";
 
 export function generateMetadata(): Metadata {
   return {
-    title: "Hópar, brúðkaup & sérstök tilefni á Ítalíu | Bella Italia",
+    title: "Ferðalagið & sérstök tilefni á Ítalíu | Bella Italia",
     description: getContent().wedding.lead,
   };
 }
@@ -52,7 +52,9 @@ export default function BrudkaupPage() {
                   <p key={p}>{p}</p>
                 ))}
               </div>
-              <p className="mt-6 text-sm text-white/55 leading-relaxed">{wedding.ideas.join("  ·  ")}</p>
+              {wedding.ideas.length > 0 && (
+                <p className="mt-6 text-sm text-white/55 leading-relaxed">{wedding.ideas.join("  ·  ")}</p>
+              )}
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-5">
               <div className="relative aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-white/8">
@@ -63,19 +65,21 @@ export default function BrudkaupPage() {
         </section>
 
         <section className="relative mt-20 md:mt-32 min-h-[70svh] flex items-center overflow-hidden">
-          <Image src="/images/dinner-terrace.jpg" alt="Kvöldverður á verönd í Toskana" fill quality={85} sizes="100vw" className="object-cover" />
+          <Image src={wedding.occasionsImage} alt={wedding.occasionsImageAlt} fill quality={85} sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/60" />
           <RevealOnScroll className="relative z-10 w-full">
             <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-24 text-white">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
                 <div className="md:col-span-5">
-                  <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Allt á einum stað</span>
+                  <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Sérstök tilefni</span>
                   <h2 className="mt-3 font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight leading-[1.05]">
-                    Við tengjum saman villuna og þjónustuna
+                    {wedding.occasionsTitle}
                   </h2>
-                  <p className="mt-4 text-white/75 leading-relaxed">
-                    Sama teymi sér um húsið, veisluna og allt þar á milli.
-                  </p>
+                  <div className="mt-4 space-y-3 text-white/75 leading-relaxed">
+                    {wedding.occasions.map((p) => (
+                      <p key={p}>{p}</p>
+                    ))}
+                  </div>
                 </div>
                 <ul className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {wedding.extras.map((e) => (
@@ -92,7 +96,7 @@ export default function BrudkaupPage() {
         <section id="fyrirspurn" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 pb-20 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <RevealOnScroll className="lg:col-span-4">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Hópar & tilefni</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Ferðalagið & tilefni</span>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Segðu okkur frá tilefninu</h2>
               <p className="mt-4 text-white/60">
                 Hvenær, hve mörg og hvar á Ítalíu – við komum með tillögu.
