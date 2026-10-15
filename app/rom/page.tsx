@@ -19,30 +19,40 @@ export const metadata: Metadata = {
 
 const groups = [
   {
+    id: "leidsogn",
+    nav: "Vatíkanið & Colosseum",
     eyebrow: "Ferðir í Róm",
     title: "Róm með Rómverjum",
     text: "Leiðsögn á ensku – max 10 manns í hóp.",
     ids: ["vatikan", "colosseum"],
   },
   {
+    id: "gonguferdir",
+    nav: "Gönguferðir",
     eyebrow: "Gönguferðir",
     title: "Gönguferðir með leiðsögumanni",
     text: "Einkagönguferðir á ensku um sögufræga Róm.",
     ids: ["ganga-perlur", "ganga-hjarta", "ganga-trastevere"],
   },
   {
+    id: "vespur",
+    nav: "Vespur & golfbílar",
     eyebrow: "Vespur & golfbílar",
     title: "Vertu eins og innfæddur",
     text: "Með bílstjóra og leiðsögn.",
     ids: ["vespa", "sidecar", "golfbill"],
   },
   {
+    id: "meira",
+    nav: "Matur, dagsferðir & gisting",
     eyebrow: "Meira í boði",
     title: "Matur, dagsferðir & gisting",
     text: "",
     ids: ["matreidsla", "amalfi", "gisting"],
   },
   {
+    id: "akstur",
+    nav: "Akstur & rútur",
     eyebrow: "Akstur & rútuþjónusta á Ítalíu",
     title: "Hvert sem leiðin liggur – við komum ykkur á áfangastað",
     text: "",
@@ -81,23 +91,24 @@ export default function RomPage() {
           scrollTo="#ferdir"
         />
 
-        {/* Flýtival */}
-        <section id="ferdir" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-8 md:pt-10 scroll-mt-24">
-          <div className="flex gap-x-6 gap-y-3 overflow-x-auto no-scrollbar -mx-5 px-5 md:mx-0 md:px-0 md:flex-wrap">
-            {tours.map((t) => (
-              <a
-                key={t.id}
-                href={`#${t.id}`}
-                className="shrink-0 border-b border-white/20 pb-1 text-sm text-white/70 hover:text-white hover:border-white transition-colors"
-              >
-                {t.shortTitle}
-              </a>
+        {/* Flýtival – einn hlekkur á hvern kafla, í sömu röð og á síðunni */}
+        <nav id="ferdir" aria-label="Kaflar" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-10 md:pt-14 scroll-mt-24">
+          <ol className="flex lg:grid lg:grid-cols-5 gap-x-6 lg:gap-x-8 overflow-x-auto no-scrollbar -mx-5 px-5 scroll-px-5 md:mx-0 md:px-0 md:scroll-px-0 snap-x snap-mandatory">
+            {groups.map((g, i) => (
+              <li key={g.id} className="shrink-0 w-[70%] sm:w-[40%] lg:w-auto snap-start">
+                <a href={`#${g.id}`} className="group block border-t border-white/15 hover:border-gold-light pt-4 pb-1 transition-colors">
+                  <span className="font-display text-sm text-gold-light tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="mt-2 block font-display text-lg md:text-xl font-medium tracking-tight leading-snug text-white/90 group-hover:text-white">
+                    {g.nav}
+                  </span>
+                </a>
+              </li>
             ))}
-          </div>
-        </section>
+          </ol>
+        </nav>
 
         {groups.map((g, gi) => (
-          <section key={g.title} className={`mx-auto max-w-[1400px] px-5 md:px-10 ${gi === 0 ? "pt-12 md:pt-20" : "pt-20 md:pt-32"}`}>
+          <section key={g.title} id={g.id} className={`mx-auto max-w-[1400px] px-5 md:px-10 scroll-mt-24 ${gi === 0 ? "pt-12 md:pt-20" : "pt-20 md:pt-32"}`}>
             <RevealOnScroll>
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
                 <div>
