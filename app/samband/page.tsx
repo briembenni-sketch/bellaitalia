@@ -23,8 +23,8 @@ export default function SambandPage() {
       <Navbar />
       <main>
         <Hero
-          image="/images/rome-rooftops.jpg"
-          imageAlt="Þök og kirkjuhvelfingar Rómar"
+          image="/images/rom-hero-petur.jpg"
+          imageAlt="Fólk á útsýnisstað í Róm horfir yfir að hvelfingu Péturskirkjunnar"
           title="Hafa samband"
           text="Það kostar ekkert að fá tilboð."
           size="short"

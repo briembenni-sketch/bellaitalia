@@ -64,8 +64,8 @@ export default function RomPage() {
       <Navbar />
       <main>
         <Hero
-          image="/images/hero-rome-2.jpg"
-          imageAlt="Gata í Róm með bougainvillea"
+          image="/images/rom-hero-petur.jpg"
+          imageAlt="Fólk á útsýnisstað í Róm horfir yfir að hvelfingu Péturskirkjunnar"
           title="Öðruvísi ferðir um Róm og nágrenni"
           text="Skoðunarferðir í litlum hópum, vespur, matur, akstur og gisting."
           actions={
