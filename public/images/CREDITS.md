@@ -36,3 +36,6 @@ Myndir bættar við í október 2026 (breytingar frá Hildi):
 - `svc-florens-pisa.jpg` — Dudva, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Piazza_dei_Miracoli_-_The_Cathedral_and_the_Leaning_Tower_in_Pisa_(2).jpg
 - `svc-sikiley-noto.jpg` — Alexander Baxevanis, CC BY 2.0, https://commons.wikimedia.org/wiki/File:Basilica_Cattedrale_di_San_Nicolò_(Noto)_-_Province_of_Syracuse_-_South-Eastern_Sicily_-_Italy_-_11_July_2013.jpg
 - Myndir sem Hildur sendi í tölvupósti 14. október 2026: `rom-hero-petur.jpg`, `rom-ape.jpg`, `rom-golfbill-3.jpg`, `rom-sidecar-3.jpg`, `rom-transfer.jpg`, `rom-ganga-perlur.jpg`, `rom-ganga-hjarta.jpg`, `rom-ganga-gydingahverfid.jpg`, `napoli-hero.jpg`, `svc-napoli-ganga.jpg`, `svc-napoli-pompei.jpg`, `svc-napoli-amalfi.jpg`, `svc-napoli-capri.jpg`, `svc-napoli-vin.jpg`, `sikiley-hero.jpg`
+- `svc-feneyjar-sigling.jpg` — Marc Ryckaert, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Venezia_Canal_Grande_R16.jpg
+- `svc-feneyjar-prosecco.jpg` — Civvì, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Vista_da_Santo_Stefano_Valdobbiadene.jpg
+- `svc-feneyjar-valpolicella.jpg` — Gyozvr, CC BY-SA 4.0, https://commons.wikimedia.org/wiki/File:Villa_Mosconi_Bertani_and_Amarone_della_Valpolicella_Classico_vineyards.jpg
