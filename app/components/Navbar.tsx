@@ -65,24 +65,23 @@ export default function Navbar() {
         }`}
       >
         <div className="px-3 md:px-4 h-16 md:h-[72px] flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-3 pl-1 md:pl-2">
+          {/* Merkið er ljóst – því á ljósum fleti svo það sjáist vel á dökkum haus */}
+          <Link href="/" aria-label="Bella Italia – forsíða" className="block shrink-0 rounded-full bg-[#fbf9f3] pl-4 pr-5 py-1 shadow-md shadow-ink/20 ring-1 ring-white/50">
             <Image
-              src="/images/logo-merki.jpg"
-              alt=""
-              width={40}
-              height={40}
-              className="w-10 h-10 rounded-full object-cover ring-1 ring-white/30"
+              src="/images/logo-nav.jpg"
+              alt="Bella Italia"
+              width={681}
+              height={254}
+              preload
+              className="h-10 md:h-10 lg:h-[52px] w-auto"
             />
-            <span className="font-display font-semibold text-white text-lg md:text-xl tracking-tight">
-              Bella Italia
-            </span>
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-0.5 lg:gap-1">
             {navLinks.map((link) => {
               const active = isActive(pathname, link.href, link.children);
-              const cls = `px-4 py-2 rounded-full text-[15px] transition-colors duration-300 ${
+              const cls = `px-2.5 lg:px-4 py-2 rounded-full text-sm lg:text-[15px] whitespace-nowrap transition-colors duration-300 ${
                 active ? "text-white bg-white/12" : "text-white/85 hover:text-white hover:bg-white/10"
               }`;
 
@@ -162,7 +161,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <Link
               href="/villur#fyrirspurn"
-              className="hidden sm:inline-flex items-center gap-2 rounded-full bg-gold-light text-ink px-6 md:px-7 py-3 md:py-3.5 text-[15px] md:text-base font-semibold shadow-lg shadow-ink/30 ring-2 ring-white/40 hover:bg-white transition-colors"
+              className="hidden sm:inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-gold-light text-ink px-5 lg:px-7 py-3 lg:py-3.5 text-sm lg:text-base font-semibold shadow-lg shadow-ink/30 ring-2 ring-white/40 hover:bg-white transition-colors"
             >
               Fá tilboð í villu
             </Link>
