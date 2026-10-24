@@ -26,12 +26,12 @@ export default function Footer() {
         <div className="px-6 md:px-12 py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
             <Image
-              src="/images/logo-bella-italia.jpg"
+              src="/images/logo-bella-italia.png"
               alt="Bella Italia – Villur & upplifanir á Ítalíu"
               width={1200}
-              height={517}
+              height={501}
               sizes="260px"
-              className="w-[240px] md:w-[260px] h-auto rounded-2xl"
+              className="w-[240px] md:w-[260px] h-auto rounded-2xl bg-white p-3"
             />
             <p className="mt-6 text-[15px] leading-relaxed max-w-sm">
               Persónuleg þjónusta fyrir einstaklinga og hópa, stóra sem smáa.

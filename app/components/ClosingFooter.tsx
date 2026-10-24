@@ -88,12 +88,12 @@ export default function ClosingFooter() {
         <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 py-10 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
           <div className="md:col-span-4">
             <Image
-              src="/images/logo-bella-italia.jpg"
+              src="/images/logo-bella-italia.png"
               alt="Bella Italia – Villur & upplifanir á Ítalíu"
               width={1200}
-              height={517}
+              height={501}
               sizes="240px"
-              className="w-[220px] md:w-[240px] h-auto rounded-2xl"
+              className="w-[220px] md:w-[240px] h-auto rounded-2xl bg-white p-3"
             />
             <div className="mt-5 flex gap-3">
               {socials.map((s) => (

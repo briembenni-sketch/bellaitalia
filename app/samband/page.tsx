@@ -103,12 +103,12 @@ export default function SambandPage() {
               </div>
               <div className="relative lg:col-span-4 flex justify-center lg:justify-end">
                 <Image
-                  src="/images/logo-bella-italia.jpg"
+                  src="/images/logo-bella-italia.png"
                   alt="Bella Italia – Villur & upplifanir á Ítalíu"
                   width={1200}
-                  height={517}
+                  height={501}
                   sizes="(max-width: 1024px) 80vw, 360px"
-                  className="w-full max-w-[360px] h-auto rounded-[1.5rem] ring-1 ring-white/15"
+                  className="w-full max-w-[360px] h-auto rounded-[1.5rem] bg-white p-4 md:p-5"
                 />
               </div>
             </div>

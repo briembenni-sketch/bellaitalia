@@ -65,13 +65,13 @@ export default function Navbar() {
         }`}
       >
         <div className="px-3 md:px-4 h-16 md:h-[72px] flex items-center justify-between gap-4">
-          {/* Merkið er ljóst – því á ljósum fleti svo það sjáist vel á dökkum haus */}
-          <Link href="/" aria-label="Bella Italia – forsíða" className="block shrink-0 rounded-full bg-[#fbf9f3] pl-4 pr-5 py-1 shadow-md shadow-ink/20 ring-1 ring-white/50">
+          {/* Merkið er gegnsætt PNG á hvítum fleti svo það sjáist vel á dökkum haus */}
+          <Link href="/" aria-label="Bella Italia – forsíða" className="block shrink-0 rounded-full bg-white px-4 py-1 shadow-md shadow-ink/20">
             <Image
-              src="/images/logo-nav.jpg"
+              src="/images/logo-nav.png"
               alt="Bella Italia"
-              width={681}
-              height={254}
+              width={580}
+              height={200}
               preload
               className="h-10 md:h-10 lg:h-[52px] w-auto"
             />
