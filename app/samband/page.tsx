@@ -23,8 +23,8 @@ export default function SambandPage() {
       <Navbar />
       <main>
         <Hero
-          image="/images/rom-hero-petur.jpg"
-          imageAlt="Fólk á útsýnisstað í Róm horfir yfir að hvelfingu Péturskirkjunnar"
+          image="/images/samband-hero.jpg"
+          imageAlt="Gult hús með kaffihúsi og sólhlífum á götuhorni í Róm"
           title="Hafa samband"
           text="Það kostar ekkert að fá tilboð."
           size="short"
@@ -84,7 +84,7 @@ export default function SambandPage() {
               <div className="relative lg:col-span-8">
                 <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{site.legalName}</span>
                 <h2 className="mt-3 font-display text-3xl md:text-5xl font-medium tracking-tight leading-[1.05]">
-                  Bella Italia – Róm & Villur á Ítalíu
+                  Bella Italia – Villur & upplifanir á Ítalíu
                 </h2>
                 <p className="mt-4 text-white/70 max-w-xl leading-relaxed">
                   Við sníðum allt að ykkar óskum.
@@ -102,9 +102,14 @@ export default function SambandPage() {
                 </div>
               </div>
               <div className="relative lg:col-span-4 flex justify-center lg:justify-end">
-                <div className="relative w-48 h-48 md:w-60 md:h-60 rounded-[2rem] overflow-hidden ring-1 ring-white/15">
-                  <Image src="/images/logo.jpg" alt="Bella Italia merki" fill sizes="240px" className="object-cover" />
-                </div>
+                <Image
+                  src="/images/logo-bella-italia.jpg"
+                  alt="Bella Italia – Villur & upplifanir á Ítalíu"
+                  width={1200}
+                  height={517}
+                  sizes="(max-width: 1024px) 80vw, 360px"
+                  className="w-full max-w-[360px] h-auto rounded-[1.5rem] ring-1 ring-white/15"
+                />
               </div>
             </div>
           </RevealOnScroll>

@@ -22,8 +22,8 @@ export default function BorgirPage() {
       <Navbar />
       <main>
         <Hero
-          image="/images/dest-napoli.jpg"
-          imageAlt="Napoliflói með Vesúvíus í baksýn"
+          image="/images/borgir-hero-thok.jpg"
+          imageAlt="Rauð þök og kirkjuturn í gömlum ítölskum miðbæ"
           title="Róm og aðrar borgir á Ítalíu"
           text="Leiðsögn, miðakaup, einkabílar og skipulagning."
           actions={

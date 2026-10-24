@@ -87,19 +87,14 @@ export default function ClosingFooter() {
       <div className="relative z-10 border-t border-white/10 text-white/70">
         <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 py-10 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
           <div className="md:col-span-4">
-            <div className="flex items-center gap-4">
-              <Image
-                src="/images/logo.jpg"
-                alt="Bella Italia merki"
-                width={48}
-                height={48}
-                className="w-12 h-12 rounded-full object-cover ring-1 ring-white/20"
-              />
-              <div>
-                <span className="block font-display text-xl font-semibold text-white tracking-tight">Bella Italia</span>
-                <span className="text-xs text-sand">{site.tagline}</span>
-              </div>
-            </div>
+            <Image
+              src="/images/logo-bella-italia.jpg"
+              alt="Bella Italia – Villur & upplifanir á Ítalíu"
+              width={1200}
+              height={517}
+              sizes="240px"
+              className="w-[220px] md:w-[240px] h-auto rounded-2xl"
+            />
             <div className="mt-5 flex gap-3">
               {socials.map((s) => (
                 <a

@@ -25,19 +25,14 @@ export default function Footer() {
       <div className="mx-auto max-w-[1400px] rounded-[1.5rem] md:rounded-[2.5rem] bg-ink-soft border border-white/10 text-white/70 overflow-hidden">
         <div className="px-6 md:px-12 py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
-            <div className="flex items-center gap-4">
-              <Image
-                src="/images/logo.jpg"
-                alt="Bella Italia merki"
-                width={56}
-                height={56}
-                className="w-14 h-14 rounded-full object-cover ring-1 ring-white/20"
-              />
-              <div>
-                <span className="block font-display text-2xl font-semibold text-white tracking-tight">Bella Italia</span>
-                <span className="text-xs text-sand">{site.tagline}</span>
-              </div>
-            </div>
+            <Image
+              src="/images/logo-bella-italia.jpg"
+              alt="Bella Italia – Villur & upplifanir á Ítalíu"
+              width={1200}
+              height={517}
+              sizes="260px"
+              className="w-[240px] md:w-[260px] h-auto rounded-2xl"
+            />
             <p className="mt-6 text-[15px] leading-relaxed max-w-sm">
               Persónuleg þjónusta fyrir einstaklinga og hópa, stóra sem smáa.
             </p>

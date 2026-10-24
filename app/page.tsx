@@ -40,7 +40,7 @@ export default function Home() {
           {/* A · VILLUR */}
           <Link href="/villur" className={panel}>
             <Image
-              src="/images/landing-villa-kvold-hq.jpg"
+              src="/images/landing-villa-bjart.jpg"
               alt="Toskönsk steinvilla í kvöldbirtu með upplýstri sundlaug, sólstólum og sýprustrjám"
               fill
               preload
@@ -49,7 +49,7 @@ export default function Home() {
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-[42%_center] transition-transform duration-700 group-hover:scale-[1.04]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-ink/10" />
             <div className="relative z-10 p-6 sm:p-10 lg:p-14 pt-28 animate-fade-up-delay-1">
               <span className={eyebrow}>Okkar sérgrein</span>
               <h2 className={panelTitle}>Villur</h2>

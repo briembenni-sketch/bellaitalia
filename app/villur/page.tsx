@@ -13,7 +13,7 @@ import { ArrowIcon } from "../components/Icons";
 export const metadata: Metadata = {
   title: "Villur á Ítalíu | Bella Italia",
   description:
-    "Villur og hús með sundlaug um alla Ítalíu – Toskana, Umbria, Le Marche, Norður-Ítalía og Sikiley – í öllum verðflokkum. Einkakokkur, ljósmyndari, vínsmökkun og akstur í kringum dvölina. Gjaldfrjáls þjónusta þegar bókað er í gegnum Bella Italia.",
+    "Villur og hús með sundlaug um alla Ítalíu – Toskana, Umbria, Norður-Ítalía og Sikiley – í öllum verðflokkum. Einkakokkur, ljósmyndari, vínsmökkun og akstur í kringum dvölina. Gjaldfrjáls þjónusta þegar bókað er í gegnum Bella Italia.",
 };
 
 export default function VillurPage() {
@@ -77,31 +77,27 @@ export default function VillurPage() {
               </div>
             </div>
           </RevealOnScroll>
-          <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 md:gap-5">
-            {villas.map((v, i) => {
-              // Tvö stór spjöld efst og þrjú undir; á síma fær síðasta spjaldið fulla breidd ef fjöldinn er oddatala
-              const lastOdd = i === villas.length - 1 && villas.length % 2 === 1;
-              const aspect = i < 2 ? "aspect-[4/5] sm:aspect-[16/10]" : lastOdd ? "aspect-[16/9] lg:aspect-[4/3]" : "aspect-[4/5] sm:aspect-[4/3]";
-              return (
-              <RevealOnScroll key={v.id} className={`${i < 2 ? "lg:col-span-3" : "lg:col-span-2"} ${lastOdd ? "col-span-2" : ""}`}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-5">
+            {/* Öll svæðin eins: jafnstór spjöld, tvö í röð */}
+            {villas.map((v) => (
+              <RevealOnScroll key={v.id}>
                 <a
                   href={v.catalogUrl ?? site.villaCatalog}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group relative flex items-center justify-center rounded-2xl md:rounded-3xl overflow-hidden bg-white/8 ${aspect}`}
+                  className="group relative flex items-center justify-center aspect-[16/10] rounded-2xl md:rounded-3xl overflow-hidden bg-white/8"
                 >
-                  <Image src={v.image} alt={v.imageAlt} fill quality={85} sizes="(max-width: 1024px) 50vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                  <Image src={v.image} alt={v.imageAlt} fill quality={85} sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
                   <div className="absolute inset-0 bg-ink/35 group-hover:bg-ink/25 transition-colors" />
                   <div className="relative z-10 px-4 text-center text-white">
-                    <h3 className={`font-display text-2xl sm:text-3xl ${i < 2 ? "md:text-5xl" : "md:text-4xl"} font-medium tracking-[0.08em] uppercase drop-shadow`}>{v.name}</h3>
+                    <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-[0.08em] uppercase drop-shadow">{v.name}</h3>
                     <span className="mt-3 inline-flex items-center rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-3 py-1.5 text-xs font-semibold transition-colors">
                       Skoða villur ↗
                     </span>
                   </div>
                 </a>
               </RevealOnScroll>
-              );
-            })}
+            ))}
           </div>
           <RevealOnScroll>
             <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-white/8 p-5 md:p-6">
