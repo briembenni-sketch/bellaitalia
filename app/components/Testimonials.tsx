@@ -18,7 +18,7 @@ type Item = (typeof defaultTestimonials)[number];
  */
 export default function Testimonials({
   items,
-  image = "/images/dinner-terrace.jpg",
+  image = "/images/gallery-04.webp",
 }: {
   items?: Item[];
   image?: string;
@@ -76,7 +76,7 @@ export default function Testimonials({
           }}
         >
           <Image src={image} alt="" fill quality={85} sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/85 to-ink/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/65 to-ink/25" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 p-6 sm:p-10 lg:p-14">
             {/* Fyrirsögn */}

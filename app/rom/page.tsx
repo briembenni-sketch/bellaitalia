@@ -14,7 +14,7 @@ import { ArrowIcon } from "../components/Icons";
 export const metadata: Metadata = {
   title: "Róm – ferðir & upplifanir | Bella Italia",
   description:
-    "Vatíkanið og Colosseum með leiðsögn, vespuferðir, gönguferðir með Rómverjum, matreiðslunámskeið, flugvallarakstur, gisting í Róm og ferðir til Napoli, Amalfi og Capri.",
+    "Vatíkanið og Colosseum með leiðsögn, gönguferðir með Rómverjum, flugvallarakstur og rútur, vespu-, sidecar- og golfbílaferðir um Róm.",
 };
 
 const groups = [
@@ -35,22 +35,6 @@ const groups = [
     ids: ["ganga-perlur", "ganga-hjarta", "ganga-trastevere"],
   },
   {
-    id: "vespur",
-    nav: "Vespur & golfbílar",
-    eyebrow: "Vespur & golfbílar",
-    title: "Vertu eins og innfæddur",
-    text: "Með bílstjóra og leiðsögn.",
-    ids: ["vespa", "sidecar", "golfbill"],
-  },
-  {
-    id: "meira",
-    nav: "Matur, dagsferðir & gisting",
-    eyebrow: "Meira í boði",
-    title: "Matur, dagsferðir & gisting",
-    text: "",
-    ids: ["matreidsla", "amalfi", "gisting"],
-  },
-  {
     id: "akstur",
     nav: "Akstur & rútur",
     eyebrow: "Akstur & rútuþjónusta á Ítalíu",
@@ -58,7 +42,18 @@ const groups = [
     text: "",
     ids: ["flugvollur", "rutur"],
   },
+  {
+    id: "vespur",
+    nav: "Vespur & golfbílar",
+    eyebrow: "Vespur & golfbílar",
+    title: "Vertu eins og innfæddur",
+    text: "Með bílstjóra og leiðsögn.",
+    ids: ["vespa", "sidecar", "golfbill"],
+  },
 ];
+
+// Ferðirnar sem sjást á síðunni – fyrirspurnarformið býður bara upp á þær
+const shownIds = groups.flatMap((g) => g.ids);
 
 const gridCols: Record<number, string> = {
   2: "md:grid-cols-2",
@@ -77,7 +72,7 @@ export default function RomPage() {
           image="/images/rom-hero-petur.jpg"
           imageAlt="Fólk á útsýnisstað í Róm horfir yfir að hvelfingu Péturskirkjunnar"
           title="Öðruvísi ferðir um Róm og nágrenni"
-          text="Skoðunarferðir í litlum hópum, vespur, matur, akstur og gisting."
+          text="Skoðunarferðir í litlum hópum, gönguferðir, akstur og vespur."
           actions={
             <>
               <a href="#ferdir" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
@@ -93,7 +88,7 @@ export default function RomPage() {
 
         {/* Flýtival – einn hlekkur á hvern kafla, í sömu röð og á síðunni */}
         <nav id="ferdir" aria-label="Kaflar" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-10 md:pt-14 scroll-mt-24">
-          <ol className="flex lg:grid lg:grid-cols-5 gap-x-6 lg:gap-x-8 overflow-x-auto no-scrollbar -mx-5 px-5 scroll-px-5 md:mx-0 md:px-0 md:scroll-px-0 snap-x snap-mandatory">
+          <ol className="flex lg:grid lg:grid-cols-4 gap-x-6 lg:gap-x-8 overflow-x-auto no-scrollbar -mx-5 px-5 scroll-px-5 md:mx-0 md:px-0 md:scroll-px-0 snap-x snap-mandatory">
             {groups.map((g, i) => (
               <li key={g.id} className="shrink-0 w-[70%] sm:w-[40%] lg:w-auto snap-start">
                 <a href={`#${g.id}`} className="group block border-t border-white/15 hover:border-gold-light pt-4 pb-1 transition-colors">
@@ -145,7 +140,7 @@ export default function RomPage() {
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <RomInquiry tourOptions={tours.map((t) => t.title)} email={site.email} />
+                <RomInquiry tourOptions={shownIds.map((id) => byId[id].title)} email={site.email} />
               </div>
             </RevealOnScroll>
           </div>

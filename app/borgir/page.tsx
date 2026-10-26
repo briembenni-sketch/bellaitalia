@@ -22,8 +22,8 @@ export default function BorgirPage() {
       <Navbar />
       <main>
         <Hero
-          image="/images/borgir-hero-thok.jpg"
-          imageAlt="Rauð þök og kirkjuturn í gömlum ítölskum miðbæ"
+          image="/images/borgir-hero-spaenska.jpg"
+          imageAlt="Spænsku tröppurnar og Barcaccia-gosbrunnurinn í Róm"
           title="Róm og aðrar borgir á Ítalíu"
           text="Leiðsögn, miðakaup, einkabílar og skipulagning."
           actions={

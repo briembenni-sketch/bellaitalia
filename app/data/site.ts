@@ -72,8 +72,8 @@ export const tours: Tour[] = [
     title: "Vespuferð með bílstjóra",
     shortTitle: "Vespuferð",
     tag: "Upplifun",
-    image: "/images/rom-ape.jpg",
-    imageAlt: "Ape-bíll með bílstjóra fyrir framan glæsilega byggingu í Róm",
+    image: "/images/rom-vespa-3.jpg",
+    imageAlt: "Glaðir farþegar á rauðum vespum með íslenska fánann í Róm",
     summary: "Láttu keyra þig um þröngar götur Rómar á vespu.",
     highlights: ["Vespa með einkabílstjóra", "Sótt upp á hótel", "Tilvalið sem afmælisgjöf"],
     priceLabel: "frá €150 á mann",
@@ -282,8 +282,8 @@ export const tours: Tour[] = [
     title: "Rútur",
     shortTitle: "Rútur",
     tag: "Akstur",
-    image: "/images/service-bilstjori.jpg",
-    imageAlt: "Bíll á sýprusviðargötu í Toskana",
+    image: "/images/rom-rutur.jpg",
+    imageAlt: "Hvít rúta ekur undir steinboga í Róm",
     summary: "Rútur með bílstjóra – milli borga, í skoðunarferðir eða frá flugvelli.",
     highlights: ["Rútur af öllum stærðum", "Bílstjóri", "Um alla Ítalíu"],
     priceLabel: "Verð eftir fyrirspurn",
@@ -393,9 +393,9 @@ export const villaText = {
   intro: ["Fjöldi villa um alla Ítalíu, í öllum verðflokkum – við útbúum tilboð eftir óskum hvers hóps."],
   practical: [
     "Öll húsin eru með sundlaug, í rólegri sveit",
-    "2–5 km í næsta þorp – bílaleigubíll er nauðsynlegur",
-    "Leigutímabil allt árið um kring, hvaða vikudag sem er",
     "Við erum til staðar 24/7 á meðan dvöl stendur",
+    "Leigutímabil allt árið um kring, hvaða vikudag sem er",
+    "2–5 km í næsta bæ og þjónustu við flest húsin",
   ],
   service: ["Það kostar ekkert að fá tilboð – þjónusta okkar og milliganga er gjaldfrjáls."],
   pricingNote: "Meðalverð eftir stærð – fer eftir árstíma og staðsetningu.",
@@ -417,8 +417,8 @@ export type Villa = {
   catalogUrl?: string;
 };
 
-// „Brot af því úrvali sem við bjóðum uppá“ – eitt spjald á hérað, hvert vísar á villurnar þar
-// hjá samstarfsaðilanum. Myndirnar eru villur sem Hildur valdi (október 2026).
+// „Brot af því úrvali sem við bjóðum uppá“ – öll héruð sem samstarfsaðilinn er með 5+ villur í (okt. 2026),
+// raðað eftir fjölda villa; hvert spjald vísar á villurnar í héraðinu.
 export const villas: Villa[] = [
   {
     id: "toskana",
@@ -427,7 +427,7 @@ export const villas: Villa[] = [
     region: "Toskana",
     image: "/images/svaedi-toskana.jpg",
     imageAlt: "Steinvilla með sundlaug og vínekrum í hæðum Toskana",
-    text: "Vinsælasta héraðið – vínekrur, sýprusviðir og miðaldabæir.",
+    text: "",
     features: [],
   },
   {
@@ -437,17 +437,7 @@ export const villas: Villa[] = [
     region: "Umbria",
     image: "/images/svaedi-umbria.jpg",
     imageAlt: "Steinhús með sundlaug og verönd innan um tré í Umbríu",
-    text: "Græna hjarta Ítalíu.",
-    features: [],
-  },
-  {
-    id: "nordur-italia",
-    catalogUrl: villaCatalogRegion("Lombardy"),
-    name: "Norður-Ítalía",
-    region: "Norður-Ítalía",
-    image: "/images/svaedi-nordur-italia.jpg",
-    imageAlt: "Villa með sundlaug og útsýni yfir Como-vatn og fjöllin",
-    text: "Vötnin og fjöllin – Como, Garda og Maggiore.",
+    text: "",
     features: [],
   },
   {
@@ -457,7 +447,117 @@ export const villas: Villa[] = [
     region: "Sikiley",
     image: "/images/svaedi-sikiley.jpg",
     imageAlt: "Villa með upplýstri sundlaug yfir hafinu á Sikiley í ljósaskiptunum",
-    text: "Stórkostleg eyja með sjávarútsýni.",
+    text: "",
+    features: [],
+  },
+  {
+    id: "marche",
+    catalogUrl: villaCatalogRegion("Marche"),
+    name: "Le Marche",
+    region: "Le Marche",
+    image: "/images/villa-marche-2.jpg",
+    imageAlt: "Villa með sundlaug milli vínekra og hæða með þorpi í baksýn",
+    text: "",
+    features: [],
+  },
+  {
+    id: "puglia",
+    catalogUrl: villaCatalogRegion("Puglia"),
+    name: "Puglia",
+    region: "Puglia",
+    image: "/images/svaedi-puglia.jpg",
+    imageAlt: "Hvít villa með sundlaug í Puglia við sólarlag",
+    text: "",
+    features: [],
+  },
+  {
+    id: "emilia-romagna",
+    catalogUrl: villaCatalogRegion("Emilia Romagna"),
+    name: "Emilia-Romagna",
+    region: "Emilia-Romagna",
+    image: "/images/svaedi-emilia-romagna.jpg",
+    imageAlt: "Villa með sundlaug í grænum hæðum Emilia-Romagna",
+    text: "",
+    features: [],
+  },
+  {
+    id: "lazio",
+    catalogUrl: villaCatalogRegion("Lazio"),
+    name: "Lazio",
+    region: "Lazio",
+    image: "/images/svaedi-lazio.jpg",
+    imageAlt: "Villa með sundlaug í gróðri í Lazio",
+    text: "",
+    features: [],
+  },
+  {
+    id: "veneto",
+    catalogUrl: villaCatalogRegion("Veneto"),
+    name: "Veneto",
+    region: "Veneto",
+    image: "/images/svaedi-veneto.jpg",
+    imageAlt: "Villa með sundlaug og útsýni yfir Garda-vatn",
+    text: "",
+    features: [],
+  },
+  {
+    id: "sardinia",
+    catalogUrl: villaCatalogRegion("Sardinia"),
+    name: "Sardinía",
+    region: "Sardinía",
+    image: "/images/svaedi-sardinia.jpg",
+    imageAlt: "Villa með upplýstri sundlaug á Sardiníu",
+    text: "",
+    features: [],
+  },
+  {
+    id: "liguria",
+    catalogUrl: villaCatalogRegion("Liguria"),
+    name: "Liguria",
+    region: "Liguria",
+    image: "/images/svaedi-liguria.jpg",
+    imageAlt: "Villa með sundlaug við strönd Liguria",
+    text: "",
+    features: [],
+  },
+  {
+    id: "piemonte",
+    catalogUrl: villaCatalogRegion("Piedmont"),
+    name: "Piemonte",
+    region: "Piemonte",
+    image: "/images/svaedi-piemonte.jpg",
+    imageAlt: "Hvít villa með sundlaug í Piemonte",
+    text: "",
+    features: [],
+  },
+  {
+    id: "lombardia",
+    catalogUrl: villaCatalogRegion("Lombardy"),
+    name: "Lombardia",
+    region: "Lombardia",
+    image: "/images/svaedi-nordur-italia.jpg",
+    imageAlt: "Villa með sundlaug og útsýni yfir Como-vatn og fjöllin",
+    text: "",
+    features: [],
+  },
+  {
+    id: "abruzzo",
+    catalogUrl: villaCatalogRegion("Abruzzo"),
+    name: "Abruzzo",
+    region: "Abruzzo",
+    image: "/images/svaedi-abruzzo.jpg",
+    imageAlt: "Villa með sundlaug í sveitinni í Abruzzo",
+    text: "",
+    features: [],
+  },
+  {
+    id: "campania",
+    catalogUrl: villaCatalogRegion("Campania"),
+    name: "Campania",
+    region: "Campania",
+    image: "/images/svaedi-campania.jpg",
+    imageAlt: "Villa með sundlaug og pálmatrjám í Campania",
+    text: "",
     features: [],
   },
 ];
@@ -467,20 +567,21 @@ export const villaRegions = [...villas.map((v) => v.region), "Annað / óákveð
 
 /* ------------------- VILLUR EFTIR ÁHUGAMÁLUM ------------------- */
 
-// Þrír flokkar með nokkrum völdum villum hver (Hildur velur villurnar – um 5 í flokk).
-// Á meðan listinn er tómur vísar spjaldið á fyrirspurnina.
+// Villur eftir áhugamálum = síaðar leitir hjá samstarfsaðilanum (aukabúnaður í villunni).
+const villaCatalogAccessory = (id: string) =>
+  `${site.villaCatalog}?Text=&TagType=&SelectedAccessories=${id}&pageIndex=&Checkin=&Checkout=&Adults=1`;
+
 export type VillaCollection = {
   title: string;
   note: string;
   image: string;
   imageAlt: string;
-  villas: { name: string; href: string }[];
+  href: string;
 };
 
 export const villaCollections: VillaCollection[] = [
-  { title: "Golf", note: "Villur nálægt golfvöllum", image: "/images/villa-golf-2.jpg", imageAlt: "Steinvilla með sundlaug og tennisvelli í grænni sveit séð ofan frá", villas: [{ name: "Poderina dei Poggi 12 · Umbria", href: "https://www.emmavillas.com/it/umbria/poderina-dei-poggi-12" }] },
-  { title: "Tennis", note: "Tennisvöllur við húsið", image: "/images/villa-tennis.jpg", imageAlt: "Villa með tennisvelli við sjóinn séð ofan frá", villas: [] },
-  { title: "Stórar fjölskylduvillur", note: "Pláss fyrir alla stórfjölskylduna", image: "/images/villa-fjolskylda.jpg", imageAlt: "Langborð dekkað undir vínviði á verönd", villas: [] },
+  { title: "Spa", note: "Villur með heilsulind", image: "/images/villa-spa.jpg", imageAlt: "Steinvilla með upplýstri sundlaug í ljósaskiptunum", href: villaCatalogAccessory("17238a9b-d6e9-4817-a73a-44a8515617a1") },
+  { title: "Líkamsræktarsalur", note: "Villur með fitness-aðstöðu", image: "/images/villa-fitness.jpg", imageAlt: "Hvít villa með langri sundlaug og sólstólum", href: villaCatalogAccessory("109dc261-cc8c-4999-ae34-2a1eac95a465") },
 ];
 
 /* ------------------- VIÐBÓTARÞJÓNUSTA Í VILLUNA ------------------- */
@@ -518,8 +619,8 @@ export const villaServices: VillaService[] = [
   {
     id: "akstur",
     title: "Akstur & transfer",
-    image: "/images/service-bilstjori.jpg",
-    imageAlt: "Klassískur bíll á sýprusviðargötu í Toskana",
+    image: "/images/service-transfer-2.jpg",
+    imageAlt: "Svartur einkabíll fyrir framan villu með sýprusviðum",
     text: "Sótt á flugvöll og keyrt beint í villuna – og dagsferðir með bílstjóra.",
   },
 ];
@@ -573,9 +674,9 @@ export const destinations: Destination[] = [
     cardImage: "/images/dest-florens.jpg",
     intro: ["Best fótgangandi með einhverjum sem þekkir borgina – og fullkomin dagsferð úr villu í Toskana."],
     services: [
-      { title: "Gönguferð með leiðsögumanni", image: "/images/svc-florens-ganga-2.jpg", imageAlt: "Leiðsögukona segir hópi frá á Piazza della Repubblica í Flórens", text: "Við vinnum með frábærum, reyndum og enskumælandi leiðsögumönnum sem þekkja Flórens út og inn. Í einkagönguferð um sögufræga miðborgina fáið þið að kynnast helstu kennileitum, sögu og földum perlum borgarinnar á skemmtilegan og persónulegan hátt." },
-      { title: "Miðakaup í Accademia", image: "/images/svc-florens-accademia.jpg", imageAlt: "Davíð eftir Michelangelo í Accademia-safninu", text: "Miðar á Davíð Michelangelos – leiðsögn ef óskað er." },
-      { title: "Duomo og Cupola", image: "/images/svc-florens-duomo.jpg", imageAlt: "Hvelfing Brunelleschis yfir þökum Flórens", text: "Miðar og tímabókun í dómkirkjuna og hvelfingu Brunelleschis." },
+      { title: "Gönguferð með leiðsögumanni", image: "/images/svc-florens-ganga-2.jpg", imageAlt: "Leiðsögukona segir hópi frá á Piazza della Repubblica í Flórens", text: "Uppgötvið töfra Flórens í einkagönguferð með reyndum, enskumælandi leiðsögumanni sem þekkir borgina út og inn. Kynnist helstu kennileitum, heillandi sögu og földum perlum þessarar fallegu borgar á skemmtilegan og persónulegan hátt." },
+      { title: "Miðakaup í Accademia", image: "/images/svc-florens-accademia.jpg", imageAlt: "Davíð eftir Michelangelo í Accademia-safninu", text: "Heimsækið Accademia-listasafnið í Flórens og dáist að hinu heimsfræga meistaraverki Michelangelos, Davíðsstyttunni. Við sjáum um miðapantanir og bjóðum einnig upp á einkaleiðsögn með reyndum, enskumælandi leiðsögumanni sem veitir ykkur skemmtilega innsýn í sögu og listaverk safnsins." },
+      { title: "Duomo og Cupola", image: "/images/svc-florens-duomo.jpg", imageAlt: "Hvelfing Brunelleschis yfir þökum Flórens", text: "Heimsækið hina glæsilegu dómkirkju Flórens, Duomo, og upplifið eitt þekktasta kennileiti borgarinnar. Við sjáum um miðapantanir og tímabókanir, þar á meðal uppgöngu í hina stórkostlegu hvelfingu Brunelleschis, þaðan sem þið njótið einstaks útsýnis yfir Flórens. Einnig er hægt að bæta við leiðsögn." },
     ],
     planning: "Segðu okkur hvenær og hve mörg – við sjáum um dagskrá, miða og leiðsögn.",
   },
@@ -586,9 +687,9 @@ export const destinations: Destination[] = [
     eyebrow: "Campania",
     title: "Napoli, Amalfi & Pompei",
     lead: "Dagsferðir frá Róm með einkabíl – eða lengri dvöl við ströndina.",
-    image: "/images/napoli-hero.jpg",
-    imageAlt: "Pínutré á útsýnisverönd í Ravello yfir túrkísbláu hafinu við Amalfi-ströndina",
-    cardImage: "/images/napoli-hero.jpg",
+    image: "/images/napoli-hero-2.jpg",
+    imageAlt: "Castel dell’Ovo og smábátahöfnin í Napólí í sól með bláum himni",
+    cardImage: "/images/napoli-hero-2.jpg",
     intro: ["Leiðsögumenn, bílstjórar og bátar – teymið okkar í Campania plönar allt eftir ykkar óskum."],
     services: [
       { title: "Perlur Napólí – Gönguferð um borgina", image: "/images/svc-napoli-ganga.jpg", imageAlt: "Leiðsögukona í þröngri steinlagðri götu í Napólí", text: "Kynnumst líflegum götum, sögufrægum torgum og einstakri menningu Napólí. Upplifum hina sönnu ítölsku stemningu og frægu matarhefðir borgarinnar." },
