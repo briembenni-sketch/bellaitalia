@@ -69,7 +69,7 @@ export default function BrudkaupPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/60" />
           <RevealOnScroll className="relative z-10 w-full">
             <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-24 text-white">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div className="md:col-span-5">
                   <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Sérstök tilefni</span>
                   <h2 className="mt-3 font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight leading-[1.05]">
@@ -83,7 +83,7 @@ export default function BrudkaupPage() {
                 </div>
                 <ul className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {wedding.extras.map((e) => (
-                    <li key={e} className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3.5 text-[15px]">
+                    <li key={e} className="flex items-center gap-3 rounded-2xl bg-white/10 px-4 py-3.5 text-[15px] sm:odd:last:col-span-2">
                       <CheckIcon className="w-4 h-4 text-gold-light shrink-0" /> {e}
                     </li>
                   ))}
