@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const card = "rounded-2xl bg-white/5 border border-white/10 p-5 md:p-6 flex items-center gap-4 md:gap-5";
 const iconBox = "w-12 h-12 shrink-0 rounded-xl bg-white/10 text-white flex items-center justify-center transition-colors";
-const value = "block font-display text-xl sm:text-2xl font-medium tracking-tight";
+const value = "block font-display text-xl xl:text-2xl font-medium tracking-tight whitespace-nowrap";
 
 export default function SambandPage() {
   const { site } = getContent();
@@ -25,18 +25,20 @@ export default function SambandPage() {
       <Navbar />
       <main>
         {/* Þétt síða: fyrirsögn og tengiliðaupplýsingar sjást strax, myndin til hliðar */}
-        <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-28 md:pt-36 pb-16 md:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
-            <div className="lg:col-span-7 flex flex-col animate-fade-up-delay-1">
-              <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">{site.legalName}</span>
-              <h1 className="mt-3 font-display text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight leading-[1.05]">
-                Hafa samband
-              </h1>
-              <p className="mt-3 text-white/70 md:text-lg leading-relaxed max-w-xl">
-                Það kostar ekkert að fá tilboð. Við svörum yfirleitt innan sólarhrings.
-              </p>
+        <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-28 md:pt-32 pb-16 md:pb-24">
+          <div className="animate-fade-up-delay-1">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight leading-[1.05]">
+              Hafa samband
+            </h1>
+            <p className="mt-3 text-white/70 md:text-lg leading-relaxed max-w-xl">
+              Það kostar ekkert að fá tilboð. Við svörum yfirleitt innan sólarhrings.
+            </p>
+          </div>
 
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+          {/* Myndin fylgir hæð glugganna: byrjar við efri brún þeirra og endar við hnappana */}
+          <div className="mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+            <div className="lg:col-span-7 flex flex-col animate-fade-up-delay-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                 {/* Sími – Ísland */}
                 <a href={tel(site.phoneIS)} className={`group ${card} hover:border-white/30 transition-colors`}>
                   <span className={`${iconBox} group-hover:bg-forest`}>
@@ -81,7 +83,7 @@ export default function SambandPage() {
                 </a>
               </div>
 
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-4 md:mt-auto md:pt-6 flex flex-wrap gap-3">
                 <Link href="/fyrirspurn" className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-3.5 text-sm font-semibold hover:bg-sand-light transition-colors">
                   Senda fyrirspurn <ArrowIcon className="w-4 h-4" />
                 </Link>
@@ -94,7 +96,7 @@ export default function SambandPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative min-h-[240px] sm:min-h-[320px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden animate-fade-up-delay-2">
+            <div className="lg:col-span-5 relative min-h-[240px] sm:min-h-[320px] lg:min-h-0 rounded-2xl overflow-hidden animate-fade-up-delay-2">
               <Image
                 src="/images/samband-hero.jpg"
                 alt="Gult hús með kaffihúsi og sólhlífum á götuhorni í Róm"
