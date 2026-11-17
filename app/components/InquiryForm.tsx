@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { site, tours, villaRegions, villaServices } from "../data/site";
+import { sendInquiry } from "../actions";
 import { CheckIcon, WhatsAppIcon } from "./Icons";
 
 type Variant = "rom" | "villur" | "almenn" | "borg";
@@ -54,7 +55,8 @@ export default function InquiryForm({
   email = site.email,
   compact = false,
 }: Props) {
-  const [sent, setSent] = useState(false);
+  // "sent": pósturinn fór beint af síðunni · "mailto": varaleið, póstforrit gestsins opnað
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "mailto">("idle");
   const [regionError, setRegionError] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
   const services = serviceOptions ?? villaServices.map((s) => ({ id: s.id, title: s.title }));
@@ -69,8 +71,9 @@ export default function InquiryForm({
     });
   }, [variant]);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (status === "sending") return;
     const data = new FormData(e.currentTarget);
     const get = (k: string) => String(data.get(k) ?? "").trim();
     const getAll = (k: string) => data.getAll(k).map(String).filter(Boolean);
@@ -124,27 +127,48 @@ export default function InquiryForm({
 
     if (get("skilabod")) lines.push("", "Skilaboð:", get("skilabod"));
 
-    const subject = encodeURIComponent(subjectParts.filter(Boolean).join(" · "));
-    const body = encodeURIComponent(lines.join("\n"));
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-    setSent(true);
+    const subject = subjectParts.filter(Boolean).join(" · ");
+    const body = lines.join("\n");
+
+    // Reynum fyrst að senda beint af síðunni; ef það tekst ekki opnum við póstforrit gestsins
+    setStatus("sending");
+    try {
+      const result = await sendInquiry({ name: get("nafn"), email: get("netfang"), subject, body, website: get("website") });
+      if (result.ok) {
+        setStatus("sent");
+        return;
+      }
+    } catch {
+      /* netvilla — varaleiðin tekur við */
+    }
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setStatus("mailto");
   }
 
-  if (sent) {
+  if (status === "sent" || status === "mailto") {
     return (
-      <div className="text-center py-12">
+      <div className="text-center py-12" role="status">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-leaf/20 text-leaf mb-6">
           <CheckIcon className="w-7 h-7" />
         </div>
-        <h3 className="font-display text-3xl font-medium tracking-tight">Takk fyrir!</h3>
-        <p className="mt-3 max-w-md mx-auto leading-relaxed text-white/60">
-          Tölvupóstforritið þitt ætti að hafa opnast með fyrirspurninni. Ef ekki, sendu okkur
-          línu beint á{" "}
-          <a href={`mailto:${email}`} className="text-gold-light underline underline-offset-4">
-            {email}
-          </a>{" "}
-          eða á WhatsApp.
-        </p>
+        <h3 className="font-display text-3xl font-medium tracking-tight">
+          {status === "sent" ? "Takk fyrir!" : "Eitt skref eftir"}
+        </h3>
+        {status === "sent" ? (
+          <p className="mt-3 max-w-md mx-auto leading-relaxed text-white/60">
+            Fyrirspurnin er komin til okkar og við svörum yfirleitt innan sólarhrings. Ef eitthvað
+            liggur á er líka hægt að ná í okkur á WhatsApp.
+          </p>
+        ) : (
+          <p className="mt-3 max-w-md mx-auto leading-relaxed text-white/60">
+            Tölvupóstforritið þitt ætti að hafa opnast með fyrirspurninni – ýttu á „Senda“ þar til að
+            ljúka við. Ef ekkert opnaðist, sendu okkur línu beint á{" "}
+            <a href={`mailto:${email}`} className="text-gold-light underline underline-offset-4">
+              {email}
+            </a>{" "}
+            eða á WhatsApp.
+          </p>
+        )}
         <a
           href={site.whatsapp}
           target="_blank"
@@ -161,6 +185,11 @@ export default function InquiryForm({
 
   return (
     <form onSubmit={onSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5" noValidate={false}>
+      {/* Hunangskrukka gegn ruslpósti: falin fyrir fólki, vélmenni fylla hana út */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor={`${variant}-website`}>Vefsíða (ekki fylla út)</label>
+        <input id={`${variant}-website`} name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <div className="flex flex-col gap-2">
         <label htmlFor={id("nafn")} className={label}>Nafn *</label>
         <input id={id("nafn")} name="nafn" type="text" required autoComplete="name" placeholder="Fullt nafn" className={field} />
@@ -320,9 +349,10 @@ export default function InquiryForm({
       <div className="md:col-span-2 pt-2 flex flex-col sm:flex-row items-center gap-4">
         <button
           type="submit"
-          className="inline-flex items-center justify-center rounded-full bg-forest text-white px-8 py-4 text-sm font-semibold hover:bg-forest-deep transition-colors w-full sm:w-auto"
+          disabled={status === "sending"}
+          className="inline-flex items-center justify-center rounded-full bg-forest text-white px-8 py-4 text-sm font-semibold hover:bg-forest-deep transition-colors w-full sm:w-auto disabled:opacity-60 disabled:cursor-wait"
         >
-          Senda fyrirspurn
+          {status === "sending" ? "Sendi…" : "Senda fyrirspurn"}
         </button>
         <a
           href={site.whatsapp}

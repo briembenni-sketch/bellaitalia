@@ -49,3 +49,17 @@ Breytingarnar vistast í `data/content.json` og eru lagðar ofan á sjálfgefna 
   (fine-grained token með skrifheimild á Contents) og `GITHUB_REPO`
   (t.d. `briembenni-sketch/bellaitalia`). Þá er skránni commit-að í repóið og síðan
   endurbyggist sjálfkrafa; breytingar birtast eftir 1–2 mínútur.
+
+## Fyrirspurnarform
+
+Formin á `/villur`, `/rom`, `/borgir`, `/borgir/[borg]`, `/brudkaup` og `/fyrirspurn` senda
+tölvupóst beint af síðunni með [Resend](https://resend.com) (`app/actions.ts`). Netfang
+gestsins er sett sem reply-to, svo það nægir að ýta á „Svara“ í póstinum.
+
+- `RESEND_API_KEY` – API-lykill frá Resend. **Án hans falla formin aftur á gömlu leiðina**
+  (opna póstforrit gestsins með útfylltum pósti), og sama gerist ef sending mistekst.
+- `INQUIRY_FROM` – sendandi, t.d. `Bella Italia <fyrirspurn@bellaitalia.is>`. Lénið þarf að
+  vera staðfest hjá Resend. Sé þessu sleppt er notaður prufusendandinn
+  `onboarding@resend.dev`, sem skilar pósti **aðeins** á netfang eiganda Resend-aðgangsins.
+- `INQUIRY_TO` – valfrjálst; viðtakandi ef hann á að vera annar en netfangið sem stillt er
+  í `/admin`.
