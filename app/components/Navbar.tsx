@@ -161,7 +161,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <Link
               href="/villur#fyrirspurn"
-              className="hidden sm:inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-gold-light text-ink px-5 lg:px-7 py-3 lg:py-3.5 text-sm lg:text-base font-semibold shadow-lg shadow-ink/30 ring-2 ring-white/40 hover:bg-white transition-colors"
+              className="hidden sm:inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white text-ink px-5 lg:px-7 py-3 lg:py-3.5 text-sm lg:text-base font-semibold shadow-lg shadow-ink/30 hover:bg-sand-light transition-colors"
             >
               Fá tilboð í villu
             </Link>
@@ -223,7 +223,7 @@ export default function Navbar() {
           <Link
             href="/villur#fyrirspurn"
             onClick={() => setMobileOpen(false)}
-            className="mt-3 inline-flex justify-center rounded-full bg-gold-light text-ink px-6 py-3.5 text-base font-semibold"
+            className="mt-3 inline-flex justify-center rounded-full bg-white text-ink px-6 py-3.5 text-base font-semibold"
           >
             Fá tilboð í villu
           </Link>

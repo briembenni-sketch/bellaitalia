@@ -7,7 +7,6 @@ import RevealOnScroll from "../components/RevealOnScroll";
 import InquiryForm from "../components/InquiryForm";
 import ServiceCard from "../components/ServiceCard";
 import { getContent } from "../lib/content";
-import { villaCollections } from "../data/site";
 import { ArrowIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
@@ -78,9 +77,30 @@ export default function VillurPage() {
               </div>
             </div>
           </RevealOnScroll>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-            {/* Öll héruðin eins: jafnstór spjöld */}
-            {villas.map((v) => (
+          {/* Tvö fyrstu héruðin (Toskana og Umbria) stór efst, hin minni fyrir neðan – eins og Vatíkanið og Colosseum á Rómarsíðunni */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+            {villas.slice(0, 2).map((v) => (
+              <RevealOnScroll key={v.id}>
+                <a
+                  href={v.catalogUrl ?? site.villaCatalog}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex items-center justify-center aspect-[4/3] sm:aspect-[16/10] rounded-2xl md:rounded-3xl overflow-hidden bg-white/8"
+                >
+                  <Image src={v.image} alt={v.imageAlt} fill quality={85} sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                  <div className="absolute inset-0 bg-ink/35 group-hover:bg-ink/25 transition-colors" />
+                  <div className="relative z-10 px-4 text-center text-white">
+                    <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[0.08em] uppercase drop-shadow">{v.name}</h3>
+                    <span className="mt-3 md:mt-4 inline-flex items-center rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-4 py-2 text-xs md:text-sm font-semibold transition-colors">
+                      Skoða villur ↗
+                    </span>
+                  </div>
+                </a>
+              </RevealOnScroll>
+            ))}
+          </div>
+          <div className="mt-3 md:mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            {villas.slice(2).map((v) => (
               <RevealOnScroll key={v.id}>
                 <a
                   href={v.catalogUrl ?? site.villaCatalog}
@@ -102,7 +122,7 @@ export default function VillurPage() {
           </div>
           <RevealOnScroll>
             <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-white/8 p-5 md:p-6">
-              <p className="text-white/65 text-[15px] max-w-2xl">Fleiri hús hjá samstarfsaðila okkar.</p>
+              <p className="font-display text-lg md:text-xl font-medium tracking-tight text-white/90">Villur & upplifun á Ítalíu</p>
               <a href={site.villaCatalog} target="_blank" rel="noopener noreferrer" className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm font-medium hover:bg-white hover:text-ink transition-colors">
                 Skoða úrval ↗
               </a>
@@ -110,42 +130,7 @@ export default function VillurPage() {
           </RevealOnScroll>
         </section>
 
-        {/* Villur eftir áhugamálum */}
-        <section id="ahugamal" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 scroll-mt-24">
-          <RevealOnScroll>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 md:mb-10">
-              <div>
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-sand">Spa & líkamsrækt</span>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-[1.05]">Villur eftir áhugamálum</h2>
-              </div>
-              <p className="text-white/60 max-w-md md:text-right">Úrval hjá samstarfsaðila okkar – við bókum fyrir ykkur.</p>
-            </div>
-          </RevealOnScroll>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-5">
-            {villaCollections.map((c) => (
-              <RevealOnScroll key={c.title}>
-                <a
-                  href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block aspect-[16/10] rounded-2xl md:rounded-3xl overflow-hidden bg-white/8"
-                >
-                  <Image src={c.image} alt={c.imageAlt} fill quality={85} sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-7 text-white flex items-end justify-between gap-3">
-                    <div>
-                      <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight">{c.title}</h3>
-                      <p className="mt-1 text-sm text-white/75">{c.note}</p>
-                    </div>
-                    <span className="shrink-0 inline-flex items-center rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-4 py-2 text-xs sm:text-sm font-semibold transition-colors">
-                      Skoða villur ↗
-                    </span>
-                  </div>
-                </a>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </section>
+        {/* „Villur eftir áhugamálum“ (villaCollections í site.ts) tekið út að ósk Hildar 17.11.2026 – kemur aftur þegar hægt er að sía eftir golfi og tennis */}
 
         {/* Viðbótarþjónusta */}
         <section id="thjonusta" className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-32 scroll-mt-24">

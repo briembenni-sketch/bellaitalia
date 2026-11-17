@@ -40,3 +40,7 @@ Myndir bættar við í október 2026 (breytingar frá Hildi):
 - `landing-villa-bjart.jpg` — bjartari útgáfa af `landing-villa-kvold-hq.jpg` með blárri laug
 - Myndir sem Hildur sendi 25. október 2026: `borgir-hero-spaenska.jpg`, `rom-rutur.jpg`, `rom-vespa-3.jpg`, `napoli-hero-2.jpg`, `service-transfer-2.jpg`
 - Héraðsmyndir og Spa/líkamsræktarmyndir af villum hjá Exclusive Italian Villas / Emma Villas (samstarfsaðila): `svaedi-puglia.jpg`, `svaedi-emilia-romagna.jpg`, `svaedi-lazio.jpg`, `svaedi-veneto.jpg`, `svaedi-sardinia.jpg`, `svaedi-liguria.jpg`, `svaedi-piemonte.jpg`, `svaedi-abruzzo.jpg`, `svaedi-campania.jpg`, `villa-spa.jpg`, `villa-fitness.jpg`
+
+Myndir bættar við 17. nóvember 2026 (lokayfirlestur Hildar):
+
+- `svaedi-umbria-2.jpg` (Villa Anna Elisa), `svaedi-marche.jpg` (Ca Quattrocchi), `svaedi-lazio-2.jpg` (Il Ciliegio), `svaedi-sardinia-2.jpg` (Villa Sandra), `svaedi-piemonte-2.jpg` (Cascina Buzio) — aðalmyndir villna hjá Exclusive Italian Villas / Emma Villas, samstarfsaðila Bella Italia (valdar af Hildi); koma í stað eldri `svaedi-umbria.jpg`, `svaedi-lazio.jpg`, `svaedi-sardinia.jpg` og `svaedi-piemonte.jpg`

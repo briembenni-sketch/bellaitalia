@@ -9,12 +9,11 @@ import { ArrowIcon, FacebookIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIc
 export const metadata: Metadata = {
   title: "Hafa samband | Bella Italia",
   description:
-    "Hafðu samband við Bella Italia – sími +354 869 4556, sími & WhatsApp +39 338 698 5868, hildur.bellaitalia@gmail.com.",
+    "Hafðu samband við Bella Italia – sími & WhatsApp +39 338 698 5868, hildur.bellaitalia@gmail.com.",
 };
 
 const card = "rounded-2xl bg-white/5 border border-white/10 p-5 md:p-6 flex items-center gap-4 md:gap-5";
 const iconBox = "w-12 h-12 shrink-0 rounded-xl bg-white/10 text-white flex items-center justify-center transition-colors";
-const value = "block font-display text-xl xl:text-2xl font-medium tracking-tight whitespace-nowrap";
 
 export default function SambandPage() {
   const { site } = getContent();
@@ -39,36 +38,25 @@ export default function SambandPage() {
           <div className="mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
             <div className="lg:col-span-7 flex flex-col animate-fade-up-delay-1">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-                {/* Sími – Ísland */}
-                <a href={tel(site.phoneIS)} className={`group ${card} hover:border-white/30 transition-colors`}>
-                  <span className={`${iconBox} group-hover:bg-forest`}>
-                    <PhoneIcon />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-xs text-white/50">Sími · Ísland</span>
-                    <span className={`${value} group-hover:text-gold-light transition-colors`}>{site.phoneIS}</span>
-                  </span>
-                </a>
-
-                {/* Sími & WhatsApp – Ítalía */}
-                <div className={card}>
+                {/* Einn stór gluggi: ítalska númerið (það sem Hildur notar mest) + WhatsApp */}
+                <div className={`sm:col-span-2 ${card} flex-wrap`}>
                   <span className={iconBox}>
                     <PhoneIcon />
                   </span>
-                  <span className="min-w-0">
-                    <span className="block text-xs text-white/50">Sími & WhatsApp · Ítalía</span>
-                    <a href={tel(site.phoneIT)} className={`${value} hover:text-gold-light transition-colors`}>
+                  <span className="min-w-0 mr-auto">
+                    <span className="block text-xs text-white/50">Sími & WhatsApp</span>
+                    <a href={tel(site.phoneIT)} className="block font-display text-2xl sm:text-3xl xl:text-4xl font-medium tracking-tight whitespace-nowrap hover:text-gold-light transition-colors">
                       {site.phoneIT}
                     </a>
-                    <a
-                      href={site.whatsapp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-1 inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors"
-                    >
-                      <WhatsAppIcon className="w-4 h-4" /> Opna í WhatsApp
-                    </a>
                   </span>
+                  <a
+                    href={site.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 rounded-full bg-[#25D366] text-ink px-5 py-3 text-sm md:text-base font-semibold hover:bg-white transition-colors"
+                  >
+                    <WhatsAppIcon className="w-5 h-5" /> Opna í WhatsApp
+                  </a>
                 </div>
 
                 {/* Netfang */}
