@@ -618,7 +618,7 @@ export const villaServices: VillaService[] = [
   },
   {
     id: "akstur",
-    title: "Akstur & transfer",
+    title: "Akstur",
     image: "/images/service-transfer-2.jpg",
     imageAlt: "Svartur einkabíll fyrir framan villu með sýprusviðum",
     text: "Sótt á flugvöll og keyrt beint í villuna – og dagsferðir með bílstjóra.",
@@ -711,7 +711,7 @@ export const destinations: Destination[] = [
     image: "/images/dest-feneyjar.jpg",
     imageAlt: "Kirkjan Santa Maria della Salute við Canal Grande í Feneyjum",
     cardImage: "/images/dest-feneyjar-2.jpg",
-    intro: ["Í Feneyjum skiptir öllu að skipuleggja vel – gistingu, transfer og hvernig maður sleppur við mannþröngina."],
+    intro: ["Í Feneyjum skiptir öllu að skipuleggja vel – gistingu, akstur og hvernig maður sleppur við mannþröngina."],
     services: [
       { title: "Gönguferð með leiðsögumanni", image: "/images/svc-feneyjar-ganga-2.jpg", imageAlt: "Brosandi kona með rauðvínsglas á vínbar í Feneyjum", text: "Upplifðu töfra Feneyja í skemmtilegri gönguferð með staðkunnugum leiðsögumanni um þröngar götur og söguleg kennileiti borgarinnar. Heimsæktu Rialto-brúna, hús Marco Polo og glæsilegar kirkjur áður en ferðinni lýkur á hinu stórkostlega Markúsartorgi." },
       { title: "Sigling um Canal Grande", image: "/images/svc-feneyjar-sigling.jpg", imageAlt: "Bátar og gondólar á Canal Grande með Santa Maria della Salute í baksýn", text: "Upplifðu Feneyjar frá einstöku sjónarhorni í einkasiglingu um Canal Grande og heillandi síki borgarinnar með staðkunnugum leiðsögumanni. Njóttu útsýnis yfir glæsilegar hallir, sögulegar brýr og fallegar byggingar. Við mælum sérstaklega með siglingu við sólsetur, með möguleika á Prosecco og hefðbundnum feneyskum smáréttum." },
@@ -721,7 +721,7 @@ export const destinations: Destination[] = [
       { title: "Matarferðir í Feneyjum", image: "/images/svc-feneyjar-matur-2.jpg", imageAlt: "Glaður hópur við borð á útikaffihúsi í Feneyjum", text: "Kynntu þér einstaka matar- og vínmenningu Feneyja í skemmtilegri gönguferð með staðkunnugum leiðsögumanni. Heimsæktu hefðbundna bacari-vínbari, smakkaðu ljúffenga cicchetti-smárétti og njóttu ítalskra vína í heillandi stemningu borgarinnar." },
       { title: "Murano", image: "/images/svc-feneyjar-murano.jpg", imageAlt: "Litrík hús við síki á Burano", text: "Bátsferð til Murano og Burano – glerblástur og litrík hús." },
       { title: "Palazzo Ducale", image: "/images/borg-feneyjar-palazzo-ducale.jpg", imageAlt: "Hertogahöllin í Feneyjum séð frá Canal Grande", text: "Miðar og leiðsögn um Hertogahöllina og Markúsarkirkjuna." },
-      { title: "Miðakaup & transfer", image: "/images/borg-feneyjar-vatnataxi.jpg", imageAlt: "Vatnataxi á Canal Grande í Feneyjum", text: "Miðar á söfn, vatnataxi frá flugvelli og aðstoð við gistingu." },
+      { title: "Miðakaup & akstur", image: "/images/borg-feneyjar-vatnataxi.jpg", imageAlt: "Vatnataxi á Canal Grande í Feneyjum", text: "Miðar á söfn, vatnataxi frá flugvelli og aðstoð við gistingu." },
     ],
     planning: "Sendu okkur dagsetningar og fjölda – við sjáum um rest, frá flugvelli til gondólu.",
   },
