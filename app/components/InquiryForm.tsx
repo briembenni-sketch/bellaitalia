@@ -78,17 +78,20 @@ export default function InquiryForm({
     const get = (k: string) => String(data.get(k) ?? "").trim();
     const getAll = (k: string) => data.getAll(k).map(String).filter(Boolean);
 
-    const lines: string[] = [];
+    const fields: { label: string; value: string }[] = [];
+    const add = (label: string, value: string) => {
+      if (value) fields.push({ label, value });
+    };
     const subjectParts: string[] = ["Fyrirspurn frá bellaitalia.is"];
 
-    lines.push(`Nafn: ${get("nafn")}`);
-    lines.push(`Netfang: ${get("netfang")}`);
-    if (get("simi")) lines.push(`Sími: ${get("simi")}`);
+    add("Nafn", get("nafn"));
+    add("Netfang", get("netfang"));
+    add("Sími", get("simi"));
 
     if (variant === "rom") {
-      lines.push(`Ferð / viðburður: ${get("vidburdur")}`);
-      if (get("dagsetning")) lines.push(`Dagsetning: ${get("dagsetning")}`);
-      if (get("fjoldi")) lines.push(`Fjöldi: ${get("fjoldi")}`);
+      add("Ferð / viðburður", get("vidburdur"));
+      add("Dagsetning", get("dagsetning"));
+      add("Fjöldi", get("fjoldi"));
       subjectParts.push("Róm", get("vidburdur"));
     }
 
@@ -99,41 +102,44 @@ export default function InquiryForm({
         document.getElementById("villur-svaedi")?.scrollIntoView({ behavior: "smooth", block: "center" });
         return;
       }
-      lines.push(`Dagsetningar / vikur: ${get("dagsetningar")}`);
-      lines.push(`Fullorðnir: ${get("fullordnir")}`);
-      lines.push(`Börn 2–17 ára: ${get("born")}`);
-      lines.push(`Börn undir 2 ára: ${get("born2")}`);
-      lines.push(`Svæði: ${regions.join(", ")}`);
+      add("Dagsetningar / vikur", get("dagsetningar"));
+      add("Fullorðnir", get("fullordnir"));
+      add("Börn 2–17 ára", get("born"));
+      add("Börn undir 2 ára", get("born2"));
+      add("Svæði", regions.join(", "));
       const extras = getAll("thjonusta");
-      if (extras.length) lines.push(`Viðbótarþjónusta: ${extras.join(", ")}`);
-      if (get("verdhugmynd")) lines.push(`Verðhugmynd fyrir vikudvöl: ${get("verdhugmynd")}`);
+      add("Viðbótarþjónusta", extras.join(", "));
+      add("Verðhugmynd fyrir vikudvöl", get("verdhugmynd"));
       subjectParts.push("Villa", regions.join(" / "));
     }
 
     if (variant === "borg") {
-      lines.push(`Borg: ${destination ?? ""}`);
-      lines.push(`Þjónusta: ${get("thjonusta")}`);
-      if (get("dagsetning")) lines.push(`Dagsetningar: ${get("dagsetning")}`);
-      if (get("fjoldi")) lines.push(`Fjöldi: ${get("fjoldi")}`);
+      add("Borg", destination ?? "");
+      add("Þjónusta", get("thjonusta"));
+      add("Dagsetningar", get("dagsetning"));
+      add("Fjöldi", get("fjoldi"));
       subjectParts.push(destination ?? "Borg", get("thjonusta"));
     }
 
     if (variant === "almenn") {
-      lines.push(`Áhugi: ${get("ahugi")}`);
-      if (get("dagsetning")) lines.push(`Hvenær: ${get("dagsetning")}`);
-      if (get("fjoldi")) lines.push(`Fjöldi: ${get("fjoldi")}`);
+      add("Áhugi", get("ahugi"));
+      add("Hvenær", get("dagsetning"));
+      add("Fjöldi", get("fjoldi"));
       subjectParts.push(get("ahugi"));
     }
 
-    if (get("skilabod")) lines.push("", "Skilaboð:", get("skilabod"));
+    add("Skilaboð", get("skilabod"));
 
     const subject = subjectParts.filter(Boolean).join(" · ");
-    const body = lines.join("\n");
+    const formName = { villur: "Villur", rom: "Róm", borg: destination ?? "Borgir", almenn: "Almenn fyrirspurn" }[variant];
+    const body = fields
+      .map((f) => (f.label === "Skilaboð" ? `\nSkilaboð:\n${f.value}` : `${f.label}: ${f.value}`))
+      .join("\n");
 
     // Reynum fyrst að senda beint af síðunni; ef það tekst ekki opnum við póstforrit gestsins
     setStatus("sending");
     try {
-      const result = await sendInquiry({ name: get("nafn"), email: get("netfang"), subject, body, website: get("website") });
+      const result = await sendInquiry({ name: get("nafn"), email: get("netfang"), subject, form: formName, fields, website: get("website") });
       if (result.ok) {
         setStatus("sent");
         return;
