@@ -10,7 +10,7 @@ import { PIXEL_ID_RE } from "../lib/track";
 /*
  * Einfalt form fyrir Hildi: ljóst, stórt letur, hver reitur með skýru heiti og
  * aðeins þeir textar sem sjást í raun á vefnum. Annað í `Editable` (t.d. heiti
- * villuhéraða) er geymt óbreytt.
+ * villuhéraða, ferðir sem Rómarsíðan sýnir ekki) er geymt óbreytt.
  */
 
 /* ───────────────── Reitir ───────────────── */
@@ -216,7 +216,19 @@ const TABS = [
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
 
-export default function AdminEditor({ initial, media, storage }: { initial: Editable; media: AdminMedia; storage: "file" | "github" }) {
+export default function AdminEditor({
+  initial,
+  media,
+  storage,
+  shownTourIds,
+}: {
+  initial: Editable;
+  media: AdminMedia;
+  storage: "file" | "github";
+  /** Ferðirnar sem Rómarsíðan sýnir – aðrar eru faldar hér en vistast óbreyttar. */
+  shownTourIds: string[];
+}) {
+  const shown = new Set(shownTourIds);
   const [saved, setSaved] = useState<Editable>(initial);
   const [c, setC] = useState<Editable>(initial);
   const [tab, setTab] = useState<TabId>("verd");
@@ -298,7 +310,7 @@ export default function AdminEditor({ initial, media, storage }: { initial: Edit
           {tab === "verd" && (
             <>
               <Intro>Hér eru öll verð á ferðunum í Róm á einum stað. Breyttu tölunum og ýttu svo á <b>Vista</b> neðst.</Intro>
-              {c.tours.map((t, i) => (
+              {c.tours.map((t, i) => !shown.has(t.id) ? null : (
                 <Card key={t.id} title={t.title} where="Rómarsíðan" href="/rom">
                   <div className="flex gap-4 items-start">
                     {media.tours[t.id]?.image && (
@@ -404,9 +416,9 @@ export default function AdminEditor({ initial, media, storage }: { initial: Edit
                 </button>
                 .
               </Intro>
-              <Card title={`Ferðir í Róm (${c.tours.length})`} where="Rómarsíðan" href="/rom">
+              <Card title={`Ferðir í Róm (${c.tours.filter((t) => shown.has(t.id)).length})`} where="Rómarsíðan" href="/rom">
                 <div className="space-y-2">
-                  {c.tours.map((t, i) => (
+                  {c.tours.map((t, i) => !shown.has(t.id) ? null : (
                     <Item key={t.id} title={t.title} subtitle={t.priceLabel} image={media.tours[t.id]?.image}>
                       <Field label="Heiti ferðar" value={t.title} onChange={(x) => set((d) => void (d.tours[i].title = x))} />
                       <Field label="Litla merkið" hint="Stuttur texti með hástöfum efst á spjaldinu, t.d. „Gönguferð“." value={t.tag} onChange={(x) => set((d) => void (d.tours[i].tag = x))} />

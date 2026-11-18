@@ -7,7 +7,7 @@ import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import TourCard from "../components/TourCard";
 import RomInquiry from "../components/RomInquiry";
-import { cityDestinations } from "../data/site";
+import { cityDestinations, romTourGroups, shownTourIds as shownIds } from "../data/site";
 import { getContent } from "../lib/content";
 import { ArrowIcon } from "../components/Icons";
 
@@ -24,7 +24,7 @@ const groups = [
     eyebrow: "Ferðir í Róm",
     title: "Róm með Rómverjum",
     text: "Leiðsögn á ensku – max 10 manns í hóp.",
-    ids: ["vatikan", "colosseum"],
+    ids: romTourGroups.leidsogn,
   },
   {
     id: "gonguferdir",
@@ -32,7 +32,7 @@ const groups = [
     eyebrow: "Gönguferðir",
     title: "Gönguferðir með leiðsögumanni",
     text: "Einkagönguferðir á ensku um sögufræga Róm.",
-    ids: ["ganga-perlur", "ganga-hjarta", "ganga-trastevere"],
+    ids: romTourGroups.gonguferdir,
   },
   {
     id: "akstur",
@@ -40,7 +40,7 @@ const groups = [
     eyebrow: "Akstur & rútuþjónusta á Ítalíu",
     title: "Hvert sem leiðin liggur – við komum ykkur á áfangastað",
     text: "",
-    ids: ["flugvollur", "rutur"],
+    ids: romTourGroups.akstur,
   },
   {
     id: "vespur",
@@ -48,12 +48,9 @@ const groups = [
     eyebrow: "Vespur & golfbílar",
     title: "Vertu eins og innfæddur",
     text: "Með bílstjóra og leiðsögn.",
-    ids: ["vespa", "sidecar", "golfbill"],
+    ids: romTourGroups.vespur,
   },
 ];
-
-// Ferðirnar sem sjást á síðunni – fyrirspurnarformið býður bara upp á þær
-const shownIds = groups.flatMap((g) => g.ids);
 
 const gridCols: Record<number, string> = {
   2: "md:grid-cols-2",

@@ -332,6 +332,18 @@ export const tours: Tour[] = [
   },
 ];
 
+/**
+ * Ferðirnar sem Rómarsíðan sýnir, eftir köflum. Aðrar ferðir í `tours` sjást hvergi á vefnum
+ * og eru því ekki heldur í /admin – bættu ferð hér við til að birta hana á báðum stöðum.
+ */
+export const romTourGroups = {
+  leidsogn: ["vatikan", "colosseum"],
+  gonguferdir: ["ganga-perlur", "ganga-hjarta", "ganga-trastevere"],
+  akstur: ["flugvollur", "rutur"],
+  vespur: ["vespa", "sidecar", "golfbill"],
+};
+export const shownTourIds: string[] = Object.values(romTourGroups).flat();
+
 export const testimonials = [
   {
     name: "Elka Ósk Hrólfsdóttir",

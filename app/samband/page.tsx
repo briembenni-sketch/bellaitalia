@@ -6,11 +6,14 @@ import Footer from "../components/Footer";
 import { getContent } from "../lib/content";
 import { ArrowIcon, FacebookIcon, InstagramIcon, MailIcon, PhoneIcon, WhatsAppIcon } from "../components/Icons";
 
-export const metadata: Metadata = {
-  title: "Hafa samband | Bella Italia",
-  description:
-    "Hafðu samband við Bella Italia – sími & WhatsApp +39 338 698 5868, hildur.bellaitalia@gmail.com.",
-};
+// Sími og netfang koma úr /admin, svo lýsingin fylgir breytingum þar
+export function generateMetadata(): Metadata {
+  const { site } = getContent();
+  return {
+    title: "Hafa samband | Bella Italia",
+    description: `Hafðu samband við Bella Italia – sími & WhatsApp ${site.phoneIT}, ${site.email}.`,
+  };
+}
 
 const card = "rounded-2xl bg-white/5 border border-white/10 p-5 md:p-6 flex items-center gap-4 md:gap-5";
 const iconBox = "w-12 h-12 shrink-0 rounded-xl bg-white/10 text-white flex items-center justify-center transition-colors";

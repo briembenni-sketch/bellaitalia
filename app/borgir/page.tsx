@@ -7,6 +7,7 @@ import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import InquiryForm from "../components/InquiryForm";
 import { getContent } from "../lib/content";
+import { shownTourIds } from "../data/site";
 import { ArrowIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function BorgirPage() {
-  const { destinations, tours, site } = getContent();
+  const { destinations, site } = getContent();
   return (
     <>
       <Navbar />
@@ -68,7 +69,7 @@ export default function BorgirPage() {
                     <h3 className="font-display text-3xl md:text-5xl font-medium tracking-tight">{d.title}</h3>
                     <p className="mt-3 text-white/80 text-[15px] md:text-base leading-relaxed max-w-xl">{d.lead}</p>
                     <span className="mt-5 inline-flex items-center gap-2 rounded-full bg-white text-ink px-5 py-3 text-sm font-semibold group-hover:bg-sand-light transition-colors">
-                      {d.custom ? `Skoða ${tours.length} ferðir í Róm` : `Skoða ${d.name}`} <ArrowIcon className="w-4 h-4" />
+                      {d.custom ? `Skoða ${shownTourIds.length} ferðir í Róm` : `Skoða ${d.name}`} <ArrowIcon className="w-4 h-4" />
                     </span>
                   </div>
                 </Link>
