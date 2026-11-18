@@ -6,9 +6,9 @@ import type { Tour } from "../data/site";
 import { site } from "../data/site";
 import { ArrowIcon, CheckIcon, ClockIcon, CloseIcon, WhatsAppIcon } from "./Icons";
 
-type Props = { tour: Tour; tall?: boolean };
+type Props = { tour: Tour; tall?: boolean; /** WhatsApp-hlekkur úr /admin */ whatsapp?: string };
 
-export default function TourCard({ tour, tall = false }: Props) {
+export default function TourCard({ tour, tall = false, whatsapp = site.whatsapp }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -62,7 +62,7 @@ export default function TourCard({ tour, tall = false }: Props) {
         </div>
       </article>
 
-      {open && <TourModal tour={tour} onClose={() => setOpen(false)} />}
+      {open && <TourModal tour={tour} whatsapp={whatsapp} onClose={() => setOpen(false)} />}
     </>
   );
 }
@@ -77,7 +77,7 @@ function rememberTour(title: string) {
   }
 }
 
-function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
+function TourModal({ tour, whatsapp, onClose }: { tour: Tour; whatsapp: string; onClose: () => void }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
@@ -207,7 +207,7 @@ function TourModal({ tour, onClose }: { tour: Tour; onClose: () => void }) {
                 Bóka þessa ferð
               </a>
               <a
-                href={site.whatsapp}
+                href={whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-4 text-sm font-medium hover:bg-white hover:text-ink transition-colors"

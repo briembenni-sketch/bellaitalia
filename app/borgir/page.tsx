@@ -89,7 +89,7 @@ export default function BorgirPage() {
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <InquiryForm variant="almenn" email={site.email} />
+                <InquiryForm variant="almenn" email={site.email} whatsapp={site.whatsapp} />
               </div>
             </RevealOnScroll>
           </div>

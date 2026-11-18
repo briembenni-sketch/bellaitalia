@@ -23,6 +23,8 @@ type Props = {
   serviceOptions?: { id: string; title: string }[];
   /** Netfang sem fyrirspurnin fer á */
   email?: string;
+  /** WhatsApp-hlekkur (fylgir ítalska símanúmerinu úr /admin) */
+  whatsapp?: string;
   compact?: boolean;
 };
 
@@ -54,6 +56,7 @@ export default function InquiryForm({
   tourOptions,
   serviceOptions,
   email = site.email,
+  whatsapp = site.whatsapp,
   compact = false,
 }: Props) {
   // "sent": pósturinn fór beint af síðunni · "mailto": varaleið, póstforrit gestsins opnað
@@ -180,7 +183,7 @@ export default function InquiryForm({
           </p>
         )}
         <a
-          href={site.whatsapp}
+          href={whatsapp}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-forest text-white px-7 py-3.5 text-sm font-semibold hover:bg-forest-deep transition-colors"
@@ -365,7 +368,7 @@ export default function InquiryForm({
           {status === "sending" ? "Sendi…" : "Senda fyrirspurn"}
         </button>
         <a
-          href={site.whatsapp}
+          href={whatsapp}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-4 text-sm font-medium text-white hover:bg-white hover:text-ink transition-colors w-full sm:w-auto"

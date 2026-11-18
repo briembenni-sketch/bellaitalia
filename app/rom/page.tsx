@@ -7,7 +7,7 @@ import Hero from "../components/Hero";
 import RevealOnScroll from "../components/RevealOnScroll";
 import TourCard from "../components/TourCard";
 import RomInquiry from "../components/RomInquiry";
-import { cityDestinations, romTourGroups, shownTourIds as shownIds } from "../data/site";
+import { romTourGroups, shownTourIds as shownIds } from "../data/site";
 import { getContent } from "../lib/content";
 import { ArrowIcon } from "../components/Icons";
 
@@ -59,7 +59,8 @@ const gridCols: Record<number, string> = {
 };
 
 export default function RomPage() {
-  const { tours, site } = getContent();
+  const { tours, site, destinations } = getContent();
+  const cityDestinations = destinations.filter((d) => !d.custom);
   const byId = Object.fromEntries(tours.map((t) => [t.id, t]));
   return (
     <>
@@ -113,7 +114,7 @@ export default function RomPage() {
             <div className={`grid grid-cols-1 ${gridCols[g.ids.length] ?? gridCols[3]} gap-4 md:gap-5`}>
               {g.ids.map((id) => (
                 <RevealOnScroll key={id} className="h-full">
-                  <TourCard tour={byId[id]} />
+                  <TourCard tour={byId[id]} whatsapp={site.whatsapp} />
                 </RevealOnScroll>
               ))}
             </div>
@@ -137,7 +138,7 @@ export default function RomPage() {
             </RevealOnScroll>
             <RevealOnScroll className="lg:col-span-8">
               <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/10 p-5 sm:p-6 md:p-10">
-                <RomInquiry tourOptions={shownIds.map((id) => byId[id].title)} email={site.email} />
+                <RomInquiry tourOptions={shownIds.map((id) => byId[id].title)} email={site.email} whatsapp={site.whatsapp} />
               </div>
             </RevealOnScroll>
           </div>
