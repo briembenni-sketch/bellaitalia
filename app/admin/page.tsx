@@ -4,6 +4,7 @@ import { isAuthed } from "../lib/auth";
 import { getContent, toEditable, toMedia } from "../lib/content";
 import { login, logout } from "./actions";
 import AdminEditor from "./AdminEditor";
+import { ExternalIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
   title: "Stjórnborð | Bella Italia",
@@ -65,7 +66,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
           </div>
           <div className="flex items-center gap-2">
             <Link href="/" target="_blank" className="hidden sm:inline-flex rounded-full border border-ink/15 px-4 py-2 text-sm font-medium hover:bg-ink hover:text-white transition-colors">
-              Skoða vefinn ↗
+              Skoða vefinn <ExternalIcon className="ml-1.5 w-3.5 h-3.5 self-center" />
             </Link>
             <form action={logout}>
               <button type="submit" className="rounded-full border border-ink/15 px-4 py-2 text-sm font-medium hover:bg-ink hover:text-white transition-colors">

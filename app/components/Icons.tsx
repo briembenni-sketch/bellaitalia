@@ -1,5 +1,14 @@
 type IconProps = { className?: string };
 
+/** Ör upp til hægri (opnast í nýjum flipa). SVG í stað „↗“ sem símar teikna sem bláan emoji. */
+export function ExternalIcon({ className = "w-4 h-4" }: IconProps) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M9 7h8v8" />
+    </svg>
+  );
+}
+
 export function InstagramIcon({ className = "w-5 h-5" }: IconProps) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

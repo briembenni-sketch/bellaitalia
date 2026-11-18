@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Villa } from "../data/site";
-import { ArrowIcon } from "./Icons";
+import { ArrowIcon, ExternalIcon } from "./Icons";
 
 type Props = {
   villa: Villa;
@@ -44,7 +44,7 @@ export default function VillaCard({ villa, ctaHref = "/villur#fyrirspurn", large
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-white text-ink px-4 py-2 text-sm font-semibold hover:bg-sand-light transition-colors"
               >
-                Skoða villur í {villa.region} ↗
+                Skoða villur í {villa.region} <ExternalIcon className="w-4 h-4" />
               </a>
             </>
           ) : (

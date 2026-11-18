@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState, useTransition, type React
 import Image from "next/image";
 import type { AdminMedia, Editable } from "../lib/content";
 import { saveContent, type SaveResult } from "./actions";
+import { ExternalIcon } from "../components/Icons";
 
 /*
  * Einfalt form fyrir Hildi: ljóst, stórt letur, hver reitur með skýru heiti og
@@ -158,7 +159,7 @@ function Card({ title, where, href, children }: { title: string; where?: string;
             Birtist á:{" "}
             {href ? (
               <a href={href} target="_blank" rel="noopener noreferrer" className="font-medium text-forest underline underline-offset-4 hover:text-ink">
-                {where} ↗
+                {where} <ExternalIcon className="inline w-3.5 h-3.5 align-[-2px]" />
               </a>
             ) : (
               where

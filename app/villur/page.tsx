@@ -7,7 +7,7 @@ import RevealOnScroll from "../components/RevealOnScroll";
 import InquiryForm from "../components/InquiryForm";
 import ServiceCard from "../components/ServiceCard";
 import { getContent } from "../lib/content";
-import { ArrowIcon } from "../components/Icons";
+import { ArrowIcon, ExternalIcon } from "../components/Icons";
 
 export const metadata: Metadata = {
   title: "Villur á Ítalíu | Bella Italia",
@@ -31,7 +31,7 @@ export default function VillurPage() {
             <>
               {/* Aðalhnappurinn: úrvalið hjá samstarfsaðilanum – þangað viljum við að sem flestir fari */}
               <a href={site.villaCatalog} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 rounded-full bg-gold-light text-ink px-8 md:px-10 py-4 md:py-5 text-base md:text-lg font-bold tracking-wide uppercase shadow-lg shadow-ink/30 hover:bg-white transition-colors">
-                Skoða úrval ↗
+                Skoða úrval <ExternalIcon className="w-4 h-4" />
               </a>
               <a href="#fyrirspurn" className="inline-flex items-center gap-2 rounded-full tint text-white px-6 py-4 md:py-5 text-sm md:text-base font-semibold hover:bg-white hover:text-ink transition-colors">
                 Fá tilboð <ArrowIcon className="w-4 h-4" />
@@ -91,8 +91,8 @@ export default function VillurPage() {
                   <div className="absolute inset-0 bg-ink/35 group-hover:bg-ink/25 transition-colors" />
                   <div className="relative z-10 px-4 text-center text-white">
                     <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[0.08em] uppercase drop-shadow">{v.name}</h3>
-                    <span className="mt-3 md:mt-4 inline-flex items-center rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-4 py-2 text-xs md:text-sm font-semibold transition-colors">
-                      Skoða villur ↗
+                    <span className="mt-3 md:mt-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-4 py-2 text-xs md:text-sm font-semibold transition-colors">
+                      Skoða villur <ExternalIcon className="w-3.5 h-3.5" />
                     </span>
                   </div>
                 </a>
@@ -112,8 +112,8 @@ export default function VillurPage() {
                   <div className="absolute inset-0 bg-ink/35 group-hover:bg-ink/25 transition-colors" />
                   <div className="relative z-10 px-4 text-center text-white">
                     <h3 className="font-display text-lg sm:text-2xl lg:text-[1.7rem] font-medium tracking-[0.08em] uppercase drop-shadow">{v.name}</h3>
-                    <span className="mt-2 md:mt-3 inline-flex items-center rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-3 py-1.5 text-[11px] md:text-xs font-semibold transition-colors">
-                      Skoða villur ↗
+                    <span className="mt-2 md:mt-3 inline-flex items-center gap-1 rounded-full bg-white/15 group-hover:bg-white group-hover:text-ink px-3 py-1.5 text-[11px] md:text-xs font-semibold transition-colors">
+                      Skoða villur <ExternalIcon className="w-3 h-3" />
                     </span>
                   </div>
                 </a>
@@ -124,7 +124,7 @@ export default function VillurPage() {
             <div className="mt-6 md:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl bg-white/8 p-5 md:p-6">
               <p className="font-display text-lg md:text-xl font-medium tracking-tight text-white/90">Villur & upplifun á Ítalíu</p>
               <a href={site.villaCatalog} target="_blank" rel="noopener noreferrer" className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm font-medium hover:bg-white hover:text-ink transition-colors">
-                Skoða úrval ↗
+                Skoða úrval <ExternalIcon className="w-4 h-4" />
               </a>
             </div>
           </RevealOnScroll>
