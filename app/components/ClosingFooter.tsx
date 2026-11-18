@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import RevealOnScroll from "./RevealOnScroll";
+import CookieLink from "./CookieLink";
 import { pageLinks, cityLinks } from "./Footer";
 import { getContent } from "../lib/content";
 import { ArrowIcon, InstagramIcon, FacebookIcon, WhatsAppIcon } from "./Icons";
@@ -134,8 +135,9 @@ export default function ClosingFooter() {
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 py-5 border-t border-white/10 text-xs text-white/40">
-          © {new Date().getFullYear()} {site.legalName}
+        <div className="mx-auto w-full max-w-[1600px] px-5 md:px-10 py-5 border-t border-white/10 text-xs text-white/40 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+          <span>© {new Date().getFullYear()} {site.legalName}</span>
+          <CookieLink />
         </div>
       </div>
     </footer>

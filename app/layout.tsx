@@ -4,6 +4,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { site } from "./data/site";
 import HashScroll from "./components/HashScroll";
+import Tracking from "./components/Tracking";
+import { getContent } from "./lib/content";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -57,11 +59,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { tracking } = getContent();
   return (
     <html lang="is" className={`${outfit.variable} ${inter.variable} ${kaushan.variable}`}>
       <body className="min-h-screen bg-ink text-white antialiased">
         <HashScroll />
         {children}
+        <Tracking gaId={tracking.gaId} pixelId={tracking.pixelId} />
       </body>
     </html>
   );

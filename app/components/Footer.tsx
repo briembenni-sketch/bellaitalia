@@ -3,6 +3,7 @@ import Image from "next/image";
 import { destinations } from "../data/site";
 import { getContent } from "../lib/content";
 import { InstagramIcon, FacebookIcon, WhatsAppIcon } from "./Icons";
+import CookieLink from "./CookieLink";
 
 export const pageLinks = [
   { href: "/", label: "Heim" },
@@ -95,8 +96,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="px-6 md:px-12 py-5 border-t border-white/10 text-xs text-white/40">
-          © {new Date().getFullYear()} {site.legalName}
+        <div className="px-6 md:px-12 py-5 border-t border-white/10 text-xs text-white/40 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+          <span>© {new Date().getFullYear()} {site.legalName}</span>
+          <CookieLink />
         </div>
       </div>
     </footer>

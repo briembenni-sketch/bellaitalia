@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { site, tours, villaRegions, villaServices } from "../data/site";
 import { sendInquiry } from "../actions";
+import { trackContact, trackLead } from "../lib/track";
 import { CheckIcon, WhatsAppIcon } from "./Icons";
 
 type Variant = "rom" | "villur" | "almenn" | "borg";
@@ -141,6 +142,8 @@ export default function InquiryForm({
     try {
       const result = await sendInquiry({ name: get("nafn"), email: get("netfang"), subject, form: formName, fields, website: get("website") });
       if (result.ok) {
+        // Vélmenni (hunangskrukkan útfyllt) fá „tókst“ en teljast ekki sem fyrirspurn
+        if (!get("website")) trackLead(formName);
         setStatus("sent");
         return;
       }
@@ -148,6 +151,7 @@ export default function InquiryForm({
       /* netvilla — varaleiðin tekur við */
     }
     window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    trackContact("mailto_form");
     setStatus("mailto");
   }
 
@@ -243,7 +247,7 @@ export default function InquiryForm({
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="villur-dagsetningar" className={label}>Dagsetningar / vikur *</label>
-            <input id="villur-dagsetningar" name="dagsetningar" type="text" required placeholder="t.d. 5.–12. júlí 2026" className={field} />
+            <input id="villur-dagsetningar" name="dagsetningar" type="text" required placeholder="t.d. 5.–12. júlí" className={field} />
           </div>
 
           <fieldset className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-3xl bg-white/5 border border-white/10 p-4 sm:p-5">
@@ -336,7 +340,7 @@ export default function InquiryForm({
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="almenn-dagsetning" className={label}>Hvenær?</label>
-            <input id="almenn-dagsetning" name="dagsetning" type="text" placeholder="t.d. júní 2026" className={field} />
+            <input id="almenn-dagsetning" name="dagsetning" type="text" placeholder="t.d. í júní" className={field} />
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="almenn-fjoldi" className={label}>Fjöldi í hóp</label>

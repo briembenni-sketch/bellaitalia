@@ -5,6 +5,7 @@ import Image from "next/image";
 import type { AdminMedia, Editable } from "../lib/content";
 import { saveContent, type SaveResult } from "./actions";
 import { ExternalIcon } from "../components/Icons";
+import { GA_ID_RE, PIXEL_ID_RE } from "../lib/track";
 
 /*
  * Einfalt form fyrir Hildi: ljóst, stórt letur, hver reitur með skýru heiti og
@@ -211,6 +212,7 @@ const TABS = [
   { id: "tilefni", label: "Ferðalög & tilefni", sub: "Brúðkaup, afmæli o.fl." },
   { id: "umsagnir", label: "Umsagnir", sub: "Það sem gestir segja" },
   { id: "samband", label: "Sími & netfang", sub: "Birtist á öllum síðum" },
+  { id: "maeling", label: "Mæling", sub: "Google Analytics & Meta" },
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
 
@@ -270,7 +272,7 @@ export default function AdminEditor({ initial, media, storage }: { initial: Edit
     <>
       <div className="mx-auto max-w-[1200px] px-4 md:px-8 pt-6 md:pt-10 pb-44 grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-6 lg:gap-10 items-start">
         {/* Valmynd */}
-        <nav aria-label="Hlutar vefsins" className="lg:sticky lg:top-24">
+        <nav aria-label="Hlutar vefsins" className="lg:sticky lg:top-24 lg:max-h-[calc(100svh-12rem)] lg:overflow-y-auto">
           <p className="hidden lg:block mb-3 text-sm font-semibold text-ink/50">Hverju viltu breyta?</p>
           <ul className="flex lg:flex-col gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 lg:mx-0 lg:px-0">
             {TABS.map((t) => (
@@ -560,6 +562,49 @@ export default function AdminEditor({ initial, media, storage }: { initial: Edit
               </Card>
             </>
           )}
+
+          {/* ═══════════════ MÆLING ═══════════════ */}
+          {tab === "maeling" && (
+            <>
+              <Intro>
+                Hér tengir þú vefinn við Google Analytics og Meta (Facebook/Instagram) til að sjá hve margir heimsækja síðuna og hvaða
+                auglýsingar skila fyrirspurnum. Límdu auðkennin inn og ýttu á Vista. Tómur reitur þýðir að slökkt er á þeirri mælingu.
+              </Intro>
+              <Card title="Google Analytics">
+                <Field
+                  label="Measurement ID"
+                  hint="Byrjar á „G-“. Finnst í Google Analytics undir Admin → Data streams → vefstraumurinn."
+                  placeholder="G-XXXXXXXXXX"
+                  value={c.tracking.gaId}
+                  onChange={(x) => set((d) => void (d.tracking.gaId = x.trim().toUpperCase()))}
+                />
+                <IdStatus value={c.tracking.gaId} valid={GA_ID_RE.test(c.tracking.gaId)} example="G-AB12CD34EF" />
+              </Card>
+              <Card title="Meta Pixel (Facebook & Instagram)">
+                <Field
+                  label="Pixel ID"
+                  hint="Talnaruna, oftast 15–16 tölustafir. Finnst í Meta Events Manager → Data sources."
+                  placeholder="123456789012345"
+                  value={c.tracking.pixelId}
+                  onChange={(x) => set((d) => void (d.tracking.pixelId = x.replace(/\s+/g, "")))}
+                />
+                <IdStatus value={c.tracking.pixelId} valid={PIXEL_ID_RE.test(c.tracking.pixelId)} example="123456789012345" />
+              </Card>
+              <Card title="Hvað er mælt?">
+                <ul className="list-disc pl-5 space-y-1.5 text-[15px] text-ink/70 leading-relaxed">
+                  <li>Heimsóknir og flettingar á öllum síðum.</li>
+                  <li>
+                    <b>Send fyrirspurn</b> – skráð sem <code>generate_lead</code> hjá Google og <code>Lead</code> hjá Meta. Þetta er markmiðið sem
+                    auglýsingarnar eiga að stefna á.
+                  </li>
+                  <li>
+                    Smellir á síma, netfang og WhatsApp – skráð sem <code>contact</code> / <code>Contact</code>.
+                  </li>
+                  <li>Gestir sjá borða um vafrakökur og eru aðeins mældir ef þeir samþykkja.</li>
+                </ul>
+              </Card>
+            </>
+          )}
         </div>
       </div>
 
@@ -605,6 +650,13 @@ export default function AdminEditor({ initial, media, storage }: { initial: Edit
       </div>
     </>
   );
+}
+
+/** Segir strax hvort auðkennið sé á réttu formi – ógilt auðkenni er ekki vistað. */
+function IdStatus({ value, valid, example }: { value: string; valid: boolean; example: string }) {
+  if (!value) return <p className="text-sm text-ink/50">Slökkt – ekkert auðkenni skráð.</p>;
+  if (valid) return <p className="text-sm font-semibold text-leaf">✓ Lítur rétt út.</p>;
+  return <p className="text-sm text-red-600">Þetta lítur ekki út eins og gilt auðkenni (dæmi: {example}) og verður ekki vistað.</p>;
 }
 
 function Intro({ children }: { children: ReactNode }) {
