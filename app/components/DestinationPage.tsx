@@ -142,11 +142,11 @@ export default function DestinationPage({ destination: d }: { destination: Desti
               </Link>
             </div>
           </RevealOnScroll>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
             {others.map((o) => (
               <RevealOnScroll key={o.slug}>
-                <Link href={o.custom ? `/${o.slug}` : `/borgir/${o.slug}`} className="group relative block aspect-[4/3] rounded-2xl md:rounded-3xl overflow-hidden bg-ink">
-                  <Image src={o.cardImage} alt={o.imageAlt} fill quality={85} sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                <Link href={o.custom ? `/${o.slug}` : `/borgir/${o.slug}`} className="group relative block aspect-[4/3] lg:aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden bg-ink">
+                  <Image src={o.cardImage} alt={o.imageAlt} fill quality={85} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/15 to-transparent" />
                   <div className="absolute bottom-0 p-5 text-white">
                     <span className="text-[11px] uppercase tracking-[0.15em] text-sand">{o.eyebrow}</span>

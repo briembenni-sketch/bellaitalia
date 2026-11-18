@@ -192,11 +192,7 @@ export const tours: Tour[] = [
     imageAlt: "Rauð vespa með hliðarvagni á götu í Róm",
     summary: "Róm í hliðarvagni – skoðunarferð fyrir alla fjölskylduna.",
     highlights: ["Leiðsögumaður sér um aksturinn", "12 skemmtileg stopp um alla Róm", "Lágmarksaldur 5 ára"],
-    priceLabel: "€135 á mann",
-    prices: [
-      { label: "Verð á mann", value: "€135" },
-      { label: "Kvöldferð með pizzu · verð á mann", value: "€150" },
-    ],
+    priceLabel: "Verð eftir fyrirspurn",
     details: {
       intro: [
         "Bílstjórinn og leiðsögumaðurinn keyrir ykkur ásamt hópnum í vespu, einn situr í hliðarvagni og annar aftaná. Tilvalið fyrir alla. (Lágmarksaldur 5 ára)",
