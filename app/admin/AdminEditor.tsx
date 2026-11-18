@@ -5,9 +5,7 @@ import Image from "next/image";
 import type { AdminMedia, Editable } from "../lib/content";
 import { saveContent, type SaveResult } from "./actions";
 import { ExternalIcon } from "../components/Icons";
-import { GA_ID_RE, PIXEL_ID_RE } from "../lib/track";
-import type { Stats } from "../lib/ga";
-import StatsPanel from "./StatsPanel";
+import { PIXEL_ID_RE } from "../lib/track";
 
 /*
  * Einfalt form fyrir Hildi: ljóst, stórt letur, hver reitur með skýru heiti og
@@ -207,7 +205,6 @@ function Item({ title, subtitle, image, children, onRemove }: { title: string; s
 /* ───────────────── Ritill ───────────────── */
 
 const TABS = [
-  { id: "heimsoknir", label: "Heimsóknir", sub: "Gestir og fyrirspurnir" },
   { id: "verd", label: "Verð", sub: "Verð á ferðum" },
   { id: "villur", label: "Villur", sub: "Gott að vita og þjónusta" },
   { id: "rom", label: "Ferðir í Róm", sub: "Heiti og lýsingar" },
@@ -215,21 +212,11 @@ const TABS = [
   { id: "tilefni", label: "Ferðalög & tilefni", sub: "Brúðkaup, afmæli o.fl." },
   { id: "umsagnir", label: "Umsagnir", sub: "Það sem gestir segja" },
   { id: "samband", label: "Sími & netfang", sub: "Birtist á öllum síðum" },
-  { id: "maeling", label: "Mæling", sub: "Google Analytics & Meta" },
+  { id: "maeling", label: "Mæling", sub: "Heimsóknir & Meta" },
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
 
-export default function AdminEditor({
-  initial,
-  media,
-  storage,
-  stats,
-}: {
-  initial: Editable;
-  media: AdminMedia;
-  storage: "file" | "github";
-  stats: Stats;
-}) {
+export default function AdminEditor({ initial, media, storage }: { initial: Editable; media: AdminMedia; storage: "file" | "github" }) {
   const [saved, setSaved] = useState<Editable>(initial);
   const [c, setC] = useState<Editable>(initial);
   const [tab, setTab] = useState<TabId>("verd");
@@ -307,9 +294,6 @@ export default function AdminEditor({
         </nav>
 
         <div className="space-y-6 min-w-0">
-          {/* ═══════════════ HEIMSÓKNIR ═══════════════ */}
-          {tab === "heimsoknir" && <StatsPanel stats={stats} trackingOn={Boolean(saved.tracking.gaId)} />}
-
           {/* ═══════════════ VERÐ ═══════════════ */}
           {tab === "verd" && (
             <>
@@ -583,19 +567,9 @@ export default function AdminEditor({
           {tab === "maeling" && (
             <>
               <Intro>
-                Hér tengir þú vefinn við Google Analytics og Meta (Facebook/Instagram) til að sjá hve margir heimsækja síðuna og hvaða
-                auglýsingar skila fyrirspurnum. Límdu auðkennin inn og ýttu á Vista. Tómur reitur þýðir að slökkt er á þeirri mælingu.
+                Heimsóknir á vefinn eru taldar sjálfkrafa með Vercel Web Analytics, án vafrakaka. Hér má að auki tengja vefinn við Meta
+                (Facebook/Instagram) til að sjá hvaða auglýsingar skila fyrirspurnum. Tómur reitur þýðir að slökkt er á Meta-mælingunni.
               </Intro>
-              <Card title="Google Analytics">
-                <Field
-                  label="Measurement ID"
-                  hint="Byrjar á „G-“. Finnst í Google Analytics undir Admin → Data streams → vefstraumurinn."
-                  placeholder="G-XXXXXXXXXX"
-                  value={c.tracking.gaId}
-                  onChange={(x) => set((d) => void (d.tracking.gaId = x.trim().toUpperCase()))}
-                />
-                <IdStatus value={c.tracking.gaId} valid={GA_ID_RE.test(c.tracking.gaId)} example="G-AB12CD34EF" />
-              </Card>
               <Card title="Meta Pixel (Facebook & Instagram)">
                 <Field
                   label="Pixel ID"
@@ -610,13 +584,13 @@ export default function AdminEditor({
                 <ul className="list-disc pl-5 space-y-1.5 text-[15px] text-ink/70 leading-relaxed">
                   <li>Heimsóknir og flettingar á öllum síðum.</li>
                   <li>
-                    <b>Send fyrirspurn</b> – skráð sem <code>generate_lead</code> hjá Google og <code>Lead</code> hjá Meta. Þetta er markmiðið sem
+                    <b>Send fyrirspurn</b> – skráð sem <code>Fyrirspurn</code> hjá Vercel og <code>Lead</code> hjá Meta. Þetta er markmiðið sem
                     auglýsingarnar eiga að stefna á.
                   </li>
                   <li>
-                    Smellir á síma, netfang og WhatsApp – skráð sem <code>contact</code> / <code>Contact</code>.
+                    Smellir á síma, netfang og WhatsApp – skráð sem <code>Samband</code> / <code>Contact</code>.
                   </li>
-                  <li>Gestir sjá borða um vafrakökur og eru aðeins mældir ef þeir samþykkja.</li>
+                  <li>Borði um vafrakökur birtist aðeins ef Meta Pixel er uppsettur; Meta mælir þá aðeins gesti sem samþykkja.</li>
                 </ul>
               </Card>
             </>

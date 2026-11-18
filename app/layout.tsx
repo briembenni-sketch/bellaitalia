@@ -65,7 +65,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-ink text-white antialiased">
         <HashScroll />
         {children}
-        <Tracking gaId={tracking.gaId} pixelId={tracking.pixelId} />
+        <Tracking pixelId={tracking.pixelId} />
       </body>
     </html>
   );

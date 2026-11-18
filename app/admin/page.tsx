@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { isAuthed } from "../lib/auth";
 import { getContent, toEditable, toMedia } from "../lib/content";
-import { getStats } from "../lib/ga";
 import { login, logout } from "./actions";
 import AdminEditor from "./AdminEditor";
 import { ExternalIcon } from "../components/Icons";
@@ -55,7 +54,6 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const full = getContent();
   const content = toEditable(full);
   const media = toMedia(full);
-  const stats = await getStats();
   const storage = process.env.GITHUB_TOKEN && process.env.GITHUB_REPO ? "github" : "file";
 
   return (
@@ -78,7 +76,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
           </div>
         </div>
       </header>
-      <AdminEditor initial={content} media={media} storage={storage} stats={stats} />
+      <AdminEditor initial={content} media={media} storage={storage} />
     </main>
   );
 }

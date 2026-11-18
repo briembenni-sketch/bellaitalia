@@ -16,7 +16,7 @@ import {
   type VillaService,
   type Destination,
 } from "../data/site";
-import { GA_ID_RE, PIXEL_ID_RE } from "./track";
+import { PIXEL_ID_RE } from "./track";
 
 /**
  * Efni síðunnar = sjálfgefið efni í data/site.ts + breytingar sem Hildur gerir í /admin.
@@ -34,8 +34,8 @@ export type Content = {
   destinations: Destination[];
   wedding: typeof weddingDefaults;
   testimonials: typeof testimonialDefaults;
-  /** Mæling: auðkenni Google Analytics 4 („G-…“) og Meta Pixel (talnaruna). Tómt = slökkt. */
-  tracking: { gaId: string; pixelId: string };
+  /** Mæling: auðkenni Meta Pixel (talnaruna). Tómt = slökkt. Heimsóknir telur Vercel Web Analytics. */
+  tracking: { pixelId: string };
 };
 
 /** Það sem hægt er að breyta í /admin (allt annað kemur úr kóðanum). */
@@ -81,14 +81,10 @@ export type Editable = {
   }[];
   wedding: { title: string; lead: string; intro: string[]; ideas: string[]; extras: string[] };
   testimonials: { name: string; trip: string; text: string }[];
-  tracking: { gaId: string; pixelId: string };
+  tracking: { pixelId: string };
 };
 
 /** Aðeins gild auðkenni komast á síðuna (þau enda í slóð á skriptu) – annað verður tómt. */
-function cleanGaId(v: unknown): string {
-  const id = typeof v === "string" ? v.trim().toUpperCase() : "";
-  return GA_ID_RE.test(id) ? id : "";
-}
 function cleanPixelId(v: unknown): string {
   const id = typeof v === "string" ? v.replace(/\s+/g, "") : "";
   return PIXEL_ID_RE.test(id) ? id : "";
@@ -105,7 +101,7 @@ export const defaults: Content = {
   wedding: weddingDefaults,
   testimonials: testimonialDefaults,
   // Umhverfisbreytur eru varaleið ef ekkert hefur verið slegið inn í /admin
-  tracking: { gaId: cleanGaId(process.env.GA_MEASUREMENT_ID), pixelId: cleanPixelId(process.env.META_PIXEL_ID) },
+  tracking: { pixelId: cleanPixelId(process.env.META_PIXEL_ID) },
 };
 
 export const CONTENT_FILE = path.join(process.cwd(), "data", "content.json");
@@ -164,7 +160,7 @@ export function toEditable(c: Content): Editable {
       extras: c.wedding.extras,
     },
     testimonials: c.testimonials.map((t) => ({ name: t.name, trip: t.trip, text: t.text })),
-    tracking: { gaId: c.tracking.gaId, pixelId: c.tracking.pixelId },
+    tracking: { pixelId: c.tracking.pixelId },
   };
 }
 
@@ -338,7 +334,6 @@ export function applyEditable(base: Content, raw: unknown): Content {
     const s = e.tracking as Record<string, unknown>;
     // Tómur reitur í /admin slekkur á mælingunni; vanti reitinn alveg gildir sjálfgefið
     out.tracking = {
-      gaId: typeof s.gaId === "string" ? cleanGaId(s.gaId) : base.tracking.gaId,
       pixelId: typeof s.pixelId === "string" ? cleanPixelId(s.pixelId) : base.tracking.pixelId,
     };
   }
