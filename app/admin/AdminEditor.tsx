@@ -6,6 +6,8 @@ import type { AdminMedia, Editable } from "../lib/content";
 import { saveContent, type SaveResult } from "./actions";
 import { ExternalIcon } from "../components/Icons";
 import { GA_ID_RE, PIXEL_ID_RE } from "../lib/track";
+import type { Stats } from "../lib/ga";
+import StatsPanel from "./StatsPanel";
 
 /*
  * Einfalt form fyrir Hildi: ljóst, stórt letur, hver reitur með skýru heiti og
@@ -205,6 +207,7 @@ function Item({ title, subtitle, image, children, onRemove }: { title: string; s
 /* ───────────────── Ritill ───────────────── */
 
 const TABS = [
+  { id: "heimsoknir", label: "Heimsóknir", sub: "Gestir og fyrirspurnir" },
   { id: "verd", label: "Verð", sub: "Verð á ferðum" },
   { id: "villur", label: "Villur", sub: "Gott að vita og þjónusta" },
   { id: "rom", label: "Ferðir í Róm", sub: "Heiti og lýsingar" },
@@ -216,7 +219,17 @@ const TABS = [
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
 
-export default function AdminEditor({ initial, media, storage }: { initial: Editable; media: AdminMedia; storage: "file" | "github" }) {
+export default function AdminEditor({
+  initial,
+  media,
+  storage,
+  stats,
+}: {
+  initial: Editable;
+  media: AdminMedia;
+  storage: "file" | "github";
+  stats: Stats;
+}) {
   const [saved, setSaved] = useState<Editable>(initial);
   const [c, setC] = useState<Editable>(initial);
   const [tab, setTab] = useState<TabId>("verd");
@@ -272,7 +285,7 @@ export default function AdminEditor({ initial, media, storage }: { initial: Edit
     <>
       <div className="mx-auto max-w-[1200px] px-4 md:px-8 pt-6 md:pt-10 pb-44 grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-6 lg:gap-10 items-start">
         {/* Valmynd */}
-        <nav aria-label="Hlutar vefsins" className="lg:sticky lg:top-24 lg:max-h-[calc(100svh-12rem)] lg:overflow-y-auto">
+        <nav aria-label="Hlutar vefsins" className="lg:sticky lg:top-24 lg:max-h-[calc(100svh-12rem)] lg:overflow-y-auto [scrollbar-width:thin]">
           <p className="hidden lg:block mb-3 text-sm font-semibold text-ink/50">Hverju viltu breyta?</p>
           <ul className="flex lg:flex-col gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 lg:mx-0 lg:px-0">
             {TABS.map((t) => (
@@ -294,6 +307,9 @@ export default function AdminEditor({ initial, media, storage }: { initial: Edit
         </nav>
 
         <div className="space-y-6 min-w-0">
+          {/* ═══════════════ HEIMSÓKNIR ═══════════════ */}
+          {tab === "heimsoknir" && <StatsPanel stats={stats} trackingOn={Boolean(saved.tracking.gaId)} />}
+
           {/* ═══════════════ VERÐ ═══════════════ */}
           {tab === "verd" && (
             <>
